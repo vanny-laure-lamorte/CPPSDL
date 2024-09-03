@@ -42,8 +42,6 @@ void GameGraphic::GameunloadAllTextures()
     SDL_DestroyTexture(backgroundTexture);
 }
 
-
-
 void GameGraphic:: GamedisplayBackground(){
      if (backgroundTexture)
     {

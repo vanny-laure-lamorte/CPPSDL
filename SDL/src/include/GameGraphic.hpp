@@ -4,6 +4,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "Element.hpp"
+
 class GameGraphic {
 public:
     GameGraphic(SDL_Renderer* _renderer, int screenWidth, int screenHeight);

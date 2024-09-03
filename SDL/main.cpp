@@ -2,7 +2,7 @@ using namespace std;
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "Window.hpp"
-#include "GameGraphic.hpp" // Assurez-vous d'inclure ce fichier
+#include "GameGraphic.hpp"
 
 int SCREENWIDTH = 600;
 int SCREENHEIGHT = 750;
