@@ -365,7 +365,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\main.cpp" />
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\ZERO_CHECK.vcxproj">

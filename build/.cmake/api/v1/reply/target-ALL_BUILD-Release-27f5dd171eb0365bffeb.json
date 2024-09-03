@@ -26,9 +26,6 @@
 			"id" : "sfml-window::@5730451e331e3690ae65"
 		},
 		{
-			"id" : "sfml-graphics::@98af38147d5fa7e70f61"
-		},
-		{
 			"id" : "sfml-network::@d7f79968b2699e7782cb"
 		},
 		{
@@ -36,6 +33,9 @@
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "sfml-graphics::@98af38147d5fa7e70f61"
 		}
 	],
 	"folder" : 
