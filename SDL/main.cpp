@@ -1,8 +1,8 @@
 using namespace std; 
 #include <iostream>
 #include <SDL2/SDL.h>
-
 #include "Window.hpp"
+#include "GameGraphic.hpp" // Assurez-vous d'inclure ce fichier
 
 int SCREENWIDTH = 600;
 int SCREENHEIGHT = 750;
@@ -11,30 +11,44 @@ int main(int argc, char* argv[]) {
 
     // Create window
     Window window(SCREENWIDTH, SCREENHEIGHT);
-    if (!window.isInitialized())
-    {
+    if (!window.isInitialized()) {
         cerr << "Failed to initialize the window." << endl;
         return -1;
     }
+
     SDL_Event windowEvent;
 
     // Get renderer
     SDL_Renderer *renderer = window.getRenderer(); 
     
-    // Create game instance
+    // Create game graphic instance
+    GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
+    
+    // Load textures
+    gameGraphic.GameloadBackgroundTexture();
 
     // Main game loop
-
     while (true) {
         if (SDL_PollEvent(&windowEvent)) {
-            
             if (SDL_QUIT == windowEvent.type) {
                 break; 
             }
         }
+
+        // Clear the screen
+        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255); // Gris foncé
+        SDL_RenderClear(renderer);
+
+        // Display background
+        gameGraphic.GamedisplayBackground();
+        
+        // Present the renderer
+        SDL_RenderPresent(renderer);
     }
+
+    // Cleanup
+    gameGraphic.GameunloadAllTextures(); 
 
     SDL_Quit();
     return EXIT_SUCCESS;
 }
-

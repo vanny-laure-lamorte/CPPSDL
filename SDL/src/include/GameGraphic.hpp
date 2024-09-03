@@ -1,36 +1,22 @@
-#ifndef GameGraphic_HPP
-#define GameGraphic_HPP
+#ifndef GAMEGRAPHIC_HPP
+#define GAMEGRAPHIC_HPP
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
-#include <iostream>
-#include <vector>
 
-using namespace std;
-
-class GameGraphic
-{
+class GameGraphic {
 public:
-    GameGraphic(SDL_Renderer *_renderer, int screenWidth, int screenHeight); 
-
-    ~GameGraphic();  
+    GameGraphic(SDL_Renderer* _renderer, int screenWidth, int screenHeight);
+    ~GameGraphic();
+    void GameloadBackgroundTexture();
+    void GameunloadAllTextures();
+    void GamedisplayBackground();
 
 private:
-
-    SDL_Renderer *renderer;
+    SDL_Renderer* renderer;
+    SDL_Texture* backgroundTexture;
     int screenWidth;
     int screenHeight;
-
-  
-
-    // Rect
-    // SDL_Rect buttonRect;
-
-    // Texture
-    SDL_Texture *backgroundTexture;
-
-    // Textures 
 };
 
-#endif
+#endif // GAMEGRAPHIC_HPP
