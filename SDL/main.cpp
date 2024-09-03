@@ -1,41 +1,40 @@
-using namespace std;
-
+using namespace std; 
 #include <iostream>
+#include <SDL2/SDL.h>
 
-// Function prototypes
-void createGrid(int grille[4][4]);
-void displayGrid(int grille[4][4]);
+#include "Window.hpp"
 
+int SCREENWIDTH = 600;
+int SCREENHEIGHT = 750;
 
-int main(int argc, char const *argv[])
-{
-    int grid[4][4];
+int main(int argc, char* argv[]) {
 
-    // Initial Grid
-    createGrid(grid); 
+    // Create window
+    Window window(SCREENWIDTH, SCREENHEIGHT);
+    if (!window.isInitialized())
+    {
+        cerr << "Failed to initialize the window." << endl;
+        return -1;
+    }
+    SDL_Event windowEvent;
 
-    // Display Grid
-    displayGrid(grid);
+    // Get renderer
+    SDL_Renderer *renderer = window.getRenderer(); 
+    
+    // Create game instance
 
-    return 0;
-}
+    // Main game loop
 
-void createGrid(int grid[4][4]){
- for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            grid[i][j] = 0; 
+    while (true) {
+        if (SDL_PollEvent(&windowEvent)) {
+            
+            if (SDL_QUIT == windowEvent.type) {
+                break; 
+            }
         }
     }
+
+    SDL_Quit();
+    return EXIT_SUCCESS;
 }
 
-void displayGrid (int grid[4][4]) {
-    cout << "Grille 4x4 :" ; endl
-
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            cout << grid[i][j] << " "; 
-        }
-        cout << endl;  
-    }
-
-}
