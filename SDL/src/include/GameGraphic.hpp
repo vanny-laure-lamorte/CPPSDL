@@ -22,6 +22,8 @@ private:
     SDL_Texture* backgroundTexture;
     SDL_Texture* testTexture;
     
+    void animation();
+    float animTransition = 0;
 };
 
 #endif // GAMEGRAPHIC_HPP

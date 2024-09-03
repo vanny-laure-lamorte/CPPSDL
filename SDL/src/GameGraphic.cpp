@@ -32,5 +32,14 @@ void GameGraphic::unloadAllTextures()
 void GameGraphic::displayTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
-    element->renderTexture(testTexture, screenWidth / 2 - 90, screenHeight / 2 -90, 180, 180);
+    element->renderTexture(testTexture, screenWidth / 2 - animTransition/2, screenHeight / 2 - animTransition/2, animTransition, animTransition);
+    animation();
+}
+
+void GameGraphic::animation()
+{
+    if (animTransition < 250)
+    {
+        animTransition += 0.1;
+    };
 }
