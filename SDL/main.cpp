@@ -4,8 +4,8 @@ using namespace std;
 #include "Window.hpp"
 #include "GameGraphic.hpp"
 
-int SCREENWIDTH = 600;
-int SCREENHEIGHT = 750;
+int SCREENWIDTH = 900;
+int SCREENHEIGHT = 600;
 
 int main(int argc, char* argv[]) {
 

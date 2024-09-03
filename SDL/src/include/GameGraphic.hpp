@@ -13,6 +13,9 @@ public:
     void unloadAllTextures();
     void displayTexture();
 
+    // Font
+    void displayTextTexture();
+
 private:
     Element* element;
     SDL_Renderer* renderer;
@@ -24,6 +27,12 @@ private:
     
     void animation();
     float animTransition = 0;
+
+    //Font
+    SDL_Texture *textTexture; 
+
+    TTF_Font *fontOswald;
+
 };
 
 #endif // GAMEGRAPHIC_HPP

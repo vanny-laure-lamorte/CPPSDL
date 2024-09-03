@@ -1,6 +1,5 @@
 // Window.cpp
 #include "Window.hpp"
-#include "Element.hpp"
 
 Window::Window(int screenWidth, int screenHeight) : window(nullptr), renderer(nullptr), initialized(false) {
 
