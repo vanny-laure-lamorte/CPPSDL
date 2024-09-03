@@ -3,20 +3,25 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "Element.hpp"
 
 class GameGraphic {
 public:
-    GameGraphic(SDL_Renderer* _renderer, int screenWidth, int screenHeight);
+    GameGraphic(SDL_Renderer* renderer, int screenWidth, int screenHeight);
     ~GameGraphic();
-    void GameloadBackgroundTexture();
-    void GameunloadAllTextures();
-    void GamedisplayBackground();
+    void loadTexture();
+    void unloadAllTextures();
+    void displayTexture();
 
 private:
+    Element* element;
     SDL_Renderer* renderer;
-    SDL_Texture* backgroundTexture;
     int screenWidth;
     int screenHeight;
+
+    SDL_Texture* backgroundTexture;
+    SDL_Texture* testTexture;
+    
 };
 
 #endif // GAMEGRAPHIC_HPP

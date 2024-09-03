@@ -2,7 +2,7 @@ using namespace std;
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "Window.hpp"
-#include "GameGraphic.hpp" // Assurez-vous d'inclure ce fichier
+#include "GameGraphic.hpp"
 
 int SCREENWIDTH = 600;
 int SCREENHEIGHT = 750;
@@ -25,7 +25,6 @@ int main(int argc, char* argv[]) {
     GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
     
     // Load textures
-    gameGraphic.GameloadBackgroundTexture();
 
     // Main game loop
     while (true) {
@@ -40,14 +39,13 @@ int main(int argc, char* argv[]) {
         SDL_RenderClear(renderer);
 
         // Display background
-        gameGraphic.GamedisplayBackground();
+        gameGraphic.displayTexture();
         
         // Present the renderer
         SDL_RenderPresent(renderer);
     }
 
     // Cleanup
-    gameGraphic.GameunloadAllTextures(); 
 
     SDL_Quit();
     return EXIT_SUCCESS;

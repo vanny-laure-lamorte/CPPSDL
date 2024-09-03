@@ -1,59 +1,36 @@
 #include "GameGraphic.hpp"
-#include "Window.hpp"
+#include "Element.hpp"
 
 #include <iostream>
 using namespace std;
 
-GameGraphic::GameGraphic(SDL_Renderer *_renderer, int screenWidth, int screenHeight)
-    : renderer(_renderer), screenWidth(screenWidth), screenHeight(screenHeight)
-{   
-
-  if (!(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG)) {
-       cerr << "Failed to initialize SDL_image for JPG: " << IMG_GetError() << endl;
-    }
+GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
+    : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
+{
+    element = new Element(renderer);
+    loadTexture();
 }
 
 GameGraphic::~GameGraphic()
 {
-    GameunloadAllTextures(); 
-    IMG_Quit(); 
+    IMG_Quit();
+    delete element;
 }
 
-void GameGraphic::GameloadBackgroundTexture(){
-
-     SDL_Surface *backgroundSurface = IMG_Load("assets/img/background.jpg");
-    if (!backgroundSurface)
-    {
-        cerr << "Failed to load background image: " << IMG_GetError() << endl;
-        return;
-    }
-
-    backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
-    SDL_FreeSurface(backgroundSurface);
-
-    if (!backgroundTexture)
-    {
-        cerr << "Failed to create background texture: " << SDL_GetError() << endl;
-    }    
+void GameGraphic::loadTexture()
+{
+    backgroundTexture = element->CreateTexture("assets/img/background.jpg");
+    testTexture = element->CreateTexture("assets/img/test.png");
 }
 
-void GameGraphic::GameunloadAllTextures()
+void GameGraphic::unloadAllTextures()
 {
     SDL_DestroyTexture(backgroundTexture);
+    SDL_DestroyTexture(testTexture);
 }
 
-
-
-void GameGraphic:: GamedisplayBackground(){
-     if (backgroundTexture)
-    {
-        SDL_RenderCopy(renderer, backgroundTexture, nullptr, nullptr);
-    }
-    else
-    {
-        cerr << "Background texture is not loaded, cannot display it." << endl;
-    }
-
+void GameGraphic::displayTexture()
+{
+    element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
+    element->renderTexture(testTexture, screenWidth / 2 - 90, screenHeight / 2 -90, 180, 180);
 }
-
-
