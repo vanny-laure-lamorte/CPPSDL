@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/sfml-build/src/SFML",
+		"source" : "C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-src/src/SFML"
+	}
+}
