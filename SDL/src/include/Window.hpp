@@ -13,7 +13,7 @@ public:
     bool isInitialized() const;
     void update() const;
     SDL_Renderer *getRenderer() const;
-    int screenWidth = 1000;
+    int screenWidth = 600;
     int screenHeight = 750;
 
 private:

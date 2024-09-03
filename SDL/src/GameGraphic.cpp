@@ -8,9 +8,8 @@ GameGraphic::GameGraphic(SDL_Renderer *_renderer, int screenWidth, int screenHei
     : renderer(_renderer), screenWidth(screenWidth), screenHeight(screenHeight)
 {   
 
-  if (!(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG)) {
-       cerr << "Failed to initialize SDL_image for JPG: " << IMG_GetError() << endl;
-    }
+
+    element= new Element(renderer);
 }
 
 GameGraphic::~GameGraphic()
@@ -20,22 +19,7 @@ GameGraphic::~GameGraphic()
 }
 
 void GameGraphic::GameloadBackgroundTexture(){
-
-     SDL_Surface *backgroundSurface = IMG_Load("assets/img/background.jpg");
-    if (!backgroundSurface)
-    {
-        cerr << "Failed to load background image: " << IMG_GetError() << endl;
-        return;
-    }
-
-    backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
-    SDL_FreeSurface(backgroundSurface);
-
-    if (!backgroundTexture)
-    {
-        cerr << "Failed to create background texture: " << SDL_GetError() << endl;
-    }  
-
+        backgroundTexture = element->loadTexture("assets/img/background.jpg");
 }
 
 void GameGraphic::GameunloadAllTextures()

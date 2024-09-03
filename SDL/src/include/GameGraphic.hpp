@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <string>
+
 
 #include "Element.hpp"
 
@@ -17,8 +19,12 @@ public:
 private:
     SDL_Renderer* renderer;
     SDL_Texture* backgroundTexture;
+    
     int screenWidth;
     int screenHeight;
+
+    Element * element; 
+
 };
 
 #endif // GAMEGRAPHIC_HPP

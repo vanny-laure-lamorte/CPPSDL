@@ -19,14 +19,11 @@ public:
 
     //* COLORS *//
     const SDL_Color COLOR_BLACK = {0, 0, 0, 255};
-    const SDL_Color COLOR_WHITE{255, 255, 255, 255};
+    const SDL_Color COLOR_WHITE = {255, 255, 255, 255};
 
     //* METHODS *//
-
     void renderBackground(SDL_Renderer *renderer, SDL_Texture *surfaceTexture);
-
     SDL_Texture *loadTexture(const string &imagePath);
-
     void renderTexture(SDL_Texture *texture, int x, int y, int width, int height);
 
 private:
