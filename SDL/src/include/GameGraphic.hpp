@@ -14,7 +14,7 @@ public:
     void displayTexture();
 
     // Font
-    void displayTextTexture();
+    void displayTitle();
 
 private:
     Element* element;
@@ -29,8 +29,7 @@ private:
     float animTransition = 0;
 
     //Font
-    SDL_Texture *textTexture; 
-
+    SDL_Texture *textTitleTexture; 
     TTF_Font *fontOswald;
 
 };

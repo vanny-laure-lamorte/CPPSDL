@@ -43,7 +43,7 @@ void GameGraphic::unloadAllTextures()
 
     // Font
     TTF_CloseFont(fontOswald);
-
+    SDL_DestroyTexture(textTitleTexture);
 }
 
 void GameGraphic::displayTexture()
@@ -51,9 +51,7 @@ void GameGraphic::displayTexture()
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
     element->renderTexture(testTexture, screenWidth / 2 - animTransition/2, screenHeight / 2 - animTransition/2, animTransition, animTransition);
     animation();
-    displayTextTexture();
-
-
+    displayTitle();
 }
 
 void GameGraphic::animation()
@@ -64,29 +62,7 @@ void GameGraphic::animation()
     };
 }
 
-void GameGraphic::displayTextTexture(){
-    // SDL_Surface *textSurface = TTF_RenderText_Blended(fontOswald, "Poop", {255, 255, 255, 255});
-    // if (!textSurface)
-    // {
-    //     cerr << "Failed to render text: " << TTF_GetError() << endl;
-    // }
-
-    // textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-    // SDL_FreeSurface(textSurface);
-    // if (!textTexture)
-    // {
-    //     cerr << "Failed to create text texture: " << SDL_GetError() << endl;
-    // }
-
-    textTexture = element -> createTextureText(fontOswald, "Poop", {255, 255, 255, 255}); 
-
-   element -> displayText(fontOswald, "Poop", {255, 255, 255, 255}, textTexture, 100, 100);
-
-
-    // int textWidth, textHeight;
-    // TTF_SizeText(fontOswald, "Poop", &textWidth, &textHeight);    
-    
-    // SDL_Rect textRect = {screenWidth / 2 - textWidth / 2, 40, textWidth, textHeight};
-
-    // SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);    
+void GameGraphic::displayTitle(){   
+    textTitleTexture = element -> createTextureText(fontOswald, "Poop", {255, 255, 255, 255});
+   element -> displayTextCentered(fontOswald, "Poop", {255, 255, 255, 255}, textTitleTexture, screenWidth, screenHeight);       
 }

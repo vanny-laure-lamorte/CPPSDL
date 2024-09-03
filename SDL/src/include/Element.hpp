@@ -21,7 +21,9 @@ public:
 
     SDL_Texture *createTextureText(TTF_Font *font, const std::string &writeText, SDL_Color color);
 
-    void displayText(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int x, int y);
+    void displayTextNotCentered(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int x, int y);
+    void displayTextCentered(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int screenWidth, int screenHeight);
+
    
     
     // Colors

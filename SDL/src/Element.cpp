@@ -89,8 +89,8 @@ SDL_Texture *Element::createTextureText(TTF_Font *font, const std::string &write
 }
 
 
-// Method to create display text
-void Element::displayText(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int x, int y)
+// Method to display text
+void Element::displayTextNotCentered(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int x, int y)
 {
     int textWidth, textHeight;
     TTF_SizeText(font,writeText.c_str(), &textWidth, &textHeight);    
@@ -99,6 +99,17 @@ void Element::displayText(TTF_Font *font, const std::string &writeText, SDL_Colo
 
     SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
 }
+
+void Element::displayTextCentered(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int screenWidth, int screenHeight)
+{
+    int textWidth, textHeight;
+    TTF_SizeText(font,writeText.c_str(), &textWidth, &textHeight);    
+    
+    SDL_Rect textRect = {screenWidth/2 - textWidth/2, screenHeight/2 - textHeight/2, textWidth, textHeight};
+
+    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+}
+
 
 
 
