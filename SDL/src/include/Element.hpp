@@ -10,17 +10,27 @@ using namespace std;
 
 #include "Window.hpp"
 
-//* RENDERER *//
-extern SDL_Renderer *renderer; 
+class Element
+{
 
+public:
+    Element(SDL_Renderer *renderer);
+    ~Element();
 
-//* COLORS *//
-extern const SDL_Color COLOR_BLACK;
-extern const SDL_Color COLOR_WHITE;
+    //* COLORS *//
+    const SDL_Color COLOR_BLACK = {0, 0, 0, 255};
+    const SDL_Color COLOR_WHITE{255, 255, 255, 255};
 
-SDL_Texture* loadBackground(SDL_Renderer *renderer, SDL_Surface *&surface, const char *path);
-void renderBackground(SDL_Renderer* renderer, SDL_Texture* surfaceTexture);
-SDL_Texture* loadTexture(SDL_Renderer* renderer, const std::string& imagePath);
-void renderTexture(SDL_Renderer* renderer, SDL_Texture* texture, int x, int y, int width, int height);
+    //* METHODS *//
+
+    void renderBackground(SDL_Renderer *renderer, SDL_Texture *surfaceTexture);
+
+    SDL_Texture *loadTexture(const string &imagePath);
+
+    void renderTexture(SDL_Texture *texture, int x, int y, int width, int height);
+
+private:
+    SDL_Renderer *renderer;
+};
 
 #endif

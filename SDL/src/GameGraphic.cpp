@@ -34,7 +34,8 @@ void GameGraphic::GameloadBackgroundTexture(){
     if (!backgroundTexture)
     {
         cerr << "Failed to create background texture: " << SDL_GetError() << endl;
-    }    
+    }  
+
 }
 
 void GameGraphic::GameunloadAllTextures()
