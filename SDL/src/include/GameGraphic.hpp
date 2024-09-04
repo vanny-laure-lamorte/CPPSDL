@@ -29,8 +29,16 @@ private:
     float animTransition = 0;
 
     //Font
-    SDL_Texture *textTitleTexture; 
+
+    SDL_Texture *textTitleTexture;
+    SDL_Texture *textCreatorTexture1;
+    SDL_Texture *textCreatorTexture2; 
+
     TTF_Font *fontOswald;
+    TTF_Font *fontNameGame;
+    TTF_Font *fontDetailText; 
+    TTF_Font *fontUserProfile; 
+    TTF_Font *fontBestPlayer; 
 
 };
 
