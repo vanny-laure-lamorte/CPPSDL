@@ -14,8 +14,10 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
     fontNameGame = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 50);
     fontDetailText = element->LoadFont("assets/fonts/Inter.ttf", 9);
+    fontDetailTextBold = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 10);
+    fontGameInfo = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 16);
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
-    fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
+    fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
     loadTexture();   
 }
@@ -30,6 +32,7 @@ GameGraphic::~GameGraphic()
     TTF_CloseFont(fontOswald);
     TTF_CloseFont(fontNameGame);
     TTF_CloseFont(fontDetailText);
+    TTF_CloseFont(fontDetailTextBold);
     TTF_CloseFont(fontUserProfile);
     TTF_CloseFont(fontBestPlayer);
 }
@@ -81,12 +84,14 @@ void GameGraphic::loadTexture()
 
     testTexture = element->CreateTexture("assets/img/test.png");
     tileImgTexture = element->CreateTexture("assets/img/square.png");
+    pinkRectImgTexture = element->CreateTexture("assets/img/btn_pink.png"); // Pink rectangle
+    
     textValueTexture = element->createTextureText(fontOswald, "default", {255, 255, 255, 255});
+
     userLogoTexture = element -> CreateTexture("assets/img/profile.png");
 
-
-    textTitleTexture = element->createTextureText(fontOswald, "TILE TWISTER", {255, 255, 255, 255});
-
+    resetImgTexture = element -> CreateTexture("assets/img/reset_white.png"); // Img undo
+    undoImgTexture = element -> CreateTexture("assets/img/undo_white.png"); // Img undo
 
     //*** TEXT ***//
 
@@ -96,11 +101,11 @@ void GameGraphic::loadTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
-      textCreatorTexture1 = element->createTextureText(fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255});
+      textCreatorTexture1 = element->createTextureText(fontDetailText, "Created by Lucas Martinie", element ->COLOR_PINK);
     if (!textCreatorTexture1) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-    textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255});
+    textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_PINK);
     if (!textCreatorTexture2) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -116,7 +121,7 @@ void GameGraphic::loadTexture()
     }   
     
     // Text Best Player
-    textBestPlayer1 = element->createTextureText(fontUserProfile, "Thanh Lemelle", {255, 255, 255, 255});
+    textBestPlayer1 = element->createTextureText(fontBestPlayer, "Thanh Lemelle", {255, 255, 255, 255});
     if (!textBestPlayer1) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -125,12 +130,52 @@ void GameGraphic::loadTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
+    // Text Reset and undo
+     textReset = element->createTextureText(fontGameInfo, "Reset", {255, 255, 255, 255});
+    if (!textReset) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    textUndo = element->createTextureText(fontGameInfo, "Undo", {255, 255, 255, 255});
+    if (!textUndo) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    // Text Game State
+
+     textScore = element->createTextureText(fontGameInfo, "Score", {255, 255, 255, 255});
+    if (!textScore) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    textBest = element->createTextureText(fontGameInfo, "Best", {255, 255, 255, 255});
+    if (!textBest) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+  
+    textTimer = element->createTextureText(fontGameInfo, "Timer", {255, 255, 255, 255});
+    if (!textCreatorTexture2) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    // Text View More
+    textViewMore = element->createTextureText(fontDetailTextBold, "View More", element ->COLOR_PINK);
+    if (!textViewMore) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    // Text rules
+    textRules= element->createTextureText(fontDetailTextBold, "Check Rules", {255, 255, 255, 255});
+    if (!textRules) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
     // Text General Conditions of Use
-    textGCU1 = element->createTextureText(fontDetailText, "Copyright LuThaVan Production studio 2024", {255, 255, 255, 255});
+    textGCU1 = element->createTextureText(fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", {255, 255, 255, 255});
     if (!textGCU1) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-    textGCU2 = element->createTextureText(fontDetailText, "Terms of Use Privacy Policy Cookies", {255, 255, 255, 255});
+    textGCU2 = element->createTextureText(fontDetailText, "in our Privacy Policy - Copyright LuThanVan Production studio - 2024", {255, 255, 255, 255});
     if (!textGCU2) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -155,11 +200,32 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(textCreatorTexture1); 
     SDL_DestroyTexture(textCreatorTexture2); 
 
+    SDL_DestroyTexture(textReset);  
+    SDL_DestroyTexture(textUndo);  
+
     SDL_DestroyTexture(textUserInfo1); 
     SDL_DestroyTexture(textUserInfo2); 
 
+    SDL_DestroyTexture(textBest);  
+    SDL_DestroyTexture(textScore);  
+    SDL_DestroyTexture(textTimer);  
+    SDL_DestroyTexture(textMatch);  
+
     SDL_DestroyTexture(textBestPlayer1); 
     SDL_DestroyTexture(textBestPlayer2); 
+
+
+    SDL_DestroyTexture(textViewMore);  
+
+    SDL_DestroyTexture(textRules);  
+    SDL_DestroyTexture(textGCU1);  
+    SDL_DestroyTexture(textGCU2);  
+
+
+    // Images
+    SDL_DestroyTexture(pinkRectImgTexture); // Img Pink rect
+    SDL_DestroyTexture(resetImgTexture); // Img reset
+    SDL_DestroyTexture(undoImgTexture); // Img undo   
 
 }
 
@@ -187,39 +253,69 @@ void GameGraphic::displayTitle()
 
     // Frame with grey rectangle
 
-    element -> drawRoundedRect(180, 300, 200, 48, 10, element -> COLOR_DARKGREY); // First Player info
-    element -> drawRoundedRect(180, 360, 200, 292, 10, element -> COLOR_DARKGREY); // Top 10 players
+    element -> drawRoundedRect(150, 270, 220, 60, 10, element -> COLOR_DARKGREY); // First Player info
+    element -> drawRoundedRectOpacity(150, 345, 220, 312, 10,{42, 42, 57, 220}); // Grid
 
-    element -> drawRoundedRect(395, 30, 72, 22, 10, element -> COLOR_PINK); // Reset
-    element -> drawRoundedRect(480, 30, 71, 21, 10, element -> COLOR_PINK); // Undo
+    element -> drawRoundedRect(385, 60, 520, 63, 10, element -> COLOR_DARKGREY); // Game state info
+    element -> drawRoundedRect(400, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Score
+    element -> drawRoundedRect(570, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Best
+    element -> drawRoundedRect(740, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Timer
+    
+    element -> drawRoundedRectOpacity(385, 135, 520, 520, 10,{42, 42, 57, 220}); // Grid
 
-    element -> drawRoundedRect(395, 60, 520, 63, 10, element -> COLOR_DARKGREY); // Game state info
-    element -> drawRoundedRect(408, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Score
-    element -> drawRoundedRect(580, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Best
-    element -> drawRoundedRect(752, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Timer
-
-    element -> drawRoundedRect(395, 135, 520, 520, 10, element -> COLOR_DARKGREY); // Grid
-
-    element -> drawRoundedRect(400, 660, 65, 22, 10, element -> COLOR_PINK); // Rule
-
-    // Display Name Game
-    element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 180, 50, false, 0, 0); 
-    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255}, 180, 120, false, 0, 0);
-    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255}, 180, 130, false, 0, 0);
-
-    // Text name user
-    element -> displayText(textUserInfo1, fontUserProfile, "Alicia Cordial", {255, 255, 255, 255}, 840, 20, false, 0, 0);
-    element -> displayText(textUserInfo2, fontDetailText, "Joined in 2022", {255, 255, 255, 255}, 845, 40, false, 0, 0);
-
-    // Text best player
-    element -> displayText(textBestPlayer1, fontUserProfile, "Thanh Lemelle", {255, 255, 255, 255}, 180, 250, false, 0, 0);
-    element -> displayText(textBestPlayer2, fontDetailText, "Joined in 1994", {255, 255, 255, 255}, 180, 270, false, 0, 0);
-
-    // Text General Conditions of Use
-    element -> displayText(textGCU1, fontDetailText, "Copyright LuThaVan Production studio 2024", {255, 255, 255, 255}, 480, 663, false, 0, 0);
-    element -> displayText(textGCU2, fontDetailText, "Terms of Use Privacy Policy  Cookies", {255, 255, 255, 255}, 480, 673, false, 0, 0);
+    //*** IMAGE ***//
 
     // Display User logo Image
-    element->renderTexture(userLogoTexture,790,8,50,50); // User photo profile
-    element->renderTexture(userLogoTexture, 250, 200,100,50); // Best player photo profile
+    element->renderTexture(userLogoTexture,770,8,50,50); // User photo profile
+    element->renderTexture(userLogoTexture, 230, 150,75,75); // Best player photo profile
+
+    element->renderTexture(pinkRectImgTexture, 390,10,95,47); // Rect Reset
+    element->renderTexture(pinkRectImgTexture, 495,10,95,47); // Rect Undo
+    element->renderTexture(pinkRectImgTexture, 385, 655, 66,33); // Rect Rules 
+
+    element->renderTexture(resetImgTexture, 400, 20, 25,25); // Img reset 
+    element->renderTexture(undoImgTexture, 505, 20, 25,25); // Img undo
+
+    // Display Name Game
+    element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 210, 30, false, 0, 0); 
+    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", element ->COLOR_PINK, 205, 90, false, 0, 0);
+    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_PINK, 200, 100, false, 0, 0);
+
+      // Text rest and undo
+    element -> displayText(textReset, fontGameInfo,"Reset", {255, 255, 255, 255}, 435, 23, false, 0, 0);
+    element -> displayText(textUndo, fontGameInfo, "Undo", {255, 255, 255, 255}, 540, 23, false, 0, 0);
+
+
+    // Text name user
+    element -> displayText(textUserInfo1, fontUserProfile, "Alicia Cordial", {250, 255, 255, 255}, 830, 20, false, 0, 0);
+    element -> displayText(textUserInfo2, fontDetailText, "Joined in 2022", {250, 255, 255, 255}, 840, 40, false, 0, 0);
+
+    // Text best player
+    element -> displayText(textBestPlayer1, fontBestPlayer, "Thanh Lemelle", {255, 255, 255, 255}, 210, 230, false, 0, 0);
+    element -> displayText(textBestPlayer2, fontDetailText, "Joined in 1994", {255, 255, 255, 255}, 235, 255, false, 0, 0);
+
+    // Text Game state info
+    element -> displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 410, 80, false, 0, 0);
+    element -> displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 580, 80, false, 0, 0);
+    element -> displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 750, 80, false, 0, 0);
+
+    // Text best player  info
+    element -> displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 157, 275, false, 0, 0);
+    element -> displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 247, 275, false, 0, 0);
+    element -> displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 322, 275, false, 0, 0);
+
+    // element -> displayText(textMatch, fontGameInfo, "Match", {255, 255, 255, 255}, 460, 110, false, 0, 0);
+
+    // Text View More 
+    element -> displayText(textViewMore, fontDetailTextBold, "View More", element ->COLOR_PINK, 155, 660, false, 0, 0);
+
+    // Text Rules
+    element -> displayText(textRules, fontDetailTextBold, "Check Rules", {255, 255, 255, 255}, 395, 665, false, 0, 0);
+
+    // Text General Conditions of Use
+    element -> displayText(textGCU1, fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", element ->COLOR_WHITE, 460, 663, false, 0, 0);
+    element -> displayText(textGCU2, fontDetailText, "in our Privacy Policy - Copyright LuThanVan Production studio 2024", element ->COLOR_WHITE, 460, 673, false, 0, 0);
+
+
+
 }

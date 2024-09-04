@@ -31,6 +31,9 @@ private:
     SDL_Texture* tileImgTexture;
     SDL_Texture* textValueTexture;
     SDL_Texture* userLogoTexture; // Img logo user
+    SDL_Texture* pinkRectImgTexture; // Img Pink Rect
+    SDL_Texture* resetImgTexture; // Img Reset
+    SDL_Texture* undoImgTexture; // Img undo
     
     void animation();
     float animTransition = 0;
@@ -43,6 +46,17 @@ private:
     SDL_Texture *textUserInfo2; 
     SDL_Texture *textBestPlayer1; 
     SDL_Texture *textBestPlayer2; 
+
+    SDL_Texture *textReset; 
+    SDL_Texture *textUndo; 
+
+    SDL_Texture *textScore; 
+    SDL_Texture *textBest; 
+    SDL_Texture *textTimer; 
+    SDL_Texture *textMatch; 
+
+    SDL_Texture *textViewMore;
+    SDL_Texture *textRules; 
     SDL_Texture *textGCU1; 
     SDL_Texture *textGCU2; 
 
@@ -50,8 +64,11 @@ private:
     TTF_Font *fontOswald;
     TTF_Font *fontNameGame;
     TTF_Font *fontDetailText; 
+    TTF_Font *fontDetailTextBold; 
     TTF_Font *fontUserProfile; 
     TTF_Font *fontBestPlayer; 
+    TTF_Font *fontGameInfo; 
+
     GameBoard gameBoard;
 
 };

@@ -172,3 +172,43 @@ void Element::drawRoundedRect(int x, int y, int width, int height, int radius, S
     }
 }
 
+// Rect radius
+void Element::drawRoundedRectOpacity(int x, int y, int width, int height, int radius, SDL_Color color)
+{
+    // Enable blending mode for transparency
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+    // Set the draw color with opacity
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+
+    // Draw the main body of the rectangle (center part without the rounded corners)
+    SDL_Rect bodyRect = {x + radius, y, width - 2 * radius, height};
+    SDL_RenderFillRect(renderer, &bodyRect);
+
+    // Draw the left and right rectangles
+    SDL_Rect leftRect = {x, y + radius, radius, height - 2 * radius};
+    SDL_Rect rightRect = {x + width - radius, y + radius, radius, height - 2 * radius};
+    SDL_RenderFillRect(renderer, &leftRect);
+    SDL_RenderFillRect(renderer, &rightRect);
+
+    // Draw the rounded corners using circles
+    for (int w = 0; w < radius * 2; w++)
+    {
+        for (int h = 0; h < radius * 2; h++)
+        {
+            int dx = radius - w; // horizontal offset
+            int dy = radius - h; // vertical offset
+            if ((dx * dx + dy * dy) <= (radius * radius))
+            {
+                SDL_RenderDrawPoint(renderer, x + radius + dx, y + radius + dy);                  // Top-left corner
+                SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + radius + dy);          // Top-right corner
+                SDL_RenderDrawPoint(renderer, x + radius + dx, y + height - radius + dy);         // Bottom-left corner
+                SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + height - radius + dy); // Bottom-right corner
+            }
+        }
+    }
+}
+
+
+
+
