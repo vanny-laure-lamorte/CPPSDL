@@ -13,9 +13,9 @@ public:
     bool isInitialized() const;
     void update() const;
     SDL_Renderer *getRenderer() const;
-    int screenWidth = 1050;
-    int screenHeight = 700;
-
+    int screenWidth;
+    int screenHeight;
+    
 private:
     SDL_Window *window;
     SDL_Renderer *renderer;

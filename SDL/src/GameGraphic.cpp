@@ -33,6 +33,40 @@ GameGraphic::~GameGraphic()
     TTF_CloseFont(fontBestPlayer);
 }
 
+void GameGraphic::updateGameBoard(const GameBoard& newGameBoard) {
+    gameBoard = newGameBoard;
+}
+
+void GameGraphic::displayGrid()
+{
+    for (int i = 0; i < 4; ++i)
+    {
+        for (int j = 0; j < 4; ++j)
+        {
+            Tile &tile = gameBoard.tiles[i][j];
+            int x = 555 + (100 * j);
+            int y = 230 + (100 * i);
+
+            element->renderTexture(tileImgTexture, x, y, 90, 90);
+
+            if (tile.getValue() != 0)
+            {
+                std::string valueStr = std::to_string(tile.getValue());
+                SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, {0, 0, 0, 255});
+
+                int textWidth, textHeight;
+                SDL_QueryTexture(textTexture, NULL, NULL, &textWidth, &textHeight);
+
+                int textX = x + (90 - textWidth) / 2;
+                int textY = y + (90 - textHeight) / 2;
+
+                element->renderTexture(textTexture, textX, textY, textWidth, textHeight);
+
+                SDL_DestroyTexture(textTexture);
+            }
+        }
+    }
+}
 void GameGraphic::loadTexture()
 {
     // Background
@@ -42,6 +76,10 @@ void GameGraphic::loadTexture()
     }
 
     testTexture = element->CreateTexture("assets/img/test.png");
+    tileImgTexture = element->CreateTexture("assets/img/square.png");
+    textValueTexture = element->createTextureText(fontOswald, "default", {255, 255, 255, 255});
+
+    textTitleTexture = element->createTextureText(fontOswald, "TILE TWISTER", {255, 255, 255, 255});
 
     // Display Name Game
 
@@ -54,11 +92,10 @@ void GameGraphic::loadTexture()
     if (!textTitleTexture) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-    textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny", {255, 255, 255, 255});
+    textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255});
     if (!textTitleTexture) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-
 }
 
 void GameGraphic::unloadAllTextures()
@@ -84,8 +121,13 @@ void GameGraphic::unloadAllTextures()
 void GameGraphic::displayTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
-    element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
-    animation();
+    // element->drawRoundedRect(screenWidth - 550, screenHeight - 525, 500, 500, 20, element->COLOR_GREY);
+
+    // element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
+    // animation();
+
+  
+    // displayGrid();
     displayTitle();
 }
 
@@ -93,20 +135,36 @@ void GameGraphic::animation()
 {
     if (animTransition < 250)
     {
-        animTransition += 0.1;
+        animTransition += 0.5;
     };
 }
-
 void GameGraphic::displayTitle()
 {
 
-    element -> drawRoundedRect(900/2, 100, 300, 200, 20, element->COLOR_WHITE);
+    // Frame with grey rectangle
+
+    element -> drawRoundedRect(180, 300, 200, 48, 10, element -> COLOR_DARKGREY); // First Player info
+    element -> drawRoundedRect(180, 360, 200, 292, 10, element -> COLOR_DARKGREY); // Top 10 players
+
+    element -> drawRoundedRect(395, 30, 72, 22, 10, element -> COLOR_PINK); // Reset
+    element -> drawRoundedRect(480, 30, 71, 21, 10, element -> COLOR_PINK); // Undo
+
+    element -> drawRoundedRect(395, 60, 520, 63, 10, element -> COLOR_DARKGREY); // Game state info
+    element -> drawRoundedRect(408, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Score
+    element -> drawRoundedRect(580, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Best
+    element -> drawRoundedRect(752, 69, 152, 47, 10, element -> COLOR_LIGHTGREY); // Timer
+
+    element -> drawRoundedRect(395, 135, 520, 520, 10, element -> COLOR_DARKGREY); // Grid
+
+    element -> drawRoundedRect(400, 660, 65, 22, 10, element -> COLOR_PINK); // Rule
+
+
 
     // Display Name Game
-    element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 20, 50, false, 0, 0);  
+    element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 180, 50, false, 0, 0); 
 
-    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255}, 30, 80, false, 0, 0);
+    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255}, 180, 80, false, 0, 0);
 
-    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255}, 40, 100, false, 0, 0);
+    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255}, 180, 100, false, 0, 0);
 
 }

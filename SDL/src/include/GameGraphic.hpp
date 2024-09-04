@@ -4,7 +4,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Element.hpp"
-
+#include "GameBoard.hpp"
+#include "Tile.hpp"
 class GameGraphic {
 public:
     GameGraphic(SDL_Renderer* renderer, int screenWidth, int screenHeight);
@@ -12,9 +13,11 @@ public:
     void loadTexture();
     void unloadAllTextures();
     void displayTexture();
+    void updateGameBoard(const GameBoard& newGameBoard);
 
     // Font
     void displayTitle();
+    void displayGrid();
 
 private:
     Element* element;
@@ -24,6 +27,9 @@ private:
 
     SDL_Texture* backgroundTexture;
     SDL_Texture* testTexture;
+
+    SDL_Texture* tileImgTexture;
+    SDL_Texture* textValueTexture;
     
     void animation();
     float animTransition = 0;
@@ -39,6 +45,7 @@ private:
     TTF_Font *fontDetailText; 
     TTF_Font *fontUserProfile; 
     TTF_Font *fontBestPlayer; 
+    GameBoard gameBoard;
 
 };
 

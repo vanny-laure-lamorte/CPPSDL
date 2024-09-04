@@ -1,17 +1,20 @@
-using namespace std; 
+using namespace std;
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "Window.hpp"
 #include "GameGraphic.hpp"
+#include "GameBoard.hpp"
 
-int SCREENWIDTH = 900;
-int SCREENHEIGHT = 600;
+int SCREENWIDTH = 1050;
+int SCREENHEIGHT = 700;
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 
     // Create window
     Window window(SCREENWIDTH, SCREENHEIGHT);
-    if (!window.isInitialized()) {
+    if (!window.isInitialized())
+    {
         cerr << "Failed to initialize the window." << endl;
         return -1;
     }
@@ -19,18 +22,60 @@ int main(int argc, char* argv[]) {
     SDL_Event windowEvent;
 
     // Get renderer
-    SDL_Renderer *renderer = window.getRenderer(); 
-    
+    SDL_Renderer *renderer = window.getRenderer();
+
     // Create game graphic instance
     GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
-    
-    // Load textures
 
-    // Main game loop
-    while (true) {
-        if (SDL_PollEvent(&windowEvent)) {
-            if (SDL_QUIT == windowEvent.type) {
-                break; 
+    // Create game instance
+    GameBoard gameBoard;
+
+    bool running = true;
+    while (running)
+    {
+        while (SDL_PollEvent(&windowEvent))
+        {
+            if (SDL_QUIT == windowEvent.type)
+            {
+                running = false;
+            }
+            else if (windowEvent.type == SDL_KEYUP)
+            {
+                // Handle key events for movement
+
+                bool moved = false;
+                switch (windowEvent.key.keysym.sym)
+                {
+                case SDLK_q:
+                case SDLK_LEFT:
+                    moved = gameBoard.moveLeft();
+                    break;
+                case SDLK_d:
+                case SDLK_RIGHT:
+                    moved = gameBoard.moveRight();
+                    break;
+                case SDLK_z:
+                case SDLK_UP:
+                    moved = gameBoard.moveUp();
+                    break;
+                case SDLK_s:
+                case SDLK_DOWN:
+                    moved = gameBoard.moveDown();
+                    break;
+                }
+
+                if (moved)
+                {
+                    gameGraphic.updateGameBoard(gameBoard);
+                    gameBoard.addRandomTile();
+                    gameBoard.display();
+
+                    if (!gameBoard.canMove())
+                    {
+                        cout << "Game Over! Merci d'avoir joué." << endl;
+                        running = false;
+                    }
+                }
             }
         }
 
@@ -40,7 +85,7 @@ int main(int argc, char* argv[]) {
 
         // Display background
         gameGraphic.displayTexture();
-        
+
         // Present the renderer
         SDL_RenderPresent(renderer);
     }
