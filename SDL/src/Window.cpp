@@ -1,7 +1,7 @@
 // Window.cpp
 #include "Window.hpp"
 
-Window::Window(int screenWidth, int screenHeight) : window(nullptr), renderer(nullptr), initialized(false) {
+Window::Window(int screenWidth, int screenHeight) : window(nullptr), renderer(nullptr), initialized(false), screenWidth(screenWidth), screenHeight(screenHeight) {
 
     // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {

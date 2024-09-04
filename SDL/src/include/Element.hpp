@@ -27,8 +27,9 @@ public:
     void drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color);
 
     // Colors
-    const SDL_Color COLOR_BLACK = {0, 0, 0, 128};
+    const SDL_Color COLOR_BLACK = {0, 0, 0, 255};
     const SDL_Color COLOR_WHITE = {255, 255, 255, 255};
+    const SDL_Color COLOR_GREY = {200, 200, 200, 255};
 
 private:
     SDL_Renderer *renderer;

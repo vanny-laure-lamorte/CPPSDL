@@ -3,9 +3,10 @@ using namespace std;
 #include <SDL2/SDL.h>
 #include "Window.hpp"
 #include "GameGraphic.hpp"
+#include "GameBoard.hpp"
 
-int SCREENWIDTH = 900;
-int SCREENHEIGHT = 600;
+int SCREENWIDTH = 1050;
+int SCREENHEIGHT = 700;
 
 int main(int argc, char* argv[]) {
 
@@ -24,13 +25,43 @@ int main(int argc, char* argv[]) {
     // Create game graphic instance
     GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
     
-    // Load textures
+    // Create game instance
+    GameBoard gameBoard;
 
-    // Main game loop
-    while (true) {
-        if (SDL_PollEvent(&windowEvent)) {
+    bool running = true;
+    while (running) {
+        while (SDL_PollEvent(&windowEvent)) {
             if (SDL_QUIT == windowEvent.type) {
-                break; 
+                running = false;
+            } else if (windowEvent.type == SDL_KEYDOWN) {
+                // Handle key events for movement
+                bool moved = false;
+                switch (windowEvent.key.keysym.sym) {
+                    case SDLK_q:
+                    case SDLK_LEFT:
+                        moved = gameBoard.moveLeft();
+                        break;
+                    case SDLK_d:
+                    case SDLK_RIGHT:
+                        moved = gameBoard.moveRight();
+                        break;
+                    case SDLK_z:
+                    case SDLK_UP:
+                        moved = gameBoard.moveUp();
+                        break;
+                    case SDLK_s:
+                    case SDLK_DOWN:
+                        moved = gameBoard.moveDown();
+                        break;
+                }
+
+                if (moved) {
+                    gameBoard.addRandomTile();
+                    if (!gameBoard.canMove()) {
+                        cout << "Game Over! Merci d'avoir joué." << endl;
+                        running = false;
+                    }
+                }
             }
         }
 
