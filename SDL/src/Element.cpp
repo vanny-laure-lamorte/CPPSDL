@@ -5,7 +5,7 @@ using namespace std;
 
 Element::Element(SDL_Renderer *renderer) : renderer(renderer)
 {
-
+    
     // Initialize Image
     if (!(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG))
     {
@@ -17,6 +17,9 @@ Element::Element(SDL_Renderer *renderer) : renderer(renderer)
     {
         throw std::runtime_error("TTF_Init Error: " + std::string(TTF_GetError()));
     }
+
+    // Ensure High Resolution pic
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 }
 
 Element::~Element()
@@ -31,6 +34,8 @@ Element::~Element()
 // Create Texture
 SDL_Texture *Element::CreateTexture(const std::string &imagePath)
 {
+   
+
     SDL_Surface *surface = IMG_Load(imagePath.c_str());
     if (!surface)
     {
@@ -46,6 +51,7 @@ SDL_Texture *Element::CreateTexture(const std::string &imagePath)
         return nullptr;
     }
 
+
     return texture;
 }
 
@@ -55,6 +61,8 @@ void Element::renderTexture(SDL_Texture *texture, int x, int y, int width, int h
     SDL_Rect destRect = {x, y, width, height};
     SDL_RenderCopy(renderer, texture, nullptr, &destRect);
 }
+
+
 
 //* FONT *//
 
@@ -73,7 +81,7 @@ TTF_Font *Element::LoadFont(const std::string &fontPath, int fontSize)
 SDL_Texture *Element::createTextureText(TTF_Font *font, const std::string &writeText, SDL_Color color)
 {
 
-    SDL_Surface *textSurface = TTF_RenderText_Solid(font, writeText.c_str(), color);
+    SDL_Surface *textSurface = TTF_RenderText_Blended(font, writeText.c_str(), color);
     if (!textSurface)
     {
         cerr << "Failed to render text: " << TTF_GetError() << endl;
@@ -89,8 +97,10 @@ SDL_Texture *Element::createTextureText(TTF_Font *font, const std::string &write
     return textTexture;
 }
 
-// Method to display text
 
+//*** TEXT ***//
+
+// Method to display text
 // How to use it ?
 // To Display Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 0, 0, true, 800, 600);
 // To Display Non-Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 100, 150, false, 0, 0);
@@ -125,6 +135,8 @@ void Element::displayText(SDL_Texture *textTexture, TTF_Font *font, const std::s
     // Render the text texture
     SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
 }
+
+//*** RECTANGLES ***//
 
 // Rect radius
 void Element::drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color)

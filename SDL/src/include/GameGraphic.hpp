@@ -30,16 +30,23 @@ private:
 
     SDL_Texture* tileImgTexture;
     SDL_Texture* textValueTexture;
+    SDL_Texture* userLogoTexture; // Img logo user
     
     void animation();
     float animTransition = 0;
 
-    //Font
-
+    // Texture
     SDL_Texture *textTitleTexture;
     SDL_Texture *textCreatorTexture1;
     SDL_Texture *textCreatorTexture2; 
+    SDL_Texture *textUserInfo1; 
+    SDL_Texture *textUserInfo2; 
+    SDL_Texture *textBestPlayer1; 
+    SDL_Texture *textBestPlayer2; 
+    SDL_Texture *textGCU1; 
+    SDL_Texture *textGCU2; 
 
+    //Font
     TTF_Font *fontOswald;
     TTF_Font *fontNameGame;
     TTF_Font *fontDetailText; 

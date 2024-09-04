@@ -7,16 +7,17 @@ using namespace std;
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
 {
+    
     element = new Element(renderer);
 
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
-    fontNameGame = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 40);
-    fontDetailText = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 7);
-    fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 11);
+    fontNameGame = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 50);
+    fontDetailText = element->LoadFont("assets/fonts/Inter.ttf", 9);
+    fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
 
-    loadTexture();
+    loadTexture();   
 }
 
 GameGraphic::~GameGraphic()
@@ -69,40 +70,78 @@ void GameGraphic::displayGrid()
 }
 void GameGraphic::loadTexture()
 {
-    // Background
+    //*** BACKGROUND ***//
+
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");
     if (!backgroundTexture) {
         cerr << "Failed to load background texture: " << SDL_GetError() << endl;
     }
 
+    //*** IMAGE ***//
+
     testTexture = element->CreateTexture("assets/img/test.png");
     tileImgTexture = element->CreateTexture("assets/img/square.png");
     textValueTexture = element->createTextureText(fontOswald, "default", {255, 255, 255, 255});
+    userLogoTexture = element -> CreateTexture("assets/img/profile.png");
+
 
     textTitleTexture = element->createTextureText(fontOswald, "TILE TWISTER", {255, 255, 255, 255});
 
-    // Display Name Game
 
+    //*** TEXT ***//
+
+    // Text Name Game
     textTitleTexture = element->createTextureText(fontNameGame, "2048", {255, 255, 255, 255});
     if (!textTitleTexture) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
       textCreatorTexture1 = element->createTextureText(fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255});
-    if (!textTitleTexture) {
+    if (!textCreatorTexture1) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
     textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255});
-    if (!textTitleTexture) {
+    if (!textCreatorTexture2) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
+
+    // Text name user
+    textUserInfo1 = element->createTextureText(fontUserProfile, "Alicia Cordial", {255, 255, 255, 255});
+    if (!textUserInfo1) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+    textUserInfo2 = element->createTextureText(fontDetailText, "Joined in 2022", {255, 255, 255, 255});
+    if (!textUserInfo2) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }   
+    
+    // Text Best Player
+    textBestPlayer1 = element->createTextureText(fontUserProfile, "Thanh Lemelle", {255, 255, 255, 255});
+    if (!textBestPlayer1) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+    textBestPlayer2 = element->createTextureText(fontDetailText, "Joined in 1994", {255, 255, 255, 255});
+    if (!textBestPlayer2) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    // Text General Conditions of Use
+    textGCU1 = element->createTextureText(fontDetailText, "Copyright LuThaVan Production studio 2024", {255, 255, 255, 255});
+    if (!textGCU1) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+    textGCU2 = element->createTextureText(fontDetailText, "Terms of Use Privacy Policy Cookies", {255, 255, 255, 255});
+    if (!textGCU2) {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
 }
 
 void GameGraphic::unloadAllTextures()
 {
     SDL_DestroyTexture(backgroundTexture);
     SDL_DestroyTexture(testTexture);
-
+    SDL_DestroyTexture(userLogoTexture);
 
     // Font
     TTF_CloseFont(fontOswald);
@@ -116,6 +155,12 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(textCreatorTexture1); 
     SDL_DestroyTexture(textCreatorTexture2); 
 
+    SDL_DestroyTexture(textUserInfo1); 
+    SDL_DestroyTexture(textUserInfo2); 
+
+    SDL_DestroyTexture(textBestPlayer1); 
+    SDL_DestroyTexture(textBestPlayer2); 
+
 }
 
 void GameGraphic::displayTexture()
@@ -125,7 +170,6 @@ void GameGraphic::displayTexture()
 
     // element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
     // animation();
-
   
     // displayGrid();
     displayTitle();
@@ -158,13 +202,24 @@ void GameGraphic::displayTitle()
 
     element -> drawRoundedRect(400, 660, 65, 22, 10, element -> COLOR_PINK); // Rule
 
-
-
     // Display Name Game
     element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 180, 50, false, 0, 0); 
+    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255}, 180, 120, false, 0, 0);
+    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255}, 180, 130, false, 0, 0);
 
-    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", {255, 255, 255, 255}, 180, 80, false, 0, 0);
+    // Text name user
+    element -> displayText(textUserInfo1, fontUserProfile, "Alicia Cordial", {255, 255, 255, 255}, 840, 20, false, 0, 0);
+    element -> displayText(textUserInfo2, fontDetailText, "Joined in 2022", {255, 255, 255, 255}, 845, 40, false, 0, 0);
 
-    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", {255, 255, 255, 255}, 180, 100, false, 0, 0);
+    // Text best player
+    element -> displayText(textBestPlayer1, fontUserProfile, "Thanh Lemelle", {255, 255, 255, 255}, 180, 250, false, 0, 0);
+    element -> displayText(textBestPlayer2, fontDetailText, "Joined in 1994", {255, 255, 255, 255}, 180, 270, false, 0, 0);
 
+    // Text General Conditions of Use
+    element -> displayText(textGCU1, fontDetailText, "Copyright LuThaVan Production studio 2024", {255, 255, 255, 255}, 480, 663, false, 0, 0);
+    element -> displayText(textGCU2, fontDetailText, "Terms of Use Privacy Policy  Cookies", {255, 255, 255, 255}, 480, 673, false, 0, 0);
+
+    // Display User logo Image
+    element->renderTexture(userLogoTexture,790,8,50,50); // User photo profile
+    element->renderTexture(userLogoTexture, 250, 200,100,50); // Best player photo profile
 }
