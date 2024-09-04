@@ -24,7 +24,8 @@ GameGraphic::~GameGraphic()
     TTF_CloseFont(fontOswald);
 }
 
-void GameGraphic::updateGameBoard(const GameBoard& newGameBoard) {
+void GameGraphic::updateGameBoard(const GameBoard &newGameBoard)
+{
     gameBoard = newGameBoard;
 }
 
@@ -38,12 +39,11 @@ void GameGraphic::displayGrid()
             int x = 555 + (100 * j);
             int y = 230 + (100 * i);
 
-            element->renderTexture(tileImgTexture, x, y, 90, 90);
-
             if (tile.getValue() != 0)
             {
+                element->drawGradientRectProgressive(x, y, 90, 90, tile.getValue());
                 std::string valueStr = std::to_string(tile.getValue());
-                SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, {0, 0, 0, 255});
+                SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, element->COLOR_WHITE);
 
                 int textWidth, textHeight;
                 SDL_QueryTexture(textTexture, NULL, NULL, &textWidth, &textHeight);
@@ -55,6 +55,8 @@ void GameGraphic::displayGrid()
 
                 SDL_DestroyTexture(textTexture);
             }
+            else
+                element->drawGradientRect(x, y, 90, 90, element->COLOR_WHITE, element->COLOR_LIGHTGREY, false);
         }
     }
 }

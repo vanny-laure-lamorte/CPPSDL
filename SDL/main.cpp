@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
 
                 if (moved)
                 {
-                    gameGraphic.updateGameBoard(gameBoard);
                     gameBoard.addRandomTile();
+                    gameGraphic.updateGameBoard(gameBoard);
                     gameBoard.display();
 
                     if (!gameBoard.canMove())
