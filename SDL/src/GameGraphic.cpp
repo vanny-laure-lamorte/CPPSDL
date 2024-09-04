@@ -101,11 +101,11 @@ void GameGraphic::loadTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
-      textCreatorTexture1 = element->createTextureText(fontDetailText, "Created by Lucas Martinie", element ->COLOR_PINK);
+      textCreatorTexture1 = element->createTextureText(fontDetailText, "Created by Lucas Martinie", element ->COLOR_WHITE);
     if (!textCreatorTexture1) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-    textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_PINK);
+    textCreatorTexture2 = element->createTextureText(fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_WHITE);
     if (!textCreatorTexture2) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -121,11 +121,11 @@ void GameGraphic::loadTexture()
     }   
     
     // Text Best Player
-    textBestPlayer1 = element->createTextureText(fontBestPlayer, "Thanh Lemelle", {255, 255, 255, 255});
+    textBestPlayer1 = element->createTextureText(fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255});
     if (!textBestPlayer1) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-    textBestPlayer2 = element->createTextureText(fontDetailText, "Joined in 1994", {255, 255, 255, 255});
+    textBestPlayer2 = element->createTextureText(fontDetailText, "Joined in 1995", {255, 255, 255, 255});
     if (!textBestPlayer2) {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -266,7 +266,7 @@ void GameGraphic::displayTitle()
     //*** IMAGE ***//
 
     // Display User logo Image
-    element->renderTexture(userLogoTexture,770,8,50,50); // User photo profile
+    element->renderTexture(userLogoTexture,770,10,45,45); // User photo profile
     element->renderTexture(userLogoTexture, 230, 150,75,75); // Best player photo profile
 
     element->renderTexture(pinkRectImgTexture, 390,10,95,47); // Rect Reset
@@ -278,8 +278,8 @@ void GameGraphic::displayTitle()
 
     // Display Name Game
     element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 210, 30, false, 0, 0); 
-    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", element ->COLOR_PINK, 205, 90, false, 0, 0);
-    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_PINK, 200, 100, false, 0, 0);
+    element -> displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", element ->COLOR_WHITE, 205, 90, false, 0, 0);
+    element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_WHITE, 200, 100, false, 0, 0);
 
       // Text rest and undo
     element -> displayText(textReset, fontGameInfo,"Reset", {255, 255, 255, 255}, 435, 23, false, 0, 0);
@@ -291,8 +291,8 @@ void GameGraphic::displayTitle()
     element -> displayText(textUserInfo2, fontDetailText, "Joined in 2022", {250, 255, 255, 255}, 840, 40, false, 0, 0);
 
     // Text best player
-    element -> displayText(textBestPlayer1, fontBestPlayer, "Thanh Lemelle", {255, 255, 255, 255}, 210, 230, false, 0, 0);
-    element -> displayText(textBestPlayer2, fontDetailText, "Joined in 1994", {255, 255, 255, 255}, 235, 255, false, 0, 0);
+    element -> displayText(textBestPlayer1, fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255}, 210, 230, false, 0, 0);
+    element -> displayText(textBestPlayer2, fontDetailText, "Joined in 1995", {255, 255, 255, 255}, 235, 255, false, 0, 0);
 
     // Text Game state info
     element -> displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 410, 80, false, 0, 0);
