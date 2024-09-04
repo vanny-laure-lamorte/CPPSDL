@@ -1,10 +1,8 @@
 #include <iostream>
 using namespace std;
 
-
 #include "GameGraphic.hpp"
 #include "Element.hpp"
-
 
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
@@ -12,10 +10,8 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     element = new Element(renderer);
     loadTexture();
 
-      // Font options
-    fontOswald = element -> LoadFont("assets/fonts/Oswald-Medium.ttf", 50);
-
-
+    // Font options
+    fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
 }
 
 GameGraphic::~GameGraphic()
@@ -31,9 +27,7 @@ GameGraphic::~GameGraphic()
 void GameGraphic::loadTexture()
 {
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");
-    testTexture = element->CreateTexture("assets/img/test.png");   
-
-
+    testTexture = element->CreateTexture("assets/img/test.png");
 }
 
 void GameGraphic::unloadAllTextures()
@@ -49,7 +43,7 @@ void GameGraphic::unloadAllTextures()
 void GameGraphic::displayTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
-    element->renderTexture(testTexture, screenWidth / 2 - animTransition/2, screenHeight / 2 - animTransition/2, animTransition, animTransition);
+    element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
     animation();
     displayTitle();
 }
@@ -62,7 +56,14 @@ void GameGraphic::animation()
     };
 }
 
-void GameGraphic::displayTitle(){   
-    textTitleTexture = element -> createTextureText(fontOswald, "Poop", {255, 255, 255, 255});
-   element -> displayTextCentered(fontOswald, "Poop", {255, 255, 255, 255}, textTitleTexture, screenWidth, screenHeight);       
+void GameGraphic::displayTitle()
+{
+
+    element -> drawRoundedRect(900/2, 100, 300, 200, 20, element->COLOR_WHITE);
+
+    // Display title
+    textTitleTexture = element->createTextureText(fontOswald, "TILE TWISTER", {255, 255, 255, 255});
+
+    element -> displayText(textTitleTexture, fontOswald, "TILE TWISTER ", {255, 255, 255, 255}, 0, 0, true, 900, 110);
+    // element -> displayText(textTitleTexture, fontOswald, "Poop", {255, 255, 255, 255}, 500, 150, false, 0, 0);
 }

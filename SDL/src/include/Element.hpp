@@ -21,19 +21,21 @@ public:
 
     SDL_Texture *createTextureText(TTF_Font *font, const std::string &writeText, SDL_Color color);
 
-    void displayTextNotCentered(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int x, int y);
-    void displayTextCentered(TTF_Font *font, const std::string &writeText, SDL_Color color, SDL_Texture *textTexture, int screenWidth, int screenHeight);
+    void displayText(SDL_Texture *textTexture, TTF_Font *font, const std::string &writeText, SDL_Color color, int x, int y, bool isCentered, int screenWidth, int screenHeight);
 
-   
-    
-    // Colors
-    const SDL_Color COLOR_BLACK = {0, 0, 0, 255};
+    // Rectangle
+    void drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color);
+
+
+        // Colors
+        const SDL_Color COLOR_BLACK = { 0,
+                                        0,
+                                        0,
+                                        255 };
     const SDL_Color COLOR_WHITE = {255, 255, 255, 255};
-
 
 private:
     SDL_Renderer *renderer;
-
 };
 
 #endif // ELEMENT_HPP
