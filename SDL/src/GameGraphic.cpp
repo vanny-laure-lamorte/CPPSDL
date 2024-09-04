@@ -24,6 +24,10 @@ GameGraphic::~GameGraphic()
     TTF_CloseFont(fontOswald);
 }
 
+void GameGraphic::updateGameBoard(const GameBoard& newGameBoard) {
+    gameBoard = newGameBoard;
+}
+
 void GameGraphic::displayGrid()
 {
     for (int i = 0; i < 4; ++i)
@@ -36,7 +40,6 @@ void GameGraphic::displayGrid()
 
             element->renderTexture(tileImgTexture, x, y, 90, 90);
 
-                std::cout << "Rendering tile at (" << x << ", " << y << ") with value " << tile.getValue() << std::endl;
             if (tile.getValue() != 0)
             {
                 std::string valueStr = std::to_string(tile.getValue());

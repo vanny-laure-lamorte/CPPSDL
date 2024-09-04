@@ -13,9 +13,11 @@ public:
     void loadTexture();
     void unloadAllTextures();
     void displayTexture();
+    void updateGameBoard(const GameBoard& newGameBoard);
 
     // Font
     void displayTitle();
+    void displayGrid();
 
 private:
     Element* element;
@@ -30,7 +32,6 @@ private:
     SDL_Texture* textValueTexture;
     
     void animation();
-    void displayGrid();
     float animTransition = 0;
 
     //Font
