@@ -14,8 +14,6 @@ public:
     void unloadAllTextures();
     void displayTexture();
     void updateGameBoard(const GameBoard& newGameBoard);
-
-    // Font
     void displayTitle();
     void displayGrid();
 
@@ -24,43 +22,50 @@ private:
     SDL_Renderer* renderer;
     int screenWidth;
     int screenHeight;
+    
+    void animation();
+    float animTransition = 0;
 
-    SDL_Texture* backgroundTexture;
+    //*** TEXTURE ***//
+
+    // Images Texture
+    SDL_Texture* backgroundTexture; //Background
     SDL_Texture* testTexture;
-
-    SDL_Texture* tileImgTexture;
+    SDL_Texture* tileImgTexture; // Title
     SDL_Texture* textValueTexture;
     SDL_Texture* userLogoTexture; // Img logo user
     SDL_Texture* pinkRectImgTexture; // Img Pink Rect
     SDL_Texture* resetImgTexture; // Img Reset
     SDL_Texture* undoImgTexture; // Img undo
-    
-    void animation();
-    float animTransition = 0;
 
-    // Texture
+    // Text Title
     SDL_Texture *textTitleTexture;
     SDL_Texture *textCreatorTexture1;
     SDL_Texture *textCreatorTexture2; 
+
+    // Text user info
     SDL_Texture *textUserInfo1; 
     SDL_Texture *textUserInfo2; 
-    SDL_Texture *textBestPlayer1; 
-    SDL_Texture *textBestPlayer2; 
-
-    SDL_Texture *textReset; 
-    SDL_Texture *textUndo; 
-
     SDL_Texture *textScore; 
     SDL_Texture *textBest; 
     SDL_Texture *textTimer; 
+
+    // Text btn reset and undo
+    SDL_Texture *textReset; 
+    SDL_Texture *textUndo; 
+
+    // Text best player info
+    SDL_Texture *textBestPlayer1; 
+    SDL_Texture *textBestPlayer2; 
     SDL_Texture *textMatch; 
 
+    // Text footer
     SDL_Texture *textViewMore;
     SDL_Texture *textRules; 
     SDL_Texture *textGCU1; 
     SDL_Texture *textGCU2; 
 
-    //Font
+    //*** FONT ***//
     TTF_Font *fontOswald;
     TTF_Font *fontNameGame;
     TTF_Font *fontDetailText; 
