@@ -22,6 +22,9 @@ public:
     void displayTitle();
     void displayGrid();
 
+    bool gameOver = false;
+    void displayGameOver();
+
 private:
     Element *element;
     SDL_Renderer *renderer;
@@ -31,6 +34,14 @@ private:
     //*** SCORE ***//
     void updateScore();
     int displayScoreValue;
+
+    //*** CHRONO ***/
+    Uint32 currentTime = 0;
+    Uint32 gameTimer = 0;
+    void displayChrono();
+
+    //*** GameOver ***/
+    SDL_Texture *gameOverTexture; // Text gameOver
 
     //*** TEXTURE ***//
 
@@ -61,7 +72,6 @@ private:
     SDL_Texture *textTimer;
     SDL_Texture *textValueScoreUser;
     SDL_Texture *textValueBestUser;
-    SDL_Texture *textValueTimeUser;
 
     // Text btn reset and undo
     SDL_Texture *textReset;

@@ -16,6 +16,7 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
     loadGameTexture();
+    currentTime = SDL_GetTicks();
 }
 
 GameGraphic::~GameGraphic()
@@ -204,12 +205,6 @@ void GameGraphic::loadGameTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
-    textValueTimeUser = element->createTextureText(fontBestPlayer, "Value Time", {255, 255, 255, 255});
-    if (!textValueTimeUser)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
-
     textValueScorePlayer = element->createTextureText(fontBestPlayer, "Value Score", {255, 255, 255, 255});
     if (!textValueScorePlayer)
     {
@@ -238,6 +233,12 @@ void GameGraphic::loadGameTexture()
 
     textValuePlayersTop = element->createTextureText(fontBestPlayer, "List Players", {255, 255, 255, 255});
     if (!textValuePlayersTop)
+    {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    gameOverTexture = element->createTextureText(fontNameGame, "T as perdu nullos ! ", {255, 255, 255, 255});
+    if (!gameOverTexture)
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -273,7 +274,6 @@ void GameGraphic::unloadAllTextures()
 
     SDL_DestroyTexture(textValueScoreUser);
     SDL_DestroyTexture(textValueBestUser);
-    SDL_DestroyTexture(textValueTimeUser);
     SDL_DestroyTexture(textValueScorePlayer);
     SDL_DestroyTexture(textValueTimePlayer);
     SDL_DestroyTexture(textValueMatchPlayer);
@@ -292,7 +292,6 @@ void GameGraphic::unloadAllTextures()
     // Value
     SDL_DestroyTexture(textValueScoreUser);   // User score
     SDL_DestroyTexture(textValueBestUser);    // User best
-    SDL_DestroyTexture(textValueTimeUser);    // User time
     SDL_DestroyTexture(textValueScorePlayer); // Best player score
     SDL_DestroyTexture(textValueTimePlayer);  // Best player time
     SDL_DestroyTexture(textValueMatchPlayer); // Best player match
@@ -307,10 +306,14 @@ void GameGraphic::unloadAllTextures()
 void GameGraphic::displayGameTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
-    if (displayScoreValue != gameBoard.getScore()){updateScore();};
-    
+    if (displayScoreValue != gameBoard.getScore())
+    {
+        updateScore();
+    };
+
     displayTitle();
     displayGrid();
+    displayChrono();
 }
 
 void GameGraphic::displayTitle()
@@ -371,7 +374,6 @@ void GameGraphic::displayTitle()
 
     element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
     element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);                     // Value best
-    element->displayText(textValueTimeUser, fontBestPlayer, "Value Time", {255, 255, 255, 255}, 755, 105, false, 0, 0);                     // Value Time
 
     // Text best player
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 163, 265, false, 0, 0);
@@ -401,4 +403,26 @@ void GameGraphic::updateScore()
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
+}
+
+void GameGraphic::displayChrono()
+{
+    Uint32 currentTime = SDL_GetTicks();
+    Uint32 elapsedTime = (currentTime - gameTimer) / 1000;
+
+    int minutes = elapsedTime / 60;
+    int seconds = elapsedTime % 60;
+
+    std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
+    SDL_Texture *chronoTexture = element->createTextureText(fontOswald, chronoText.c_str(), element->COLOR_WHITE);
+    element->displayText(chronoTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 755, 105, false, 0, 0);
+    SDL_DestroyTexture(chronoTexture);
+}
+
+void GameGraphic::displayGameOver()
+{
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight);
 }

@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
                         if (!gameBoard.canMove())
                         {
                             cout << "Game Over! Merci d'avoir joué." << endl;
-                            running = false;
+                            gameGraphic.gameOver = true;
                         }
                     }
                 }
@@ -101,9 +101,13 @@ int main(int argc, char *argv[])
         {
             intro.displayIntro();
         }
-        else
+        else if (intro.introPlayed && !gameGraphic.gameOver)
         {
             gameGraphic.displayGameTexture();
+        }
+        else
+        {
+            gameGraphic.displayGameOver();
         }
 
         // Present the renderer
