@@ -26,13 +26,18 @@ public:
     // Rectangle
     void drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color);
 
+    // Gradienty
 
-        // Colors
-        const SDL_Color COLOR_BLACK = { 0,
-                                        0,
-                                        0,
-                                        255 };
+    void drawGradientRectProgressive(int x, int y, int width, int height, int tileValue);
+    void drawGradientRect(int x, int y, int width, int height, SDL_Color startColor, SDL_Color endColor, bool horizontal);
+
+    // Colors
+    const SDL_Color COLOR_BLACK = {0, 0, 0, 255};
     const SDL_Color COLOR_WHITE = {255, 255, 255, 255};
+    const SDL_Color COLOR_GREY = {200, 200, 200, 255};
+    const SDL_Color COLOR_LIGHTGREY = {200, 200, 200, 255};
+    const SDL_Color COLOR_PINK = {206, 0, 124, 255};
+    const SDL_Color COLOR_BLUE = {75, 86, 228, 255};
 
 private:
     SDL_Renderer *renderer;

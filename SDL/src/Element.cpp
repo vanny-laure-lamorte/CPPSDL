@@ -79,7 +79,7 @@ SDL_Texture *Element::createTextureText(TTF_Font *font, const std::string &write
         cerr << "Failed to render text: " << TTF_GetError() << endl;
     }
 
-    SDL_Texture *textTexture  = SDL_CreateTextureFromSurface(renderer, textSurface);
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
     SDL_FreeSurface(textSurface);
     if (!textTexture)
     {
@@ -89,18 +89,18 @@ SDL_Texture *Element::createTextureText(TTF_Font *font, const std::string &write
     return textTexture;
 }
 
-
 // Method to display text
 
 // How to use it ?
 // To Display Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 0, 0, true, 800, 600);
-// To Display Non-Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 100, 150, false, 0, 0); 
+// To Display Non-Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 100, 150, false, 0, 0);
 
-void Element::displayText(SDL_Texture *textTexture, TTF_Font *font, const std::string &writeText, SDL_Color color, int x, int y, bool isCentered, int screenWidth, int screenHeight) 
+void Element::displayText(SDL_Texture *textTexture, TTF_Font *font, const std::string &writeText, SDL_Color color, int x, int y, bool isCentered, int screenWidth, int screenHeight)
 {
 
     // Check if the texture and font are valid
-  if (!textTexture || !font) {
+    if (!textTexture || !font)
+    {
         std::cerr << "Invalid texture or font." << std::endl;
         return;
     }
@@ -118,7 +118,7 @@ void Element::displayText(SDL_Texture *textTexture, TTF_Font *font, const std::s
     }
     else
     {
-        // Set Text position if text not centered by using x, y 
+        // Set Text position if text not centered by using x, y
         textRect = {x, y, textWidth, textHeight};
     }
 
@@ -128,7 +128,8 @@ void Element::displayText(SDL_Texture *textTexture, TTF_Font *font, const std::s
 
 // Rect radius
 
-void Element::drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color) {
+void Element::drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color)
+{
     // Set the draw color
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 
@@ -143,21 +144,71 @@ void Element::drawRoundedRect(int x, int y, int width, int height, int radius, S
     SDL_RenderFillRect(renderer, &rightRect);
 
     // Draw the rounded corners using circles
-    for (int w = 0; w < radius * 2; w++) {
-        for (int h = 0; h < radius * 2; h++) {
+    for (int w = 0; w < radius * 2; w++)
+    {
+        for (int h = 0; h < radius * 2; h++)
+        {
             int dx = radius - w; // horizontal offset
             int dy = radius - h; // vertical offset
-            if ((dx * dx + dy * dy) <= (radius * radius)) {
-                SDL_RenderDrawPoint(renderer, x + radius + dx, y + radius + dy); // Top-left corner
-                SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + radius + dy); // Top-right corner
-                SDL_RenderDrawPoint(renderer, x + radius + dx, y + height - radius + dy); // Bottom-left corner
+            if ((dx * dx + dy * dy) <= (radius * radius))
+            {
+                SDL_RenderDrawPoint(renderer, x + radius + dx, y + radius + dy);                  // Top-left corner
+                SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + radius + dy);          // Top-right corner
+                SDL_RenderDrawPoint(renderer, x + radius + dx, y + height - radius + dy);         // Bottom-left corner
                 SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + height - radius + dy); // Bottom-right corner
             }
         }
     }
 }
 
+#include <cmath>
+#include <SDL2/SDL.h>
+#include "Element.hpp"
 
+void Element::drawGradientRect(int x, int y, int width, int height, SDL_Color startColor, SDL_Color endColor, bool horizontal)
+{
+    for (int i = 0; i < (horizontal ? width : height); i++)
+    {
+        float t = (float)i / (horizontal ? width : height);
 
+        Uint8 r = startColor.r + t * (endColor.r - startColor.r);
+        Uint8 g = startColor.g + t * (endColor.g - startColor.g);
+        Uint8 b = startColor.b + t * (endColor.b - startColor.b);
+        Uint8 a = startColor.a + t * (endColor.a - startColor.a);
 
+        SDL_SetRenderDrawColor(renderer, r, g, b, a);
 
+        if (horizontal)
+        {
+            SDL_RenderDrawLine(renderer, x + i, y, x + i, y + height);
+        }
+        else
+        {
+            SDL_RenderDrawLine(renderer, x, y + i, x + width, y + i);
+        }
+    }
+}
+
+void Element::drawGradientRectProgressive(int x, int y, int width, int height, int tileValue)
+{
+    SDL_Color blue = {0, 0, 255, 255};
+    SDL_Color pink = {206, 0, 124, 255};
+
+    int logValue = static_cast<int>(log2(tileValue));
+    float pinkPercentage = static_cast<float>(logValue) / 11.0f;
+
+    for (int i = 0; i < width; ++i)
+    {
+        float factor = static_cast<float>(i) / width;
+
+        float adjustedFactor = factor * pinkPercentage;
+
+        uint8_t r = static_cast<uint8_t>((1 - adjustedFactor) * pink.r + adjustedFactor * blue.r);
+        uint8_t g = static_cast<uint8_t>((1 - adjustedFactor) * pink.g + adjustedFactor * blue.g);
+        uint8_t b = static_cast<uint8_t>((1 - adjustedFactor) * pink.b + adjustedFactor * blue.b);
+
+        // Set the color and draw the line
+        SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+        SDL_RenderDrawLine(renderer, x + i, y, x + i, y + height);
+    }
+}
