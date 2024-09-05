@@ -366,6 +366,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\main.cpp" />
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\Window.cpp" />
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\Element.cpp" />
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\GameGraphic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\ZERO_CHECK.vcxproj">

@@ -4,6 +4,15 @@
     <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\Element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\src\GameGraphic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\SFML\CMakeLists.txt" />

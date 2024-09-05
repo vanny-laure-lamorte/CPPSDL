@@ -92,7 +92,7 @@
       <UseFullPaths>false</UseFullPaths>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;SFML_STATIC;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\Debug\sfml-window-s-d.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\Debug\sfml-window-s.pdb</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
@@ -127,7 +127,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
-      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\Release\sfml-window-s-d.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\Release\sfml-window-s.pdb</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
@@ -162,7 +162,7 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
-      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\MinSizeRel\sfml-window-s-d.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\MinSizeRel\sfml-window-s.pdb</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
@@ -196,7 +196,7 @@
       <UseFullPaths>false</UseFullPaths>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SFML_STATIC;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\RelWithDebInfo\sfml-window-s-d.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>C:\Users\tslem\Desktop\Laplateforme\bachelore2\depot\cpp\projetGroupe\CPPSDL\build\_deps\sfml-build\lib\RelWithDebInfo\sfml-window-s.pdb</ProgramDataBaseFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
