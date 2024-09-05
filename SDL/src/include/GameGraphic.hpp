@@ -48,7 +48,10 @@ private:
     SDL_Texture *textUserInfo2; 
     SDL_Texture *textScore; 
     SDL_Texture *textBest; 
-    SDL_Texture *textTimer; 
+    SDL_Texture *textTimer;
+    SDL_Texture *textValueScoreUser; 
+    SDL_Texture *textValueBestUser;  
+    SDL_Texture *textValueTimeUser; 
 
     // Text btn reset and undo
     SDL_Texture *textReset; 
@@ -57,7 +60,9 @@ private:
     // Text best player info
     SDL_Texture *textBestPlayer1; 
     SDL_Texture *textBestPlayer2; 
-    SDL_Texture *textMatch; 
+    SDL_Texture *textValueScorePlayer; 
+    SDL_Texture *textValueTimePlayer; 
+    SDL_Texture *textValueMatchPlayer; 
 
     // Text footer
     SDL_Texture *textViewMore;
