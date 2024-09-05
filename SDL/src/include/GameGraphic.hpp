@@ -10,9 +10,9 @@ class GameGraphic {
 public:
     GameGraphic(SDL_Renderer* renderer, int screenWidth, int screenHeight);
     ~GameGraphic();
-    void loadTexture();
+    void loadGameTexture();
     void unloadAllTextures();
-    void displayTexture();
+    void displayGameTexture();
     void updateGameBoard(const GameBoard& newGameBoard);
 
     // Font
@@ -26,13 +26,10 @@ private:
     int screenHeight;
 
     SDL_Texture* backgroundTexture;
-    SDL_Texture* testTexture;
 
     SDL_Texture* tileImgTexture;
     SDL_Texture* textValueTexture;
     
-    void animation();
-    float animTransition = 0;
 
     //Font
     SDL_Texture *textTitleTexture; 

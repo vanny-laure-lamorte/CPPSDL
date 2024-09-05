@@ -7,11 +7,13 @@ using namespace std;
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
 {
+
     element = new Element(renderer);
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
 
-    loadTexture();
+    loadGameTexture();
 }
 
 GameGraphic::~GameGraphic()
@@ -61,10 +63,9 @@ void GameGraphic::displayGrid()
     }
 }
 
-void GameGraphic::loadTexture()
+void GameGraphic::loadGameTexture()
 {
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");
-    testTexture = element->CreateTexture("assets/img/test.png");
     tileImgTexture = element->CreateTexture("assets/img/square.png");
     textValueTexture = element->createTextureText(fontOswald, "default", {255, 255, 255, 255});
 
@@ -74,27 +75,15 @@ void GameGraphic::loadTexture()
 void GameGraphic::unloadAllTextures()
 {
     SDL_DestroyTexture(backgroundTexture);
-    SDL_DestroyTexture(testTexture);
     SDL_DestroyTexture(textTitleTexture);
 }
 
-void GameGraphic::displayTexture()
+void GameGraphic::displayGameTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
     element->drawRoundedRect(screenWidth - 550, screenHeight - 525, 500, 500, 20, element->COLOR_GREY);
 
-    // element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
-    // animation();
-
     // Display title
     element->displayText(textTitleTexture, fontOswald, "TILE TWISTER ", {255, 255, 255, 255}, 0, 0, true, screenWidth, screenHeight - 500);
     displayGrid();
-}
-
-void GameGraphic::animation()
-{
-    if (animTransition < 250)
-    {
-        animTransition += 0.5;
-    };
 }
