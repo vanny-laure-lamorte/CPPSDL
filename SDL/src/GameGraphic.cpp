@@ -1,8 +1,4 @@
-#include <iostream>
-using namespace std;
-
 #include "GameGraphic.hpp"
-#include "Element.hpp"
 
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
@@ -52,8 +48,8 @@ void GameGraphic::displayGrid()
             int x = 450 + (100 * j);
             int y = 210 + (100 * i);
 
-                element->drawGradientRect(x, y, 92, 92, element->COLOR_LIGHTGREY, element->COLOR_BLACK, true);
-                
+            element->drawGradientRect(x, y, 92, 92, element->COLOR_LIGHTGREY, element->COLOR_BLACK, true);
+
             if (tile.getValue() != 0)
             {
                 element->drawGradientRectProgressive(x, y, 90, 90, tile.getValue());
@@ -71,8 +67,7 @@ void GameGraphic::displayGrid()
                 SDL_DestroyTexture(textTexture);
             }
             else
-            element->drawGradientRect(x, y, 90, 90, element->COLOR_LIGHTGREYBIS, element->COLOR_DARKGREY, true);
-
+                element->drawGradientRect(x, y, 90, 90, element->COLOR_LIGHTGREYBIS, element->COLOR_DARKGREY, true);
         }
     }
 }
@@ -203,13 +198,6 @@ void GameGraphic::loadGameTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
-    // Text value
-    textValueScoreUser = element->createTextureText(fontBestPlayer, "Value Score", {255, 255, 255, 255});
-    if (!textValueScoreUser)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
-
     textValueBestUser = element->createTextureText(fontBestPlayer, "Value Best", {255, 255, 255, 255});
     if (!textValueBestUser)
     {
@@ -319,6 +307,8 @@ void GameGraphic::unloadAllTextures()
 void GameGraphic::displayGameTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
+    if (displayScoreValue != gameBoard.getScore()){updateScore();};
+    
     displayTitle();
     displayGrid();
 }
@@ -379,9 +369,9 @@ void GameGraphic::displayTitle()
     element->displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 580, 77, false, 0, 0);
     element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 750, 75, false, 0, 0);
 
-    element->displayText(textValueScoreUser, fontBestPlayer, "Value Score", {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
-    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);   // Value best
-    element->displayText(textValueTimeUser, fontBestPlayer, "Value Time", {255, 255, 255, 255}, 755, 105, false, 0, 0);   // Value Time
+    element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
+    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);                     // Value best
+    element->displayText(textValueTimeUser, fontBestPlayer, "Value Time", {255, 255, 255, 255}, 755, 105, false, 0, 0);                     // Value Time
 
     // Text best player
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 163, 265, false, 0, 0);
@@ -401,4 +391,14 @@ void GameGraphic::displayTitle()
     // Text General Conditions of Use
     element->displayText(textGCU1, fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", element->COLOR_WHITE, 460, 663, false, 0, 0);
     element->displayText(textGCU2, fontDetailText, "in our Privacy Policy - Copyright LuThaVan Production studio 2024", element->COLOR_WHITE, 460, 673, false, 0, 0);
+}
+
+void GameGraphic::updateScore()
+{
+    SDL_DestroyTexture(textValueScoreUser);
+    textValueScoreUser = element->createTextureText(fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255});
+    if (!textValueScoreUser)
+    {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
 }
