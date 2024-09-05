@@ -43,6 +43,11 @@ private:
     SDL_Texture *textCreatorTexture1;
     SDL_Texture *textCreatorTexture2; 
 
+    // Text Top 5 players
+    SDL_Texture *textTitleTop; 
+    SDL_Texture *textValuePlayersTop; 
+
+
     // Text user info
     SDL_Texture *textUserInfo1; 
     SDL_Texture *textUserInfo2; 
