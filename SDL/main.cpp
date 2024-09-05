@@ -4,6 +4,7 @@ using namespace std;
 #include "Window.hpp"
 #include "GameGraphic.hpp"
 #include "GameBoard.hpp"
+#include "IntroScreenGraphic.hpp"
 
 int SCREENWIDTH = 1050;
 int SCREENHEIGHT = 700;
@@ -27,6 +28,8 @@ int main(int argc, char *argv[])
     // Create game graphic instance
     GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
 
+    IntroScreenGraphic intro(renderer, SCREENWIDTH, SCREENHEIGHT);
+
     // Create game instance
     GameBoard gameBoard;
 
@@ -41,39 +44,51 @@ int main(int argc, char *argv[])
             }
             else if (windowEvent.type == SDL_KEYUP)
             {
-                // Handle key events for movement
-
-                bool moved = false;
-                switch (windowEvent.key.keysym.sym)
+                if (!intro.introPlayed)
                 {
-                case SDLK_q:
-                case SDLK_LEFT:
-                    moved = gameBoard.moveLeft();
-                    break;
-                case SDLK_d:
-                case SDLK_RIGHT:
-                    moved = gameBoard.moveRight();
-                    break;
-                case SDLK_z:
-                case SDLK_UP:
-                    moved = gameBoard.moveUp();
-                    break;
-                case SDLK_s:
-                case SDLK_DOWN:
-                    moved = gameBoard.moveDown();
-                    break;
-                }
-
-                if (moved)
-                {
-                    gameGraphic.updateGameBoard(gameBoard);
-                    gameBoard.addRandomTile();
-                    gameBoard.display();
-
-                    if (!gameBoard.canMove())
+                    switch (windowEvent.key.keysym.sym)
                     {
-                        cout << "Game Over! Merci d'avoir joué." << endl;
-                        running = false;
+                    case SDLK_SPACE:
+                        if (intro.introPartOne)
+                            intro.introPartOne = false;
+                        else
+                            intro.introPlayed = true;
+                    }
+                }
+                else
+                {
+                    bool moved = false;
+                    switch (windowEvent.key.keysym.sym)
+                    {
+                    case SDLK_q:
+                    case SDLK_LEFT:
+                        moved = gameBoard.moveLeft();
+                        break;
+                    case SDLK_d:
+                    case SDLK_RIGHT:
+                        moved = gameBoard.moveRight();
+                        break;
+                    case SDLK_z:
+                    case SDLK_UP:
+                        moved = gameBoard.moveUp();
+                        break;
+                    case SDLK_s:
+                    case SDLK_DOWN:
+                        moved = gameBoard.moveDown();
+                        break;
+                    }
+
+                    if (moved)
+                    {
+                        gameBoard.addRandomTile();
+                        gameGraphic.updateGameBoard(gameBoard);
+                        gameBoard.display();
+
+                        if (!gameBoard.canMove())
+                        {
+                            cout << "Game Over! Merci d'avoir joué." << endl;
+                            running = false;
+                        }
                     }
                 }
             }
@@ -82,9 +97,14 @@ int main(int argc, char *argv[])
         // Clear the screen
         SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255); // Gris foncé
         SDL_RenderClear(renderer);
-
-        // Display background
-        gameGraphic.displayTexture();
+        if (!intro.introPlayed)
+        {
+            intro.displayIntro();
+        }
+        else
+        {
+            gameGraphic.displayGameTexture();
+        }
 
         // Present the renderer
         SDL_RenderPresent(renderer);

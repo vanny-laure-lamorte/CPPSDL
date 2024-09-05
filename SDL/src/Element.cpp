@@ -2,6 +2,7 @@ using namespace std;
 
 #include "Element.hpp"
 #include <stdexcept>
+#include <cmath>
 
 Element::Element(SDL_Renderer *renderer) : renderer(renderer)
 {
@@ -209,6 +210,50 @@ void Element::drawRoundedRectOpacity(int x, int y, int width, int height, int ra
     }
 }
 
+void Element::drawGradientRect(int x, int y, int width, int height, SDL_Color startColor, SDL_Color endColor, bool horizontal)
+{
+    for (int i = 0; i < (horizontal ? width : height); i++)
+    {
+        float t = (float)i / (horizontal ? width : height);
 
+        Uint8 r = startColor.r + t * (endColor.r - startColor.r);
+        Uint8 g = startColor.g + t * (endColor.g - startColor.g);
+        Uint8 b = startColor.b + t * (endColor.b - startColor.b);
+        Uint8 a = startColor.a + t * (endColor.a - startColor.a);
 
+        SDL_SetRenderDrawColor(renderer, r, g, b, a);
 
+        if (horizontal)
+        {
+            SDL_RenderDrawLine(renderer, x + i, y, x + i, y + height);
+        }
+        else
+        {
+            SDL_RenderDrawLine(renderer, x, y + i, x + width, y + i);
+        }
+    }
+}
+
+void Element::drawGradientRectProgressive(int x, int y, int width, int height, int tileValue)
+{
+    SDL_Color blue = {0, 0, 255, 255};
+    SDL_Color pink = {206, 0, 124, 255};
+
+    int logValue = static_cast<int>(log2(tileValue));
+    float pinkPercentage = static_cast<float>(logValue) / 11.0f;
+
+    for (int i = 0; i < width; ++i)
+    {
+        float factor = static_cast<float>(i) / width;
+
+        float adjustedFactor = factor * pinkPercentage;
+
+        uint8_t r = static_cast<uint8_t>((1 - adjustedFactor) * pink.r + adjustedFactor * blue.r);
+        uint8_t g = static_cast<uint8_t>((1 - adjustedFactor) * pink.g + adjustedFactor * blue.g);
+        uint8_t b = static_cast<uint8_t>((1 - adjustedFactor) * pink.b + adjustedFactor * blue.b);
+
+        // Set the color and draw the line
+        SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+        SDL_RenderDrawLine(renderer, x + i, y, x + i, y + height);
+    }
+}

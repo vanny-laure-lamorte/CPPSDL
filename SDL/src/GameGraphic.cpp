@@ -19,7 +19,7 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
-    loadTexture();   
+    loadGameTexture();   
 }
 
 GameGraphic::~GameGraphic()
@@ -37,7 +37,8 @@ GameGraphic::~GameGraphic()
     TTF_CloseFont(fontBestPlayer);
 }
 
-void GameGraphic::updateGameBoard(const GameBoard& newGameBoard) {
+void GameGraphic::updateGameBoard(const GameBoard &newGameBoard)
+{
     gameBoard = newGameBoard;
 }
 
@@ -48,15 +49,14 @@ void GameGraphic::displayGrid()
         for (int j = 0; j < 4; ++j)
         {
             Tile &tile = gameBoard.tiles[i][j];
-            int x = 555 + (100 * j);
-            int y = 230 + (100 * i);
-
-            element->renderTexture(tileImgTexture, x, y, 90, 90);
+            int x = 450 + (100 * j);
+            int y = 210 + (100 * i);
 
             if (tile.getValue() != 0)
             {
+                element->drawGradientRectProgressive(x, y, 90, 90, tile.getValue());
                 std::string valueStr = std::to_string(tile.getValue());
-                SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, {0, 0, 0, 255});
+                SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, element->COLOR_WHITE);
 
                 int textWidth, textHeight;
                 SDL_QueryTexture(textTexture, NULL, NULL, &textWidth, &textHeight);
@@ -68,10 +68,13 @@ void GameGraphic::displayGrid()
 
                 SDL_DestroyTexture(textTexture);
             }
+            else
+                element->drawGradientRect(x, y, 90, 90, element->COLOR_WHITE, element->COLOR_LIGHTGREY, false);
         }
     }
 }
-void GameGraphic::loadTexture()
+
+void GameGraphic::loadGameTexture()
 {
     //*** BACKGROUND ***//
 
@@ -285,28 +288,15 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(pinkRectImgTexture); // Img Pink rect
     SDL_DestroyTexture(resetImgTexture); // Img reset
     SDL_DestroyTexture(undoImgTexture); // Img undo   
-
 }
 
-void GameGraphic::displayTexture()
+void GameGraphic::displayGameTexture()
 {
-    element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
-    // element->drawRoundedRect(screenWidth - 550, screenHeight - 525, 500, 500, 20, element->COLOR_GREY);
-
-    // element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
-    // animation();
-  
-    // displayGrid();
+    element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight); 
     displayTitle();
+    displayGrid();
 }
 
-void GameGraphic::animation()
-{
-    if (animTransition < 250)
-    {
-        animTransition += 0.5;
-    };
-}
 void GameGraphic::displayTitle()
 {
 
@@ -318,25 +308,25 @@ void GameGraphic::displayTitle()
 
     element -> drawRoundedRectOpacity(150, 345, 220, 312, 10,{42, 42, 57, 220}); // 
 
-    element -> drawRoundedRect(385, 50, 520, 73, 10, element -> COLOR_DARKGREY); // Game state info
-    element -> drawRoundedRect(400, 80, 152, 35, 10, element -> COLOR_LIGHTGREY); // Score
-    element -> drawRoundedRect(570, 80, 152, 35, 10, element -> COLOR_LIGHTGREY); // Best
-    element -> drawRoundedRect(740, 80, 152, 35, 10, element -> COLOR_LIGHTGREY); // Timer
+    element -> drawRoundedRect(385, 70, 520, 72, 10, element -> COLOR_DARKGREY); // Game state info
+    element -> drawRoundedRect(400, 100, 152, 35, 10, element -> COLOR_LIGHTGREY); // Score
+    element -> drawRoundedRect(570, 100, 152, 35, 10, element -> COLOR_LIGHTGREY); // Best
+    element -> drawRoundedRect(740, 100, 152, 35, 10, element -> COLOR_LIGHTGREY); // Timer
     
-    element -> drawRoundedRectOpacity(385, 135, 520, 520, 10,{42, 42, 57, 220}); // Grid
+    element -> drawRoundedRectOpacity(385, 155, 520, 500, 10,{42, 42, 57, 220}); // Grid
 
     //*** IMAGE ***//
 
     // Display User logo Image
-    element->renderTexture(userLogoTexture,770,5,40,40); // User photo profile
+    element->renderTexture(userLogoTexture,770,15,40,40); // User photo profile
     element->renderTexture(userLogoTexture, 240, 135,75,75); // Best player photo profile
 
-    element->renderTexture(pinkRectImgTexture, 390,5,90,47); // Rect Reset
-    element->renderTexture(pinkRectImgTexture, 495,5,90,47); // Rect Undo
+    element->renderTexture(pinkRectImgTexture, 390,25,90,47); // Rect Reset
+    element->renderTexture(pinkRectImgTexture, 495,25,90,47); // Rect Undo
     element->renderTexture(pinkRectImgTexture, 385, 655, 66,33); // Rect Rules 
 
-    element->renderTexture(resetImgTexture, 400, 18, 20,20); // Img reset 
-    element->renderTexture(undoImgTexture, 505, 18, 20,20); // Img undo
+    element->renderTexture(resetImgTexture, 400, 38, 20,20); // Img reset 
+    element->renderTexture(undoImgTexture, 505, 38, 20,20); // Img undo
 
     // Display Name Game
     element -> displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 210, 20, false, 0, 0); 
@@ -344,12 +334,12 @@ void GameGraphic::displayTitle()
     element -> displayText(textCreatorTexture2, fontDetailText, "Thanh Lemelle & Vanny Lamorte", element ->COLOR_WHITE, 200, 90, false, 0, 0);
 
       // Text rest and undo
-    element -> displayText(textReset, fontGameInfo,"Reset", {255, 255, 255, 255}, 435, 18, false, 0, 0);
-    element -> displayText(textUndo, fontGameInfo, "Undo", {255, 255, 255, 255}, 540, 18, false, 0, 0);
+    element -> displayText(textReset, fontGameInfo,"Reset", {255, 255, 255, 255}, 435, 38, false, 0, 0);
+    element -> displayText(textUndo, fontGameInfo, "Undo", {255, 255, 255, 255}, 540, 38, false, 0, 0);
 
     // Text name user
-    element -> displayText(textUserInfo1, fontUserProfile, "Alicia Cordial", {250, 255, 255, 255}, 830, 15, false, 0, 0);
-    element -> displayText(textUserInfo2, fontDetailText, "Joined in 2022", {250, 255, 255, 255}, 840, 35, false, 0, 0);
+    element -> displayText(textUserInfo1, fontUserProfile, "Alicia Cordial", {250, 255, 255, 255}, 830, 25, false, 0, 0);
+    element -> displayText(textUserInfo2, fontDetailText, "Joined in 2022", {250, 255, 255, 255}, 840, 45, false, 0, 0);
 
     // Text best players
     element -> displayText(textBestPlayer1, fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255}, 210, 215, false, 0, 0); // Player number 1
@@ -359,13 +349,13 @@ void GameGraphic::displayTitle()
     element -> displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players
 
     // Text Game state info
-    element -> displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 410, 55, false, 0, 0);
-    element -> displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 580, 55, false, 0, 0);
-    element -> displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 750, 55, false, 0, 0);
+    element -> displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 410, 75, false, 0, 0);
+    element -> displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 580, 77, false, 0, 0);
+    element -> displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 750, 75, false, 0, 0);
 
-    element -> displayText(textValueScoreUser, fontBestPlayer, "Value Score", {255, 255, 255, 255}, 415, 85, false, 0, 0); // Value score
-    element -> displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 85, false, 0, 0); // Value best
-    element -> displayText(textValueTimeUser, fontBestPlayer, "Value Time", {255, 255, 255, 255}, 755, 85, false, 0, 0); // Value Time    
+    element -> displayText(textValueScoreUser, fontBestPlayer, "Value Score", {255, 255, 255, 255}, 415,105, false, 0, 0); // Value score
+    element -> displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0); // Value best
+    element -> displayText(textValueTimeUser, fontBestPlayer, "Value Time", {255, 255, 255, 255}, 755, 105, false, 0, 0); // Value Time    
 
     // Text best player  
     element -> displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 163, 265, false, 0, 0);
@@ -386,7 +376,6 @@ void GameGraphic::displayTitle()
     // Text General Conditions of Use
     element -> displayText(textGCU1, fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", element ->COLOR_WHITE, 460, 663, false, 0, 0);
     element -> displayText(textGCU2, fontDetailText, "in our Privacy Policy - Copyright LuThaVan Production studio 2024", element ->COLOR_WHITE, 460, 673, false, 0, 0);
-
 
 
 }

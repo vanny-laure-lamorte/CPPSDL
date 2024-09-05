@@ -10,10 +10,12 @@ class GameGraphic {
 public:
     GameGraphic(SDL_Renderer* renderer, int screenWidth, int screenHeight);
     ~GameGraphic();
-    void loadTexture();
+    void loadGameTexture();
     void unloadAllTextures();
-    void displayTexture();
+    void displayGameTexture();
     void updateGameBoard(const GameBoard& newGameBoard);
+
+    // Font
     void displayTitle();
     void displayGrid();
 
@@ -22,9 +24,6 @@ private:
     SDL_Renderer* renderer;
     int screenWidth;
     int screenHeight;
-    
-    void animation();
-    float animTransition = 0;
 
     //*** TEXTURE ***//
 
@@ -37,6 +36,7 @@ private:
     SDL_Texture* pinkRectImgTexture; // Img Pink Rect
     SDL_Texture* resetImgTexture; // Img Reset
     SDL_Texture* undoImgTexture; // Img undo
+    
 
     // Text Title
     SDL_Texture *textTitleTexture;
@@ -46,7 +46,6 @@ private:
     // Text Top 5 players
     SDL_Texture *textTitleTop; 
     SDL_Texture *textValuePlayersTop; 
-
 
     // Text user info
     SDL_Texture *textUserInfo1; 
