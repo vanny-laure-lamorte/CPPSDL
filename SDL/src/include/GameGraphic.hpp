@@ -41,6 +41,7 @@ private:
     int screenWidth;
     int screenHeight;
 
+
     //*** SCORE ***//
     void updateScore();
     int displayScoreValue;

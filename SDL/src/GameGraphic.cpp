@@ -6,7 +6,6 @@
 //** Save Score ***//
 #include <nlohmann/json.hpp>
 #include <fstream> 
-#include <iostream>
 #include <string> 
 using json = nlohmann::json;
 
@@ -88,6 +87,11 @@ void GameGraphic::displayGrid()
 
 void GameGraphic::loadGameTexture()
 {
+    // Find best Score
+    auto bestScore = gameOptions -> getBestScore(); 
+    std::cout << "Meilleur Score: " << bestScore.first << std::endl;
+    std::cout << "Temps Associé: " << bestScore.second << std::endl;
+
     //*** BACKGROUND ***//
 
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");

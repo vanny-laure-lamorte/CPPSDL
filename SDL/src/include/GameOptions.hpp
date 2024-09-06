@@ -13,6 +13,7 @@ public:
     ~GameOptions();
 
     void saveScore(string score, string chronoText);
+    pair<string, string>getBestScore();
 
 private:
     SDL_Renderer *renderer;
