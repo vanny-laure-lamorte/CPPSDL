@@ -495,7 +495,7 @@ void GameGraphic::displayGameOver()
         }
 
         // Save score at the end of the game
-        gameOptions -> saveScore("Poop", to_string(gameBoard.getScore()), chronoText, "30");
+        gameOptions -> saveScore(user, to_string(gameBoard.getScore()), chronoText, "30");
 
 
         textureGameOver = true;
