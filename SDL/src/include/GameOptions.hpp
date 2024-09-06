@@ -13,6 +13,9 @@ public:
     ~GameOptions();
 
     void saveScore(const string& playerName, const string& score, const string& timer, string matchCount);
+    tuple<string, string, string, string> getBestScore() const;
+
+    
 
 private:
     SDL_Renderer *renderer;

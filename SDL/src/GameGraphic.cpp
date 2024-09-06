@@ -17,6 +17,15 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     gameOptions = new GameOptions(renderer, screenWidth, screenHeight); 
     
 
+    // Test to display the best game
+    auto [playerName, score, time, matchCount] = gameOptions -> getBestScore();
+
+    // Affichez les résultats
+    cout << "Meilleur joueur: " << playerName << endl;
+    cout << "Meilleur score: " << score << endl;
+    cout << "Temps: " << time << endl;
+    cout << "Nombre de matchs: " << matchCount << endl;
+
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
     fontNameGame = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 50);
@@ -87,8 +96,6 @@ void GameGraphic::displayGrid()
 
 void GameGraphic::loadGameTexture()
 {
-    // Find best Score
-
     //*** BACKGROUND ***//
 
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");
