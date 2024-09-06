@@ -21,10 +21,14 @@ public:
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
 
-    // Font
-    void displayTitle();
-    void displayGrid();
+    void displayRect(); 
+    void displayImg(); 
+    void displayText(); 
+    void displayValue(); 
+    void displayDesign();
 
+    void displayGrid();
+    bool textureGameOver = false;
     void displayGameOver();
     bool gameOver = false;
 

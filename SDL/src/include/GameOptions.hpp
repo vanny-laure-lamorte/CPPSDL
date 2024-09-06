@@ -12,7 +12,7 @@ public:
     GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeight);
     ~GameOptions();
 
-    void saveScore(int score);
+    void saveScore(string score, string chronoText);
 
 private:
     SDL_Renderer *renderer;

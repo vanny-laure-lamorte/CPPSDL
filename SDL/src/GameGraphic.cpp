@@ -27,8 +27,6 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
-    gameOptions -> saveScore(gameBoard.getScore()); 
-
     loadGameTexture();
 
     currentTime = SDL_GetTicks();
@@ -332,42 +330,49 @@ void GameGraphic::displayGameTexture()
         updateScore();
     };
 
-    displayTitle();
+    displayDesign();
     displayGrid();
     displayChrono();
 }
 
-void GameGraphic::displayTitle()
-{
-
-    // Frame with grey rectangle
+// Methode to display frame with rectangles
+void GameGraphic::displayRect(){        
+    
+    // User
     element->drawRoundedRect(150, 260, 220, 70, 10, element->COLOR_DARKGREY); // First Player info
     element->drawRoundedRect(160, 290, 60, 30, 10, element->COLOR_LIGHTGREY); // Score
     element->drawRoundedRect(230, 290, 60, 30, 10, element->COLOR_LIGHTGREY); // Best
     element->drawRoundedRect(300, 290, 60, 30, 10, element->COLOR_LIGHTGREY); // Timer
 
-    element->drawRoundedRectOpacity(150, 345, 220, 312, 10, {42, 42, 57, 220}); //
+    // Top players
+    element->drawRoundedRectOpacity(150, 345, 220, 312, 10, {42, 42, 57, 220}); 
 
-    element->drawRoundedRect(385, 70, 520, 72, 10, element->COLOR_DARKGREY);   // Game state info
+    // Game state
+    element->drawRoundedRect(385, 70, 520, 72, 10, element->COLOR_DARKGREY); // Game state info
     element->drawRoundedRect(400, 100, 152, 35, 10, element->COLOR_LIGHTGREY); // Score
     element->drawRoundedRect(570, 100, 152, 35, 10, element->COLOR_LIGHTGREY); // Best
     element->drawRoundedRect(740, 100, 152, 35, 10, element->COLOR_LIGHTGREY); // Timer
-
     element->drawRoundedRectOpacity(385, 155, 520, 500, 10, {42, 42, 57, 220}); // Grid
+}
 
-    //*** IMAGE ***//
+// Method to display images 
+void GameGraphic::displayImg(){
 
-    // Display User logo Image
+    // Img profile pictures
     element->renderTexture(userLogoTexture, 770, 15, 40, 40);  // User photo profile
     element->renderTexture(userLogoTexture, 240, 135, 75, 75); // Best player photo profile
 
+    // Img rectangle
     element->renderTexture(pinkRectImgTexture, 390, 25, 90, 47);  // Rect Reset
     element->renderTexture(pinkRectImgTexture, 495, 25, 90, 47);  // Rect Undo
     element->renderTexture(pinkRectImgTexture, 385, 655, 66, 33); // Rect Rules
 
-    element->renderTexture(resetImgTexture, 400, 38, 20, 20); // Img reset
-    element->renderTexture(undoImgTexture, 505, 38, 20, 20);  // Img undo
+    // Img reset and undo
+    element->renderTexture(resetImgTexture, 400, 38, 20, 20); 
+    element->renderTexture(undoImgTexture, 505, 38, 20, 20);
+}
 
+void GameGraphic::displayText(){
     // Display Name Game
     element->displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 210, 20, false, 0, 0);
     element->displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", element->COLOR_WHITE, 205, 80, false, 0, 0);
@@ -385,25 +390,18 @@ void GameGraphic::displayTitle()
     element->displayText(textBestPlayer1, fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255}, 210, 215, false, 0, 0); // Player number 1
     element->displayText(textBestPlayer2, fontDetailText, "Joined in 1995", {255, 255, 255, 255}, 235, 240, false, 0, 0); // Player number 1
 
-    element->displayText(textTitleTop, fontBestPlayer, "Top 5 players", {255, 255, 255, 255}, 210, 350, false, 0, 0);       // Title top
-    element->displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players
+    // Top 5 players
+    element->displayText(textTitleTop, fontBestPlayer, "Top 5 players", {255, 255, 255, 255}, 210, 350, false, 0, 0);      
 
     // Text Game state info
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 410, 75, false, 0, 0);
     element->displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 580, 77, false, 0, 0);
     element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 750, 75, false, 0, 0);
 
-    element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
-    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);                     // Value best
-
     // Text best player
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 163, 265, false, 0, 0);
     element->displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 233, 265, false, 0, 0);
     element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 303, 265, false, 0, 0);
-
-    element->displayText(textValueScorePlayer, fontUserProfile, "Value Score", {255, 255, 255, 255}, 163, 295, false, 0, 0); // Value score
-    element->displayText(textValueTimePlayer, fontUserProfile, "Value Time", {255, 255, 255, 255}, 233, 295, false, 0, 0);   // Value Best
-    element->displayText(textValueMatchPlayer, fontUserProfile, "Value Match", {255, 255, 255, 255}, 303, 295, false, 0, 0); // Value Time
 
     // Text View More
     element->displayText(textViewMore, fontDetailTextBold, "View More", element->COLOR_PINK, 155, 660, false, 0, 0);
@@ -414,6 +412,29 @@ void GameGraphic::displayTitle()
     // Text General Conditions of Use
     element->displayText(textGCU1, fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", element->COLOR_WHITE, 460, 663, false, 0, 0);
     element->displayText(textGCU2, fontDetailText, "in our Privacy Policy - Copyright LuThaVan Production studio 2024", element->COLOR_WHITE, 460, 673, false, 0, 0);
+
+}
+
+void GameGraphic::displayValue()
+{
+    element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
+    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);                     // Value best
+
+    // Best Player
+    element->displayText(textValueScorePlayer, fontUserProfile, "Value Score", {255, 255, 255, 255}, 163, 295, false, 0, 0); // Value score
+    element->displayText(textValueTimePlayer, fontUserProfile, "Value Time", {255, 255, 255, 255}, 233, 295, false, 0, 0);   // Value Best
+    element->displayText(textValueMatchPlayer, fontUserProfile, "Value Match", {255, 255, 255, 255}, 303, 295, false, 0, 0); // Value Time
+
+    // Top players
+    element->displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players     
+}
+
+void GameGraphic::displayDesign()
+{
+    displayRect();
+    displayImg(); 
+    displayText(); 
+    displayValue();     
 }
 
 void GameGraphic::updateScore()
@@ -442,21 +463,21 @@ void GameGraphic::displayChrono()
 
     std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    SDL_Texture *chronoTexture = element->createTextureText(fontOswald, chronoText.c_str(), element->COLOR_WHITE);
-    element->displayText(chronoTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 755, 105, false, 0, 0);
+    SDL_Texture *chronoTexture = element->createTextureText(fontBestPlayer, chronoText.c_str(), element->COLOR_WHITE);
+
+    element->displayText(chronoTexture, fontBestPlayer, chronoText.c_str(), element->COLOR_WHITE, 755, 105, false, 0, 0);
+
     SDL_DestroyTexture(chronoTexture);
 }
 
 void GameGraphic::displayGameOver()
 {
-    bool textureCreated = false;
-
     // Transform second into minutes and second
     int minutes = elapsedTime / 60;
     int seconds = elapsedTime % 60;
     std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    if (!textureCreated) // Create texture with actual value
+    if (!textureGameOver) // Create texture with actual value
     {
         endTimerTexture = element->createTextureText(fontNameGame, chronoText, {255, 255, 255, 255});
         if (!endTimerTexture)
@@ -469,15 +490,17 @@ void GameGraphic::displayGameOver()
         {
             cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
         }
-        textureCreated = true;
+
+        // Save score at the end of the game
+        gameOptions -> saveScore(to_string(gameBoard.getScore()), chronoText); 
+
+        textureGameOver = true;
     };
 
     // Display Black screen, message, timer and score
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
     SDL_RenderClear(renderer);
     element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight);
-
-    
     element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 100);
     element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 200);
 }

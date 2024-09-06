@@ -25,7 +25,7 @@ GameOptions::~GameOptions()
 }
 
 // Method to save score 
-void GameOptions::saveScore(int score) {
+void GameOptions::saveScore(string score, string timer) {
 
     // Give name to the JSON file
     const string filename = "scores.json";
@@ -50,8 +50,8 @@ void GameOptions::saveScore(int score) {
 
     // Create a new score object
     json newScore = {
-        {"score", score}, // Save Score
-        {"timestamp", time(nullptr)} // Save current time
+        {"Score", score}, // Save Score
+        {"Time", timer} // Save current time
     };
 
     // Add the new score object to the array
