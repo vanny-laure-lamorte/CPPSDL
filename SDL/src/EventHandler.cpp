@@ -50,7 +50,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
 {
     switch (windowEvent.key.keysym.sym)
     {
-    case SDLK_SPACE:
+    case SDLK_SPACE: // Skip to next stage of intro screen
         if (intro.introPartOne)
         {
             intro.introPartTwo = true;
@@ -61,10 +61,19 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
             intro.moveToCorner = true;
         }
         break;
-    case SDLK_RETURN:
+
+    case SDLK_RETURN: // Save username if its not empty
         if (!intro.inputText.empty())
             intro.introPlayed = true;
-            gameGraphic.getUsername(intro.inputText);
+        gameGraphic.getUsername(intro.inputText);
+        break;
+
+    case SDLK_KP_PLUS: // Skip all intro scene and get default username
+        intro.introPartOne = false;
+        intro.introPartTwo = false;
+        intro.introPlayed = true;
+        gameGraphic.getUsername("LacVanthu");
+        break;
     }
 }
 
