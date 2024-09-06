@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 
                         if (!gameBoard.canMove())
                         {
-                            cout << "Game Over! Merci d'avoir joué." << endl;
+                            gameGraphic.updateGameBoard(gameBoard);
                             gameGraphic.gameOver = true;
                         }
                     }

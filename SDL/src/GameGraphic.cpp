@@ -237,6 +237,8 @@ void GameGraphic::loadGameTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
+    // GameOver
+
     gameOverTexture = element->createTextureText(fontNameGame, "T as perdu nullos ! ", {255, 255, 255, 255});
     if (!gameOverTexture)
     {
@@ -301,6 +303,10 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(pinkRectImgTexture); // Img Pink rect
     SDL_DestroyTexture(resetImgTexture);    // Img reset
     SDL_DestroyTexture(undoImgTexture);     // Img undo
+
+    SDL_DestroyTexture(gameOverTexture); // Text GameOver
+    SDL_DestroyTexture(endTimerTexture); // Text GameOver Timer
+    SDL_DestroyTexture(endScoreTexture); // Text GameOver Score
 }
 
 void GameGraphic::displayGameTexture()
@@ -408,7 +414,10 @@ void GameGraphic::updateScore()
 void GameGraphic::displayChrono()
 {
     Uint32 currentTime = SDL_GetTicks();
-    Uint32 elapsedTime = (currentTime - gameTimer) / 1000;
+    if (!gameOver)
+    {
+        elapsedTime = (currentTime - gameTimer) / 1000;
+    }
 
     int minutes = elapsedTime / 60;
     int seconds = elapsedTime % 60;
@@ -422,7 +431,32 @@ void GameGraphic::displayChrono()
 
 void GameGraphic::displayGameOver()
 {
+    bool textureCreated = false;
+    int minutes = elapsedTime / 60;
+    int seconds = elapsedTime % 60;
+    std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
+    if (!textureCreated)
+    {
+        endTimerTexture = element->createTextureText(fontNameGame, chronoText, {255, 255, 255, 255});
+        if (!endTimerTexture)
+        {
+            cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+        }
+
+        endScoreTexture = element->createTextureText(fontNameGame, to_string(gameBoard.getScore()), {255, 255, 255, 255});
+        if (!endScoreTexture)
+        {
+            cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+        }
+        textureCreated = true;
+    };
+    
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight);
+
+    
+    element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 100);
+    element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 200);
 }
