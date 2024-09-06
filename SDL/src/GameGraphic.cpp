@@ -1,10 +1,22 @@
 #include "GameGraphic.hpp"
 
+#include <fstream>
+#include <iostream>
+
+//** Save Score ***//
+#include <nlohmann/json.hpp>
+#include <fstream> 
+#include <iostream>
+#include <string> 
+using json = nlohmann::json;
+
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
 {
 
     element = new Element(renderer);
+    gameOptions = new GameOptions(renderer, screenWidth, screenHeight); 
+    
 
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
@@ -15,7 +27,10 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
+    gameOptions -> saveScore(gameBoard.getScore()); 
+
     loadGameTexture();
+
     currentTime = SDL_GetTicks();
 }
 

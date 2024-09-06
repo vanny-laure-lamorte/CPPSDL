@@ -5,7 +5,10 @@
 #include <SDL2/SDL_image.h>
 #include "Element.hpp"
 #include "GameBoard.hpp"
+#include "GameOptions.hpp"
 #include "Tile.hpp"
+
+
 using namespace std;
 
 class GameGraphic
@@ -27,6 +30,9 @@ public:
 
 private:
     Element *element;
+    GameOptions *gameOptions; 
+
+
     SDL_Renderer *renderer;
     int screenWidth;
     int screenHeight;
@@ -45,6 +51,8 @@ private:
     SDL_Texture *gameOverTexture; // Text gameOver
     SDL_Texture *endTimerTexture; // Text Timer gameOver
     SDL_Texture *endScoreTexture; // Text Score gameOver
+
+    //** Save Score ***//
 
     //*** TEXTURE ***//
 
