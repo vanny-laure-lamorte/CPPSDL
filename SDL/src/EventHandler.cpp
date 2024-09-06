@@ -64,6 +64,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
     case SDLK_RETURN:
         if (!intro.inputText.empty())
             intro.introPlayed = true;
+            gameGraphic.getUsername(intro.inputText);
     }
 }
 

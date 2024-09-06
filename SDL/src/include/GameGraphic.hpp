@@ -8,7 +8,6 @@
 #include "GameOptions.hpp"
 #include "Tile.hpp"
 
-
 using namespace std;
 
 class GameGraphic
@@ -24,13 +23,14 @@ public:
     // Font
     void displayTitle();
     void displayGrid();
+    void getUsername(std::string username);
 
     void displayGameOver();
     bool gameOver = false;
 
 private:
     Element *element;
-    GameOptions *gameOptions; 
+    GameOptions *gameOptions;
     GameBoard gameBoard;
 
     SDL_Renderer *renderer;
@@ -48,9 +48,9 @@ private:
     void displayChrono();
 
     //*** GameOver ***/
-    SDL_Texture *gameOverTexture; // Text gameOver
-    SDL_Texture *endTimerTexture; // Text Timer gameOver
-    SDL_Texture *endScoreTexture; // Text Score gameOver
+    SDL_Texture *gameOverTexture;    // Text gameOver
+    SDL_Texture *endTimerTexture;    // Text Timer gameOver
+    SDL_Texture *endScoreTexture;    // Text Score gameOver
     SDL_Texture *gameOverIMGTexture; // IMG Score gameOver
     SDL_Texture *chronoTexture;
 
@@ -112,6 +112,11 @@ private:
     TTF_Font *fontBestPlayer;
     TTF_Font *fontGameInfo;
 
-};
+    // username display
+    void displayUsername(); 
+    bool usernameLoaded = false;
+    std::string user = "";
+
+    };
 
 #endif // GAMEGRAPHIC_HPP

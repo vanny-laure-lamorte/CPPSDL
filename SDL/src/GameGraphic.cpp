@@ -16,7 +16,6 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
 
     element = new Element(renderer);
     gameOptions = new GameOptions(renderer, screenWidth, screenHeight);
-
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
     fontNameGame = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 50);
@@ -131,11 +130,7 @@ void GameGraphic::loadGameTexture()
     }
 
     // Text name user
-    textUserInfo1 = element->createTextureText(fontUserProfile, "Alicia Cordial", {255, 255, 255, 255});
-    if (!textUserInfo1)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
+
     textUserInfo2 = element->createTextureText(fontDetailText, "Joined in 2022", {255, 255, 255, 255});
     if (!textUserInfo2)
     {
@@ -343,6 +338,7 @@ void GameGraphic::displayGameTexture()
     displayTitle();
     displayGrid();
     displayChrono();
+    displayUsername();
 }
 
 void GameGraphic::displayTitle()
@@ -386,7 +382,6 @@ void GameGraphic::displayTitle()
     element->displayText(textUndo, fontGameInfo, "Undo", {255, 255, 255, 255}, 540, 38, false, 0, 0);
 
     // Text name user
-    element->displayText(textUserInfo1, fontUserProfile, "Alicia Cordial", {250, 255, 255, 255}, 830, 25, false, 0, 0);
     element->displayText(textUserInfo2, fontDetailText, "Joined in 2022", {250, 255, 255, 255}, 840, 45, false, 0, 0);
 
     // Text best players
@@ -484,10 +479,29 @@ void GameGraphic::displayGameOver()
     element->drawRoundedRectOpacity(440, 200, 420, 420, 10, {252, 244, 153, 220}); // Grid
 
     element->renderTexture(gameOverIMGTexture, 450, 100, 400, 400);
-    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth + 
-    280, screenHeight + 100);
-    element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth + 
-    280, screenHeight + 200);
-    element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth + 
-    280, screenHeight + 300);
+    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 100);
+    element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 200);
+    element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 300);
+}
+
+void GameGraphic::displayUsername()
+{
+    if (user != "")
+    {
+        if (!usernameLoaded)
+        {
+            textUserInfo1 = element->createTextureText(fontUserProfile, user, {255, 255, 255, 255});
+            if (!textUserInfo1)
+            {
+                cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+            }
+            usernameLoaded = true;
+        }
+        element->displayText(textUserInfo1, fontUserProfile, user, {250, 255, 255, 255}, 830, 25, false, 0, 0);
+    }
+}
+
+void GameGraphic::getUsername(std::string username)
+{
+    user = username;
 }
