@@ -1,44 +1,121 @@
-#include "Game.hpp"
+using namespace std;
 #include <iostream>
+#include <SDL2/SDL.h>
+#include "Game.hpp"
+#include "Window.hpp"
+#include "GameGraphic.hpp"
+#include "GameBoard.hpp"
+#include "IntroScreenGraphic.hpp"
 
-Game::Game() : gameBoard() {}
+Game::Game() {};
 
-void Game::play() {
-    char move;
-    while (gameBoard.canMove()) {
-        gameBoard.display();
-        std::cout << "Entrez votre mouvement (z/q/s/d) : ";
-        std::cin >> move;
+int Game::play()
+{
 
-        bool moved = false;
-        switch (move) {
-            case 'q': 
-            case 'Q':
-                moved = gameBoard.moveLeft(); 
-                break;
-            case 'd': 
-            case 'D':
-                moved = gameBoard.moveRight(); 
-                break;
-            case 'z': 
-            case 'Z':
-                moved = gameBoard.moveUp(); 
-                break;
-            case 's': 
-            case 'S':
-                moved = gameBoard.moveDown(); 
-                break;
-            default: 
-                std::cout << "Mouvement invalide ! Utilisez z/q/s/d." << std::endl;
-        }
-
-        if (moved) {
-            gameBoard.addRandomTile();
-        } else {
-            std::cout << "Aucun mouvement effectué. Essayez une autre direction." << std::endl;
-        }
+    // Create window
+    Window window(SCREENWIDTH, SCREENHEIGHT);
+    if (!window.isInitialized())
+    {
+        cerr << "Failed to initialize the window." << endl;
+        return -1;
     }
 
-    gameBoard.display();
-    std::cout << "Game Over! Merci d'avoir joué." << std::endl;
-}
+    SDL_Event windowEvent;
+
+    // Get renderer
+    SDL_Renderer *renderer = window.getRenderer();
+
+    // Create game graphic instance
+    GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
+
+    IntroScreenGraphic intro(renderer, SCREENWIDTH, SCREENHEIGHT);
+
+    // Create game instance
+    GameBoard gameBoard;
+
+    bool running = true;
+    while (running)
+    {
+        while (SDL_PollEvent(&windowEvent))
+        {
+            if (SDL_QUIT == windowEvent.type)
+            {
+                running = false;
+            }
+            else if (windowEvent.type == SDL_KEYUP)
+            {
+                if (!intro.introPlayed)
+                {
+                    switch (windowEvent.key.keysym.sym)
+                    {
+                    case SDLK_SPACE:
+                        if (intro.introPartOne)
+                            intro.introPartOne = false;
+                        else
+                            intro.introPlayed = true;
+                    }
+                }
+                else
+                {
+                    bool moved = false;
+                    switch (windowEvent.key.keysym.sym)
+                    {
+                    case SDLK_q:
+                    case SDLK_LEFT:
+                        moved = gameBoard.moveLeft();
+                        break;
+                    case SDLK_d:
+                    case SDLK_RIGHT:
+                        moved = gameBoard.moveRight();
+                        break;
+                    case SDLK_z:
+                    case SDLK_UP:
+                        moved = gameBoard.moveUp();
+                        break;
+                    case SDLK_s:
+                    case SDLK_DOWN:
+                        moved = gameBoard.moveDown();
+                        break;
+                    }
+
+                    if (moved)
+                    {
+                        gameBoard.addRandomTile();
+                        gameGraphic.updateGameBoard(gameBoard);
+                        gameBoard.display();
+
+                        if (!gameBoard.canMove())
+                        {
+                            gameGraphic.updateGameBoard(gameBoard);
+                            gameGraphic.gameOver = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Clear the screen
+        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255); // Gris foncé
+        SDL_RenderClear(renderer);
+        if (!intro.introPlayed)
+        {
+            intro.displayIntro();
+        }
+        else if (intro.introPlayed && !gameGraphic.gameOver)
+        {
+            gameGraphic.displayGameTexture();
+        }
+        else
+        {
+            gameGraphic.displayGameOver();
+        }
+
+        // Present the renderer
+        SDL_RenderPresent(renderer);
+    }
+
+    // Cleanup
+
+    SDL_Quit();
+    return EXIT_SUCCESS;
+};

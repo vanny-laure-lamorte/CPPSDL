@@ -413,12 +413,15 @@ void GameGraphic::updateScore()
 
 void GameGraphic::displayChrono()
 {
-    Uint32 currentTime = SDL_GetTicks();
+    Uint32 currentTime = SDL_GetTicks(); // Get time 
+
+    // If game is not Over, timer run and milliseconds are transformed into seconds
     if (!gameOver)
     {
         elapsedTime = (currentTime - gameTimer) / 1000;
     }
 
+    // transform second into minutes and second
     int minutes = elapsedTime / 60;
     int seconds = elapsedTime % 60;
 
@@ -432,11 +435,13 @@ void GameGraphic::displayChrono()
 void GameGraphic::displayGameOver()
 {
     bool textureCreated = false;
+
+    // Transform second into minutes and second
     int minutes = elapsedTime / 60;
     int seconds = elapsedTime % 60;
     std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    if (!textureCreated)
+    if (!textureCreated) // Create texture with actual value
     {
         endTimerTexture = element->createTextureText(fontNameGame, chronoText, {255, 255, 255, 255});
         if (!endTimerTexture)
@@ -451,8 +456,9 @@ void GameGraphic::displayGameOver()
         }
         textureCreated = true;
     };
-    
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+    // Display Black screen, message, timer and score
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
     SDL_RenderClear(renderer);
     element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight);
 
