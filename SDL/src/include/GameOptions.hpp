@@ -12,7 +12,7 @@ public:
     GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeight);
     ~GameOptions();
 
-    void saveScore(int score);
+    void saveScore(const string& playerName, const string& score, const string& timer, string matchCount);
 
 private:
     SDL_Renderer *renderer;

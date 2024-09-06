@@ -20,8 +20,12 @@ public:
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
 
-    // Font
-    void displayTitle();
+    void displayRect(); 
+    void displayImg(); 
+    void displayText(); 
+    void displayValue(); 
+    void displayDesign();
+
     void displayGrid();
     void getUsername(std::string username);
 
@@ -37,6 +41,7 @@ private:
     int screenWidth;
     int screenHeight;
 
+
     //*** SCORE ***//
     void updateScore();
     int displayScoreValue;
@@ -48,6 +53,7 @@ private:
     void displayChrono();
 
     //*** GameOver ***/
+    bool textureGameOver = false;
     SDL_Texture *gameOverTexture;    // Text gameOver
     SDL_Texture *endTimerTexture;    // Text Timer gameOver
     SDL_Texture *endScoreTexture;    // Text Score gameOver
@@ -83,7 +89,7 @@ private:
     SDL_Texture *textScore;
     SDL_Texture *textBest;
     SDL_Texture *textTimer;
-    SDL_Texture *textValueScoreUser;
+    SDL_Texture *textValueScoreUser = nullptr;
     SDL_Texture *textValueBestUser;
 
     // Text btn reset and undo

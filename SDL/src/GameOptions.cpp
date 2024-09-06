@@ -5,21 +5,21 @@ using namespace std;
 
 //** Save Score ***//
 #include <nlohmann/json.hpp>
-#include <fstream> 
-#include <string> 
+#include <fstream>
+#include <string>
 using json = nlohmann::json;
 
 #include "Window.hpp"
 
-
 GameOptions::GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeight)
-    : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight){}
+    : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
+{
+}
 
 GameOptions::~GameOptions(){}
 
-// Method to save score 
-void GameOptions::saveScore(int score) {
-
+void GameOptions::saveScore(const string& playerName, const string& score, const string& timer, string matchCount)
+{
     // Give name to the JSON file
     const string filename = "scores.json";
 
@@ -28,23 +28,31 @@ void GameOptions::saveScore(int score) {
 
     // If existing data
     ifstream inputFile(filename);
-    if (inputFile.is_open()) {
-        try {
+    if (inputFile.is_open())
+    {
+        try
+        {
             inputFile >> scoresJson;
-        } catch (json::parse_error& e) {
-            std::cerr << "Error reading JSON file: " << e.what() << endl;
+        }
+        catch (json::parse_error &e)
+        {
+            cerr << "Error reading JSON file: " << e.what() << endl;
             scoresJson = json::array();
         }
         inputFile.close();
-    } else {
+    }
+    else
+    {
         // If the file does not exist
         scoresJson = json::array();
     }
 
     // Create a new score object
     json newScore = {
-        {"score", score}, // Save Score
-        {"timestamp", time(nullptr)} // Save current time
+        {"PlayerName", playerName}, // Save player name
+        {"Score", score},           // Save score
+        {"Time", timer},            // Save current time
+        {"MatchCount", matchCount}  // Save number of matches
     };
 
     // Add the new score object to the array
@@ -52,11 +60,14 @@ void GameOptions::saveScore(int score) {
 
     // Save the updated scores to the file
     ofstream outputFile(filename);
-    if (outputFile.is_open()) {
+    if (outputFile.is_open())
+    {
         outputFile << scoresJson.dump(4);
         outputFile.close();
-        std::cout << "Score saved successfully!" << endl;
-    } else {
+        cout << "Score saved successfully!" << endl;
+    }
+    else
+    {
         cerr << "Error opening file for writing." << endl;
     }
 }
