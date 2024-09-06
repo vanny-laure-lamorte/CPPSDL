@@ -6,12 +6,12 @@ using namespace std;
 #include "GameGraphic.hpp"
 #include "GameBoard.hpp"
 #include "IntroScreenGraphic.hpp"
+#include "EventHandler.hpp"
 
-Game::Game() {};
+Game::Game() {}
 
 int Game::play()
 {
-
     // Create window
     Window window(SCREENWIDTH, SCREENHEIGHT);
     if (!window.isInitialized())
@@ -20,83 +20,31 @@ int Game::play()
         return -1;
     }
 
-    SDL_Event windowEvent;
-
     // Get renderer
-    SDL_Renderer *renderer = window.getRenderer();
+    SDL_Renderer* renderer = window.getRenderer();
 
     // Create game graphic instance
     GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
 
+    // Create intro screen graphic instance
     IntroScreenGraphic intro(renderer, SCREENWIDTH, SCREENHEIGHT);
 
-    // Create game instance
+    // Create game board instance
     GameBoard gameBoard;
+
+    // Create the event handler instance
+    EventHandler eventHandler(intro, gameBoard, gameGraphic);
 
     bool running = true;
     while (running)
     {
-        while (SDL_PollEvent(&windowEvent))
-        {
-            if (SDL_QUIT == windowEvent.type)
-            {
-                running = false;
-            }
-            else if (windowEvent.type == SDL_KEYUP)
-            {
-                if (!intro.introPlayed)
-                {
-                    switch (windowEvent.key.keysym.sym)
-                    {
-                    case SDLK_SPACE:
-                        if (intro.introPartOne)
-                            intro.introPartOne = false;
-                        else
-                            intro.introPlayed = true;
-                    }
-                }
-                else
-                {
-                    bool moved = false;
-                    switch (windowEvent.key.keysym.sym)
-                    {
-                    case SDLK_q:
-                    case SDLK_LEFT:
-                        moved = gameBoard.moveLeft();
-                        break;
-                    case SDLK_d:
-                    case SDLK_RIGHT:
-                        moved = gameBoard.moveRight();
-                        break;
-                    case SDLK_z:
-                    case SDLK_UP:
-                        moved = gameBoard.moveUp();
-                        break;
-                    case SDLK_s:
-                    case SDLK_DOWN:
-                        moved = gameBoard.moveDown();
-                        break;
-                    }
-
-                    if (moved)
-                    {
-                        gameBoard.addRandomTile();
-                        gameGraphic.updateGameBoard(gameBoard);
-                        gameBoard.display();
-
-                        if (!gameBoard.canMove())
-                        {
-                            gameGraphic.updateGameBoard(gameBoard);
-                            gameGraphic.gameOver = true;
-                        }
-                    }
-                }
-            }
-        }
+        // Handle events using the EventHandler class
+        eventHandler.handleEvents(running);
 
         // Clear the screen
-        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255); // Gris foncé
+        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255); // Dark gray
         SDL_RenderClear(renderer);
+
         if (!intro.introPlayed)
         {
             intro.displayIntro();
@@ -115,7 +63,6 @@ int Game::play()
     }
 
     // Cleanup
-
     SDL_Quit();
     return EXIT_SUCCESS;
-};
+}
