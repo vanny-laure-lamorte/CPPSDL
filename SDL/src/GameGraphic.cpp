@@ -5,9 +5,9 @@
 
 //** Save Score ***//
 #include <nlohmann/json.hpp>
-#include <fstream> 
+#include <fstream>
 #include <iostream>
-#include <string> 
+#include <string>
 using json = nlohmann::json;
 
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
@@ -15,8 +15,7 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
 {
 
     element = new Element(renderer);
-    gameOptions = new GameOptions(renderer, screenWidth, screenHeight); 
-    
+    gameOptions = new GameOptions(renderer, screenWidth, screenHeight);
 
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
@@ -27,7 +26,7 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
-    gameOptions -> saveScore(gameBoard.getScore()); 
+    gameOptions->saveScore(gameBoard.getScore());
 
     loadGameTexture();
 
@@ -259,6 +258,12 @@ void GameGraphic::loadGameTexture()
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
+
+    gameOverIMGTexture = element->CreateTexture("assets/img/GameOver.png");
+    if (!gameOverIMGTexture)
+    {
+        cerr << "Failed to create Img texture: " << SDL_GetError() << endl;
+    }
 }
 
 void GameGraphic::unloadAllTextures()
@@ -319,9 +324,12 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(resetImgTexture);    // Img reset
     SDL_DestroyTexture(undoImgTexture);     // Img undo
 
-    SDL_DestroyTexture(gameOverTexture); // Text GameOver
-    SDL_DestroyTexture(endTimerTexture); // Text GameOver Timer
-    SDL_DestroyTexture(endScoreTexture); // Text GameOver Score
+    // GameOver
+    SDL_DestroyTexture(gameOverTexture);    // Text GameOver
+    SDL_DestroyTexture(endTimerTexture);    // Text GameOver Timer
+    SDL_DestroyTexture(endScoreTexture);    // Text GameOver Score
+    SDL_DestroyTexture(chronoTexture);      // Text GameOver Score
+    SDL_DestroyTexture(gameOverIMGTexture); // Img GameOver
 }
 
 void GameGraphic::displayGameTexture()
@@ -428,7 +436,7 @@ void GameGraphic::updateScore()
 
 void GameGraphic::displayChrono()
 {
-    Uint32 currentTime = SDL_GetTicks(); // Get time 
+    Uint32 currentTime = SDL_GetTicks(); // Get time
 
     // If game is not Over, timer run and milliseconds are transformed into seconds
     if (!gameOver)
@@ -442,7 +450,7 @@ void GameGraphic::displayChrono()
 
     std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    SDL_Texture *chronoTexture = element->createTextureText(fontOswald, chronoText.c_str(), element->COLOR_WHITE);
+    chronoTexture = element->createTextureText(fontOswald, chronoText.c_str(), element->COLOR_WHITE);
     element->displayText(chronoTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 755, 105, false, 0, 0);
     SDL_DestroyTexture(chronoTexture);
 }
@@ -473,11 +481,14 @@ void GameGraphic::displayGameOver()
     };
 
     // Display Black screen, message, timer and score
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
-    SDL_RenderClear(renderer);
-    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight);
+    element->drawRoundedRectOpacity(440, 200, 420, 420, 10, {252, 244, 153, 220}); // Grid
 
-    
-    element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 100);
-    element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 200);
+
+    element->renderTexture(gameOverIMGTexture, 450, 100, 400, 400);
+    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth + 
+    280, screenHeight + 100);
+    element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth + 
+    280, screenHeight + 200);
+    element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth + 
+    280, screenHeight + 300);
 }

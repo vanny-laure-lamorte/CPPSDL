@@ -21,7 +21,7 @@ int Game::play()
     }
 
     // Get renderer
-    SDL_Renderer* renderer = window.getRenderer();
+    SDL_Renderer *renderer = window.getRenderer();
 
     // Create game graphic instance
     GameGraphic gameGraphic(renderer, SCREENWIDTH, SCREENHEIGHT);
@@ -49,13 +49,13 @@ int Game::play()
         {
             intro.displayIntro();
         }
-        else if (intro.introPlayed && !gameGraphic.gameOver)
+        else // Display gameScreen
         {
             gameGraphic.displayGameTexture();
-        }
-        else
-        {
-            gameGraphic.displayGameOver();
+            if (gameGraphic.gameOver) // Display gameOver
+            {
+                gameGraphic.displayGameOver();
+            }
         }
 
         // Present the renderer

@@ -31,7 +31,7 @@ public:
 private:
     Element *element;
     GameOptions *gameOptions; 
-
+    GameBoard gameBoard;
 
     SDL_Renderer *renderer;
     int screenWidth;
@@ -51,6 +51,8 @@ private:
     SDL_Texture *gameOverTexture; // Text gameOver
     SDL_Texture *endTimerTexture; // Text Timer gameOver
     SDL_Texture *endScoreTexture; // Text Score gameOver
+    SDL_Texture *gameOverIMGTexture; // IMG Score gameOver
+    SDL_Texture *chronoTexture;
 
     //** Save Score ***//
 
@@ -110,7 +112,6 @@ private:
     TTF_Font *fontBestPlayer;
     TTF_Font *fontGameInfo;
 
-    GameBoard gameBoard;
 };
 
 #endif // GAMEGRAPHIC_HPP

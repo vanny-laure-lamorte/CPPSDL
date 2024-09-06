@@ -3,6 +3,7 @@
 #include "GameBoard.hpp"
 #include "GameGraphic.hpp"
 
+
 // Constructor implementation
 EventHandler::EventHandler(IntroScreenGraphic& intro, GameBoard& gameBoard, GameGraphic& gameGraphic)
     : intro(intro), gameBoard(gameBoard), gameGraphic(gameGraphic) {}
@@ -21,6 +22,7 @@ void EventHandler::handleEvents(bool& running)
         {
             if (!intro.introPlayed)
             {
+
                 handleIntroEvents(windowEvent);
             }
             else
@@ -73,7 +75,6 @@ void EventHandler::handleGameEvents(SDL_Event& windowEvent)
     {
         gameBoard.addRandomTile();
         gameGraphic.updateGameBoard(gameBoard);
-        gameBoard.display();
 
         if (!gameBoard.canMove())
         {

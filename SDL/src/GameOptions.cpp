@@ -13,16 +13,9 @@ using json = nlohmann::json;
 
 
 GameOptions::GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeight)
-    : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
-{
+    : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight){}
 
-
-
-}
-
-GameOptions::~GameOptions()
-{
-}
+GameOptions::~GameOptions(){}
 
 // Method to save score 
 void GameOptions::saveScore(int score) {
