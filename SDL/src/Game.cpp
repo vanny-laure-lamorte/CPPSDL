@@ -55,6 +55,7 @@ int Game::play()
             if (gameGraphic.gameOver) // Display gameOver
             {
                 gameGraphic.displayGameOver();
+                cout << intro.inputText;
             }
         }
 

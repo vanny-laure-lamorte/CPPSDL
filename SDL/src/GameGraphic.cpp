@@ -483,7 +483,6 @@ void GameGraphic::displayGameOver()
     // Display Black screen, message, timer and score
     element->drawRoundedRectOpacity(440, 200, 420, 420, 10, {252, 244, 153, 220}); // Grid
 
-
     element->renderTexture(gameOverIMGTexture, 450, 100, 400, 400);
     element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth + 
     280, screenHeight + 100);
