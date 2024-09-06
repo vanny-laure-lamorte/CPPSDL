@@ -17,6 +17,7 @@ class GameBoard {
     */
 private:
     int size;
+    int score = 0;
 
 public:
     GameBoard(int size = 4);
@@ -31,6 +32,7 @@ public:
     bool isFull() const;
     bool canMove() const;
     std::vector<std::vector<Tile>> tiles;
+    int getScore(){return score;};
 };
 
 #endif // GameBoard_HPP

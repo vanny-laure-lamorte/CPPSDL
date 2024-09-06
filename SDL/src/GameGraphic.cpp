@@ -1,14 +1,22 @@
-#include <iostream>
-using namespace std;
-
 #include "GameGraphic.hpp"
-#include "Element.hpp"
+
+#include <fstream>
+#include <iostream>
+
+//** Save Score ***//
+#include <nlohmann/json.hpp>
+#include <fstream> 
+#include <iostream>
+#include <string> 
+using json = nlohmann::json;
 
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
 {
 
     element = new Element(renderer);
+    gameOptions = new GameOptions(renderer, screenWidth, screenHeight); 
+    
 
     // Font options
     fontOswald = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 35);
@@ -19,7 +27,11 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
 
+    gameOptions -> saveScore(gameBoard.getScore()); 
+
     loadGameTexture();
+
+    currentTime = SDL_GetTicks();
 }
 
 GameGraphic::~GameGraphic()
@@ -52,8 +64,8 @@ void GameGraphic::displayGrid()
             int x = 450 + (100 * j);
             int y = 210 + (100 * i);
 
-                element->drawGradientRect(x, y, 92, 92, element->COLOR_LIGHTGREY, element->COLOR_BLACK, true);
-                
+            element->drawGradientRect(x, y, 92, 92, element->COLOR_LIGHTGREY, element->COLOR_BLACK, true);
+
             if (tile.getValue() != 0)
             {
                 element->drawGradientRectProgressive(x, y, 90, 90, tile.getValue());
@@ -71,8 +83,7 @@ void GameGraphic::displayGrid()
                 SDL_DestroyTexture(textTexture);
             }
             else
-            element->drawGradientRect(x, y, 90, 90, element->COLOR_LIGHTGREYBIS, element->COLOR_DARKGREY, true);
-
+                element->drawGradientRect(x, y, 90, 90, element->COLOR_LIGHTGREYBIS, element->COLOR_DARKGREY, true);
         }
     }
 }
@@ -203,21 +214,8 @@ void GameGraphic::loadGameTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
-    // Text value
-    textValueScoreUser = element->createTextureText(fontBestPlayer, "Value Score", {255, 255, 255, 255});
-    if (!textValueScoreUser)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
-
     textValueBestUser = element->createTextureText(fontBestPlayer, "Value Best", {255, 255, 255, 255});
     if (!textValueBestUser)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
-
-    textValueTimeUser = element->createTextureText(fontBestPlayer, "Value Time", {255, 255, 255, 255});
-    if (!textValueTimeUser)
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
@@ -253,6 +251,14 @@ void GameGraphic::loadGameTexture()
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
+
+    // GameOver
+
+    gameOverTexture = element->createTextureText(fontNameGame, "T as perdu nullos ! ", {255, 255, 255, 255});
+    if (!gameOverTexture)
+    {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
 }
 
 void GameGraphic::unloadAllTextures()
@@ -285,7 +291,6 @@ void GameGraphic::unloadAllTextures()
 
     SDL_DestroyTexture(textValueScoreUser);
     SDL_DestroyTexture(textValueBestUser);
-    SDL_DestroyTexture(textValueTimeUser);
     SDL_DestroyTexture(textValueScorePlayer);
     SDL_DestroyTexture(textValueTimePlayer);
     SDL_DestroyTexture(textValueMatchPlayer);
@@ -304,7 +309,6 @@ void GameGraphic::unloadAllTextures()
     // Value
     SDL_DestroyTexture(textValueScoreUser);   // User score
     SDL_DestroyTexture(textValueBestUser);    // User best
-    SDL_DestroyTexture(textValueTimeUser);    // User time
     SDL_DestroyTexture(textValueScorePlayer); // Best player score
     SDL_DestroyTexture(textValueTimePlayer);  // Best player time
     SDL_DestroyTexture(textValueMatchPlayer); // Best player match
@@ -314,13 +318,23 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(pinkRectImgTexture); // Img Pink rect
     SDL_DestroyTexture(resetImgTexture);    // Img reset
     SDL_DestroyTexture(undoImgTexture);     // Img undo
+
+    SDL_DestroyTexture(gameOverTexture); // Text GameOver
+    SDL_DestroyTexture(endTimerTexture); // Text GameOver Timer
+    SDL_DestroyTexture(endScoreTexture); // Text GameOver Score
 }
 
 void GameGraphic::displayGameTexture()
 {
     element->renderTexture(backgroundTexture, 0, 0, screenWidth, screenHeight);
+    if (displayScoreValue != gameBoard.getScore())
+    {
+        updateScore();
+    };
+
     displayTitle();
     displayGrid();
+    displayChrono();
 }
 
 void GameGraphic::displayTitle()
@@ -379,9 +393,8 @@ void GameGraphic::displayTitle()
     element->displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 580, 77, false, 0, 0);
     element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 750, 75, false, 0, 0);
 
-    element->displayText(textValueScoreUser, fontBestPlayer, "Value Score", {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
-    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);   // Value best
-    element->displayText(textValueTimeUser, fontBestPlayer, "Value Time", {255, 255, 255, 255}, 755, 105, false, 0, 0);   // Value Time
+    element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
+    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);                     // Value best
 
     // Text best player
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 163, 265, false, 0, 0);
@@ -401,4 +414,70 @@ void GameGraphic::displayTitle()
     // Text General Conditions of Use
     element->displayText(textGCU1, fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", element->COLOR_WHITE, 460, 663, false, 0, 0);
     element->displayText(textGCU2, fontDetailText, "in our Privacy Policy - Copyright LuThaVan Production studio 2024", element->COLOR_WHITE, 460, 673, false, 0, 0);
+}
+
+void GameGraphic::updateScore()
+{
+    SDL_DestroyTexture(textValueScoreUser);
+    textValueScoreUser = element->createTextureText(fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255});
+    if (!textValueScoreUser)
+    {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+}
+
+void GameGraphic::displayChrono()
+{
+    Uint32 currentTime = SDL_GetTicks(); // Get time 
+
+    // If game is not Over, timer run and milliseconds are transformed into seconds
+    if (!gameOver)
+    {
+        elapsedTime = (currentTime - gameTimer) / 1000;
+    }
+
+    // transform second into minutes and second
+    int minutes = elapsedTime / 60;
+    int seconds = elapsedTime % 60;
+
+    std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
+    SDL_Texture *chronoTexture = element->createTextureText(fontOswald, chronoText.c_str(), element->COLOR_WHITE);
+    element->displayText(chronoTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 755, 105, false, 0, 0);
+    SDL_DestroyTexture(chronoTexture);
+}
+
+void GameGraphic::displayGameOver()
+{
+    bool textureCreated = false;
+
+    // Transform second into minutes and second
+    int minutes = elapsedTime / 60;
+    int seconds = elapsedTime % 60;
+    std::string chronoText = std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
+    if (!textureCreated) // Create texture with actual value
+    {
+        endTimerTexture = element->createTextureText(fontNameGame, chronoText, {255, 255, 255, 255});
+        if (!endTimerTexture)
+        {
+            cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+        }
+
+        endScoreTexture = element->createTextureText(fontNameGame, to_string(gameBoard.getScore()), {255, 255, 255, 255});
+        if (!endScoreTexture)
+        {
+            cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+        }
+        textureCreated = true;
+    };
+
+    // Display Black screen, message, timer and score
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); 
+    SDL_RenderClear(renderer);
+    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight);
+
+    
+    element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 100);
+    element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight + 200);
 }
