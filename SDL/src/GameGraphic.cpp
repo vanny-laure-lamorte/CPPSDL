@@ -88,9 +88,6 @@ void GameGraphic::displayGrid()
 void GameGraphic::loadGameTexture()
 {
     // Find best Score
-    auto bestScore = gameOptions -> getBestScore(); 
-    std::cout << "Meilleur Score: " << bestScore.first << std::endl;
-    std::cout << "Temps Associé: " << bestScore.second << std::endl;
 
     //*** BACKGROUND ***//
 
@@ -496,7 +493,8 @@ void GameGraphic::displayGameOver()
         }
 
         // Save score at the end of the game
-        gameOptions -> saveScore(to_string(gameBoard.getScore()), chronoText); 
+        gameOptions -> saveScore("Poop", to_string(gameBoard.getScore()), chronoText, "30");
+
 
         textureGameOver = true;
     };
