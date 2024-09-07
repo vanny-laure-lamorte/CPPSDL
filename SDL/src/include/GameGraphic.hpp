@@ -32,6 +32,8 @@ public:
     void displayGameOver();
     bool gameOver = false;
 
+    GameBoard resetGame();
+
 private:
     Element *element;
     GameOptions *gameOptions;

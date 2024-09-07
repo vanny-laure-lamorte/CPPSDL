@@ -5,8 +5,8 @@
 
 //** Save Score ***//
 #include <nlohmann/json.hpp>
-#include <fstream> 
-#include <string> 
+#include <fstream>
+#include <string>
 using json = nlohmann::json;
 
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
@@ -14,11 +14,10 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
 {
 
     element = new Element(renderer);
-    gameOptions = new GameOptions(renderer, screenWidth, screenHeight); 
-    
+    gameOptions = new GameOptions(renderer, screenWidth, screenHeight);
 
     // Test to display the best game
-    auto [playerName, score, time, matchCount] = gameOptions -> getBestScore();
+    auto [playerName, score, time, matchCount] = gameOptions->getBestScore();
 
     // Affichez les résultats
     cout << "Meilleur joueur: " << playerName << endl;
@@ -350,7 +349,8 @@ void GameGraphic::displayGameTexture()
 }
 
 // Methode to display frame with rectangles
-void GameGraphic::displayRect(){        
+void GameGraphic::displayRect()
+{
     // User
     element->drawRoundedRect(150, 260, 220, 70, 10, element->COLOR_DARKGREY); // First Player info
     element->drawRoundedRect(160, 290, 60, 30, 10, element->COLOR_LIGHTGREY); // Score
@@ -358,18 +358,19 @@ void GameGraphic::displayRect(){
     element->drawRoundedRect(300, 290, 60, 30, 10, element->COLOR_LIGHTGREY); // Timer
 
     // Top players
-    element->drawRoundedRectOpacity(150, 345, 220, 312, 10, {42, 42, 57, 220}); 
+    element->drawRoundedRectOpacity(150, 345, 220, 312, 10, {42, 42, 57, 220});
 
     // Game state
-    element->drawRoundedRect(385, 70, 520, 72, 10, element->COLOR_DARKGREY); // Game state info
-    element->drawRoundedRect(400, 100, 152, 35, 10, element->COLOR_LIGHTGREY); // Score
-    element->drawRoundedRect(570, 100, 152, 35, 10, element->COLOR_LIGHTGREY); // Best
-    element->drawRoundedRect(740, 100, 152, 35, 10, element->COLOR_LIGHTGREY); // Timer
+    element->drawRoundedRect(385, 70, 520, 72, 10, element->COLOR_DARKGREY);    // Game state info
+    element->drawRoundedRect(400, 100, 152, 35, 10, element->COLOR_LIGHTGREY);  // Score
+    element->drawRoundedRect(570, 100, 152, 35, 10, element->COLOR_LIGHTGREY);  // Best
+    element->drawRoundedRect(740, 100, 152, 35, 10, element->COLOR_LIGHTGREY);  // Timer
     element->drawRoundedRectOpacity(385, 155, 520, 500, 10, {42, 42, 57, 220}); // Grid
 }
 
-// Method to display images 
-void GameGraphic::displayImg(){
+// Method to display images
+void GameGraphic::displayImg()
+{
 
     // Img profile pictures
     element->renderTexture(userLogoTexture, 770, 15, 40, 40);  // User photo profile
@@ -381,11 +382,12 @@ void GameGraphic::displayImg(){
     element->renderTexture(pinkRectImgTexture, 385, 655, 66, 33); // Rect Rules
 
     // Img reset and undo
-    element->renderTexture(resetImgTexture, 400, 38, 20, 20); 
+    element->renderTexture(resetImgTexture, 400, 38, 20, 20);
     element->renderTexture(undoImgTexture, 505, 38, 20, 20);
 }
 
-void GameGraphic::displayText(){
+void GameGraphic::displayText()
+{
     // Display Name Game
     element->displayText(textTitleTexture, fontNameGame, "2048", {255, 255, 255, 255}, 210, 20, false, 0, 0);
     element->displayText(textCreatorTexture1, fontDetailText, "Created by Lucas Martinie", element->COLOR_WHITE, 205, 80, false, 0, 0);
@@ -403,7 +405,7 @@ void GameGraphic::displayText(){
     element->displayText(textBestPlayer2, fontDetailText, "Joined in 1995", {255, 255, 255, 255}, 235, 240, false, 0, 0); // Player number 1
 
     // Top 5 players
-    element->displayText(textTitleTop, fontBestPlayer, "Top 5 players", {255, 255, 255, 255}, 210, 350, false, 0, 0);      
+    element->displayText(textTitleTop, fontBestPlayer, "Top 5 players", {255, 255, 255, 255}, 210, 350, false, 0, 0);
 
     // Text Game state info
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 410, 75, false, 0, 0);
@@ -424,7 +426,6 @@ void GameGraphic::displayText(){
     // Text General Conditions of Use
     element->displayText(textGCU1, fontDetailText, "This page uses cookies to store data, preferences, and for analytics and ads purposes. Read more", element->COLOR_WHITE, 460, 663, false, 0, 0);
     element->displayText(textGCU2, fontDetailText, "in our Privacy Policy - Copyright LuThaVan Production studio 2024", element->COLOR_WHITE, 460, 673, false, 0, 0);
-
 }
 
 void GameGraphic::displayValue()
@@ -438,15 +439,15 @@ void GameGraphic::displayValue()
     element->displayText(textValueMatchPlayer, fontUserProfile, "Value Match", {255, 255, 255, 255}, 303, 295, false, 0, 0); // Value Time
 
     // Top players
-    element->displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players     
+    element->displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players
 }
 
 void GameGraphic::displayDesign()
 {
     displayRect();
-    displayImg(); 
-    displayText(); 
-    displayValue();     
+    displayImg();
+    displayText();
+    displayValue();
 }
 
 void GameGraphic::updateScore()
@@ -504,8 +505,7 @@ void GameGraphic::displayGameOver()
         }
 
         // Save score at the end of the game
-        gameOptions -> saveScore(user, to_string(gameBoard.getScore()), chronoText, "30");
-
+        gameOptions->saveScore(user, to_string(gameBoard.getScore()), chronoText, "30");
 
         textureGameOver = true;
     };
@@ -539,4 +539,12 @@ void GameGraphic::displayUsername()
 void GameGraphic::getUsername(std::string username)
 {
     user = username;
+}
+
+GameBoard GameGraphic::resetGame()
+{
+    GameBoard newGameBoard;
+    gameBoard = newGameBoard;
+    
+    return gameBoard;
 }

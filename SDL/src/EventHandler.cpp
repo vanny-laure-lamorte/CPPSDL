@@ -99,6 +99,9 @@ void EventHandler::handleGameEvents(SDL_Event &windowEvent)
     case SDLK_DOWN:
         moved = gameBoard.moveDown();
         break;
+    case SDLK_m:
+        gameBoard = gameGraphic.resetGame();
+        break;
     }
 
     if (moved)
