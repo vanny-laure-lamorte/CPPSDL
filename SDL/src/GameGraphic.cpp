@@ -122,7 +122,8 @@ void GameGraphic::infoBestPlayer(){
     if (!textValueBestMatchCount )
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }  
+    }
+   
 
 }
 

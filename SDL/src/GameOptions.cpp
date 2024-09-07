@@ -75,7 +75,6 @@ void GameOptions::saveScore(const string& playerName, const string& score, const
 }
 
 
-
 tuple<string, string, string, string> GameOptions::getBestScore() const
 {
     const string filename = "scores.json";
@@ -97,25 +96,34 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
     }
     else
     {
+        cerr << "Unable to open the file: " << filename << endl;
         return make_tuple("", "", "", "");
     }
 
     string bestPlayerName = "";
-    string bestScore = "0";
+    int bestScore = 0; // Change type to int for correct comparison
     string bestTime = "";
     string bestMatchCount = "";
 
     for (const auto& entry : scoresJson)
     {
-        string currentScore = entry["Score"].get<string>();
-        if (currentScore > bestScore)
+        try
         {
-            bestScore = currentScore;
-            bestPlayerName = entry["PlayerName"].get<string>();
-            bestTime = entry["Time"].get<string>();
-            bestMatchCount = entry["MatchCount"].get<string>();
+            int currentScore = stoi(entry["Score"].get<string>());
+            if (currentScore > bestScore)
+            {
+                bestScore = currentScore;
+                bestPlayerName = entry["PlayerName"].get<string>();
+                bestTime = entry["Time"].get<string>();
+                bestMatchCount = entry["MatchCount"].get<string>();
+            }
+        }
+        catch (const std::exception& e)
+        {
+            cerr << "Error processing score entry: " << e.what() << endl;
+            continue; // Skip to the next entry if there's an error
         }
     }
 
-    return make_tuple(bestPlayerName, bestScore, bestTime, bestMatchCount);
+    return make_tuple(bestPlayerName, to_string(bestScore), bestTime, bestMatchCount);
 }
