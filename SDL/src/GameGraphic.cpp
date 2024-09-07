@@ -36,7 +36,7 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
 
     loadGameTexture();
 
-    currentTime = SDL_GetTicks();
+    startTime = SDL_GetTicks();
 }
 
 GameGraphic::~GameGraphic()
@@ -463,12 +463,12 @@ void GameGraphic::updateScore()
 
 void GameGraphic::displayChrono()
 {
-    Uint32 currentTime = SDL_GetTicks(); // Get time
+    gameTimer = SDL_GetTicks() - startTime;
 
     // If game is not Over, timer run and milliseconds are transformed into seconds
     if (!gameOver)
     {
-        elapsedTime = (currentTime - gameTimer) / 1000;
+        elapsedTime = gameTimer / 1000;
     }
 
     // transform second into minutes and second
@@ -539,18 +539,33 @@ void GameGraphic::displayUsername()
 
 void GameGraphic::getUsername(std::string username)
 {
+    // Get Username and set chrono to 0 when starting the game
     user = username;
+    resetChrono(); 
 }
 
 GameBoard GameGraphic::resetGame()
 {
     GameBoard newGameBoard;
     gameBoard = newGameBoard;
-
+    oldGameBoard = gameBoard;
+    resetChrono();
+    if (gameOver)
+    {
+        gameOver = false;
+    };
     return gameBoard;
 }
 
-GameBoard GameGraphic::undoGame(){
+GameBoard GameGraphic::undoGame()
+{
     gameBoard = oldGameBoard;
     return gameBoard;
+}
+
+void GameGraphic::resetChrono()
+{
+    startTime = SDL_GetTicks();
+    gameTimer = 0;
+    elapsedTime = 0;
 }

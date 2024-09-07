@@ -51,10 +51,11 @@ private:
     int displayScoreValue;
 
     //*** CHRONO ***/
-    Uint32 currentTime = 0;
+    Uint32 startTime = 0;
     Uint32 gameTimer = 0;
     Uint32 elapsedTime = 0;
     void displayChrono();
+    void resetChrono();
 
     //*** GameOver ***/
     bool textureGameOver = false;
