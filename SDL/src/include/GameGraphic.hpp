@@ -41,6 +41,16 @@ private:
     int screenWidth;
     int screenHeight;
 
+    //*** BEST PLAYER INFO ***/ 
+    void infoBestPlayer();
+    string bestPlayerName;
+    string bestScore;
+    string bestTime;
+    string bestMatchCount;
+    SDL_Texture *textValueBestPlayerName;
+    SDL_Texture *textValueBestScore;
+    SDL_Texture *textValueBestTime;
+    SDL_Texture *textValueBestMatchCount;
 
     //*** SCORE ***//
     void updateScore();
@@ -56,8 +66,6 @@ private:
     SDL_Texture *gameOverTexture; // Text gameOver
     SDL_Texture *endTimerTexture; // Text Timer gameOver
     SDL_Texture *endScoreTexture; // Text Score gameOver
-
-    //** Save Score ***//
 
     //*** TEXTURE ***//
 
@@ -96,9 +104,6 @@ private:
     // Text best player info
     SDL_Texture *textBestPlayer1;
     SDL_Texture *textBestPlayer2;
-    SDL_Texture *textValueScorePlayer;
-    SDL_Texture *textValueTimePlayer;
-    SDL_Texture *textValueMatchPlayer;
 
     // Text footer
     SDL_Texture *textViewMore;

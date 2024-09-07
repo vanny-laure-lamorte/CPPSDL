@@ -74,66 +74,48 @@ void GameOptions::saveScore(const string& playerName, const string& score, const
     }
 }
 
+
+
 tuple<string, string, string, string> GameOptions::getBestScore() const
 {
     const string filename = "scores.json";
     json scoresJson;
 
     ifstream inputFile(filename);
-    if (!inputFile.is_open())
+    if (inputFile.is_open())
     {
-        cerr << "Error opening file: " << filename << endl;
+        try
+        {
+            inputFile >> scoresJson;
+        }
+        catch (json::parse_error &e)
+        {
+            cerr << "Error reading JSON file: " << e.what() << endl;
+            return make_tuple("", "", "", "");
+        }
+        inputFile.close();
+    }
+    else
+    {
         return make_tuple("", "", "", "");
     }
-
-    try
-    {
-        inputFile >> scoresJson;
-    }
-    catch (json::parse_error &e)
-    {
-        cerr << "Error reading JSON file: " << e.what() << endl;
-        return make_tuple("", "", "", "");
-    }
-    inputFile.close();
 
     string bestPlayerName = "";
-    double bestScore = -numeric_limits<double>::infinity(); // Use a very small number for comparison
+    string bestScore = "0";
     string bestTime = "";
     string bestMatchCount = "";
 
     for (const auto& entry : scoresJson)
     {
-        // Check if the necessary keys are present
-        if (entry.contains("Score") && entry.contains("PlayerName") &&
-            entry.contains("Time") && entry.contains("MatchCount"))
+        string currentScore = entry["Score"].get<string>();
+        if (currentScore > bestScore)
         {
-            try
-            {
-                double currentScore = stod(entry["Score"].get<string>()); // Convert score to double
-                if (currentScore > bestScore)
-                {
-                    bestScore = currentScore;
-                    bestPlayerName = entry["PlayerName"].get<string>();
-                    bestTime = entry["Time"].get<string>();
-                    bestMatchCount = entry["MatchCount"].get<string>();
-                }
-            }
-            catch (const invalid_argument& e)
-            {
-                cerr << "Invalid score format: " << entry["Score"].get<string>() << endl;
-            }
-            catch (const out_of_range& e)
-            {
-                cerr << "Score value out of range: " << entry["Score"].get<string>() << endl;
-            }
-        }
-        else
-        {
-            cerr << "Missing key in JSON entry" << endl;
+            bestScore = currentScore;
+            bestPlayerName = entry["PlayerName"].get<string>();
+            bestTime = entry["Time"].get<string>();
+            bestMatchCount = entry["MatchCount"].get<string>();
         }
     }
 
-    // Convert bestScore back to string for returning
-    return make_tuple(bestPlayerName, to_string(bestScore), bestTime, bestMatchCount);
+    return make_tuple(bestPlayerName, bestScore, bestTime, bestMatchCount);
 }
