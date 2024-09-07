@@ -97,11 +97,15 @@ void GameGraphic::infoBestPlayer(){
 
 
     // Create texture to display the best player name
+
     textValueBestPlayerName = element->createTextureText(fontBestPlayer, bestPlayerName, {255, 255, 255, 255});
     if (!textValueBestPlayerName)
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
+
+
+
 
     // Create texture to display the best player score
     textValueBestScore = element->createTextureText(fontBestPlayer, bestScore, {255, 255, 255, 255});
@@ -186,11 +190,7 @@ void GameGraphic::loadGameTexture()
     }
 
     // Text Best Player
-    textBestPlayer1 = element->createTextureText(fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255});
-    if (!textBestPlayer1)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
+
     textBestPlayer2 = element->createTextureText(fontDetailText, "Joined in 1995", {255, 255, 255, 255});
     if (!textBestPlayer2)
     {
@@ -229,6 +229,24 @@ void GameGraphic::loadGameTexture()
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
+
+    // Best player info
+
+    // Create texture to display "Time"
+    textTime = element->createTextureText(fontGameInfo, "Time", {255, 255, 255, 255});
+    if (!textTime)
+    {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+    // Create texture to display "Match"
+    textMatch = element->createTextureText(fontGameInfo, "Match", {255, 255, 255, 255});
+    if (!textMatch)
+    {
+        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+    }
+
+
 
     // Text View More
     textViewMore = element->createTextureText(fontDetailTextBold, "View More", element->COLOR_PINK);
@@ -323,8 +341,10 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(textValueBestScore);
     SDL_DestroyTexture(textValueBestTime);
     SDL_DestroyTexture(textValueBestMatchCount);
+    SDL_DestroyTexture(textTime); // Title Time
+    SDL_DestroyTexture(textMatch); // Title Match
 
-    SDL_DestroyTexture(textBestPlayer1);
+
     SDL_DestroyTexture(textBestPlayer2);
 
     SDL_DestroyTexture(textViewMore);
@@ -415,7 +435,6 @@ void GameGraphic::displayText(){
     element->displayText(textUserInfo2, fontDetailText, "Joined in 2022", {250, 255, 255, 255}, 840, 45, false, 0, 0);
 
     // Text best players
-    element->displayText(textBestPlayer1, fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255}, 210, 215, false, 0, 0); // Player number 1
     element->displayText(textBestPlayer2, fontDetailText, "Joined in 1995", {255, 255, 255, 255}, 235, 240, false, 0, 0); // Player number 1
 
     // Top 5 players
@@ -428,8 +447,12 @@ void GameGraphic::displayText(){
 
     // Text best player
     element->displayText(textScore, fontGameInfo, "Score", {255, 255, 255, 255}, 163, 265, false, 0, 0);
-    element->displayText(textBest, fontGameInfo, "Best", {255, 255, 255, 255}, 233, 265, false, 0, 0);
-    element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, 303, 265, false, 0, 0);
+    element->displayText(textTime, fontGameInfo, "Time", {255, 255, 255, 255},233, 265, false, 0, 0);    
+    element->displayText(textMatch, fontGameInfo, "Match", {255, 255, 255, 255},  303, 265, false, 0, 0);
+
+        // element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, false, 0, 0);
+
+    
 
     // Text View More
     element->displayText(textViewMore, fontDetailTextBold, "View More", element->COLOR_PINK, 155, 660, false, 0, 0);
@@ -455,10 +478,13 @@ void GameGraphic::displayValue()
     element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);  
     
     // Display infor best player    
-    element->displayText(textValueBestPlayerName, fontBestPlayer, bestPlayerName, {255, 255, 255, 255}, 160, 290, false, 0, 0);
-    element->displayText(textValueBestScore, fontBestPlayer, bestScore, {255, 255, 255, 255}, 230, 290, false, 0, 0);
-    element->displayText(textValueBestTime, fontBestPlayer, bestTime, {255, 255, 255, 255}, 300, 290, false, 0, 0);
-    // element->displayText(textValueBestMatchCount, fontBestPlayer, bestMatchCount, {255, 255, 255, 255}, 370, 290, false, 0, 0);
+
+    // element->displayText(textBestPlayer1, fontBestPlayer, "Lucas Martinie", {255, 255, 255, 255}, 210, 215, false, 0, 0); // Player number 1
+
+    element->displayText(textValueBestPlayerName, fontBestPlayer, bestPlayerName, {255, 255, 255, 255}, 210, 215, false, 0, 0); // Value Name
+    element->displayText(textValueBestScore, fontBestPlayer, bestScore, {255, 255, 255, 255}, 167, 290, false, 0, 0); // Value Score
+    element->displayText(textValueBestTime, fontBestPlayer, bestTime, {255, 255, 255, 255}, 237, 290, false, 0, 0); // Value Time
+    element->displayText(textValueBestMatchCount, fontBestPlayer, bestMatchCount, {255, 255, 255, 255}, 307, 290, false, 0, 0); // Value Match
 
     // Top players
     element->displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players     

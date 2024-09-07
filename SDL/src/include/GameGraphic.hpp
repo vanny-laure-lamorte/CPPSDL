@@ -47,6 +47,8 @@ private:
     string bestScore;
     string bestTime;
     string bestMatchCount;
+    SDL_Texture *textTime;
+    SDL_Texture *textMatch;
     SDL_Texture *textValueBestPlayerName;
     SDL_Texture *textValueBestScore;
     SDL_Texture *textValueBestTime;
@@ -102,7 +104,6 @@ private:
     SDL_Texture *textUndo;
 
     // Text best player info
-    SDL_Texture *textBestPlayer1;
     SDL_Texture *textBestPlayer2;
 
     // Text footer
