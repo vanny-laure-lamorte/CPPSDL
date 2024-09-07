@@ -56,6 +56,7 @@ GameGraphic::~GameGraphic()
 
 void GameGraphic::updateGameBoard(const GameBoard &newGameBoard)
 {
+    oldGameBoard = gameBoard;
     gameBoard = newGameBoard;
 }
 
@@ -545,6 +546,11 @@ GameBoard GameGraphic::resetGame()
 {
     GameBoard newGameBoard;
     gameBoard = newGameBoard;
-    
+
+    return gameBoard;
+}
+
+GameBoard GameGraphic::undoGame(){
+    gameBoard = oldGameBoard;
     return gameBoard;
 }

@@ -33,11 +33,13 @@ public:
     bool gameOver = false;
 
     GameBoard resetGame();
+    GameBoard undoGame();
 
 private:
     Element *element;
     GameOptions *gameOptions;
     GameBoard gameBoard;
+    GameBoard oldGameBoard;
 
     SDL_Renderer *renderer;
     int screenWidth;
