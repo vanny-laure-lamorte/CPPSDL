@@ -33,6 +33,7 @@ private:
     // Input Rect
     float inputRectWidth = 0;
     float inputRectHeight = 0;
+    SDL_Texture *enterNameTexture;
 
     SDL_Texture *logoAnimatedTexture;
     SDL_Texture *pressKeyTexture;
@@ -64,7 +65,6 @@ public:
     void displayAnimation();
 
     void displayIntro();
-
 };
 
 #endif

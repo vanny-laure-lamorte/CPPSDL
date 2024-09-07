@@ -25,6 +25,7 @@ void IntroScreenGraphic::unloadAllIntroTextures()
     SDL_DestroyTexture(backgroundTexture);
     SDL_DestroyTexture(titleTexture);
     SDL_DestroyTexture(pressSpaceTexture);
+    SDL_DestroyTexture(enterNameTexture);
 }
 
 void IntroScreenGraphic::loadIntroTexture()
@@ -32,6 +33,7 @@ void IntroScreenGraphic::loadIntroTexture()
     logoAnimatedTexture = element->CreateTexture("assets/img/test.png");
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");
     pressSpaceTexture = element->createTextureText(fontOswaldLittle, "Press Space to continue", element->COLOR_WHITE);
+    enterNameTexture = element->createTextureText(fontOswaldLittle, "Please enter your name", element->COLOR_WHITE);
 }
 
 void IntroScreenGraphic::displayIntro()
@@ -96,6 +98,9 @@ void IntroScreenGraphic::displayAnimation()
         element->drawRoundedRect(screenWidth / 2 - inputRectWidth / 2 - 5, screenHeight / 2 - inputRectHeight / 2 - 5, inputRectWidth + 10, inputRectHeight + 10, 10, element->COLOR_PINK);
         element->drawRoundedRect(screenWidth / 2 - inputRectWidth / 2, screenHeight / 2 - inputRectHeight / 2, inputRectWidth, inputRectHeight, 10, element->COLOR_WHITE);
         renderInputText();
+
+        if (typingEnabled) // display ENter your name if input box is ready
+            element->displayText(enterNameTexture, fontOswaldLittle, "Please enter your name", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight - 100);
     }
 }
 
