@@ -8,7 +8,6 @@
 #include "GameOptions.hpp"
 #include "Tile.hpp"
 
-
 using namespace std;
 
 class GameGraphic
@@ -28,14 +27,19 @@ public:
     void displayDesign();
 
     void displayGrid();
-    bool textureGameOver = false;
+    void getUsername(std::string username);
+
     void displayGameOver();
     bool gameOver = false;
 
+    GameBoard resetGame();
+    GameBoard undoGame();
+
 private:
     Element *element;
-    GameOptions *gameOptions; 
-
+    GameOptions *gameOptions;
+    GameBoard gameBoard;
+    GameBoard oldGameBoard;
 
     SDL_Renderer *renderer;
     int screenWidth;
@@ -59,15 +63,19 @@ private:
     int displayScoreValue;
 
     //*** CHRONO ***/
-    Uint32 currentTime = 0;
+    Uint32 startTime = 0;
     Uint32 gameTimer = 0;
     Uint32 elapsedTime = 0;
     void displayChrono();
+    void resetChrono();
 
     //*** GameOver ***/
-    SDL_Texture *gameOverTexture; // Text gameOver
-    SDL_Texture *endTimerTexture; // Text Timer gameOver
-    SDL_Texture *endScoreTexture; // Text Score gameOver
+    bool textureGameOver = false;
+    SDL_Texture *gameOverTexture;    // Text gameOver
+    SDL_Texture *endTimerTexture;    // Text Timer gameOver
+    SDL_Texture *endScoreTexture;    // Text Score gameOver
+    SDL_Texture *gameOverIMGTexture; // IMG Score gameOver
+    SDL_Texture *chronoTexture;
 
     //*** TEXTURE ***//
 
@@ -96,7 +104,7 @@ private:
     SDL_Texture *textScore;
     SDL_Texture *textBest;
     SDL_Texture *textTimer;
-    SDL_Texture *textValueScoreUser;
+    SDL_Texture *textValueScoreUser = nullptr;
     SDL_Texture *textValueBestUser;
 
     // Text btn reset and undo
@@ -121,7 +129,11 @@ private:
     TTF_Font *fontBestPlayer;
     TTF_Font *fontGameInfo;
 
-    GameBoard gameBoard;
-};
+    // username display
+    void displayUsername(); 
+    bool usernameLoaded = false;
+    std::string user = "";
+
+    };
 
 #endif // GAMEGRAPHIC_HPP

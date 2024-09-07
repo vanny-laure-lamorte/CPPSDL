@@ -4,11 +4,11 @@
 #include "GameGraphic.hpp"
 
 // Constructor implementation
-EventHandler::EventHandler(IntroScreenGraphic& intro, GameBoard& gameBoard, GameGraphic& gameGraphic)
+EventHandler::EventHandler(IntroScreenGraphic &intro, GameBoard &gameBoard, GameGraphic &gameGraphic)
     : intro(intro), gameBoard(gameBoard), gameGraphic(gameGraphic) {}
 
 // Main event handling method
-void EventHandler::handleEvents(bool& running)
+void EventHandler::handleEvents(bool &running)
 {
     SDL_Event windowEvent;
     while (SDL_PollEvent(&windowEvent))
@@ -21,6 +21,7 @@ void EventHandler::handleEvents(bool& running)
         {
             if (!intro.introPlayed)
             {
+
                 handleIntroEvents(windowEvent);
             }
             else
@@ -28,25 +29,56 @@ void EventHandler::handleEvents(bool& running)
                 handleGameEvents(windowEvent);
             }
         }
+        else if (windowEvent.type == SDL_TEXTINPUT && intro.typingEnabled)
+        {
+            // Ajoute le texte saisi à la chaîne inputText
+            intro.inputText += windowEvent.text.text;
+        }
+        else if (windowEvent.type == SDL_KEYDOWN && intro.typingEnabled)
+        {
+            // Gère la touche BACKSPACE pour supprimer un caractère
+            if (windowEvent.key.keysym.sym == SDLK_BACKSPACE && !intro.inputText.empty())
+            {
+                intro.inputText.pop_back();
+            }
+        }
     }
 }
 
 // Handling intro-specific events
-void EventHandler::handleIntroEvents(SDL_Event& windowEvent)
+void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
 {
     switch (windowEvent.key.keysym.sym)
     {
-    case SDLK_SPACE:
+    case SDLK_SPACE: // Skip to next stage of intro screen
         if (intro.introPartOne)
+        {
+            intro.introPartTwo = true;
             intro.introPartOne = false;
-        else
+        }
+        else if (intro.introPartTwo)
+        {
+            intro.moveToCorner = true;
+        }
+        break;
+
+    case SDLK_RETURN: // Save username if its not empty
+        if (!intro.inputText.empty())
             intro.introPlayed = true;
+        gameGraphic.getUsername(intro.inputText);
+        break;
+
+    case SDLK_KP_PLUS: // Skip all intro scene and get default username
+        intro.introPartOne = false;
+        intro.introPartTwo = false;
+        intro.introPlayed = true;
+        gameGraphic.getUsername("LacVanthu");
         break;
     }
 }
 
 // Handling game-specific events
-void EventHandler::handleGameEvents(SDL_Event& windowEvent)
+void EventHandler::handleGameEvents(SDL_Event &windowEvent)
 {
     bool moved = false;
     switch (windowEvent.key.keysym.sym)
@@ -66,6 +98,12 @@ void EventHandler::handleGameEvents(SDL_Event& windowEvent)
     case SDLK_s:
     case SDLK_DOWN:
         moved = gameBoard.moveDown();
+        break;
+    case SDLK_m:
+        gameBoard = gameGraphic.resetGame();
+        break;
+    case SDLK_p:
+        gameBoard = gameGraphic.undoGame();
         break;
     }
 

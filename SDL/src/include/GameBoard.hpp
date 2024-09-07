@@ -19,6 +19,7 @@ private:
     int size;
     int score = 0;
 
+
 public:
     GameBoard(int size = 4);
     bool shiftLeft(std::vector<Tile>& line);

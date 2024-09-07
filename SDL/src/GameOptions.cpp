@@ -16,9 +16,7 @@ GameOptions::GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeig
 {
 }
 
-GameOptions::~GameOptions()
-{
-}
+GameOptions::~GameOptions(){}
 
 void GameOptions::saveScore(const string& playerName, const string& score, const string& timer, string matchCount)
 {

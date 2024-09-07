@@ -35,8 +35,6 @@ Element::~Element()
 // Create Texture
 SDL_Texture *Element::CreateTexture(const std::string &imagePath)
 {
-   
-
     SDL_Surface *surface = IMG_Load(imagePath.c_str());
     if (!surface)
     {
@@ -51,8 +49,6 @@ SDL_Texture *Element::CreateTexture(const std::string &imagePath)
         std::cerr << "Failed to create texture from image: " << imagePath << ". Error: " << SDL_GetError() << std::endl;
         return nullptr;
     }
-
-
     return texture;
 }
 
@@ -62,8 +58,6 @@ void Element::renderTexture(SDL_Texture *texture, int x, int y, int width, int h
     SDL_Rect destRect = {x, y, width, height};
     SDL_RenderCopy(renderer, texture, nullptr, &destRect);
 }
-
-
 
 //* FONT *//
 
