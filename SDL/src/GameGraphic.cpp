@@ -90,18 +90,51 @@ void GameGraphic::displayGrid()
     }
 }
 
-
 void GameGraphic::displayTopFivePlayers() {
-
     vector<pair<string, int>> topScores = gameOptions->getTopFiveScores();
 
-    cout << "Debug: Number of players returned: " << topScores.size() << endl;
+    // Colors for text (adjust as needed)
+    SDL_Color textColor = {255, 255, 255, 255}; // White text
 
-    cout << "Top 5 Players:" << endl;
-    for (const auto& playerScore : topScores) {
-        cout << playerScore.first << ": " << playerScore.second << endl;
+    // Vertical offset for text rendering
+    int verticalOffset = 400;
+    int lineHeight = 30; // Height between lines
+
+    // Loop through the top scores and create textures for each
+    for (size_t i = 0; i < topScores.size(); ++i) {
+        const auto& playerScore = topScores[i];
+
+        // Create textures for player name and score
+        playerNameTexture = element -> createTextureText(fontBestPlayer, playerScore.first, textColor);
+        playerScoreTexture = element ->  createTextureText(fontBestPlayer, to_string(playerScore.second), textColor);
+
+        // Calculate positions for text
+        if (playerNameTexture && playerScoreTexture) {
+
+            // X and Y position for player name
+            int nameX = 170; 
+            int nameY = verticalOffset + i * lineHeight; 
+
+            // X and Y position for player score
+            int scoreX = 320; 
+            int scoreY = nameY; 
+
+            // Render the player name texture
+            SDL_Rect nameRect = {nameX, nameY, 0, 0};
+            SDL_QueryTexture(playerNameTexture, nullptr, nullptr, &nameRect.w, &nameRect.h);
+            SDL_RenderCopy(renderer, playerNameTexture, nullptr, &nameRect);
+
+            // Render the player score texture
+            SDL_Rect scoreRect = {scoreX, scoreY, 0, 0};
+            SDL_QueryTexture(playerScoreTexture, nullptr, nullptr, &scoreRect.w, &scoreRect.h);
+            SDL_RenderCopy(renderer, playerScoreTexture, nullptr, &scoreRect);
+     
+        } else {
+            cerr << "Failed to create textures for player score" << endl;
+        }
     }
 }
+
 
 void GameGraphic::infoBestPlayer(){
 
@@ -150,8 +183,7 @@ void GameGraphic::loadGameTexture()
     // Test to display the best game
     infoBestPlayer();
 
-    // Display top 5 players; 
-    displayTopFivePlayers(); 
+
 
     //*** BACKGROUND ***//
 
@@ -352,7 +384,9 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(textValueScoreUser);
     SDL_DestroyTexture(textValueBestUser);
 
-
+    // Best player
+    SDL_DestroyTexture(playerNameTexture);
+    SDL_DestroyTexture(playerScoreTexture);
     
     // Info best player
 
@@ -377,7 +411,6 @@ void GameGraphic::unloadAllTextures()
     // Value
     SDL_DestroyTexture(textValueScoreUser);   // User score
     SDL_DestroyTexture(textValueBestUser);    // User best
-    SDL_DestroyTexture(textValuePlayersTop);  // List top 5 players
 
     // Images
     SDL_DestroyTexture(pinkRectImgTexture); // Img Pink rect
@@ -491,12 +524,7 @@ void GameGraphic::displayText()
 
 void GameGraphic::displayValue()
 {
-    textValuePlayersTop = element->createTextureText(fontBestPlayer, "List Players", {255, 255, 255, 255});
-    if (!textValuePlayersTop)
 
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
     element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
     element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);  
     
@@ -508,9 +536,6 @@ void GameGraphic::displayValue()
     element->displayText(textValueBestScore, fontBestPlayer, bestScore, {255, 255, 255, 255}, 167, 290, false, 0, 0); // Value Score
     element->displayText(textValueBestTime, fontBestPlayer, bestTime, {255, 255, 255, 255}, 237, 290, false, 0, 0); // Value Time
     element->displayText(textValueBestMatchCount, fontBestPlayer, bestMatchCount, {255, 255, 255, 255}, 307, 290, false, 0, 0); // Value Match
-
-    // Top players
-    element->displayText(textValuePlayersTop, fontBestPlayer, "List players", {255, 255, 255, 255}, 235, 400, false, 0, 0); // List players
 }
 
 void GameGraphic::displayDesign()
@@ -519,6 +544,9 @@ void GameGraphic::displayDesign()
     displayImg();
     displayText();
     displayValue();
+
+    // Display top 5 players; 
+    displayTopFivePlayers(); 
 }
 
 void GameGraphic::updateScore()

@@ -38,6 +38,8 @@ public:
     // Top 5 players
     string topPlayerName;
     string topScore;
+    SDL_Texture* playerNameTexture;
+    SDL_Texture* playerScoreTexture;    
     void displayTopFivePlayers();
     
 
@@ -103,7 +105,6 @@ private:
 
     // Text Top 5 players
     SDL_Texture *textTitleTop;
-    SDL_Texture *textValuePlayersTop;
 
     // Text user info
     SDL_Texture *textUserInfo1;
