@@ -72,7 +72,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
         intro.introPartOne = false;
         intro.introPartTwo = false;
         intro.introPlayed = true;
-        gameGraphic.getUsername("LacVanthu");
+        gameGraphic.getUsername("LacVanThu");
         break;
     }
 }

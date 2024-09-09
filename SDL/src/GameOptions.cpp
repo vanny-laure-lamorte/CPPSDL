@@ -9,6 +9,10 @@ using namespace std;
 #include <string>
 using json = nlohmann::json;
 
+//** Top 5 pplayer from json **/
+#include <vector>
+#include <algorithm>
+
 #include "Window.hpp"
 
 GameOptions::GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeight)
@@ -124,4 +128,69 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
     }
 
     return make_tuple(bestPlayerName, to_string(bestScore), bestTime, bestMatchCount);
+}
+
+
+vector<pair<string, int>> GameOptions::getTopFiveScores() const
+{
+    const string filename = "scores.json";
+    json scoresJson;
+
+    ifstream inputFile(filename);
+    if (!inputFile.is_open())
+    {
+        cerr << "Unable to open the file: " << filename << endl;
+        return {}; // Return an empty vector if the file can't be opened
+    }
+
+    try
+    {
+        inputFile >> scoresJson;
+    }
+    catch (json::parse_error &e)
+    {
+        cerr << "Error reading JSON file: " << e.what() << endl;
+        return {}; // Return an empty vector if there's a JSON parse error
+    }
+    inputFile.close();
+
+    vector<pair<string, int>> playerScores;
+
+    for (const auto &entry : scoresJson)
+    {
+        try
+        {
+            if (!entry.contains("PlayerName") || !entry.contains("Score") ||
+                !entry["PlayerName"].is_string() || !entry["Score"].is_string())
+            {
+                cerr << "Invalid data format in entry: " << entry << endl;
+                continue;
+            }
+
+            string playerName = entry["PlayerName"].get<string>();
+            int score = std::stoi(entry["Score"].get<string>()); // Convert score string to integer
+
+            playerScores.push_back(make_pair(playerName, score));
+        }
+        catch (const std::exception &e)
+        {
+            cerr << "Error processing score entry: " << e.what() << endl;
+            continue;
+        }
+    }
+
+    // Sort in descending order by score
+    sort(playerScores.begin(), playerScores.end(),
+         [](const pair<string, int> &a, const pair<string, int> &b)
+         {
+             return a.second > b.second;
+         });
+
+    // Keep only the top 5 scores
+    if (playerScores.size() > 5)
+    {
+        playerScores.resize(5);
+    }
+
+    return playerScores; // Return the vector of player-score pairs
 }

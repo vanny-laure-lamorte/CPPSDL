@@ -1,13 +1,16 @@
-#include "GameGraphic.hpp"
-
-#include <fstream>
 #include <iostream>
+using namespace std;
+
+#include "GameGraphic.hpp"
 
 //** Save Score ***//
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <string>
 using json = nlohmann::json;
+
+// Top 5 players
+#include <vector>
 
 GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight)
     : renderer(renderer), screenWidth(screenWidth), screenHeight(screenHeight)
@@ -24,6 +27,8 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     fontGameInfo = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 16);
     fontUserProfile = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 14);
     fontBestPlayer = element->LoadFont("assets/fonts/Oswald-Medium.ttf", 20);
+
+
 
     loadGameTexture();
 
@@ -86,6 +91,18 @@ void GameGraphic::displayGrid()
 }
 
 
+void GameGraphic::displayTopFivePlayers() {
+
+    vector<pair<string, int>> topScores = gameOptions->getTopFiveScores();
+
+    cout << "Debug: Number of players returned: " << topScores.size() << endl;
+
+    cout << "Top 5 Players:" << endl;
+    for (const auto& playerScore : topScores) {
+        cout << playerScore.first << ": " << playerScore.second << endl;
+    }
+}
+
 void GameGraphic::infoBestPlayer(){
 
     auto [playerName, score, time, matchCount] = gameOptions->getBestScore();
@@ -104,9 +121,6 @@ void GameGraphic::infoBestPlayer(){
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
-
-
-
 
     // Create texture to display the best player score
     textValueBestScore = element->createTextureText(fontBestPlayer, bestScore, {255, 255, 255, 255});
@@ -127,8 +141,7 @@ void GameGraphic::infoBestPlayer(){
     if (!textValueBestMatchCount )
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
-   
+    }  
 
 }
 
@@ -136,6 +149,9 @@ void GameGraphic::loadGameTexture()
 {
     // Test to display the best game
     infoBestPlayer();
+
+    // Display top 5 players; 
+    displayTopFivePlayers(); 
 
     //*** BACKGROUND ***//
 

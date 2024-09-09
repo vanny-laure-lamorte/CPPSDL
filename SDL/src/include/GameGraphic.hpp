@@ -35,6 +35,13 @@ public:
     GameBoard resetGame();
     GameBoard undoGame();
 
+    // Top 5 players
+    string topPlayerName;
+    string topScore;
+    void displayTopFivePlayers();
+    
+
+
 private:
     Element *element;
     GameOptions *gameOptions;
