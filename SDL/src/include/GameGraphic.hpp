@@ -20,10 +20,10 @@ public:
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
 
-    void displayRect(); 
-    void displayImg(); 
-    void displayText(); 
-    void displayValue(); 
+    void displayRect();
+    void displayImg();
+    void displayText();
+    void displayValue();
     void displayDesign();
 
     void displayGrid();
@@ -44,7 +44,6 @@ private:
     SDL_Renderer *renderer;
     int screenWidth;
     int screenHeight;
-
 
     //*** SCORE ***//
     void updateScore();
@@ -123,11 +122,10 @@ private:
     TTF_Font *fontBestPlayer;
     TTF_Font *fontGameInfo;
 
-    // username display
-    void displayUsername(); 
+    //*** USERNAME ***//
+    void displayUsername();
     bool usernameLoaded = false;
     std::string user = "";
-
-    };
+};
 
 #endif // GAMEGRAPHIC_HPP

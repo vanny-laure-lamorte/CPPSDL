@@ -3,7 +3,8 @@
 #include "GameBoard.hpp"
 #include "GameGraphic.hpp"
 
-// Constructor implementation
+#include <iostream>
+
 EventHandler::EventHandler(IntroScreenGraphic &intro, GameBoard &gameBoard, GameGraphic &gameGraphic)
     : intro(intro), gameBoard(gameBoard), gameGraphic(gameGraphic) {}
 
@@ -21,7 +22,6 @@ void EventHandler::handleEvents(bool &running)
         {
             if (!intro.introPlayed)
             {
-
                 handleIntroEvents(windowEvent);
             }
             else
@@ -29,14 +29,16 @@ void EventHandler::handleEvents(bool &running)
                 handleGameEvents(windowEvent);
             }
         }
+        else if (windowEvent.type == SDL_MOUSEBUTTONDOWN)
+        {
+            handleGameEvents(windowEvent);
+        }
         else if (windowEvent.type == SDL_TEXTINPUT && intro.typingEnabled)
         {
-            // Ajoute le texte saisi à la chaîne inputText
             intro.inputText += windowEvent.text.text;
         }
         else if (windowEvent.type == SDL_KEYDOWN && intro.typingEnabled)
         {
-            // Gère la touche BACKSPACE pour supprimer un caractère
             if (windowEvent.key.keysym.sym == SDLK_BACKSPACE && !intro.inputText.empty())
             {
                 intro.inputText.pop_back();
@@ -50,7 +52,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
 {
     switch (windowEvent.key.keysym.sym)
     {
-    case SDLK_SPACE: // Skip to next stage of intro screen
+    case SDLK_SPACE:
         if (intro.introPartOne)
         {
             intro.introPartTwo = true;
@@ -62,13 +64,13 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
         }
         break;
 
-    case SDLK_RETURN: // Save username if its not empty
+    case SDLK_RETURN:
         if (!intro.inputText.empty())
             intro.introPlayed = true;
         gameGraphic.getUsername(intro.inputText);
         break;
 
-    case SDLK_KP_PLUS: // Skip all intro scene and get default username
+    case SDLK_KP_PLUS:
         intro.introPartOne = false;
         intro.introPartTwo = false;
         intro.introPlayed = true;
@@ -81,30 +83,55 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
 void EventHandler::handleGameEvents(SDL_Event &windowEvent)
 {
     bool moved = false;
-    switch (windowEvent.key.keysym.sym)
+
+    // Check for keyboard events
+    if (windowEvent.type == SDL_KEYUP)
     {
-    case SDLK_q:
-    case SDLK_LEFT:
-        moved = gameBoard.moveLeft();
-        break;
-    case SDLK_d:
-    case SDLK_RIGHT:
-        moved = gameBoard.moveRight();
-        break;
-    case SDLK_z:
-    case SDLK_UP:
-        moved = gameBoard.moveUp();
-        break;
-    case SDLK_s:
-    case SDLK_DOWN:
-        moved = gameBoard.moveDown();
-        break;
-    case SDLK_r:
-        gameBoard = gameGraphic.resetGame();
-        break;
-    case SDLK_u:
-        gameBoard = gameGraphic.undoGame();
-        break;
+        switch (windowEvent.key.keysym.sym)
+        {
+        case SDLK_q:
+        case SDLK_LEFT:
+            moved = gameBoard.moveLeft();
+            break;
+        case SDLK_d:
+        case SDLK_RIGHT:
+            moved = gameBoard.moveRight();
+            break;
+        case SDLK_z:
+        case SDLK_UP:
+            moved = gameBoard.moveUp();
+            break;
+        case SDLK_s:
+        case SDLK_DOWN:
+            moved = gameBoard.moveDown();
+            break;
+        case SDLK_r:
+            gameBoard = gameGraphic.resetGame();
+            break;
+        case SDLK_u:
+            gameBoard = gameGraphic.undoGame();
+            break;
+        }
+    }
+    // Check for mouse click events
+    else if (windowEvent.type == SDL_MOUSEBUTTONDOWN)
+    {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
+        // Check if the mouse is on reset button
+        if (mouseX >= resetRect.x && mouseX <= (resetRect.x + resetRect.w) &&
+            mouseY >= resetRect.y && mouseY <= (resetRect.y + resetRect.h))
+        {
+            gameBoard = gameGraphic.resetGame();
+        }
+
+        // Check if the mouse is on undo button
+        if (mouseX >= undoRect.x && mouseX <= (undoRect.x + undoRect.w) &&
+            mouseY >= undoRect.y && mouseY <= (undoRect.y + undoRect.h))
+        {
+            gameBoard = gameGraphic.undoGame();
+        }
     }
 
     if (moved)

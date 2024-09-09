@@ -541,7 +541,7 @@ void GameGraphic::getUsername(std::string username)
 {
     // Get Username and set chrono to 0 when starting the game
     user = username;
-    resetChrono(); 
+    resetChrono();
 }
 
 GameBoard GameGraphic::resetGame()
