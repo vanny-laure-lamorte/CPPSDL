@@ -145,7 +145,7 @@ typedef struct SDL_Renderer SDL_Renderer;
  * An efficient driver-specific representation of pixel data
  */
 struct SDL_Texture;
-typedef struct SDL_Texture SDL_Texture;
+// typedef struct SDL_Texture SDL_Texture;
 
 /* Function prototypes */
 

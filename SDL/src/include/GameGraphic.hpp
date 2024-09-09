@@ -35,6 +35,20 @@ public:
     GameBoard resetGame();
     GameBoard undoGame();
 
+    // Top 5 players
+    string topPlayerName;
+    string topScore;
+    SDL_Texture *textTitleTop;
+    SDL_Texture *playerNameTexture;
+    SDL_Texture *playerScoreTexture;
+    vector<SDL_Texture *> playerNameTextures;
+    vector<SDL_Texture *> playerScoreTextures;
+    
+    void unloadTexturesTopPlayers(); 
+    
+    void loadTopFivePlayers();
+    void displayToFivePlayers();
+
 private:
     Element *element;
     GameOptions *gameOptions;
@@ -44,6 +58,19 @@ private:
     SDL_Renderer *renderer;
     int screenWidth;
     int screenHeight;
+
+    //*** BEST PLAYER INFO ***/
+    void infoBestPlayer();
+    string bestPlayerName;
+    string bestScore;
+    string bestTime;
+    string bestMatchCount;
+    SDL_Texture *textTime;
+    SDL_Texture *textMatch;
+    SDL_Texture *textValueBestPlayerName;
+    SDL_Texture *textValueBestScore;
+    SDL_Texture *textValueBestTime;
+    SDL_Texture *textValueBestMatchCount;
 
     //*** SCORE ***//
     void updateScore();
@@ -64,8 +91,6 @@ private:
     SDL_Texture *gameOverIMGTexture; // IMG Score gameOver
     SDL_Texture *chronoTexture;
 
-    //** Save Score ***//
-
     //*** TEXTURE ***//
 
     // Images Texture
@@ -83,9 +108,7 @@ private:
     SDL_Texture *textCreatorTexture1;
     SDL_Texture *textCreatorTexture2;
 
-    // Text Top 5 players
-    SDL_Texture *textTitleTop;
-    SDL_Texture *textValuePlayersTop;
+    ;
 
     // Text user info
     SDL_Texture *textUserInfo1;
@@ -101,11 +124,7 @@ private:
     SDL_Texture *textUndo;
 
     // Text best player info
-    SDL_Texture *textBestPlayer1;
     SDL_Texture *textBestPlayer2;
-    SDL_Texture *textValueScorePlayer;
-    SDL_Texture *textValueTimePlayer;
-    SDL_Texture *textValueMatchPlayer;
 
     // Text footer
     SDL_Texture *textViewMore;
