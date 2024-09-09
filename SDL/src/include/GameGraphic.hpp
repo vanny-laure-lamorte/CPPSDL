@@ -35,6 +35,12 @@ public:
     GameBoard resetGame();
     GameBoard undoGame();
 
+    // User best score
+    bool scoreFetched;
+    int scoreUserInt;
+    string scoreUserstr;
+    void getUserBestScore(); 
+
     // Top 5 players
     string topPlayerName;
     string topScore;

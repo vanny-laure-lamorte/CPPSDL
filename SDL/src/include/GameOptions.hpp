@@ -20,11 +20,15 @@ public:
     GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeight);
     ~GameOptions();
 
+    // User
     void saveScore(const string& playerName, const string& score, const string& timer, string matchCount);
     tuple<string, string, string, string> getBestScore() const;
+    int getUserScore(const string &playerName) const; 
 
     // Top 5 players info
     vector<pair<string, int>> getTopFiveScores() const ;
+
+
 
 private:
     SDL_Renderer *renderer;

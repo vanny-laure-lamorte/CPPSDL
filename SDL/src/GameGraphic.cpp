@@ -32,7 +32,11 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
 
     loadGameTexture();
 
+    scoreFetched = false;
+
     startTime = SDL_GetTicks();
+
+
 }
 
 GameGraphic::~GameGraphic()
@@ -91,7 +95,8 @@ void GameGraphic::displayGrid()
 }
 
 
-void GameGraphic::loadTopFivePlayers() {
+void GameGraphic::loadTopFivePlayers() {    
+
     vector<pair<string, int>> topScores = gameOptions->getTopFiveScores();
 
     // Colors for text (adjust as needed)
@@ -174,7 +179,6 @@ void GameGraphic::infoBestPlayer(){
 
     auto [playerName, score, time, matchCount] = gameOptions->getBestScore();
 
-    // Initialisation des variables
     bestPlayerName = playerName;
     bestScore = score;
     bestTime = time;
@@ -355,11 +359,9 @@ void GameGraphic::loadGameTexture()
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
     }
 
-    textValueBestUser = element->createTextureText(fontBestPlayer, "Value Best", {255, 255, 255, 255});
-    if (!textValueBestUser)
-    {
-        cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
-    }
+
+
+
 
  
 
@@ -386,6 +388,8 @@ void GameGraphic::loadGameTexture()
     {
         cerr << "Failed to create Img texture: " << SDL_GetError() << endl;
     }
+
+
 }
 
 void GameGraphic::unloadAllTextures()
@@ -502,7 +506,6 @@ void GameGraphic::displayRect()
 // Method to display images
 void GameGraphic::displayImg()
 {
-
     // Img profile pictures
     element->renderTexture(userLogoTexture, 770, 15, 40, 40);  // User photo profile
     element->renderTexture(userLogoTexture, 240, 135, 75, 75); // Best player photo profile
@@ -547,8 +550,6 @@ void GameGraphic::displayText()
     element->displayText(textTime, fontGameInfo, "Time", {255, 255, 255, 255},233, 265, false, 0, 0);    
     element->displayText(textMatch, fontGameInfo, "Match", {255, 255, 255, 255},  303, 265, false, 0, 0);
 
-        // element->displayText(textTimer, fontGameInfo, "Timer", {255, 255, 255, 255}, false, 0, 0);
-
     
 
     // Text View More
@@ -565,8 +566,16 @@ void GameGraphic::displayText()
 void GameGraphic::displayValue()
 {
 
-    element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // Value score
-    element->displayText(textValueBestUser, fontBestPlayer, "Value Best", {255, 255, 255, 255}, 585, 105, false, 0, 0);  
+    element->displayText(textValueScoreUser, fontBestPlayer, to_string(gameBoard.getScore()), {255, 255, 255, 255}, 415, 105, false, 0, 0); // 
+    
+    // Value score
+    // element->displayText(textValueBestUser, fontBestPlayer, scoreUserstr, {255, 255, 255, 255}, 585, 105, false, 0, 0);
+
+       if (textValueBestUser) {
+        element->displayText(textValueBestUser, fontBestPlayer, scoreUserstr, {255, 255, 255, 255}, 585, 105, false, 0, 0);  
+    } else {
+        cerr << "textValueBestUser is null" << endl;
+    }  
     
     // Display infor best player    
 
@@ -580,6 +589,10 @@ void GameGraphic::displayValue()
 
 void GameGraphic::displayDesign()
 {
+    // Create texture to display the user best score
+    getUserBestScore(); 
+
+    // Display rect, image and text
     displayRect();
     displayImg();
     displayText();
@@ -679,6 +692,27 @@ void GameGraphic::getUsername(std::string username)
     user = username;
     resetChrono(); 
 }
+
+
+void GameGraphic::getUserBestScore() {
+
+      if (!scoreFetched) {
+
+            scoreUserInt = gameOptions -> getUserScore(user);
+            cout << "Score of the player: " <<scoreUserInt << endl;
+            scoreFetched = true; 
+            scoreUserstr = to_string(scoreUserInt);
+            cout << "STR score: " <<scoreUserstr << endl;
+
+            textValueBestUser = element->createTextureText(fontBestPlayer,scoreUserstr, {255, 255, 255, 255});
+             if (!textValueBestUser)
+             {
+                cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
+            }      
+        }
+    
+}
+
 
 GameBoard GameGraphic::resetGame()
 {
