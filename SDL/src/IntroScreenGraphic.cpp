@@ -33,6 +33,8 @@ void IntroScreenGraphic::unloadAllIntroTextures()
     SDL_DestroyTexture(directionnalKeyTextTexture);
     SDL_DestroyTexture(rKeyTextTexture);
     SDL_DestroyTexture(uKeyTextTexture);
+
+    SDL_DestroyTexture(userNameInputTexture);
 }
 
 void IntroScreenGraphic::loadIntroTexture()
@@ -49,6 +51,8 @@ void IntroScreenGraphic::loadIntroTexture()
     directionnalKeyTexture = element->CreateTexture("assets/img/directionalKey.png");
     uKeyTexture = element->CreateTexture("assets/img/uKey.png");
     rKeyTexture = element->CreateTexture("assets/img/rKey.png");
+
+    userNameInputTexture = element->CreateTexture("assets/img/userNameInputBox.png");
 }
 
 void IntroScreenGraphic::displayIntro()
@@ -110,13 +114,15 @@ void IntroScreenGraphic::displayAnimation()
     }
     if (moveToCorner && animTransition <= 150) // Draw input box if logo have moved
     {
-        element->drawRoundedRect(screenWidth / 2 - inputRectWidth / 2 - 5, screenHeight / 2 - inputRectHeight / 2 - 5, inputRectWidth + 10, inputRectHeight + 10, 10, element->COLOR_PINK);
-        element->drawRoundedRect(screenWidth / 2 - inputRectWidth / 2, screenHeight / 2 - inputRectHeight / 2, inputRectWidth, inputRectHeight, 10, element->COLOR_WHITE);
+        // element->drawRoundedRect(screenWidth / 2 - inputRectWidth / 2 - 5, screenHeight / 2 - inputRectHeight / 2 - 5, inputRectWidth + 10, inputRectHeight + 10, 10, element->COLOR_PINK);
+        // element->drawRoundedRect(screenWidth / 2 - inputRectWidth / 2, screenHeight / 2 - inputRectHeight / 2, inputRectWidth, inputRectHeight, 10, element->COLOR_WHITE);
+
+        element->renderTexture(userNameInputTexture, screenWidth / 2 - inputRectWidth / 2 - 5, screenHeight / 2 - inputRectHeight / 2 - 5, inputRectWidth + 10, inputRectHeight + 10);
         renderInputText();
 
         if (typingEnabled) // display Enter your name and Key bindings if input box is ready
         {
-            element->displayText(enterNameTexture, fontOswaldLittle, "Please enter your name", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight - 100);
+            element->displayText(enterNameTexture, fontOswaldLittle, "Please enter your name", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight - 150);
 
             element->drawRectOpacity(screenWidth / 2 - 300, 560, 600, 120, element->COLOR_WHITE_TRANSPARENT); // Transparent Rect
 
@@ -172,8 +178,8 @@ void IntroScreenGraphic::animation()
         {
             if (inputRectWidth < screenWidth / 2 - 100)
             {
-                inputRectWidth += 0.90;
-                inputRectHeight += 0.12;
+                inputRectWidth += 1.1;
+                inputRectHeight += 1.2;
             }
             else
             {

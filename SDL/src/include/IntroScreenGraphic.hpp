@@ -35,7 +35,7 @@ private:
     float inputRectHeight = 0;
     SDL_Texture *enterNameTexture;
     SDL_Texture *backgroundTexture;
-
+    
     SDL_Texture *logoAnimatedTexture;
     SDL_Texture *pressKeyTexture;
     SDL_Texture *titleTexture;
@@ -55,6 +55,7 @@ private:
 
     // Input Username
     void renderInputText();
+    SDL_Texture *userNameInputTexture;
 
 public:
     IntroScreenGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight);
