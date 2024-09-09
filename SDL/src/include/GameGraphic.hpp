@@ -20,10 +20,10 @@ public:
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
 
-    void displayRect(); 
-    void displayImg(); 
-    void displayText(); 
-    void displayValue(); 
+    void displayRect();
+    void displayImg();
+    void displayText();
+    void displayValue();
     void displayDesign();
 
     void displayGrid();
@@ -38,11 +38,16 @@ public:
     // Top 5 players
     string topPlayerName;
     string topScore;
-    SDL_Texture* playerNameTexture;
-    SDL_Texture* playerScoreTexture;    
-    void displayTopFivePlayers();
+    SDL_Texture *textTitleTop;
+    SDL_Texture *playerNameTexture;
+    SDL_Texture *playerScoreTexture;
+    vector<SDL_Texture *> playerNameTextures;
+    vector<SDL_Texture *> playerScoreTextures;
     
-
+    void unloadTexturesTopPlayers(); 
+    
+    void loadTopFivePlayers();
+    void displayToFivePlayers();
 
 private:
     Element *element;
@@ -54,7 +59,7 @@ private:
     int screenWidth;
     int screenHeight;
 
-    //*** BEST PLAYER INFO ***/ 
+    //*** BEST PLAYER INFO ***/
     void infoBestPlayer();
     string bestPlayerName;
     string bestScore;
@@ -103,8 +108,7 @@ private:
     SDL_Texture *textCreatorTexture1;
     SDL_Texture *textCreatorTexture2;
 
-    // Text Top 5 players
-    SDL_Texture *textTitleTop;
+    ;
 
     // Text user info
     SDL_Texture *textUserInfo1;
@@ -138,10 +142,9 @@ private:
     TTF_Font *fontGameInfo;
 
     // username display
-    void displayUsername(); 
+    void displayUsername();
     bool usernameLoaded = false;
     std::string user = "";
-
-    };
+};
 
 #endif // GAMEGRAPHIC_HPP

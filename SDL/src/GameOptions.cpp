@@ -12,6 +12,7 @@ using json = nlohmann::json;
 //** Top 5 pplayer from json **/
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
 
 #include "Window.hpp"
 
@@ -20,9 +21,9 @@ GameOptions::GameOptions(SDL_Renderer *renderer, int screenWidth, int screenHeig
 {
 }
 
-GameOptions::~GameOptions(){}
+GameOptions::~GameOptions() {}
 
-void GameOptions::saveScore(const string& playerName, const string& score, const string& timer, string matchCount)
+void GameOptions::saveScore(const string &playerName, const string &score, const string &timer, string matchCount)
 {
     // Give name to the JSON file
     const string filename = "scores.json";
@@ -51,16 +52,46 @@ void GameOptions::saveScore(const string& playerName, const string& score, const
         scoresJson = json::array();
     }
 
-    // Create a new score object
-    json newScore = {
-        {"PlayerName", playerName}, // Save player name
-        {"Score", score},           // Save score
-        {"Time", timer},            // Save current time
-        {"MatchCount", matchCount}  // Save number of matches
-    };
+    // Convert the score from string to integer for comparison
+    int newScoreValue = stoi(score);
+    bool playerExists = false;
 
-    // Add the new score object to the array
-    scoresJson.push_back(newScore);
+    // Iterate through the scores to check if the player already exists
+    for (auto &entry : scoresJson)
+    {
+        // Check if the player name matches
+         if (entry["PlayerName"].get<string>() == playerName)
+        {
+            // Convertir les champs Score et MatchCount de string à int
+            int currentScoreValue = std::stoi(entry["Score"].get<string>());
+            int currentMatchCount = std::stoi(entry["MatchCount"].get<string>());
+
+            // Incrémenter MatchCount
+            entry["MatchCount"] = std::to_string(currentMatchCount + 1);
+
+            // Mettre à jour le score seulement si le nouveau est meilleur
+            if (newScoreValue > currentScoreValue)
+            {
+                entry["Score"] = score; // Met à jour le score avec la nouvelle valeur
+                entry["Time"] = timer;  // Met à jour l'heure si le score est mis à jour
+            }
+
+            playerExists = true; // Marquer que le joueur existe
+            break;
+        }
+    }
+
+    // If the player does not exist, add a new score entry
+    if (!playerExists)
+    {
+        json newScore = {
+            {"PlayerName", playerName}, // Save player name
+            {"Score", score},           // Save score
+            {"Time", timer},            // Save current time
+            {"MatchCount", matchCount}  // Save number of matches
+        };
+        scoresJson.push_back(newScore);
+    }
 
     // Save the updated scores to the file
     ofstream outputFile(filename);
@@ -75,7 +106,6 @@ void GameOptions::saveScore(const string& playerName, const string& score, const
         cerr << "Error opening file for writing." << endl;
     }
 }
-
 
 tuple<string, string, string, string> GameOptions::getBestScore() const
 {
@@ -107,7 +137,7 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
     string bestTime = "";
     string bestMatchCount = "";
 
-    for (const auto& entry : scoresJson)
+    for (const auto &entry : scoresJson)
     {
         try
         {
@@ -120,7 +150,7 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
                 bestMatchCount = entry["MatchCount"].get<string>();
             }
         }
-        catch (const std::exception& e)
+        catch (const std::exception &e)
         {
             cerr << "Error processing score entry: " << e.what() << endl;
             continue; // Skip to the next entry if there's an error
@@ -129,7 +159,6 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
 
     return make_tuple(bestPlayerName, to_string(bestScore), bestTime, bestMatchCount);
 }
-
 
 vector<pair<string, int>> GameOptions::getTopFiveScores() const
 {

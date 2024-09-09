@@ -2,50 +2,25 @@
     {
         "MatchCount": "40",
         "PlayerName": "Lucas Martinie",
-        "Score": "100",
+        "Score": "10",
         "Time": "0:46"
     },
     {
-        "MatchCount": "20",
+        "MatchCount": "13",
         "PlayerName": "Vanny Lamorte",
-        "Score": "200",
-        "Time": "0:46"
+        "Score": "8348",
+        "Time": "0:23"
     },
     {
         "MatchCount": "50",
         "PlayerName": "Thanh Lemelle",
-        "Score": "300",
+        "Score": "30",
         "Time": "0:46"
     },
     {
         "MatchCount": "100",
         "PlayerName": "Alicia Cordial",
-        "Score": "400",
+        "Score": "40",
         "Time": "1:06"
-    }, 
-    {
-        "MatchCount": "40",
-        "PlayerName": "Lucas Martinie",
-        "Score": "500",
-        "Time": "0:46"
-    },
-    {
-        "MatchCount": "20",
-        "PlayerName": "Vanny Lamorte",
-        "Score": "600",
-        "Time": "0:46"
-    },
-    {
-        "MatchCount": "50",
-        "PlayerName": "Thanh Lemelle",
-        "Score": "700",
-        "Time": "0:46"
-    },
-    {
-        "MatchCount": "100",
-        "PlayerName": "Alicia Cordial",
-        "Score": "800",
-        "Time": "1:06"
-    }   
-   
+    }
 ]

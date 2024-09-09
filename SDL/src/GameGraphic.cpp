@@ -90,50 +90,84 @@ void GameGraphic::displayGrid()
     }
 }
 
-void GameGraphic::displayTopFivePlayers() {
+
+void GameGraphic::loadTopFivePlayers() {
     vector<pair<string, int>> topScores = gameOptions->getTopFiveScores();
 
     // Colors for text (adjust as needed)
     SDL_Color textColor = {255, 255, 255, 255}; // White text
 
-    // Vertical offset for text rendering
-    int verticalOffset = 400;
-    int lineHeight = 30; // Height between lines
+    // Clear existing textures if any
+    playerNameTextures.clear();
+    playerScoreTextures.clear();
 
     // Loop through the top scores and create textures for each
-    for (size_t i = 0; i < topScores.size(); ++i) {
-        const auto& playerScore = topScores[i];
-
+    for (const auto& playerScore : topScores) {
         // Create textures for player name and score
-        playerNameTexture = element -> createTextureText(fontBestPlayer, playerScore.first, textColor);
-        playerScoreTexture = element ->  createTextureText(fontBestPlayer, to_string(playerScore.second), textColor);
+        SDL_Texture* playerNameTexture = element->createTextureText(fontBestPlayer, playerScore.first, textColor);
+        SDL_Texture* playerScoreTexture = element->createTextureText(fontBestPlayer, std::to_string(playerScore.second), textColor);
 
-        // Calculate positions for text
+        // Check if textures were created successfully
         if (playerNameTexture && playerScoreTexture) {
-
-            // X and Y position for player name
-            int nameX = 170; 
-            int nameY = verticalOffset + i * lineHeight; 
-
-            // X and Y position for player score
-            int scoreX = 320; 
-            int scoreY = nameY; 
-
-            // Render the player name texture
-            SDL_Rect nameRect = {nameX, nameY, 0, 0};
-            SDL_QueryTexture(playerNameTexture, nullptr, nullptr, &nameRect.w, &nameRect.h);
-            SDL_RenderCopy(renderer, playerNameTexture, nullptr, &nameRect);
-
-            // Render the player score texture
-            SDL_Rect scoreRect = {scoreX, scoreY, 0, 0};
-            SDL_QueryTexture(playerScoreTexture, nullptr, nullptr, &scoreRect.w, &scoreRect.h);
-            SDL_RenderCopy(renderer, playerScoreTexture, nullptr, &scoreRect);
-     
+            // Store the textures
+            playerNameTextures.push_back(playerNameTexture);
+            playerScoreTextures.push_back(playerScoreTexture);
         } else {
             cerr << "Failed to create textures for player score" << endl;
         }
     }
 }
+
+void GameGraphic::unloadTexturesTopPlayers() {
+    // Unload playerNameTextures
+    for (SDL_Texture* texture : playerNameTextures) {
+        if (texture) {
+            SDL_DestroyTexture(texture);
+        }
+    }
+    playerNameTextures.clear(); // Clear the vector after unloading
+
+    // Unload playerScoreTextures
+    for (SDL_Texture* texture : playerScoreTextures) {
+        if (texture) {
+            SDL_DestroyTexture(texture);
+        }
+    }
+    playerScoreTextures.clear(); // Clear the vector after unloading
+}
+
+
+void GameGraphic::displayToFivePlayers() {
+    // Define the positions and offsets
+    int verticalOffset = 400;
+    int lineHeight = 30; // Height between lines
+
+    for (size_t i = 0; i < playerNameTextures.size(); ++i) {
+        // Get the textures
+        SDL_Texture* playerNameTexture = playerNameTextures[i];
+        SDL_Texture* playerScoreTexture = playerScoreTextures[i];
+
+        // Calculate positions for text
+        int nameX = 170;
+        int nameY = verticalOffset + i * lineHeight;
+
+        // X and Y position for player score
+        int scoreX = 320;
+        int scoreY = nameY;
+
+        // Render the player name texture
+        SDL_Rect nameRect = {nameX, nameY, 0, 0};
+        SDL_QueryTexture(playerNameTexture, nullptr, nullptr, &nameRect.w, &nameRect.h);
+        SDL_RenderCopy(renderer, playerNameTexture, nullptr, &nameRect);
+
+        // Render the player score texture
+        SDL_Rect scoreRect = {scoreX, scoreY, 0, 0};
+        SDL_QueryTexture(playerScoreTexture, nullptr, nullptr, &scoreRect.w, &scoreRect.h);
+        SDL_RenderCopy(renderer, playerScoreTexture, nullptr, &scoreRect);
+    }
+}
+
+
 
 
 void GameGraphic::infoBestPlayer(){
@@ -180,9 +214,11 @@ void GameGraphic::infoBestPlayer(){
 
 void GameGraphic::loadGameTexture()
 {
-    // Test to display the best game
+    // Load textures to display info of player number 1
     infoBestPlayer();
 
+    // Load texture to display top five best players
+    loadTopFivePlayers();
 
 
     //*** BACKGROUND ***//
@@ -384,9 +420,6 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(textValueScoreUser);
     SDL_DestroyTexture(textValueBestUser);
 
-    // Best player
-    SDL_DestroyTexture(playerNameTexture);
-    SDL_DestroyTexture(playerScoreTexture);
     
     // Info best player
 
@@ -396,6 +429,10 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(textValueBestMatchCount);
     SDL_DestroyTexture(textTime); // Title Time
     SDL_DestroyTexture(textMatch); // Title Match
+
+        // Top 5 best player
+    SDL_DestroyTexture(playerNameTexture);
+    SDL_DestroyTexture(playerScoreTexture);
 
 
     SDL_DestroyTexture(textBestPlayer2);
@@ -423,6 +460,8 @@ void GameGraphic::unloadAllTextures()
     SDL_DestroyTexture(endScoreTexture);    // Text GameOver Score
     SDL_DestroyTexture(chronoTexture);      // Text GameOver Score
     SDL_DestroyTexture(gameOverIMGTexture); // Img GameOver
+
+    unloadTexturesTopPlayers(); 
 }
 
 void GameGraphic::displayGameTexture()
@@ -437,6 +476,7 @@ void GameGraphic::displayGameTexture()
     displayGrid();
     displayChrono();
     displayUsername();
+    displayToFivePlayers();
 }
 
 // Methode to display frame with rectangles
@@ -545,8 +585,6 @@ void GameGraphic::displayDesign()
     displayText();
     displayValue();
 
-    // Display top 5 players; 
-    displayTopFivePlayers(); 
 }
 
 void GameGraphic::updateScore()
