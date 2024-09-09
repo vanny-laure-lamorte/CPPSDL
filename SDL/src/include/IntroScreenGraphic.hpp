@@ -34,6 +34,7 @@ private:
     float inputRectWidth = 0;
     float inputRectHeight = 0;
     SDL_Texture *enterNameTexture;
+    SDL_Texture *backgroundTexture;
 
     SDL_Texture *logoAnimatedTexture;
     SDL_Texture *pressKeyTexture;
@@ -41,7 +42,13 @@ private:
     SDL_Texture *pressSpaceTexture;
     bool displayPressSpace = false;
 
-    SDL_Texture *backgroundTexture;
+    SDL_Texture *directionnalKeyTexture;
+    SDL_Texture *uKeyTexture;
+    SDL_Texture *rKeyTexture;
+
+    SDL_Texture *directionnalKeyTextTexture;
+    SDL_Texture *rKeyTextTexture;
+    SDL_Texture *uKeyTextTexture;
 
     Uint32 startTime;
     Uint32 colorChangeDuration = 5000;

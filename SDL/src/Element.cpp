@@ -251,3 +251,16 @@ void Element::drawGradientRectProgressive(int x, int y, int width, int height, i
         SDL_RenderDrawLine(renderer, x + i, y, x + i, y + height);
     }
 }
+
+void Element::drawRectOpacity(int x, int y, int width, int height, SDL_Color color)
+{
+    // Enable blending mode for transparency
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+    // Set the draw color with opacity
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+
+    // Draw the main body of the rectangle
+    SDL_Rect rect = {x, y, width, height};
+    SDL_RenderFillRect(renderer, &rect);
+}
