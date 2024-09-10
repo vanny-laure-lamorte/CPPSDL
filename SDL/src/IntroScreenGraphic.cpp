@@ -43,11 +43,11 @@ void IntroScreenGraphic::loadIntroTexture()
     logoAnimatedTexture = element->CreateTexture("assets/img/test.png");
     backgroundTexture = element->CreateTexture("assets/img/background.jpg");
     pressSpaceTexture = element->createTextureText(fontOswaldLittle, "Press Space to continue", element->COLOR_WHITE);
-    enterNameTexture = element->createTextureText(fontOswaldLittle, "Please enter your name", element->COLOR_WHITE);
+    enterNameTexture = element->createTextureText(fontOswaldLittle, "Enter your name", element->COLOR_WHITE);
 
-    directionnalKeyTextTexture = element->createTextureText(fontOswaldLittle, "Use ZQSD (or arrows) to move tiles", element->COLOR_WHITE);
-    uKeyTextTexture = element->createTextureText(fontOswaldLittle, "Press u to undo last move", element->COLOR_WHITE);
-    rKeyTextTexture = element->createTextureText(fontOswaldLittle, "Press r to reset game", element->COLOR_WHITE);
+    directionnalKeyTextTexture = element->createTextureText(fontOswaldLittle, "Use ZQSD or arrows to move tiles", element->COLOR_WHITE);
+    uKeyTextTexture = element->createTextureText(fontOswaldLittle, "Undo last move", element->COLOR_WHITE);
+    rKeyTextTexture = element->createTextureText(fontOswaldLittle, "Reset the game", element->COLOR_WHITE);
 
     directionnalKeyTexture = element->CreateTexture("assets/img/directionalKey.png");
     uKeyTexture = element->CreateTexture("assets/img/uKey.png");
@@ -124,19 +124,19 @@ void IntroScreenGraphic::displayAnimation()
 
         if (typingEnabled) // display Enter your name and Key bindings if input box is ready
         {
-            element->displayText(enterNameTexture, fontOswaldLittle, "Please enter your name", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight - 150);
-            element->renderTexture(pressStartTexture, screenWidth / 2 - 100, 400, 200, 30); // Start button
+            element->displayText(enterNameTexture, fontOswaldLittle, "Enter your name", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight - 150);
+            element->renderTexture(pressStartTexture, screenWidth / 2 - 64, 400, 128, 33); // Start button
 
             element->drawRectOpacity(screenWidth / 2 - 300, 560, 600, 120, element->COLOR_WHITE_TRANSPARENT); // Transparent Rect
 
             element->renderTexture(directionnalKeyTexture, 280, 500, 225, 225); // ZQSD/arrow keys
-            element->displayText(directionnalKeyTextTexture, fontOswaldLittle, "Use ZQSD (or arrows) to move tiles", element->COLOR_WHITE, 270, 650, false, 0, 0);
+            element->displayText(directionnalKeyTextTexture, fontOswaldLittle, "Use ZQSD or arrows to move tiles", element->COLOR_WHITE, 270, 650, false, 0, 0);
 
             element->renderTexture(uKeyTexture, 570, 570, 50, 50);
-            element->displayText(uKeyTextTexture, fontOswaldLittle, "Press u to undo last move", element->COLOR_WHITE, 615, 580, false, 0, 0);
+            element->displayText(uKeyTextTexture, fontOswaldLittle, "Undo last move", element->COLOR_WHITE, 615, 580, false, 0, 0);
 
             element->renderTexture(rKeyTexture, 570, 620, 50, 50);
-            element->displayText(rKeyTextTexture, fontOswaldLittle, "Press r to reset game", element->COLOR_WHITE, 615, 630, false, 0, 0);
+            element->displayText(rKeyTextTexture, fontOswaldLittle, "Reset the game", element->COLOR_WHITE, 615, 630, false, 0, 0);
         }
     }
 }
