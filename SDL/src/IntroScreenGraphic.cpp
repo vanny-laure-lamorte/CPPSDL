@@ -35,6 +35,7 @@ void IntroScreenGraphic::unloadAllIntroTextures()
     SDL_DestroyTexture(uKeyTextTexture);
 
     SDL_DestroyTexture(userNameInputTexture);
+    SDL_DestroyTexture(pressStartTexture);
 }
 
 void IntroScreenGraphic::loadIntroTexture()
@@ -53,6 +54,7 @@ void IntroScreenGraphic::loadIntroTexture()
     rKeyTexture = element->CreateTexture("assets/img/rKey.png");
 
     userNameInputTexture = element->CreateTexture("assets/img/userNameInputBox.png");
+    pressStartTexture = element->CreateTexture("assets/img/btn_start.png");
 }
 
 void IntroScreenGraphic::displayIntro()
@@ -123,6 +125,7 @@ void IntroScreenGraphic::displayAnimation()
         if (typingEnabled) // display Enter your name and Key bindings if input box is ready
         {
             element->displayText(enterNameTexture, fontOswaldLittle, "Please enter your name", element->COLOR_WHITE, 0, 0, true, screenWidth, screenHeight - 150);
+            element->renderTexture(pressStartTexture, screenWidth / 2 - 100, 400, 200, 30); // Start button
 
             element->drawRectOpacity(screenWidth / 2 - 300, 560, 600, 120, element->COLOR_WHITE_TRANSPARENT); // Transparent Rect
 

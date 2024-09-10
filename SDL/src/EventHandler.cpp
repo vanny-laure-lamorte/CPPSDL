@@ -22,16 +22,23 @@ void EventHandler::handleEvents(bool &running)
         {
             if (!intro.introPlayed)
             {
-                handleIntroEvents(windowEvent);
+                handleIntroEvents(windowEvent);  // Intro key events
             }
             else
             {
-                handleGameEvents(windowEvent);
+                handleGameEvents(windowEvent);  // Game key events
             }
         }
         else if (windowEvent.type == SDL_MOUSEBUTTONDOWN)
         {
-            handleGameEvents(windowEvent);
+            if (!intro.introPlayed)
+            {
+                handleIntroEvents(windowEvent);  // Intro mouse events
+            }
+            else
+            {
+                handleGameEvents(windowEvent);  // Game mouse events
+            }
         }
         else if (windowEvent.type == SDL_TEXTINPUT && intro.typingEnabled)
         {
@@ -46,6 +53,7 @@ void EventHandler::handleEvents(bool &running)
         }
     }
 }
+
 
 // Handling intro-specific events
 void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
@@ -66,8 +74,10 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
 
     case SDLK_RETURN:
         if (!intro.inputText.empty())
+        {
             intro.introPlayed = true;
-        gameGraphic.getUsername(intro.inputText);
+            gameGraphic.getUsername(intro.inputText);
+        }
         break;
 
     case SDLK_KP_PLUS:
@@ -76,6 +86,23 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
         intro.introPlayed = true;
         gameGraphic.getUsername("LacVanThu");
         break;
+    }
+
+    // Handle mouse click for PressStartRect
+    if (windowEvent.type == SDL_MOUSEBUTTONDOWN)
+    {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
+        if (mouseX >= PressStartRect.x && mouseX <= (PressStartRect.x + PressStartRect.w) &&
+            mouseY >= PressStartRect.y && mouseY <= (PressStartRect.y + PressStartRect.h))
+        {
+            if (!intro.inputText.empty())
+            {
+                intro.introPlayed = true;
+                gameGraphic.getUsername(intro.inputText);
+            }
+        }
     }
 }
 

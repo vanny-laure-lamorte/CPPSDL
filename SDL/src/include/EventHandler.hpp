@@ -28,6 +28,7 @@ private:
     //*** Undo/Reset Rect***//
     SDL_Rect undoRect = {495, 25, 90, 47};
     SDL_Rect resetRect = {390, 25, 90, 47};
+    SDL_Rect PressStartRect = {425, 400, 200, 30}; // Start button
 };
 
 #endif // EVENTHANDLER_HPP
