@@ -150,10 +150,10 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
                 bestMatchCount = entry["MatchCount"].get<string>();
             }
         }
-        catch (const std::exception &e)
+        catch (const exception &e)
         {
             cerr << "Error processing score entry: " << e.what() << endl;
-            continue; // Skip to the next entry if there's an error
+            continue; 
         }
     }
 
@@ -222,4 +222,53 @@ vector<pair<string, int>> GameOptions::getTopFiveScores() const
     }
 
     return playerScores; // Return the vector of player-score pairs
+}
+
+// Method to 
+int GameOptions::getUserScore(const string &playerName) const
+{
+    // Name of the JSON file
+    const string filename = "scores.json";
+    json scoresJson;
+
+    // Open the file to read existing scores
+    ifstream inputFile(filename);
+    if (inputFile.is_open())
+    {
+        try
+        {
+            inputFile >> scoresJson;
+        }
+        catch (json::parse_error &e)
+        {
+            cerr << "Error reading JSON file: " << e.what() << endl;
+            return 0; // Return 0 in case of JSON read error
+        }
+        inputFile.close();
+    }
+    else
+    {
+        cerr << "Unable to open the file: " << filename << endl;
+        return 0; // Return 0 if the file cannot be opened
+    }
+
+    // Iterate through the entries to find the player
+    for (const auto &entry : scoresJson)
+    {
+        try
+        {
+            if (entry["PlayerName"].get<string>() == playerName)
+            {
+                // Return the player's score if found
+                return stoi(entry["Score"].get<string>());
+            }
+        }
+        catch (const exception &e)
+        {
+            cerr << "Error processing score entry: " << e.what() << endl;
+        }
+    }
+
+    // Return 0 if the player is not found
+    return 0;
 }
