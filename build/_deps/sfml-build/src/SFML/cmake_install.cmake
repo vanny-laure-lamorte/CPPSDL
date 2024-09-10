@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-src/src/SFML
+# Install script for directory: C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-src/src/SFML
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "Release")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -32,14 +32,19 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set path to fallback-tool for dependency-resolution.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "C:/msys64/mingw64/bin/objdump.exe")
+endif()
+
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-build/src/SFML/System/cmake_install.cmake")
-  include("C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-build/src/SFML/Main/cmake_install.cmake")
-  include("C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-build/src/SFML/Window/cmake_install.cmake")
-  include("C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-build/src/SFML/Network/cmake_install.cmake")
-  include("C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-build/src/SFML/Graphics/cmake_install.cmake")
-  include("C:/Users/tslem/Desktop/Laplateforme/bachelore2/depot/cpp/projetGroupe/CPPSDL/build/_deps/sfml-build/src/SFML/Audio/cmake_install.cmake")
+  include("C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-build/src/SFML/System/cmake_install.cmake")
+  include("C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-build/src/SFML/Main/cmake_install.cmake")
+  include("C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-build/src/SFML/Window/cmake_install.cmake")
+  include("C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-build/src/SFML/Network/cmake_install.cmake")
+  include("C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-build/src/SFML/Graphics/cmake_install.cmake")
+  include("C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/build/_deps/sfml-build/src/SFML/Audio/cmake_install.cmake")
 
 endif()
 
