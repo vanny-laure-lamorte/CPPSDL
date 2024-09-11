@@ -147,6 +147,19 @@ void GameGraphic::displayGrid()
     }
 }
 
+void GameGraphic::displayBackGrid()
+{
+    for (int i = 0; i < 4; ++i)
+    {
+        for (int j = 0; j < 4; ++j)
+        {
+            int x = 450 + (100 * j);
+            int y = 210 + (100 * i);
+            element->drawGradientRect(x, y, 92, 92, element->COLOR_LIGHTGREY, element->COLOR_BLACK, true);
+        }
+    }
+}
+
 void GameGraphic::loadTopFivePlayers()
 {
 
@@ -521,6 +534,7 @@ void GameGraphic::displayGameTexture()
     };
 
     displayDesign();
+    displayBackGrid();
     displayGrid();
     displayChrono();
     displayUsername();

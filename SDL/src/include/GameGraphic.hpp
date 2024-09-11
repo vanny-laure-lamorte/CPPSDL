@@ -69,7 +69,7 @@ public:
 
     GameBoard gameBoard;
     GameBoard oldGameBoard;
-    
+
 private:
     Element *element;
     GameOptions *gameOptions;
@@ -102,6 +102,9 @@ private:
     Uint32 elapsedTime = 0;
     void displayChrono();
     void resetChrono();
+
+    //*** BACK GRID ***//
+    void displayBackGrid();
 
     //*** GameOver ***/
     bool textureGameOver = false;
