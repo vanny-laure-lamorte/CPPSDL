@@ -32,8 +32,14 @@ public:
     void displayUserProfile(); // User Profile
     void displayTopPlayer(); // Top players
     void displayResetUndo(); // Reset and Undo
+
+    void displayChrono(); // Timer
+    void resetChrono();
     
 private:
+
+    sf::Clock clock;
+
     std::unique_ptr<Element> element;
     sf::RenderWindow* window;
     int screenWidth;
