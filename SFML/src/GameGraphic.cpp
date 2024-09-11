@@ -6,14 +6,14 @@ GameGraphic::GameGraphic(sf::RenderWindow* window, int screenWidth, int screenHe
     element = std::make_unique<Element>(window);
     loadTexture();
 
-    if (!fontOswald.loadFromFile("C:\\Users\\tslem\\Desktop\\Laplateforme\\bachelore2\\depot\\cpp\\projetGroupe\\CPPSDL\\SFML\\assets\\fonts\\Super Caramel.ttf")) {
+    if (!fontOswald.loadFromFile("assets\\fonts\\Super Caramel.ttf")) {
         std::cerr << "Error loading font: Super Caramel.ttf" << std::endl;
     }
 }
 
 void GameGraphic::loadTexture() {
-    backgroundTexture = element->CreateTexture("C:\\Users\\tslem\\Desktop\\Laplateforme\\bachelore2\\depot\\cpp\\projetGroupe\\CPPSDL\\SFML\\assets\\img\\background.jpg");
-    testTexture = element->CreateTexture("C:\\Users\\tslem\\Desktop\\Laplateforme\\bachelore2\\depot\\cpp\\projetGroupe\\CPPSDL\\SFML\\assets\\img\\test.png");
+    backgroundTexture = element->CreateTexture("assets\\img\\background.jpg");
+    testTexture = element->CreateTexture("assets\\img\\test.png");
 
     if (!backgroundTexture || !testTexture) {
         std::cerr << "Failed to load one or more textures" << std::endl;

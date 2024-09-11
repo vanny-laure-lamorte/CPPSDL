@@ -3,13 +3,13 @@
 
 Element::Element(sf::RenderWindow *window) : window(window) 
 {
-    imageTexture = CreateTexture("C:\\Users\\tslem\\Desktop\\Laplateforme\\bachelore2\\depot\\cpp\\projetGroupe\\CPPSDL\\SFML\\assets\\img\\test.png");
+    imageTexture = CreateTexture("assets\\img\\test.png");
     if (!imageTexture)
     {
         std::cout << "Error loading image" << std::endl;
     }
 
-    font = LoadFont("C:\\Users\\tslem\\Desktop\\Laplateforme\\bachelore2\\depot\\cpp\\projetGroupe\\CPPSDL\\SFML\\assets\\fonts\\Super Caramel.ttf");
+    font = LoadFont("assets\\fonts\\Super Caramel.ttf");
     if (!font)
     {
         std::cout << "Error loading font" << std::endl;
