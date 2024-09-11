@@ -7,9 +7,20 @@
 #include "GameBoard.hpp"
 #include "GameOptions.hpp"
 #include "Tile.hpp"
+#include <map>
 
 using namespace std;
-
+struct TileAnimation
+{
+    int currentX;
+    int currentY;
+    int targetX;
+    int targetY;
+    bool hasReachedTarget() const
+    {
+        return currentX == targetX && currentY == targetY;
+    }
+};
 class GameGraphic
 {
 public:
@@ -19,6 +30,7 @@ public:
     void unloadAllTextures();
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
+    void initializeAnimations();
 
     void displayRect();
     void displayImg();
@@ -39,7 +51,7 @@ public:
     bool scoreFetched;
     int scoreUserInt;
     string scoreUserstr;
-    void getUserBestScore(); 
+    void getUserBestScore();
 
     // Top 5 players
     string topPlayerName;
@@ -49,17 +61,19 @@ public:
     SDL_Texture *playerScoreTexture;
     vector<SDL_Texture *> playerNameTextures;
     vector<SDL_Texture *> playerScoreTextures;
-    
-    void unloadTexturesTopPlayers(); 
-    
+
+    void unloadTexturesTopPlayers();
+
     void loadTopFivePlayers();
     void displayToFivePlayers();
 
+    GameBoard gameBoard;
+    GameBoard oldGameBoard;
+    
 private:
     Element *element;
     GameOptions *gameOptions;
-    GameBoard gameBoard;
-    GameBoard oldGameBoard;
+    std::map<int, TileAnimation> animations;
 
     SDL_Renderer *renderer;
     int screenWidth;

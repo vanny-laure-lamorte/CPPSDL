@@ -33,6 +33,7 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     scoreFetched = false;
 
     startTime = SDL_GetTicks();
+    updateGameBoard(gameBoard);
 }
 
 GameGraphic::~GameGraphic()
@@ -54,6 +55,48 @@ void GameGraphic::updateGameBoard(const GameBoard &newGameBoard)
 {
     oldGameBoard = gameBoard;
     gameBoard = newGameBoard;
+
+    // Initialize animations for all tiles
+    animations.clear();
+    for (int i = 0; i < 4; ++i)
+    {
+        for (int j = 0; j < 4; ++j)
+        {
+            const Tile &newTile = gameBoard.tiles[i][j];
+            if (!newTile.isEmpty() && newTile.getId() != -1)
+            {
+                TileAnimation animation;
+                animation.targetX = j * 100;
+                animation.targetY = i * 100;
+
+                bool found = false;
+                for (int ii = 0; ii < 4; ++ii)
+                {
+                    for (int jj = 0; jj < 4; ++jj)
+                    {
+                        const Tile &oldTile = oldGameBoard.tiles[ii][jj];
+                        if (oldTile.getId() == newTile.getId())
+                        {
+                            animation.currentX = jj * 100;
+                            animation.currentY = ii * 100;
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                        break;
+                }
+
+                if (!found) // New tile
+                {
+                    animation.currentX = animation.targetX;
+                    animation.currentY = animation.targetY;
+                }
+
+                animations[newTile.getId()] = animation;
+            }
+        }
+    }
 }
 
 void GameGraphic::displayGrid()
@@ -62,30 +105,44 @@ void GameGraphic::displayGrid()
     {
         for (int j = 0; j < 4; ++j)
         {
-            Tile &tile = gameBoard.tiles[i][j];
-            int x = 450 + (100 * j);
-            int y = 210 + (100 * i);
+            const Tile &tile = gameBoard.tiles[i][j];
 
-            element->drawGradientRect(x, y, 92, 92, element->COLOR_LIGHTGREY, element->COLOR_BLACK, true);
-
-            if (tile.getValue() != 0)
+            if (!tile.isEmpty() && animations.find(tile.getId()) != animations.end())
             {
-                element->drawGradientRectProgressive(x, y, 90, 90, tile.getValue());
-                std::string valueStr = std::to_string(tile.getValue());
-                SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, element->COLOR_WHITE);
+                TileAnimation &anim = animations[tile.getId()];
 
-                int textWidth, textHeight;
-                SDL_QueryTexture(textTexture, NULL, NULL, &textWidth, &textHeight);
+                // Move towards target position by 10 pixels
+                if (anim.currentX < anim.targetX)
+                    anim.currentX = std::min(anim.currentX + 10, anim.targetX);
+                else if (anim.currentX > anim.targetX)
+                    anim.currentX = std::max(anim.currentX - 10, anim.targetX);
 
-                int textX = x + (90 - textWidth) / 2;
-                int textY = y + (90 - textHeight) / 2;
+                if (anim.currentY < anim.targetY)
+                    anim.currentY = std::min(anim.currentY + 10, anim.targetY);
+                else if (anim.currentY > anim.targetY)
+                    anim.currentY = std::max(anim.currentY - 10, anim.targetY);
 
-                element->renderTexture(textTexture, textX, textY, textWidth, textHeight);
+                // Calculate the graphical position
+                int x = 450 + anim.currentX;
+                int y = 210 + anim.currentY;
 
-                SDL_DestroyTexture(textTexture);
+                if (tile.getValue() != 0)
+                {
+                    element->drawGradientRectProgressive(x, y, 90, 90, tile.getValue());
+                    std::string valueStr = std::to_string(tile.getValue());
+                    SDL_Texture *textTexture = element->createTextureText(fontOswald, valueStr, element->COLOR_WHITE);
+
+                    int textWidth, textHeight;
+                    SDL_QueryTexture(textTexture, NULL, NULL, &textWidth, &textHeight);
+
+                    int textX = x + (90 - textWidth) / 2;
+                    int textY = y + (90 - textHeight) / 2;
+
+                    element->renderTexture(textTexture, textX, textY, textWidth, textHeight);
+
+                    SDL_DestroyTexture(textTexture);
+                }
             }
-            else
-                element->drawGradientRect(x, y, 90, 90, element->COLOR_LIGHTGREYBIS, element->COLOR_DARKGREY, true);
         }
     }
 }
@@ -368,7 +425,7 @@ void GameGraphic::loadGameTexture()
 
     // GameOver
 
-    gameOverTexture = element->createTextureText(fontNameGame, "T as perdu nullos ! ", {255, 255, 255, 255});
+    gameOverTexture = element->createTextureText(fontNameGame, "Try Again ?", {255, 255, 255, 255});
     if (!gameOverTexture)
     {
         cerr << "Failed to create text title texture: " << SDL_GetError() << endl;
@@ -651,7 +708,7 @@ void GameGraphic::displayGameOver()
     element->drawRoundedRectOpacity(440, 200, 420, 420, 10, {252, 244, 153, 220}); // Grid
 
     element->renderTexture(gameOverIMGTexture, 450, 100, 400, 400);
-    element->displayText(gameOverTexture, fontOswald, "T as perdu nullos !", element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 100);
+    element->displayText(gameOverTexture, fontOswald, "Try Again ?", element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 100);
     element->displayText(endTimerTexture, fontOswald, chronoText.c_str(), element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 200);
     element->displayText(endScoreTexture, fontOswald, to_string(gameBoard.getScore()), element->COLOR_WHITE, 0, 0, true, screenWidth + 280, screenHeight + 300);
 }

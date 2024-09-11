@@ -165,6 +165,7 @@ void EventHandler::handleGameEvents(SDL_Event &windowEvent)
     {
         gameBoard.addRandomTile();
         gameGraphic.updateGameBoard(gameBoard);
+        gameBoard.display();
         if (!gameBoard.canMove())
         {
             gameGraphic.updateGameBoard(gameBoard);
