@@ -18,6 +18,7 @@ public:
     void displayUserGame(); // User game estate
     void displayUserProfile(); // User Profile
     void displayTopPlayer(); // Top players
+    void displayResetUndo(); // Reset and Undo
     
 private:
     std::unique_ptr<Element> element;

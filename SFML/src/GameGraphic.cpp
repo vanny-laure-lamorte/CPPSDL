@@ -30,6 +30,7 @@ void GameGraphic::displayTexture() {
     displayUserGame(); 
     displayUserProfile(); 
     displayTopPlayer(); 
+    displayResetUndo(); // Reset & Undo
 
 }
 
@@ -71,8 +72,8 @@ void GameGraphic::displayUserGame(){
         
         // Main Grey Rect
         int rectTopPlayerFrameX = 30;
-        int rectTopPlayerFrameY = screenHeight/2-(250/2);
-        element -> drawRoundedRect(rectTopPlayerFrameX, rectTopPlayerFrameY, 180, 250, 10, element ->COLOR_LIGHTGREY1); 
+        int rectTopPlayerFrameY = screenHeight/2-(285/2);
+        element -> drawRoundedRect(rectTopPlayerFrameX, rectTopPlayerFrameY, 180, 285, 10, element ->COLOR_LIGHTGREY1); 
 
         // Score
         element -> drawRoundedRect(45, rectTopPlayerFrameY +15, 150, 40, 10, element ->COLOR_WHITE);
@@ -85,9 +86,21 @@ void GameGraphic::displayUserGame(){
 
         // Time
         element -> drawRoundedRect(45, rectTopPlayerFrameY +115, 150, 40, 10, element ->COLOR_WHITE); 
-        element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element ->COLOR_LIGHTGREY2, rectTopPlayerFrameX +20, rectTopPlayerFrameY +120, false, 0, 0); // Text Top 5 players
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element ->COLOR_LIGHTGREY2, rectTopPlayerFrameX +20, rectTopPlayerFrameY +120, false, 0, 0); // Text Top 5 players   
 
-    
+        element -> drawRoundedRect(45, rectTopPlayerFrameY +180, 150, 40, 10, element ->COLOR_LIGHTGREY2);  
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "Reset", 20, element ->COLOR_WHITE, rectTopPlayerFrameX +70, rectTopPlayerFrameY +185, false, 0, 0); // Text Top 5 players   
+  
+        element -> drawRoundedRect(45, rectTopPlayerFrameY +230, 150, 40, 10, element ->COLOR_LIGHTGREY2);
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "Undo", 20, element ->COLOR_WHITE, rectTopPlayerFrameX +70, rectTopPlayerFrameY +235, false, 0, 0); // Text Top 5 players     
+
+     
+}
+
+void GameGraphic::displayResetUndo(){
+
+ 
+   
 }
 
 
@@ -96,6 +109,7 @@ void GameGraphic::displayUserGame(){
 void GameGraphic::displayUserProfile(){
    
 }
+
 
 
 //** TOP PLAYERS **//
