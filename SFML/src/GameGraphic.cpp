@@ -41,6 +41,13 @@ void GameGraphic::loadTexture()
     {
         std::cerr << "Failed to load one or more textures" << profileUserTexture << std::endl;
     }
+
+    // Img looser logo
+    gameOverTexture = element->CreateTexture("assets\\img\\GameOver.png");
+    if (!gameOverTexture)
+    {
+        std::cerr << "Failed to load one or more textures" << gameOverTexture << std::endl;
+    }
 }
 
 void GameGraphic::displayTexture()
@@ -56,6 +63,7 @@ void GameGraphic::displayTexture()
     displayTopPlayer();
     displayResetUndo(); // Reset & Undo
     displayGCU(); // GCU
+    displayLoose();
 }
 
 void GameGraphic::animation()
@@ -80,10 +88,8 @@ void GameGraphic::displayTitle()
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Thanh Lemelle & Vanny Lamorte", 11, sf::Color::White, 375, 105, false, 0, 0); // Creators names
 }
 
-//** GRID **//
 
-
-//** USER **//
+//*** USER ***//
 
 void GameGraphic::displayUserGame()
 {
@@ -137,25 +143,9 @@ void GameGraphic::displayUserProfile()
 }
 
 
-//** TOP PLAYERS **//
-void GameGraphic::displayTopPlayer()
-{    
-    rectPlayerFrameX = 690; // Rect player position X
-    rectPlayerFrameY = screenHeight / 2 - (320 / 2); // Rect player position Y
-    rectPlayerFrameXOffset = rectPlayerFrameX + 15; // Rect player position X offset  
+//*** GRID ***//
 
-    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY, 180, 320, 10, element->COLOR_LIGHTGREY1); // White Rect best players
-
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Top 5 players", 20, element->COLOR_LIGHTGREY2, 730, 160, false, 0, 0); // Text Top 5 players
-
-    element->drawRoundedRect(705, 200, 150, 245, 10, element->COLOR_WHITE); // White Rect best players
-}
-
- // Display Text General Conditions of Use
-void GameGraphic::displayGCU(){
-    element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
-}
-
+// Display grid
 void GameGraphic::displayGrid(){
 
     //  Background transparent rect
@@ -187,6 +177,52 @@ void GameGraphic::displayGrid(){
 
 }
 
+// Update the grid after the user input
 void GameGraphic::updateGame(const GameBoard &newGameBoard){    
     gameBoard = newGameBoard;
+}
+
+// Display game over message 
+void GameGraphic::displayLoose(){
+
+  
+        // Rect light grey background
+        element -> drawRoundedRect(screenWidth / 2 - (400 / 2), screenHeight / 2 - (320/ 2), 390, 390, 5, element->COLOR_LIGHTGREY1);
+
+        // Rect Score and time
+        element -> drawRoundedRect(screenWidth / 2 - (400 / 2)+20, screenHeight / 2 + 85, 350, 80, 5, element->COLOR_WHITE);
+
+        // Display score
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "SCORE : ", 20, element->COLOR_DARKGREY1, 390, 400 , false, 0, 0); 
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "52435", 20, element->COLOR_DARKGREY1, 470, 400 , false, 0, 0); 
+        element->renderTexture(gameOverTexture, 300, 130, 300, 300);
+
+        // Display time
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY1, 390, 430 , false, 0, 0); 
+        element->displayText(std::make_shared<sf::Font>(fontOswald), "02:46", 20, element->COLOR_DARKGREY1, 470, 430 , false, 0, 0); 
+        element->renderTexture(gameOverTexture, 300, 130, 300, 300);     
+}
+
+//*** TOP PLAYERS ***//
+
+// List of the top 5 players
+void GameGraphic::displayTopPlayer()
+{    
+    rectPlayerFrameX = 690; // Rect player position X
+    rectPlayerFrameY = screenHeight / 2 - (320 / 2); // Rect player position Y
+    rectPlayerFrameXOffset = rectPlayerFrameX + 15; // Rect player position X offset  
+
+    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY, 180, 320, 10, element->COLOR_LIGHTGREY1); // White Rect best players
+
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Top 5 players", 20, element->COLOR_LIGHTGREY2, 730, 160, false, 0, 0); // Text Top 5 players
+
+    element->drawRoundedRect(705, 200, 150, 245, 10, element->COLOR_WHITE); // White Rect best players
+}
+
+
+//*** GCU ***//
+
+// Display Text General Conditions of Use
+void GameGraphic::displayGCU(){
+    element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
 }

@@ -42,6 +42,10 @@ public:
     void displayGrid();
     void updateGame(const GameBoard &newGameBoard); 
 
+    //*** GAME OVER ***//
+    void displayLoose();
+    std::shared_ptr<sf::Texture> gameOverTexture; 
+
     //*** TOP PLAYERS ***//
     void displayTopPlayer(); // Top players
 

@@ -27,8 +27,10 @@ public:
     // Colors
     const sf::Color COLOR_WHITE = sf::Color(255,255,255); 
     const sf::Color COLOR_BLACK = sf::Color(0,0,0); 
+    const sf::Color COLOR_PINK = sf::Color(212, 74, 121); 
     const sf::Color COLOR_LIGHTGREY1 = sf::Color(222, 229, 234); 
     const sf::Color COLOR_LIGHTGREY2 = sf::Color(118, 118, 118); 
+    const sf::Color COLOR_DARKGREY1 = sf::Color(13, 17, 23); 
 
 
 private:
