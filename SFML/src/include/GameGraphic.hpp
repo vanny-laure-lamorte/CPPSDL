@@ -40,6 +40,7 @@ public:
 
     //*** GRID ***//
     void displayGrid();
+    void updateGame(const GameBoard &newGameBoard); 
 
     //*** TOP PLAYERS ***//
     void displayTopPlayer(); // Top players

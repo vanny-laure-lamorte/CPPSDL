@@ -186,3 +186,7 @@ void GameGraphic::displayGrid(){
     }
 
 }
+
+void GameGraphic::updateGame(const GameBoard &newGameBoard){    
+    gameBoard = newGameBoard;
+}
