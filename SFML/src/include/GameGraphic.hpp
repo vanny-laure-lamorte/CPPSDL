@@ -12,9 +12,13 @@ public:
     void loadTexture();
     void displayTexture();
 
-    // Font
-    void displayTitle();
-
+    void displayBackgroud(); // Background
+    void displayTitle(); // Title
+    void displayGrid(); // White frame
+    void displayUserGame(); // User game estate
+    void displayUserProfile(); // User Profile
+    void displayTopPlayer(); // Top players
+    
 private:
     std::unique_ptr<Element> element;
     sf::RenderWindow* window;

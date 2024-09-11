@@ -9,11 +9,13 @@ Element::Element(sf::RenderWindow *window) : window(window)
         std::cout << "Error loading image" << std::endl;
     }
 
-    font = LoadFont("assets\\fonts\\Super Caramel.ttf");
-    if (!font)
-    {
-        std::cout << "Error loading font" << std::endl;
-    }
+    // font = LoadFont("assets\\fonts\\Oswald.ttf");
+    // if (!font)
+    // {
+    //     std::cout << "Error loading font" << std::endl;
+    // }
+
+
 }
 
 Element::~Element() {
@@ -55,12 +57,12 @@ std::shared_ptr<sf::Font> Element::LoadFont(const std::string &fontPath)
     return font;
 }
 
-void Element::displayText(const std::shared_ptr<sf::Font> &font, const std::string &writeText, sf::Color color, int x, int y, bool isCentered, int screenWidth, int screenHeight)
+void Element::displayText(const std::shared_ptr<sf::Font> &font, const std::string &writeText, int policeSize, sf::Color color, int x, int y, bool isCentered, int screenWidth, int screenHeight)
 {
     sf::Text text;
     text.setFont(*font);
     text.setString(writeText);
-    text.setCharacterSize(24);
+    text.setCharacterSize(policeSize);
     text.setFillColor(color);
 
     if (isCentered)
@@ -76,6 +78,8 @@ void Element::displayText(const std::shared_ptr<sf::Font> &font, const std::stri
     window->draw(text);
 }
 
+
+// Method to draw plain rect
 void Element::drawRoundedRect(float x, float y, float width, float height, float radius, sf::Color color) 
 {
     // Créer les quatre coins arrondis
@@ -122,3 +126,52 @@ void Element::drawRoundedRect(float x, float y, float width, float height, float
     window->draw(center);
 }
 
+// Method to draw transparent rect
+void Element::drawRoundedRectOpacity(float x, float y, float width, float height, float radius, sf::Color color) 
+{
+    // Set transparency by adjusting the alpha channel of the color
+    color.a = 128; // Adjust this value (0-255) to change transparency level, 128 is 50% transparency
+
+    // Create the four rounded corners
+    sf::CircleShape corner(radius);
+    corner.setFillColor(color);
+    corner.setPointCount(30); // More points make the circle smoother
+
+    // Position the corners
+    corner.setPosition(x, y); // Top-left corner
+    window->draw(corner);
+
+    corner.setPosition(x + width - radius * 2, y); // Top-right corner
+    window->draw(corner);
+
+    corner.setPosition(x, y + height - radius * 2); // Bottom-left corner
+    window->draw(corner);
+
+    corner.setPosition(x + width - radius * 2, y + height - radius * 2); // Bottom-right corner
+    window->draw(corner);
+
+    // Create the four rectangles for the sides
+    sf::RectangleShape horizontal(sf::Vector2f(width - radius * 2, radius)); // Horizontal sides
+    horizontal.setFillColor(color);
+
+    horizontal.setPosition(x + radius, y); // Top side
+    window->draw(horizontal);
+
+    horizontal.setPosition(x + radius, y + height - radius); // Bottom side
+    window->draw(horizontal);
+
+    sf::RectangleShape vertical(sf::Vector2f(radius, height - radius * 2)); // Vertical sides
+    vertical.setFillColor(color);
+
+    vertical.setPosition(x, y + radius); // Left side
+    window->draw(vertical);
+
+    vertical.setPosition(x + width - radius, y + radius); // Right side
+    window->draw(vertical);
+
+    // Create the center rectangle
+    sf::RectangleShape center(sf::Vector2f(width - radius * 2, height - radius * 2));
+    center.setFillColor(color);
+    center.setPosition(x + radius, y + radius);
+    window->draw(center);
+}

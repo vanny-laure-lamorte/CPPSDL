@@ -6,7 +6,7 @@
 
 class Window {
 public:
-    Window(int screenWidth = 900, int screenHeight = 600);
+    Window(int screenWidth = 1050, int screenHeight = 700);
     ~Window();
 
     bool isInitialized() const;
