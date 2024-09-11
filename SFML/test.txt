@@ -1,0 +1,9 @@
+(1) Delete build folder
+(2) mkdir build
+(3) cd build
+(4) cmake -S . -B build 
+ou cmake ..
+(5) cmakeLists.text
+(6) set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_SOURCE_DIR}) (Thanh)
+(6) set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}) (Vanny)
+

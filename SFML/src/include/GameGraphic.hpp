@@ -15,7 +15,20 @@ public:
     void displayBackgroud(); // Background
     void displayTitle(); // Title
     void displayGrid(); // White frame
-    void displayUserGame(); // User game estate
+
+    //***  USER GAME ESTATE ***/
+    void displayUserGame();  
+    int rectUserFrameX; // Rect user position X
+    int rectUserFrameY; // Rect user position Y
+    int rectUserFrameXOffset; // Rect user position X Offset
+    std::shared_ptr<sf::Texture> blueBtnTexture; // Img blue rect
+
+    int rectPlayerFrameX; // Rect player position X
+    int rectPlayerFrameY; // Rect player position Y
+    int rectPlayerFrameXOffset; // Rect player position X offset
+
+    std::shared_ptr<sf::Texture> profileUserTexture; // Img profile
+
     void displayUserProfile(); // User Profile
     void displayTopPlayer(); // Top players
     void displayResetUndo(); // Reset and Undo
