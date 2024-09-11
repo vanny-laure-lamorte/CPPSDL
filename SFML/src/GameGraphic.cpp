@@ -55,6 +55,7 @@ void GameGraphic::displayTexture()
     displayUserProfile();
     displayTopPlayer();
     displayResetUndo(); // Reset & Undo
+    displayGCU(); // GCU
 }
 
 void GameGraphic::animation()
@@ -131,16 +132,20 @@ void GameGraphic::displayResetUndo()
 void GameGraphic::displayUserProfile()
 {
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY-85, 180, 60, 10, element->COLOR_LIGHTGREY1); // White Rect best players
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 20, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+45, rectPlayerFrameY-70, false, 0, 0); // Display name of the user
-    element->renderTexture(profileUserTexture, rectPlayerFrameXOffset, rectPlayerFrameY-85, 50, 50); // Img profile picture
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+40, rectPlayerFrameY-75, false, 0, 0); // Display name of the user
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Joined in 2024", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+40, rectPlayerFrameY-50, false, 0, 0); // Display name of the user
+
+
+    element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY-80, 50, 50); // Img profile picture
 }
+
 
 //** TOP PLAYERS **//
 void GameGraphic::displayTopPlayer()
 {    
     rectPlayerFrameX = 690; // Rect player position X
     rectPlayerFrameY = screenHeight / 2 - (320 / 2); // Rect player position Y
-    rectPlayerFrameXOffset = rectPlayerFrameX + 15; // Rect player position X offset    
+    rectPlayerFrameXOffset = rectPlayerFrameX + 15; // Rect player position X offset  
 
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY, 180, 320, 10, element->COLOR_LIGHTGREY1); // White Rect best players
 
@@ -148,3 +153,9 @@ void GameGraphic::displayTopPlayer()
 
     element->drawRoundedRect(705, 200, 150, 245, 10, element->COLOR_WHITE); // White Rect best players
 }
+
+ // Display Text General Conditions of Use
+void GameGraphic::displayGCU(){
+    element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
+}
+

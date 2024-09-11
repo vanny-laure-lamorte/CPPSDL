@@ -18,6 +18,8 @@ public:
 
     //***  USER GAME ESTATE ***/
     void displayUserGame();  
+    void displayUserProfile(); // User Profile
+
     int rectUserFrameX; // Rect user position X
     int rectUserFrameY; // Rect user position Y
     int rectUserFrameXOffset; // Rect user position X Offset
@@ -29,9 +31,14 @@ public:
 
     std::shared_ptr<sf::Texture> profileUserTexture; // Img profile
 
-    void displayUserProfile(); // User Profile
+    //*** RESET & UNDO ***//
     void displayTopPlayer(); // Top players
-    void displayResetUndo(); // Reset and Undo
+
+    //*** RESET & UNDO ***//
+    void displayResetUndo();
+
+    //*** GCU ***//
+    void displayGCU(); 
     
 private:
     std::unique_ptr<Element> element;
