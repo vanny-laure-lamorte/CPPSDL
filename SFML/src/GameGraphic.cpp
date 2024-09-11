@@ -49,8 +49,8 @@ void GameGraphic::displayTexture()
     // animation();
 
     displayBackgroud(); // Background
+    displayGrid(); // Grid   
     displayTitle();     // Title
-    displayGrid();      // Frame
     displayUserGame();
     displayUserProfile();
     displayTopPlayer();
@@ -75,22 +75,19 @@ void GameGraphic::displayBackgroud()
 // Method to display title and creators name
 void GameGraphic::displayTitle()
 {
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "2048", 50, sf::Color::White, 45, 50, false, 0, 0);                           // Name game
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Created by Lucas Martinie", 11, sf::Color::White, 35, 110, false, 0, 0);     // Creators names
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Thanh Lemelle & Vanny Lamorte", 11, sf::Color::White, 20, 125, false, 0, 0); // Creators names
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "2048", 50, sf::Color::White, 405, 30, false, 0, 0);                           // Name game
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Created by Lucas Martinie", 11, sf::Color::White, 385, 90, false, 0, 0);     // Creators names
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Thanh Lemelle & Vanny Lamorte", 11, sf::Color::White, 375, 105, false, 0, 0); // Creators names
 }
 
 //** GRID **//
-// Method to display white frame
-void GameGraphic::displayGrid()
-{
-    element->drawRoundedRectOpacity(screenWidth / 2 - (550 / 2), screenHeight / 2 - (550 / 2), 550, 550, 5, element->COLOR_LIGHTGREY1); // Grid rect
-}
+
 
 //** USER **//
 
 void GameGraphic::displayUserGame()
 {
+
     // Main Grey Rect
     rectUserFrameX = 30;
     rectUserFrameY = screenHeight / 2 - (285 / 2);
@@ -116,6 +113,7 @@ void GameGraphic::displayUserGame()
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 120, false, 0, 0);
     // Value Time
     element->displayText(std::make_shared<sf::Font>(fontOswald), "20:00", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 120, false, 0, 0); 
+
 }
 
 void GameGraphic::displayResetUndo()
@@ -134,8 +132,7 @@ void GameGraphic::displayUserProfile()
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY-85, 180, 60, 10, element->COLOR_LIGHTGREY1); // White Rect best players
     element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+40, rectPlayerFrameY-75, false, 0, 0); // Display name of the user
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Joined in 2024", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+40, rectPlayerFrameY-50, false, 0, 0); // Display name of the user
-
-
+    
     element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY-80, 50, 50); // Img profile picture
 }
 
@@ -159,3 +156,33 @@ void GameGraphic::displayGCU(){
     element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
 }
 
+void GameGraphic::displayGrid(){
+
+    //  Background transparent rect
+    element->drawRoundedRectOpacity(screenWidth / 2 - (550 / 2), screenHeight / 2 - (550 / 2), 550, 550, 5, element->COLOR_LIGHTGREY1); 
+
+    // Grid of the game
+    for (int i = 0; i < 4; ++i)
+    {
+        for (int j = 0; j < 4; ++j)
+        {
+            Tile &tile = gameBoard.tiles[i][j];
+            int x = screenWidth / 2 - (400 / 2)  + (100 * j);
+            int y = screenHeight / 2 - (320/ 2) + (100 * i);
+
+            if (tile.getValue() != 0)
+            {
+                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_BLACK); 
+
+                // Texte
+                std::string valueStr = std::to_string(tile.getValue());    
+                sf::Text text;           
+                int textX = x + (90) / 2;
+                int textY = y + (90) / 2;
+                element->displayText(std::make_shared<sf::Font>(fontOswald),valueStr, 20, element->COLOR_LIGHTGREY2, textX, textY, false, 0, 0);            }
+            else
+                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_WHITE); 
+        }
+    }
+
+}

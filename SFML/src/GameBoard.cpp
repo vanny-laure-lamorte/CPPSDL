@@ -1,8 +1,9 @@
-#include "GameBoard.hpp"
+#include "include/GameBoard.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
+#include <stdlib.h>
 
 GameBoard::GameBoard(int size) : size(size), tiles(size, std::vector<Tile>(size)) {
     srand(static_cast<unsigned>(time(0))); // Seed the random number generator. It is used to generate random tile with value 2 or 4 unsing local time as seed

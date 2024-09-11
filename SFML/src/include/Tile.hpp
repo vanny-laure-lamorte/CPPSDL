@@ -14,7 +14,7 @@ private:
 
 public:
     Tile();
-    explicit Tile(int value); // explicit keyword is used to avoid implicit conversion. It means that the constructor can only be used for direct initialization and not for implicit conversions. Aka, it can only be used when you explicitly call it.
+    explicit Tile(int value); 
     int getValue() const;
     void setValue(int value);
     bool isEmpty() const;

@@ -16,7 +16,6 @@ class GameBoard {
     * The game board can be checked if it can move.
     */
 private:
-    std::vector<std::vector<Tile>> tiles;
     int size;
 
 public:
@@ -31,6 +30,8 @@ public:
     void addRandomTile();
     bool isFull() const;
     bool canMove() const;
+    std::vector<std::vector<Tile>> tiles;
+
 };
 
 #endif // GameBoard_HPP
