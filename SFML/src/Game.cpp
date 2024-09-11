@@ -7,7 +7,7 @@ void Game::play() {
     char move;
     while (gameBoard.canMove()) {
         gameBoard.display();
-        std::cout << "Entrez votre mouvement (z/q/s/d) : ";
+        std::cout << "Enter your move (w/a/s/d): ";
         std::cin >> move;
 
         bool moved = false;
@@ -29,16 +29,16 @@ void Game::play() {
                 moved = gameBoard.moveDown(); 
                 break;
             default: 
-                std::cout << "Mouvement invalide ! Utilisez z/q/s/d." << std::endl;
+                std::cout << "Invalid move! Use w/a/s/d." << std::endl;
         }
 
         if (moved) {
             gameBoard.addRandomTile();
         } else {
-            std::cout << "Aucun mouvement effectué. Essayez une autre direction." << std::endl;
+            std::cout << "No move made. Try another direction." << std::endl;
         }
     }
 
     gameBoard.display();
-    std::cout << "Game Over! Merci d'avoir joué." << std::endl;
+    std::cout << "Game Over! Thank you for playing." << std::endl;
 }
