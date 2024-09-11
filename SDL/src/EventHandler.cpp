@@ -22,22 +22,22 @@ void EventHandler::handleEvents(bool &running)
         {
             if (!intro.introPlayed)
             {
-                handleIntroEvents(windowEvent);  // Intro key events
+                handleIntroEvents(windowEvent); // Intro key events
             }
             else
             {
-                handleGameEvents(windowEvent);  // Game key events
+                handleGameEvents(windowEvent); // Game key events
             }
         }
         else if (windowEvent.type == SDL_MOUSEBUTTONDOWN)
         {
             if (!intro.introPlayed)
             {
-                handleIntroEvents(windowEvent);  // Intro mouse events
+                handleIntroEvents(windowEvent); // Intro mouse events
             }
             else
             {
-                handleGameEvents(windowEvent);  // Game mouse events
+                handleGameEvents(windowEvent); // Game mouse events
             }
         }
         else if (windowEvent.type == SDL_TEXTINPUT && intro.typingEnabled)
@@ -53,7 +53,6 @@ void EventHandler::handleEvents(bool &running)
         }
     }
 }
-
 
 // Handling intro-specific events
 void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
@@ -77,6 +76,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
         {
             intro.introPlayed = true;
             gameGraphic.getUsername(intro.inputText);
+            gameBoard = gameGraphic.resetGame();
         }
         break;
 
@@ -85,6 +85,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
         intro.introPartTwo = false;
         intro.introPlayed = true;
         gameGraphic.getUsername("LacVanThu");
+        gameBoard = gameGraphic.resetGame();
         break;
     }
 
@@ -101,6 +102,7 @@ void EventHandler::handleIntroEvents(SDL_Event &windowEvent)
             {
                 intro.introPlayed = true;
                 gameGraphic.getUsername(intro.inputText);
+                gameBoard = gameGraphic.resetGame();
             }
         }
     }

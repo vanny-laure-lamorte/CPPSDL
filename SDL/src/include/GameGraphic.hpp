@@ -30,7 +30,6 @@ public:
     void unloadAllTextures();
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
-    void initializeAnimations();
 
     void displayRect();
     void displayImg();
@@ -65,7 +64,7 @@ public:
     void unloadTexturesTopPlayers();
 
     void loadTopFivePlayers();
-    void displayToFivePlayers();
+    void displayTopFivePlayers();
 
     GameBoard gameBoard;
     GameBoard oldGameBoard;

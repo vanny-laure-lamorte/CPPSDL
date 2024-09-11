@@ -33,7 +33,6 @@ GameGraphic::GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeig
     scoreFetched = false;
 
     startTime = SDL_GetTicks();
-    updateGameBoard(gameBoard);
 }
 
 GameGraphic::~GameGraphic()
@@ -216,7 +215,7 @@ void GameGraphic::unloadTexturesTopPlayers()
     playerScoreTextures.clear(); // Clear the vector after unloading
 }
 
-void GameGraphic::displayToFivePlayers()
+void GameGraphic::displayTopFivePlayers()
 {
     // Define the positions and offsets
     int verticalOffset = 400;
@@ -538,7 +537,7 @@ void GameGraphic::displayGameTexture()
     displayGrid();
     displayChrono();
     displayUsername();
-    displayToFivePlayers();
+    displayTopFivePlayers();
 }
 
 // Methode to display frame with rectangles
@@ -776,6 +775,9 @@ GameBoard GameGraphic::resetGame()
     GameBoard newGameBoard;
     gameBoard = newGameBoard;
     oldGameBoard = gameBoard;
+
+    updateGameBoard(gameBoard);
+
     infoBestPlayer();
     loadTopFivePlayers();
 
