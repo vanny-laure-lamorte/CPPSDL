@@ -1,0 +1,3 @@
+C:/Users/lucas/Desktop/B2 2024/CPPSDL/SDL/build/CMakeFiles/CPPSDL.dir
+C:/Users/lucas/Desktop/B2 2024/CPPSDL/SDL/build/CMakeFiles/edit_cache.dir
+C:/Users/lucas/Desktop/B2 2024/CPPSDL/SDL/build/CMakeFiles/rebuild_cache.dir
