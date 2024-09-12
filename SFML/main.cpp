@@ -37,10 +37,11 @@ int main()
         sf::Event event;
         while (gameBoard.canMove())
         {
+        bool moved = false;
         while (renderWindow->pollEvent(event))
             {
                 
-                bool moved = false;
+                
 
                 if (event.type == sf::Event::Closed)
                 {

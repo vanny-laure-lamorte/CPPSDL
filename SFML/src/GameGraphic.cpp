@@ -123,8 +123,6 @@ void GameGraphic::displayUserGame()
     //*** TIMER ***/
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 115, 150, 40, 10, element->COLOR_WHITE);
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 120, false, 0, 0);
-    // Value Time
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "20:00", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 120, false, 0, 0); 
 }
 
 void GameGraphic::displayResetUndo()
