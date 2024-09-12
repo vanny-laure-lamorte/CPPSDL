@@ -1,4 +1,6 @@
 #include "include/GameGraphic.hpp"
+#include <sstream>
+#include <iomanip>
 
 GameGraphic::GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHeight)
     : window(window), screenWidth(screenWidth), screenHeight(screenHeight), animTransition(0)
@@ -68,8 +70,13 @@ void GameGraphic::displayTexture()
     displayTopPlayer();
     displayResetUndo(); // Reset & Undo
     displayGCU(); // GCU
-    displayLoose();
     displayChrono();
+    if (!gameBoard.canMove())
+    {
+        std::cout << "Game over!" << std::endl;
+        displayLoose();
+        std::cout << "Press any key to exit." << std::endl;
+    }
 }
 
 void GameGraphic::animation()
@@ -240,8 +247,13 @@ void GameGraphic::displayChrono()
     int minutes = seconds / 60;
     seconds = seconds % 60;
 
-    std::cout << "Minutes: " << minutes << " Seconds: " << seconds << std::endl;
-    std::string timeString = std::to_string(minutes) + ":" + std::to_string(seconds);
+    std::stringstream ss;
+    ss << std::setw(2) << std::setfill('0') << minutes << ":"
+       << std::setw(2) << std::setfill('0') << seconds;
+    
+    std::string timeString = ss.str();
+    //std::cout << "Minutes: " << minutes << " Seconds: " << seconds << std::endl;
+    //sf::Text timeString.setString(ss.str());
     element->displayText(std::make_shared<sf::Font>(fontOswald), timeString, 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 120, false, 0, 0);
 }
 
