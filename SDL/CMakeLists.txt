@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(CPPSDL LANGUAGES CXX)
 
 # Définir le type de build (par exemple Debug ou Release)
-set(CMAKE_BUILD_TYPE Unspecified)
+set(CMAKE_BUILD_TYPE Debug)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 

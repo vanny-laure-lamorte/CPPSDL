@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "C:/Users/lucas/Desktop/B2 2024/CPPSDL/SDL/CPPSDL.exe"
-  "C:/Users/lucas/Desktop/B2 2024/CPPSDL/SDL/CPPSDL.exe.manifest"
-  "C:/Users/lucas/Desktop/B2 2024/CPPSDL/SDL/CPPSDL.pdb"
+  "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/CPPSDL.exe"
+  "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/CPPSDL.exe.manifest"
+  "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/CPPSDL.pdb"
   "CMakeFiles/CPPSDL.dir/main.cpp.obj"
   "CMakeFiles/CPPSDL.dir/main.cpp.obj.d"
   "CMakeFiles/CPPSDL.dir/src/Element.cpp.obj"
