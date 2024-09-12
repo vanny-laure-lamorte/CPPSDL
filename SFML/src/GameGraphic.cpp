@@ -12,9 +12,14 @@ GameGraphic::GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHe
     }
 }
 
+// Unload all texture
 void GameGraphic::unloadAllTextures()
 {
-
+    backgroundTexture.reset(); 
+    testTexture.reset();
+    profileUserTexture.reset();
+    blueBtnTexture.reset();
+    gameOverTexture.reset();
 }
 
 void GameGraphic::loadTexture()
@@ -200,7 +205,8 @@ void GameGraphic::displayLoose(){
         // Display time
         element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY1, 390, 430 , false, 0, 0); 
         element->displayText(std::make_shared<sf::Font>(fontOswald), "02:46", 20, element->COLOR_DARKGREY1, 470, 430 , false, 0, 0); 
-        element->renderTexture(gameOverTexture, 300, 130, 300, 300);     
+        element->renderTexture(gameOverTexture, 300, 130, 300, 300);  
+           
 }
 
 //*** TOP PLAYERS ***//
