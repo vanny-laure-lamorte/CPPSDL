@@ -15,7 +15,7 @@ public:
     SDL_Renderer *getRenderer() const;
     int screenWidth;
     int screenHeight;
-
+    
 private:
     SDL_Window *window;
     SDL_Renderer *renderer;

@@ -2,10 +2,11 @@ using namespace std;
 
 #include "Element.hpp"
 #include <stdexcept>
+#include <cmath>
 
 Element::Element(SDL_Renderer *renderer) : renderer(renderer)
 {
-
+    
     // Initialize Image
     if (!(IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG))
     {
@@ -17,6 +18,9 @@ Element::Element(SDL_Renderer *renderer) : renderer(renderer)
     {
         throw std::runtime_error("TTF_Init Error: " + std::string(TTF_GetError()));
     }
+
+    // Ensure High Resolution pic
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 }
 
 Element::~Element()
@@ -31,6 +35,8 @@ Element::~Element()
 // Create Texture
 SDL_Texture *Element::CreateTexture(const std::string &imagePath)
 {
+   
+
     SDL_Surface *surface = IMG_Load(imagePath.c_str());
     if (!surface)
     {
@@ -46,6 +52,7 @@ SDL_Texture *Element::CreateTexture(const std::string &imagePath)
         return nullptr;
     }
 
+
     return texture;
 }
 
@@ -55,6 +62,8 @@ void Element::renderTexture(SDL_Texture *texture, int x, int y, int width, int h
     SDL_Rect destRect = {x, y, width, height};
     SDL_RenderCopy(renderer, texture, nullptr, &destRect);
 }
+
+
 
 //* FONT *//
 
@@ -89,8 +98,10 @@ SDL_Texture *Element::createTextureText(TTF_Font *font, const std::string &write
     return textTexture;
 }
 
-// Method to display text
 
+//*** TEXT ***//
+
+// Method to display text
 // How to use it ?
 // To Display Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 0, 0, true, 800, 600);
 // To Display Non-Centered Text: element.displayText(textTexture, font, "Hello World", {255, 255, 255, 255}, 100, 150, false, 0, 0);
@@ -126,8 +137,9 @@ void Element::displayText(SDL_Texture *textTexture, TTF_Font *font, const std::s
     SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
 }
 
-// Rect radius
+//*** RECTANGLES ***//
 
+// Rect radius
 void Element::drawRoundedRect(int x, int y, int width, int height, int radius, SDL_Color color)
 {
     // Set the draw color
@@ -161,9 +173,42 @@ void Element::drawRoundedRect(int x, int y, int width, int height, int radius, S
     }
 }
 
-#include <cmath>
-#include <SDL2/SDL.h>
-#include "Element.hpp"
+// Rect radius
+void Element::drawRoundedRectOpacity(int x, int y, int width, int height, int radius, SDL_Color color)
+{
+    // Enable blending mode for transparency
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+    // Set the draw color with opacity
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+
+    // Draw the main body of the rectangle (center part without the rounded corners)
+    SDL_Rect bodyRect = {x + radius, y, width - 2 * radius, height};
+    SDL_RenderFillRect(renderer, &bodyRect);
+
+    // Draw the left and right rectangles
+    SDL_Rect leftRect = {x, y + radius, radius, height - 2 * radius};
+    SDL_Rect rightRect = {x + width - radius, y + radius, radius, height - 2 * radius};
+    SDL_RenderFillRect(renderer, &leftRect);
+    SDL_RenderFillRect(renderer, &rightRect);
+
+    // Draw the rounded corners using circles
+    for (int w = 0; w < radius * 2; w++)
+    {
+        for (int h = 0; h < radius * 2; h++)
+        {
+            int dx = radius - w; // horizontal offset
+            int dy = radius - h; // vertical offset
+            if ((dx * dx + dy * dy) <= (radius * radius))
+            {
+                SDL_RenderDrawPoint(renderer, x + radius + dx, y + radius + dy);                  // Top-left corner
+                SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + radius + dy);          // Top-right corner
+                SDL_RenderDrawPoint(renderer, x + radius + dx, y + height - radius + dy);         // Bottom-left corner
+                SDL_RenderDrawPoint(renderer, x + width - radius + dx, y + height - radius + dy); // Bottom-right corner
+            }
+        }
+    }
+}
 
 void Element::drawGradientRect(int x, int y, int width, int height, SDL_Color startColor, SDL_Color endColor, bool horizontal)
 {

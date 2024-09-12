@@ -6,36 +6,100 @@
 #include "Element.hpp"
 #include "GameBoard.hpp"
 #include "Tile.hpp"
-class GameGraphic {
+using namespace std;
+
+class GameGraphic
+{
 public:
-    GameGraphic(SDL_Renderer* renderer, int screenWidth, int screenHeight);
+    GameGraphic(SDL_Renderer *renderer, int screenWidth, int screenHeight);
     ~GameGraphic();
     void loadGameTexture();
     void unloadAllTextures();
     void displayGameTexture();
-    void updateGameBoard(const GameBoard& newGameBoard);
+    void updateGameBoard(const GameBoard &newGameBoard);
 
     // Font
     void displayTitle();
     void displayGrid();
 
+    bool gameOver = false;
+    void displayGameOver();
+
 private:
-    Element* element;
-    SDL_Renderer* renderer;
+    Element *element;
+    SDL_Renderer *renderer;
     int screenWidth;
     int screenHeight;
 
-    SDL_Texture* backgroundTexture;
+    //*** SCORE ***//
+    void updateScore();
+    int displayScoreValue;
 
-    SDL_Texture* tileImgTexture;
-    SDL_Texture* textValueTexture;
-    
+    //*** CHRONO ***/
+    Uint32 currentTime = 0;
+    Uint32 gameTimer = 0;
+    void displayChrono();
 
-    //Font
-    SDL_Texture *textTitleTexture; 
+    //*** GameOver ***/
+    SDL_Texture *gameOverTexture; // Text gameOver
+
+    //*** TEXTURE ***//
+
+    // Images Texture
+    SDL_Texture *backgroundTexture; // Background
+    SDL_Texture *testTexture;
+    SDL_Texture *tileImgTexture; // Title
+    SDL_Texture *textValueTexture;
+    SDL_Texture *userLogoTexture;    // Img logo user
+    SDL_Texture *pinkRectImgTexture; // Img Pink Rect
+    SDL_Texture *resetImgTexture;    // Img Reset
+    SDL_Texture *undoImgTexture;     // Img undo
+
+    // Text Title
+    SDL_Texture *textTitleTexture;
+    SDL_Texture *textCreatorTexture1;
+    SDL_Texture *textCreatorTexture2;
+
+    // Text Top 5 players
+    SDL_Texture *textTitleTop;
+    SDL_Texture *textValuePlayersTop;
+
+    // Text user info
+    SDL_Texture *textUserInfo1;
+    SDL_Texture *textUserInfo2;
+    SDL_Texture *textScore;
+    SDL_Texture *textBest;
+    SDL_Texture *textTimer;
+    SDL_Texture *textValueScoreUser;
+    SDL_Texture *textValueBestUser;
+
+    // Text btn reset and undo
+    SDL_Texture *textReset;
+    SDL_Texture *textUndo;
+
+    // Text best player info
+    SDL_Texture *textBestPlayer1;
+    SDL_Texture *textBestPlayer2;
+    SDL_Texture *textValueScorePlayer;
+    SDL_Texture *textValueTimePlayer;
+    SDL_Texture *textValueMatchPlayer;
+
+    // Text footer
+    SDL_Texture *textViewMore;
+    SDL_Texture *textRules;
+    SDL_Texture *textGCU1;
+    SDL_Texture *textGCU2;
+
+    //*** FONT ***//
     TTF_Font *fontOswald;
-    GameBoard gameBoard;
+    TTF_Font *fontNameGame;
+    TTF_Font *fontDetailText;
+    TTF_Font *fontDetailTextBold;
+    TTF_Font *fontUserProfile;
+    TTF_Font *fontBestPlayer;
+    TTF_Font *fontGameInfo;
 
+    GameBoard gameBoard;
 };
 
 #endif // GAMEGRAPHIC_HPP

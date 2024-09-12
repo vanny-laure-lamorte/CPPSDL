@@ -45,6 +45,7 @@ bool GameBoard::mergeTiles(std::vector<Tile>& line) {
     for (int i = 0; i < size - 1; ++i) {
         if (!line[i].isEmpty() && line[i].getValue() == line[i + 1].getValue()) {
             line[i].setValue(line[i].getValue() * 2);
+            score += line[i].getValue();
             line[i + 1].setValue(0);
             merged = true;
         }
