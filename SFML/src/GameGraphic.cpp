@@ -70,14 +70,17 @@ void GameGraphic::displayTexture()
     displayTopPlayer();
     displayResetUndo(); // Reset & Undo
     displayGCU(); // GCU
-    displayChrono();
+    displayChrono(); // Display Chrono
+
     if (!gameBoard.canMove())
     {
         std::cout << "Game over!" << std::endl;
-        displayLoose();
+        displayLoose(); // Display loose message
         std::cout << "Press any key to exit." << std::endl;
-    }
 }
+
+}
+
 
 void GameGraphic::animation()
 {
@@ -230,7 +233,6 @@ void GameGraphic::displayTopPlayer()
     element->drawRoundedRect(705, 200, 150, 245, 10, element->COLOR_WHITE); // White Rect best players
 }
 
-
 //*** GCU ***//
 
 // Display Text General Conditions of Use
@@ -238,7 +240,7 @@ void GameGraphic::displayGCU(){
     element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
 }
 
-//** CHRONO **/
+//*** CHRONO ***/
 
 void GameGraphic::displayChrono()
 {

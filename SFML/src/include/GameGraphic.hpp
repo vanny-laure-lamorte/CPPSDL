@@ -52,9 +52,19 @@ public:
     //*** GCU ***//
     GameBoard gameBoard;
     void displayGCU();
+
+    //** CHRONO **//
     void displayChrono(); // Timer
     void resetChrono();
     
+    void unloadAllTextures(); // Now a private method, rarely needed
+    
+    float animTransition = 0;
+
+    //*** FONT ***//
+    sf::Font fontOswald;
+
+
 private:
 
     sf::Clock clock;
@@ -68,12 +78,8 @@ private:
     std::shared_ptr<sf::Texture> testTexture;
 
     void animation();
-    float animTransition = 0;
 
-    // Font
-    sf::Font fontOswald;
 
-    void unloadAllTextures(); // Now a private method, rarely needed
 };
 
 #endif // GAMEGRAPHIC_HPP
