@@ -232,14 +232,6 @@ void GameGraphic::displayGCU(){
     element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
 }
 
-
-//*** GCU ***//
-
-// Display Text General Conditions of Use
-void GameGraphic::displayGCU(){
-    element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
-}
-
 //*** CHRONO ***/
 
 void GameGraphic::displayChrono()

@@ -53,9 +53,11 @@ public:
     GameBoard gameBoard;
     void displayGCU();
 
-    //***CHRONO ***//
+    //** CHRONO **//
     void displayChrono(); // Timer
     void resetChrono();
+    
+    void unloadAllTextures(); // Now a private method, rarely needed
     
 private:
 
@@ -75,7 +77,6 @@ private:
     // Font
     sf::Font fontOswald;
 
-    void unloadAllTextures(); // Now a private method, rarely needed
 };
 
 #endif // GAMEGRAPHIC_HPP

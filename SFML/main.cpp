@@ -14,7 +14,6 @@ int SCREENHEIGHT = 600;
 
 int main()
 {
-
     // Create window
     Window window(SCREENWIDTH, SCREENHEIGHT);
     if (!window.isInitialized())
@@ -35,12 +34,12 @@ int main()
     while (renderWindow->isOpen())
     {
         sf::Event event;
+                bool moved = false;
         while (gameBoard.canMove())
         {
-        while (renderWindow->pollEvent(event))
+            while (renderWindow->pollEvent(event))
             {
-                
-                bool moved = false;
+
 
                 if (event.type == sf::Event::Closed)
                 {
@@ -79,6 +78,7 @@ int main()
                     default:
                         std::cout << "Invalid move! Use w/a/s/d." << std::endl;
                     }
+            }
                 // Clear the screen
                 renderWindow->clear(sf::Color(50, 50, 50)); // Dark gray
 
@@ -88,14 +88,16 @@ int main()
                 // Display what was drawn on the window
                 renderWindow->display();
 
-                if (moved){
+                if (moved)
+                {
                     gameBoard.display();
-                    gameBoard.addRandomTile(); 
+                    gameBoard.addRandomTile();
                     gameGraphic.updateGame(gameBoard);
                 }
-            }
         }
     }
+
+    gameGraphic.unloadAllTextures();
     // No need to explicitly quit or delete resources, SFML handles that
     return EXIT_SUCCESS;
 }
