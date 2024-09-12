@@ -53,7 +53,14 @@ public:
     GameBoard gameBoard;
     void displayGCU();
 
+    //***CHRONO ***//
+    void displayChrono(); // Timer
+    void resetChrono();
+    
 private:
+
+    sf::Clock clock;
+
     std::unique_ptr<Element> element;
     sf::RenderWindow *window;
     int screenWidth;
