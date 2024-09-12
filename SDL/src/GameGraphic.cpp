@@ -794,6 +794,10 @@ GameBoard GameGraphic::resetGame()
 GameBoard GameGraphic::undoGame()
 {
     gameBoard = oldGameBoard;
+
+    animations.clear();
+
+    updateGameBoard(gameBoard);
     return gameBoard;
 }
 
