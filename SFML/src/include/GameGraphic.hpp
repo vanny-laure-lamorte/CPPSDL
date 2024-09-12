@@ -48,12 +48,23 @@ public:
 
     //*** TOP PLAYERS ***//
     void displayTopPlayer(); // Top players
+<<<<<<< HEAD
 
     //*** GCU ***//
     GameBoard gameBoard;
     void displayGCU();
 
+=======
+    void displayResetUndo(); // Reset and Undo
+
+    void displayChrono(); // Timer
+    void resetChrono();
+    
+>>>>>>> SfmlChrono
 private:
+
+    sf::Clock clock;
+
     std::unique_ptr<Element> element;
     sf::RenderWindow *window;
     int screenWidth;

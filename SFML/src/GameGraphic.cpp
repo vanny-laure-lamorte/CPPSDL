@@ -69,6 +69,7 @@ void GameGraphic::displayTexture()
     displayResetUndo(); // Reset & Undo
     displayGCU(); // GCU
     displayLoose();
+    displayChrono();
 }
 
 void GameGraphic::animation()
@@ -124,7 +125,6 @@ void GameGraphic::displayUserGame()
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 120, false, 0, 0);
     // Value Time
     element->displayText(std::make_shared<sf::Font>(fontOswald), "20:00", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 120, false, 0, 0); 
-
 }
 
 void GameGraphic::displayResetUndo()
@@ -231,4 +231,24 @@ void GameGraphic::displayTopPlayer()
 // Display Text General Conditions of Use
 void GameGraphic::displayGCU(){
     element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
+}
+
+//** CHRONO **/
+
+void GameGraphic::displayChrono()
+{
+    sf::Time time = clock.getElapsedTime();
+    int seconds = time.asSeconds();
+    int minutes = seconds / 60;
+    seconds = seconds % 60;
+
+    std::cout << "Minutes: " << minutes << " Seconds: " << seconds << std::endl;
+    std::string timeString = std::to_string(minutes) + ":" + std::to_string(seconds);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), timeString, 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 120, false, 0, 0);
+}
+
+void GameGraphic::resetChrono()
+{
+    clock.restart();
+
 }
