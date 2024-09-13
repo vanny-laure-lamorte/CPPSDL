@@ -89,16 +89,19 @@ int main()
 
                 // Display background and other textures
 
-                bool introDisplay = true; 
+                // bool introDisplay = true; 
 
-                if (introDisplay){
-                introScreenGraphic.displayIntro();                 
-                }
-                else{
+                // if (introDisplay){
+                // introScreenGraphic.displayIntro();                 
+                // }
+                // else{
+                // gameGraphic.displayTexture();
+                // introDisplay = false;
+                // }
+
+               
                 gameGraphic.displayTexture();
-                introDisplay = false;
-                }
-
+               
                 // Display what was drawn on the window
                 renderWindow->display();
 

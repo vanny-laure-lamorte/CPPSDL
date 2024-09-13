@@ -1,4 +1,5 @@
 #include "include/GameGraphic.hpp"
+
 #include <sstream>
 #include <iomanip>
 
@@ -7,6 +8,7 @@ GameGraphic::GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHe
 {
     element = std::make_unique<Element>(window);
     loadTexture();
+
 
     if (!fontOswald.loadFromFile("assets\\fonts\\Oswald.ttf"))
     {
@@ -77,6 +79,10 @@ void GameGraphic::displayTexture()
         std::cout << "Game over!" << std::endl;
         displayLoose(); // Display loose message
         std::cout << "Press any key to exit." << std::endl;
+
+        // Save score at the end of the game
+        gameOptions.saveScore("Poop", "poop@gmail.com", "7894", timeString, "12");
+
     }
 }
 

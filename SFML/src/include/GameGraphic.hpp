@@ -6,21 +6,24 @@
 #include <memory>
 
 #include "GameBoard.hpp"
+#include "GameOptions.hpp"
+
 #include "Tile.hpp"
 
 class GameGraphic
 {
 public:
     GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHeight);
-    ~GameGraphic() = default; // Use default destructor since smart pointers will handle cleanup
+    ~GameGraphic() = default; 
 
-    //*** MAIN STRUCTURE */
-    void loadTexture();
-    void displayTexture();
-    void displayBackgroud(); // Background
-    void displayTitle();     // Title
+    //*** MAIN STRUCTURE ***//
+    void loadTexture(); 
+    void unloadAllTextures();  
+    void displayTexture(); 
+    void displayBackgroud();
+    void displayTitle(); 
 
-    //***  USER GAME ESTATE ***/
+    //***  USER GAME ESTATE ***//
     void displayUserGame();
     void displayUserProfile(); // User Profile
 
@@ -47,30 +50,31 @@ public:
     std::shared_ptr<sf::Texture> gameOverTexture; 
 
     //*** TOP PLAYERS ***//
-    void displayTopPlayer(); // Top players
+    void displayTopPlayer();
 
     //*** GCU ***//
-    GameBoard gameBoard;
     void displayGCU();
 
-    //** CHRONO **//
-    void displayChrono(); // Timer
+    //*** INSTANCE ***//
+    GameBoard gameBoard;
+    GameOptions gameOptions;
+    std::unique_ptr<Element> element;
+
+    //*** CHRONO ***//
+    void displayChrono();
     void resetChrono();
     std::string timeString;
-    
-    void unloadAllTextures(); // Now a private method, rarely needed
     
     float animTransition = 0;
 
     //*** FONT ***//
     sf::Font fontOswald;
 
-
 private:
 
     sf::Clock clock;
 
-    std::unique_ptr<Element> element;
+
     sf::RenderWindow *window;
     int screenWidth;
     int screenHeight;
@@ -79,7 +83,6 @@ private:
     std::shared_ptr<sf::Texture> testTexture;
 
     void animation();
-
 
 };
 
