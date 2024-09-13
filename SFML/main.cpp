@@ -8,6 +8,8 @@
 #include "src/include/Window.hpp"
 #include "src/include/GameGraphic.hpp"
 #include "src/include/GameBoard.hpp"
+#include "src/include/IntroScreenGraphic.hpp"
+
 
 int SCREENWIDTH = 900;
 int SCREENHEIGHT = 600;
@@ -24,12 +26,12 @@ int main()
     }
 
     GameBoard gameBoard;
-
     // Get the SFML window object
     sf::RenderWindow *renderWindow = window.getWindow();
 
-    // Create game graphic instance
-    GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT);
+    //*** Create instance ***//
+    GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Game Graphic
+    IntroScreenGraphic introScreenGraphic (renderWindow, SCREENWIDTH, SCREENHEIGHT); // Intro Screen Graphic
 
     // Main game loop
     while (renderWindow->isOpen())
@@ -86,7 +88,16 @@ int main()
                 renderWindow->clear(sf::Color(50, 50, 50)); // Dark gray
 
                 // Display background and other textures
+
+                bool introDisplay = true; 
+
+                if (introDisplay){
+                introScreenGraphic.displayIntro();                 
+                }
+                else{
                 gameGraphic.displayTexture();
+                introDisplay = false;
+                }
 
                 // Display what was drawn on the window
                 renderWindow->display();
@@ -100,7 +111,9 @@ int main()
         }
     }
 
+    // Unload texture from all page graphic
     gameGraphic.unloadAllTextures();
-    // No need to explicitly quit or delete resources, SFML handles that
+    introScreenGraphic.unloadAllIntroTextures();
+
     return EXIT_SUCCESS;
 }

@@ -151,22 +151,22 @@ void Element::drawRoundedRectOpacity(float x, float y, float width, float height
     window->draw(corner);
 
     // Create the four rectangles for the sides
-    sf::RectangleShape horizontal(sf::Vector2f(width - radius * 2, radius)); // Horizontal sides
+    sf::RectangleShape horizontal(sf::Vector2f(width - radius * 2, radius)); 
     horizontal.setFillColor(color);
 
-    horizontal.setPosition(x + radius, y); // Top side
+    horizontal.setPosition(x + radius, y);
     window->draw(horizontal);
 
-    horizontal.setPosition(x + radius, y + height - radius); // Bottom side
+    horizontal.setPosition(x + radius, y + height - radius);
     window->draw(horizontal);
 
-    sf::RectangleShape vertical(sf::Vector2f(radius, height - radius * 2)); // Vertical sides
+    sf::RectangleShape vertical(sf::Vector2f(radius, height - radius * 2)); 
     vertical.setFillColor(color);
 
-    vertical.setPosition(x, y + radius); // Left side
+    vertical.setPosition(x, y + radius); 
     window->draw(vertical);
 
-    vertical.setPosition(x + width - radius, y + radius); // Right side
+    vertical.setPosition(x + width - radius, y + radius); 
     window->draw(vertical);
 
     // Create the center rectangle
@@ -175,3 +175,61 @@ void Element::drawRoundedRectOpacity(float x, float y, float width, float height
     center.setPosition(x + radius, y + radius);
     window->draw(center);
 }
+
+void Element::TransparentRect(float x, float y, float width, float height, float radius, sf::Color color, int opacityLevel) 
+{
+
+    color.a = opacityLevel;
+
+    // Create the rounded rectangle shape
+    sf::CircleShape corner(radius);
+    corner.setFillColor(color);
+    corner.setPointCount(30); // More points make the circle smoother
+
+    // Top-left corner
+    corner.setPosition(x, y);
+    window->draw(corner);
+
+    // Top-right corner
+    corner.setPosition(x + width - radius * 2, y);
+    window->draw(corner);
+
+    // Bottom-left corner
+    corner.setPosition(x, y + height - radius * 2);
+    window->draw(corner);
+
+    // Bottom-right corner
+    corner.setPosition(x + width - radius * 2, y + height - radius * 2);
+    window->draw(corner);
+
+    // Top side
+    sf::RectangleShape top(sf::Vector2f(width - radius * 2, radius));
+    top.setFillColor(color);
+    top.setPosition(x + radius, y);
+    window->draw(top);
+
+    // Bottom side
+    sf::RectangleShape bottom(sf::Vector2f(width - radius * 2, radius));
+    bottom.setFillColor(color);
+    bottom.setPosition(x + radius, y + height - radius);
+    window->draw(bottom);
+
+    // Left side
+    sf::RectangleShape left(sf::Vector2f(radius, height - radius * 2));
+    left.setFillColor(color);
+    left.setPosition(x, y + radius);
+    window->draw(left);
+
+    // Right side
+    sf::RectangleShape right(sf::Vector2f(radius, height - radius * 2));
+    right.setFillColor(color);
+    right.setPosition(x + width - radius, y + radius);
+    window->draw(right);
+
+    // Center
+    sf::RectangleShape center(sf::Vector2f(width - radius * 2, height - radius * 2));
+    center.setFillColor(color);
+    center.setPosition(x + radius, y + radius);
+    window->draw(center);
+}
+
