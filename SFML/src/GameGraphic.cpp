@@ -17,7 +17,7 @@ GameGraphic::GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHe
 // Unload all texture
 void GameGraphic::unloadAllTextures()
 {
-    backgroundTexture.reset(); 
+    backgroundTexture.reset();
     testTexture.reset();
     profileUserTexture.reset();
     blueBtnTexture.reset();
@@ -63,24 +63,22 @@ void GameGraphic::displayTexture()
     // animation();
 
     displayBackgroud(); // Background
-    displayGrid(); // Grid   
+    displayGrid();      // Grid
     displayTitle();     // Title
     displayUserGame();
     displayUserProfile();
     displayTopPlayer();
     displayResetUndo(); // Reset & Undo
-    displayGCU(); // GCU
-    displayChrono(); // Display Chrono
+    displayGCU();       // GCU
+    displayChrono();    // Display Chrono
 
     if (!gameBoard.canMove())
     {
         std::cout << "Game over!" << std::endl;
         displayLoose(); // Display loose message
         std::cout << "Press any key to exit." << std::endl;
+    }
 }
-
-}
-
 
 void GameGraphic::animation()
 {
@@ -100,10 +98,9 @@ void GameGraphic::displayBackgroud()
 void GameGraphic::displayTitle()
 {
     element->displayText(std::make_shared<sf::Font>(fontOswald), "2048", 50, sf::Color::White, 405, 30, false, 0, 0);                           // Name game
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Created by Lucas Martinie", 11, sf::Color::White, 385, 90, false, 0, 0);     // Creators names
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Created by Lucas Martinie", 11, sf::Color::White, 385, 90, false, 0, 0);      // Creators names
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Thanh Lemelle & Vanny Lamorte", 11, sf::Color::White, 375, 105, false, 0, 0); // Creators names
 }
-
 
 //*** USER ***//
 
@@ -122,13 +119,13 @@ void GameGraphic::displayUserGame()
 
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Score", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 20, false, 0, 0);
     // Value score
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "24112199", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 20, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "24112199", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 20, false, 0, 0);
 
-    //*** BEST SCORE ***// 
+    //*** BEST SCORE ***//
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 65, 150, 40, 10, element->COLOR_WHITE);
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Best", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 70, false, 0, 0);
-    // Value best 
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "20650", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 70, false, 0, 0); 
+    // Value best
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "20650", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 70, false, 0, 0);
 
     //*** TIMER ***/
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 115, 150, 40, 10, element->COLOR_WHITE);
@@ -148,21 +145,21 @@ void GameGraphic::displayResetUndo()
 
 void GameGraphic::displayUserProfile()
 {
-    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY-85, 180, 60, 10, element->COLOR_LIGHTGREY1); // White Rect best players
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+40, rectPlayerFrameY-75, false, 0, 0); // Display name of the user
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Joined in 2024", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset+40, rectPlayerFrameY-50, false, 0, 0); // Display name of the user
-    
-    element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY-80, 50, 50); // Img profile picture
-}
+    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY - 85, 180, 60, 10, element->COLOR_LIGHTGREY1);                                                                      // White Rect best players
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);       // Display name of the user
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Joined in 2024", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
 
+    element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY - 80, 50, 50); // Img profile picture
+}
 
 //*** GRID ***//
 
 // Display grid
-void GameGraphic::displayGrid(){
+void GameGraphic::displayGrid()
+{
 
     //  Background transparent rect
-    element->drawRoundedRectOpacity(screenWidth / 2 - (550 / 2), screenHeight / 2 - (550 / 2), 550, 550, 5, element->COLOR_LIGHTGREY1); 
+    element->drawRoundedRectOpacity(screenWidth / 2 - (550 / 2), screenHeight / 2 - (550 / 2), 550, 550, 5, element->COLOR_LIGHTGREY1);
 
     // Grid of the game
     for (int i = 0; i < 4; ++i)
@@ -170,61 +167,61 @@ void GameGraphic::displayGrid(){
         for (int j = 0; j < 4; ++j)
         {
             Tile &tile = gameBoard.tiles[i][j];
-            int x = screenWidth / 2 - (400 / 2)  + (100 * j);
-            int y = screenHeight / 2 - (320/ 2) + (100 * i);
+            int x = screenWidth / 2 - (400 / 2) + (100 * j);
+            int y = screenHeight / 2 - (320 / 2) + (100 * i);
 
             if (tile.getValue() != 0)
             {
-                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_BLACK); 
+                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_BLACK);
 
                 // Texte
-                std::string valueStr = std::to_string(tile.getValue());    
-                sf::Text text;           
+                std::string valueStr = std::to_string(tile.getValue());
+                sf::Text text;
                 int textX = x + (90) / 2;
                 int textY = y + (90) / 2;
-                element->displayText(std::make_shared<sf::Font>(fontOswald),valueStr, 20, element->COLOR_LIGHTGREY2, textX, textY, false, 0, 0);            }
+                element->displayText(std::make_shared<sf::Font>(fontOswald), valueStr, 20, element->COLOR_LIGHTGREY2, textX, textY, false, 0, 0);
+            }
             else
-                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_WHITE); 
+                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_WHITE);
         }
     }
-
 }
 
 // Update the grid after the user input
-void GameGraphic::updateGame(const GameBoard &newGameBoard){    
+void GameGraphic::updateGame(const GameBoard &newGameBoard)
+{
     gameBoard = newGameBoard;
 }
 
-// Display game over message 
-void GameGraphic::displayLoose(){
+// Display game over message
+void GameGraphic::displayLoose()
+{
 
-  
-        // Rect light grey background
-        element -> drawRoundedRect(screenWidth / 2 - (400 / 2), screenHeight / 2 - (320/ 2), 390, 390, 5, element->COLOR_LIGHTGREY1);
+    // Rect light grey background
+    element->drawRoundedRect(screenWidth / 2 - (400 / 2), screenHeight / 2 - (320 / 2), 390, 390, 5, element->COLOR_LIGHTGREY1);
 
-        // Rect Score and time
-        element -> drawRoundedRect(screenWidth / 2 - (400 / 2)+20, screenHeight / 2 + 85, 350, 80, 5, element->COLOR_WHITE);
+    // Rect Score and time
+    element->drawRoundedRect(screenWidth / 2 - (400 / 2) + 20, screenHeight / 2 + 85, 350, 80, 5, element->COLOR_WHITE);
 
-        // Display score
-        element->displayText(std::make_shared<sf::Font>(fontOswald), "SCORE : ", 20, element->COLOR_DARKGREY1, 390, 400 , false, 0, 0); 
-        element->displayText(std::make_shared<sf::Font>(fontOswald), "52435", 20, element->COLOR_DARKGREY1, 470, 400 , false, 0, 0); 
-        element->renderTexture(gameOverTexture, 300, 130, 300, 300);
+    // Display score
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "SCORE : ", 20, element->COLOR_DARKGREY1, 390, 400, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "52435", 20, element->COLOR_DARKGREY1, 470, 400, false, 0, 0);
+    element->renderTexture(gameOverTexture, 300, 130, 300, 300);
 
-        // Display time
-        element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY1, 390, 430 , false, 0, 0); 
-        element->displayText(std::make_shared<sf::Font>(fontOswald), "02:46", 20, element->COLOR_DARKGREY1, 470, 430 , false, 0, 0); 
-        element->renderTexture(gameOverTexture, 300, 130, 300, 300);  
-           
+    // Display time
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY1, 390, 430, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "02:46", 20, element->COLOR_DARKGREY1, 470, 430, false, 0, 0);
+    element->renderTexture(gameOverTexture, 300, 130, 300, 300);
 }
 
 //*** TOP PLAYERS ***//
 
 // List of the top 5 players
 void GameGraphic::displayTopPlayer()
-{    
-    rectPlayerFrameX = 690; // Rect player position X
+{
+    rectPlayerFrameX = 690;                          // Rect player position X
     rectPlayerFrameY = screenHeight / 2 - (320 / 2); // Rect player position Y
-    rectPlayerFrameXOffset = rectPlayerFrameX + 15; // Rect player position X offset  
+    rectPlayerFrameXOffset = rectPlayerFrameX + 15;  // Rect player position X offset
 
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY, 180, 320, 10, element->COLOR_LIGHTGREY1); // White Rect best players
 
@@ -236,8 +233,9 @@ void GameGraphic::displayTopPlayer()
 //*** GCU ***//
 
 // Display Text General Conditions of Use
-void GameGraphic::displayGCU(){
-    element->displayText(std::make_shared<sf::Font>(fontOswald),"This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2,screenWidth / 2 - (550 / 2), screenHeight-20, false, 0, 0); 
+void GameGraphic::displayGCU()
+{
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "This page uses cookies to store data, preferences for analytics purposes. Read more in our Privacy Policy - Copyright LuThaVan Production studio 2024", 10, element->COLOR_LIGHTGREY2, screenWidth / 2 - (550 / 2), screenHeight - 20, false, 0, 0);
 }
 
 //*** CHRONO ***/
@@ -252,15 +250,14 @@ void GameGraphic::displayChrono()
     std::stringstream ss;
     ss << std::setw(2) << std::setfill('0') << minutes << ":"
        << std::setw(2) << std::setfill('0') << seconds;
-    
-    std::string timeString = ss.str();
-    //std::cout << "Minutes: " << minutes << " Seconds: " << seconds << std::endl;
-    //sf::Text timeString.setString(ss.str());
+    if (gameBoard.canMove())
+    {
+        timeString = ss.str();
+    }
     element->displayText(std::make_shared<sf::Font>(fontOswald), timeString, 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 120, false, 0, 0);
 }
 
 void GameGraphic::resetChrono()
 {
     clock.restart();
-
 }

@@ -56,6 +56,7 @@ public:
     //** CHRONO **//
     void displayChrono(); // Timer
     void resetChrono();
+    std::string timeString;
     
     void unloadAllTextures(); // Now a private method, rarely needed
     
