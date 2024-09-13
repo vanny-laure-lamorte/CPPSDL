@@ -33,6 +33,7 @@ public:
     const sf::Color COLOR_LIGHTGREY1 = sf::Color(222, 229, 234);
     const sf::Color COLOR_LIGHTGREY2 = sf::Color(118, 118, 118);
     const sf::Color COLOR_DARKGREY1 = sf::Color(13, 17, 23);
+    const sf::Color COLOR_DARKGREY2 = sf::Color(63, 62, 62);
 
 private:
     sf::RenderWindow *window;

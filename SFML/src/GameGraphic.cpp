@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include <iomanip>
+#include <sstream> 
 
 GameGraphic::GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHeight)
     : window(window), screenWidth(screenWidth), screenHeight(screenHeight), animTransition(0)
@@ -111,6 +112,7 @@ void GameGraphic::displayTitle()
 
 void GameGraphic::displayUserGame()
 {
+   
    // Get the user best score from json file
     if (!scoreFetched){
     scoreUserInt = gameOptions.getUserScore("Poop");
@@ -130,19 +132,19 @@ void GameGraphic::displayUserGame()
     //*** SCORE ***//
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 15, 150, 40, 10, element->COLOR_WHITE);
 
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Score", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 20, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Score", 20, element->COLOR_DARKGREY2, rectUserFrameX + 20, rectUserFrameY + 20, false, 0, 0);
     // Value score
     element->displayText(std::make_shared<sf::Font>(fontOswald), std::to_string(updateScore(gameBoard.getScore())), 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 20, false, 0, 0);
 
     //*** BEST SCORE ***//
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 65, 150, 40, 10, element->COLOR_WHITE);
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Best", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 70, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Best", 20, element->COLOR_DARKGREY2, rectUserFrameX + 20, rectUserFrameY + 70, false, 0, 0);
     // Value best
     element->displayText(std::make_shared<sf::Font>(fontOswald), scoreUserstr, 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 70, false, 0, 0);
 
     //*** TIMER ***/
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 115, 150, 40, 10, element->COLOR_WHITE);
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 120, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Timer", 20, element->COLOR_DARKGREY2, rectUserFrameX + 20, rectUserFrameY + 120, false, 0, 0);
 }
 
 void GameGraphic::displayResetUndo()
@@ -159,7 +161,7 @@ void GameGraphic::displayResetUndo()
 void GameGraphic::displayUserProfile()
 {
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY - 85, 180, 60, 10, element->COLOR_LIGHTGREY1);                                                                          // White Rect best players
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);           // Display name of the user
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_DARKGREY1, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);           // Display name of the user
     element->displayText(std::make_shared<sf::Font>(fontOswald), "luThanVa@gmail.com", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
 
     element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY - 80, 50, 50); // Img profile picture
@@ -217,12 +219,12 @@ void GameGraphic::displayLoose()
     element->drawRoundedRect(screenWidth / 2 - (400 / 2) + 20, screenHeight / 2 + 85, 350, 80, 5, element->COLOR_WHITE);
 
     // Display score
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "SCORE : ", 20, element->COLOR_DARKGREY1, 390, 400, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "SCORE : ", 20, element->COLOR_DARKGREY2, 390, 400, false, 0, 0);
     element->displayText(std::make_shared<sf::Font>(fontOswald), "52435", 20, element->COLOR_DARKGREY1, 470, 400, false, 0, 0);
     element->renderTexture(gameOverTexture, 300, 130, 300, 300);
 
     // Display time
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY1, 390, 430, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY2, 390, 430, false, 0, 0);
     element->displayText(std::make_shared<sf::Font>(fontOswald), "02:46", 20, element->COLOR_DARKGREY1, 470, 430, false, 0, 0);
     element->renderTexture(gameOverTexture, 300, 130, 300, 300);
 }
@@ -231,25 +233,37 @@ void GameGraphic::displayLoose()
 
 void GameGraphic::displayBestPlayer(){
 
+    // Get name, score, time and match from the best player
+    auto [playerName, score, time, matchCount] = gameOptions.getBestScore();
+    string bestPlayerName = playerName;
+    std::ostringstream oss;
+    oss << bestPlayerName << "'s";
+
+    string bestScore = score;
+    string bestTime = time;
+    string bestMatchCount = matchCount;;
+
     // White Rect
-    element->drawRoundedRect(rectPlayerFrameXOffset, rectPlayerFrameY + 50, 150, 110, 10, element->COLOR_WHITE); // White Rect best players
+    element->drawRoundedRect(rectPlayerFrameXOffset, rectPlayerFrameY + 50, 150, 130, 10, element->COLOR_WHITE); // White Rect best players
 
     int valuePositionText =  rectPlayerFrameX +80;
+    int policeValueUser = 15;
 
     // Name
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Lucas Martinie", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameX +30 , 200, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald),oss.str(), 18, element->COLOR_DARKGREY2, rectPlayerFrameX +30 , 200, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald),"Best Game Details", 15, element->COLOR_DARKGREY2, rectPlayerFrameX +30 , 220, false, 0, 0); 
 
     // Score
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Score - ", 15, element->COLOR_LIGHTGREY2, rectPlayerFrameX +30 , 230, false, 0, 0); 
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "85426 ", 15, element->COLOR_LIGHTGREY2, valuePositionText, 230, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Score - ", policeValueUser, element->COLOR_DARKGREY2, rectPlayerFrameX +30 , 250, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald), score, policeValueUser, element->COLOR_LIGHTGREY2, valuePositionText, 250, false, 0, 0); 
 
     // Time
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Time - ", 15, element->COLOR_LIGHTGREY2, rectPlayerFrameX +30 , 250, false, 0, 0);
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "01:52 ", 15, element->COLOR_LIGHTGREY2, valuePositionText, 250, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Time - ", policeValueUser, element->COLOR_DARKGREY2, rectPlayerFrameX +30 , 270, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald),time, policeValueUser, element->COLOR_LIGHTGREY2, valuePositionText, 270, false, 0, 0);
 
     // Match 
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Match - ", 15, element->COLOR_LIGHTGREY2, rectPlayerFrameX +30 , 270, false, 0, 0); 
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "1245", 15, element->COLOR_LIGHTGREY2, valuePositionText, 270, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "Match - ", policeValueUser, element->COLOR_DARKGREY2, rectPlayerFrameX +30 , 290, false, 0, 0); 
+    element->displayText(std::make_shared<sf::Font>(fontOswald), matchCount, policeValueUser, element->COLOR_LIGHTGREY2, valuePositionText, 290, false, 0, 0); 
 }
 
 
@@ -261,11 +275,11 @@ void GameGraphic::displayTopPlayer()
     rectPlayerFrameXOffset = rectPlayerFrameX + 15;  // Rect player position X offset
 
     // Grey and White rect
-    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY, 180, 380, 10, element->COLOR_LIGHTGREY1); // Grey Rect best players
-    element->drawRoundedRect(rectPlayerFrameXOffset, rectPlayerFrameY + 180, 150, 180, 10, element->COLOR_WHITE); // White Rect best players
+    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY, 180, 400, 10, element->COLOR_LIGHTGREY1); // Grey Rect best players
+    element->drawRoundedRect(rectPlayerFrameXOffset, rectPlayerFrameY + 190, 150, 190, 10, element->COLOR_WHITE); // White Rect best players
 
     // Title
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "TOP PLAYERS", 20, element->COLOR_LIGHTGREY2, 730, 150, false, 0, 0); // Text Top 5 players
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "TOP PLAYERS", 20, element->COLOR_DARKGREY1, 730, 150, false, 0, 0); // Text Top 5 players
 
     // Get top five players from Json
     vector<pair<string, int>> topScores = gameOptions.getTopFiveScores();
@@ -282,7 +296,7 @@ void GameGraphic::displayTopPlayer()
             string playerScoreText = to_string(playerScore.second);
 
             // X and Y to position text
-            int verticalOffset = 340;
+            int verticalOffset = 350;
             int lineHeight = 30;
 
             int nameX = 720;
