@@ -26,6 +26,8 @@ public:
     //***  USER GAME ESTATE ***//
     void displayUserGame();
     void displayUserProfile(); // User Profile
+    bool scoreFetched = false;
+    int scoreUserInt;
 
     int rectUserFrameX;                          // Rect user position X
     int rectUserFrameY;                          // Rect user position Y

@@ -111,6 +111,14 @@ void GameGraphic::displayTitle()
 
 void GameGraphic::displayUserGame()
 {
+   // Get the user best score from json file
+    if (!scoreFetched){
+    scoreUserInt = gameOptions.getUserScore("Poop");
+    scoreFetched = true;
+    }; 
+
+    // Convert the score from int to string
+    string scoreUserstr = to_string(scoreUserInt );
 
     // Main Grey Rect
     rectUserFrameX = 30;
@@ -130,7 +138,7 @@ void GameGraphic::displayUserGame()
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 65, 150, 40, 10, element->COLOR_WHITE);
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Best", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 70, false, 0, 0);
     // Value best
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "20650", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 70, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), scoreUserstr, 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 70, false, 0, 0);
 
     //*** TIMER ***/
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 115, 150, 40, 10, element->COLOR_WHITE);
@@ -242,7 +250,6 @@ void GameGraphic::displayBestPlayer(){
     // Match 
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Match - ", 15, element->COLOR_LIGHTGREY2, rectPlayerFrameX +30 , 270, false, 0, 0); 
     element->displayText(std::make_shared<sf::Font>(fontOswald), "1245", 15, element->COLOR_LIGHTGREY2, valuePositionText, 270, false, 0, 0); 
-
 }
 
 
