@@ -195,3 +195,13 @@ bool GameBoard::canMove() const {
 
     return false;
 }
+
+int GameBoard::getScore() const {
+    int score = 0;
+    for (const auto& row : tiles) {
+        for (const auto& tile : row) {
+            score += tile.getValue();
+        }
+    }
+    return score;
+}

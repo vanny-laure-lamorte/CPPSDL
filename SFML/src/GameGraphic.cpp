@@ -124,7 +124,7 @@ void GameGraphic::displayUserGame()
 
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Score", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 20, rectUserFrameY + 20, false, 0, 0);
     // Value score
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "24112199", 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 20, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), std::to_string(updateScore(gameBoard.getScore())), 20, element->COLOR_LIGHTGREY2, rectUserFrameX + 70, rectUserFrameY + 20, false, 0, 0);
 
     //*** BEST SCORE ***//
     element->drawRoundedRect(rectUserFrameXOffset, rectUserFrameY + 65, 150, 40, 10, element->COLOR_WHITE);
@@ -296,4 +296,13 @@ void GameGraphic::displayChrono()
 void GameGraphic::resetChrono()
 {
     clock.restart();
+}
+
+int GameGraphic::updateScore(int newScore)
+{
+    if (updatedScoreValue != newScore)
+    {
+        updatedScoreValue = newScore;
+    }
+    return updatedScoreValue;
 }

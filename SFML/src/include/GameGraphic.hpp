@@ -64,6 +64,10 @@ public:
     void displayChrono();
     void resetChrono();
     std::string timeString;
+
+    //***Score ***//
+    int updateScore(int newScore);
+    int updatedScoreValue = 0;
     
     float animTransition = 0;
 
@@ -81,6 +85,8 @@ private:
 
     std::shared_ptr<sf::Texture> backgroundTexture;
     std::shared_ptr<sf::Texture> testTexture;
+
+
 
     void animation();
 
