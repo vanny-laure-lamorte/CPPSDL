@@ -3,7 +3,7 @@ using namespace std;
 
 #include "include/GameOptions.hpp"
 
-//** Save Score ***//
+//** Save Score **//
 #include <fstream>
 #include <string>
 using json = nlohmann::json;
@@ -268,4 +268,26 @@ int GameOptions::getUserScore(const string &playerName) const
     }
 
     return 0;
+}
+
+// methods to get & set the user input from the intro screen
+
+string GameOptions::getPlayerName() const
+{
+    return playerName;
+}
+
+string GameOptions::getEmail() const
+{
+    return email;
+}
+
+void GameOptions::setPlayerName(const string &playerName)
+{
+    this->playerName = playerName;
+}
+
+void GameOptions::setEmail(const string &email)
+{
+    this->email = email;
 }
