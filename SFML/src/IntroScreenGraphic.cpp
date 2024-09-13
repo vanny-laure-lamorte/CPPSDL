@@ -50,15 +50,14 @@ void IntroScreenGraphic::displayIntro()
     element->renderTexture(profileTexture, screenWidth / 2 - (250 / 2) , screenHeight / 2 - (150 / 2) -200, 250, 250); 
 
     // Get Started
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "GET STARTED", 30, element->COLOR_BLACK, 380, screenHeight / 2 - (350 / 2) +120, false, 0, 0); 
-    
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "GET STARTED", 30, element->COLOR_BLACK, 380, screenHeight / 2 - (350 / 2) +120, false, 0, 0);     
 
     // Pseudo
     element->drawRoundedRect(screenWidth / 2 - (260 / 2), screenHeight / 2 - (350 / 2) +200, 260, 40, 5, element->COLOR_WHITE); // White Rect
     element->displayText(std::make_shared<sf::Font>(fontOswald), "PSEUDO", 14, element->COLOR_LIGHTGREY2, screenWidth / 2 - (260 / 2)+5, 305, false, 0, 0); // Text    
 
     // INFO ?
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "DATE", 14, element->COLOR_LIGHTGREY2, screenWidth / 2 - (260 / 2)+5, 375, false, 0, 0); // Text
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "E-MAIL", 14, element->COLOR_LIGHTGREY2, screenWidth / 2 - (260 / 2)+5, 375, false, 0, 0); // Text
     element->drawRoundedRect(screenWidth / 2 - (260 / 2), screenHeight / 2 - (350 / 2) +270, 260, 40, 5, element->COLOR_WHITE); // Rect white
 
     // Validation
