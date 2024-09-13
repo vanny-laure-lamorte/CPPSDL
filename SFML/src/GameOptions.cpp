@@ -85,7 +85,7 @@ void GameOptions::saveScore(const string &playerName, const string &email, const
             {"Email", email}, // Save email
             {"Score", score}, // Save score
             {"Time", timer}, // Save current time
-            {"MatchCount", matchCount} // Save number of matches
+            {"MatchCount", matchCount}  // Save number of matches
 
         };
         scoresJson.push_back(newScore);

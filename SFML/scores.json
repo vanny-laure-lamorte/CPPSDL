@@ -1,28 +1,25 @@
 [
     {
         "Email": "poop@gmail.com",
-        "MatchCount": "63",
+        "MatchCount": "124",
         "PlayerName": "Poop",
         "Score": "7894",
         "Time": "01:28"
-    }, 
-
+    },
     {
-        "Email": "alici@gmail.com",
+        "Email": "alicia@gmail.com",
         "MatchCount": "73",
         "PlayerName": "Alicia",
         "Score": "6789",
         "Time": "02:28"
-    }, 
-
+    },
     {
         "Email": "lucas@gmail.com",
         "MatchCount": "43",
         "PlayerName": "Lucas",
         "Score": "54789",
         "Time": "04:28"
-    }, 
-
+    },
     {
         "Email": "thanh@gmail.com",
         "MatchCount": "13",
@@ -30,12 +27,18 @@
         "Score": "875625",
         "Time": "06:28"
     },
-
     {
         "Email": "vanny@gmail.com",
         "MatchCount": "53",
         "PlayerName": "Vanny",
         "Score": "98756",
         "Time": "04:28"
+    },
+    {
+        "Email": "poop@gmail.com",
+        "MatchCount": "39",
+        "PlayerName": "Tagada",
+        "Score": "00000",
+        "Time": "00:28"
     }
 ]
