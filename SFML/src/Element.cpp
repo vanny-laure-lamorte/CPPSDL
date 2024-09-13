@@ -80,6 +80,7 @@ void Element::displayText(const std::shared_ptr<sf::Font> &font, const std::stri
 
 
 // Method to draw plain rect
+//* args: x, y, width, height, radius, color /
 void Element::drawRoundedRect(float x, float y, float width, float height, float radius, sf::Color color) 
 {
     // Créer les quatre coins arrondis
@@ -127,6 +128,7 @@ void Element::drawRoundedRect(float x, float y, float width, float height, float
 }
 
 // Method to draw transparent rect
+//* args: x, y, width, height, radius, color /
 void Element::drawRoundedRectOpacity(float x, float y, float width, float height, float radius, sf::Color color) 
 {
     // Set transparency by adjusting the alpha channel of the color
@@ -232,4 +234,3 @@ void Element::TransparentRect(float x, float y, float width, float height, float
     center.setPosition(x + radius, y + radius);
     window->draw(center);
 }
-

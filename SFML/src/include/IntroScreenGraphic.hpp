@@ -2,6 +2,8 @@
 #define INTROSCREENGRAPHIC_HPP
 
 #include "Element.hpp"
+#include "GameOptions.hpp"
+#include "InputBox.hpp"
 #include <iostream>
 #include <cstring>
 

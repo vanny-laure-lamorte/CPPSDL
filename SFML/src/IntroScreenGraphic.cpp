@@ -53,6 +53,7 @@ void IntroScreenGraphic::displayIntro()
     element->displayText(std::make_shared<sf::Font>(fontOswald), "GET STARTED", 30, element->COLOR_BLACK, 380, screenHeight / 2 - (350 / 2) +120, false, 0, 0);     
 
     // Pseudo
+    // rappel : input box a incerer ici
     element->drawRoundedRect(screenWidth / 2 - (260 / 2), screenHeight / 2 - (350 / 2) +200, 260, 40, 5, element->COLOR_WHITE); // White Rect
     element->displayText(std::make_shared<sf::Font>(fontOswald), "PSEUDO", 14, element->COLOR_LIGHTGREY2, screenWidth / 2 - (260 / 2)+5, 305, false, 0, 0); // Text    
 

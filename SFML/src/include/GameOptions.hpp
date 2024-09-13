@@ -20,6 +20,11 @@ public:
     //*** USER ***//
     void saveScore(const string& playerName, const string& email, const string& score, const string& timer, string matchCount);
 
+    string getPlayerName() const;
+    string getEmail() const;
+    void setPlayerName(const string& playerName);
+    void setEmail(const string& email);
+
     //*** BEST PLAYER ***//
     tuple<string, string, string, string> getBestScore() const;
     int getUserScore(const string &playerName) const; 
@@ -28,6 +33,12 @@ public:
     vector<pair<string, int>> getTopFiveScores() const ;
 
 private:
+
+    string playerName;
+    string email;
+    
+
+
 
 }; 
 
