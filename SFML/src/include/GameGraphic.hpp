@@ -50,6 +50,7 @@ public:
     std::shared_ptr<sf::Texture> gameOverTexture; 
 
     //*** TOP PLAYERS ***//
+    void displayBestPlayer(); 
     void displayTopPlayer();
 
     //*** GCU ***//

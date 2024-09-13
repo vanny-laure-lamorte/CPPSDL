@@ -29,8 +29,6 @@ public:
 
 private:
 
-
-
 }; 
 
 #endif // GAMEOPTION_HPP
