@@ -31,6 +31,7 @@ public:
     bool isFull() const;
     bool canMove() const;
     std::vector<std::vector<Tile>> tiles;
+    int getScore() const;
 
 };
 
