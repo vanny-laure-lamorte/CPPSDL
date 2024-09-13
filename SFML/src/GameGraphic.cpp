@@ -9,7 +9,6 @@ GameGraphic::GameGraphic(sf::RenderWindow *window, int screenWidth, int screenHe
     element = std::make_unique<Element>(window);
     loadTexture();
 
-
     if (!fontOswald.loadFromFile("assets\\fonts\\Oswald.ttf"))
     {
         std::cerr << "Error loading font" << std::endl;
@@ -69,10 +68,11 @@ void GameGraphic::displayTexture()
     displayTitle();     // Title
     displayUserGame();
     displayUserProfile();
-    displayTopPlayer();
     displayResetUndo(); // Reset & Undo
     displayGCU();       // GCU
     displayChrono();    // Display Chrono
+
+    displayTopPlayer();
 
     if (!gameBoard.canMove())
     {
@@ -82,7 +82,6 @@ void GameGraphic::displayTexture()
 
         // Save score at the end of the game
         gameOptions.saveScore("Poop", "poop@gmail.com", "7894", timeString, "12");
-
     }
 }
 
@@ -151,8 +150,8 @@ void GameGraphic::displayResetUndo()
 
 void GameGraphic::displayUserProfile()
 {
-    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY - 85, 180, 60, 10, element->COLOR_LIGHTGREY1);                                                                      // White Rect best players
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);       // Display name of the user
+    element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY - 85, 180, 60, 10, element->COLOR_LIGHTGREY1);                                                                          // White Rect best players
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);           // Display name of the user
     element->displayText(std::make_shared<sf::Font>(fontOswald), "luThanVa@gmail.com", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
 
     element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY - 80, 50, 50); // Img profile picture
@@ -225,6 +224,7 @@ void GameGraphic::displayLoose()
 // List of the top 5 players
 void GameGraphic::displayTopPlayer()
 {
+
     rectPlayerFrameX = 690;                          // Rect player position X
     rectPlayerFrameY = screenHeight / 2 - (320 / 2); // Rect player position Y
     rectPlayerFrameXOffset = rectPlayerFrameX + 15;  // Rect player position X offset
@@ -234,7 +234,37 @@ void GameGraphic::displayTopPlayer()
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Top 5 players", 20, element->COLOR_LIGHTGREY2, 730, 160, false, 0, 0); // Text Top 5 players
 
     element->drawRoundedRect(705, 200, 150, 245, 10, element->COLOR_WHITE); // White Rect best players
-}
+
+    // Get to five players from Json
+    vector<pair<string, int>> topScores = gameOptions.getTopFiveScores();
+
+    // Loop through the top scores and create textures for each
+
+        for (size_t i = 0; i < topScores.size(); ++i)
+        {
+
+             const auto &playerScore = topScores[i];
+
+            // Create textures for player name and score
+            string playerNameText = playerScore.first;
+            string playerScoreText = to_string(playerScore.second);
+
+            // X and Y to position text
+            int verticalOffset = 230;
+            int lineHeight = 40;
+
+            int nameX = 720;
+            int nameY = verticalOffset + i * lineHeight;
+
+            int scoreX = 790;
+            int scoreY = nameY;
+
+            element->displayText(std::make_shared<sf::Font>(fontOswald), playerNameText, 18, element->COLOR_LIGHTGREY2, nameX, nameY, false, 0, 0); // Text Name
+            element->displayText(std::make_shared<sf::Font>(fontOswald), playerScoreText, 18, element->COLOR_LIGHTGREY2, scoreX, scoreY, false, 0, 0);    // Text Score
+
+            
+        }
+    }
 
 //*** GCU ***//
 
