@@ -147,7 +147,7 @@ void GameGraphic::displayUserProfile()
 {
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY - 85, 180, 60, 10, element->COLOR_LIGHTGREY1);                                                                      // White Rect best players
     element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);       // Display name of the user
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "Joined in 2024", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
+    element->displayText(std::make_shared<sf::Font>(fontOswald), "luThanVa@gmail.com", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
 
     element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY - 80, 50, 50); // Img profile picture
 }
