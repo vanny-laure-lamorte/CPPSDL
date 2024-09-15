@@ -169,14 +169,33 @@ void GameGraphic::displayUserProfile()
 
 //*** GRID ***//
 
-// Display grid
-void GameGraphic::displayGrid()
-{
+sf::Color GameGraphic::determineColor(int value) {
+    // Définition des couleurs pour les différentes plages de valeurs
+    sf::Color lightPink = sf::Color(255, 182, 193); // Rose clair
+    sf::Color normalPink = sf::Color(249, 99, 209);  // Rose foncé
+    sf::Color darkpink = sf::Color(252, 58, 200);          // Bleu
 
-    //  Background transparent rect
+    // Détermination de la couleur en fonction de la valeur
+    if (value < 8) {
+        return lightPink;
+    } else if (value >= 8 && value <= 18) {
+        return normalPink;
+    } else {
+        return darkpink;
+    }
+}
+
+
+
+
+
+// Display grid
+void GameGraphic::displayGrid() 
+{
+    // Fond de l'écran transparent
     element->drawRoundedRectOpacity(screenWidth / 2 - (550 / 2), screenHeight / 2 - (550 / 2), 550, 550, 5, element->COLOR_LIGHTGREY1);
 
-    // Grid of the game
+    // Grille du jeu
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < 4; ++j)
@@ -187,20 +206,25 @@ void GameGraphic::displayGrid()
 
             if (tile.getValue() != 0)
             {
-                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_BLACK);
+                // Obtenir la couleur du carreau en fonction de sa valeur
+                sf::Color tileColor = determineColor(tile.getValue());
+                
+                // Dessiner le carreau avec la couleur déterminée
+                element->drawRoundedRect(x, y, 90, 90, 10, tileColor);
 
-                // Texte
+                // Afficher la valeur du carreau en texte
                 std::string valueStr = std::to_string(tile.getValue());
                 sf::Text text;
                 int textX = x + (90) / 2;
                 int textY = y + (90) / 2;
-                element->displayText(std::make_shared<sf::Font>(fontOswald), valueStr, 20, element->COLOR_LIGHTGREY2, textX, textY, false, 0, 0);
+                element->displayText(std::make_shared<sf::Font>(fontOswald), valueStr, 20, element->COLOR_BLACK, textX, textY, false, 0, 0);
             }
             else
-                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_WHITE);
+                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_LIGHTGREY1);  // Carreau vide
         }
     }
 }
+
 
 // Update the grid after the user input
 void GameGraphic::updateGame(const GameBoard &newGameBoard)

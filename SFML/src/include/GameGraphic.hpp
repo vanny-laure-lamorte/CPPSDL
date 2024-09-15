@@ -44,6 +44,7 @@ public:
     void displayResetUndo();
 
     //*** GRID ***//
+    sf::Color determineColor(int value);
     void displayGrid();
     void updateGame(const GameBoard &newGameBoard); 
 
