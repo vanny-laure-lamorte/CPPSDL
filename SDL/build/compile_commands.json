@@ -1,0 +1,62 @@
+[
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\main.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\main.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/main.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\Element.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\Element.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/Element.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/Element.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\EventHandler.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\EventHandler.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/EventHandler.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/EventHandler.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\Game.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\Game.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/Game.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/Game.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\GameBoard.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\GameBoard.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/GameBoard.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/GameBoard.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\GameGraphic.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\GameGraphic.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/GameGraphic.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\GameOptions.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\GameOptions.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/GameOptions.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/GameOptions.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\IntroScreenGraphic.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\IntroScreenGraphic.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/IntroScreenGraphic.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/IntroScreenGraphic.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\Tile.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\Tile.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/Tile.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/Tile.cpp.obj"
+},
+{
+  "directory": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/CPPSDL.dir/includes_CXX.rsp -g -o CMakeFiles\\CPPSDL.dir\\src\\Window.cpp.obj -c \"C:\\Users\\Vanny Laure Lamorte\\Plateforme\\CPPSDL\\SDL\\src\\Window.cpp\"",
+  "file": "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SDL/src/Window.cpp",
+  "output": "CMakeFiles/CPPSDL.dir/src/Window.cpp.obj"
+}
+]

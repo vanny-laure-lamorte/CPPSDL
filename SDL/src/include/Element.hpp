@@ -31,9 +31,12 @@ public:
     void drawGradientRect(int x, int y, int width, int height, SDL_Color startColor, SDL_Color endColor, bool horizontal);
 
 void drawRoundedRectOpacity(int x, int y, int width, int height, int radius, SDL_Color color);
+void drawRectOpacity(int x, int y, int width, int height, SDL_Color color);
+
     // Colors
     const SDL_Color COLOR_BLACK = {0, 0, 10, 255};
     const SDL_Color COLOR_WHITE = {255, 255, 255, 255};
+    const SDL_Color COLOR_WHITE_TRANSPARENT = {255, 255, 255, 120};
     const SDL_Color COLOR_GREY = {200, 200, 200, 255};
     const SDL_Color COLOR_DARKGREY = {29, 29, 41, 255}; //#1d1d29 Big section
     const SDL_Color COLOR_LIGHTGREY = {42, 42, 57, 255}; //#2a2a39 Small section    

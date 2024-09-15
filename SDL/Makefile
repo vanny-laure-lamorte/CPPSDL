@@ -1,2 +1,3 @@
 all:
-	g++ -I src/include -L src/lib -o main main.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_image
+
+	g++ -I src/include -L src/lib -o main.exe main.cpp src/Window.cpp src/Game.cpp src/GameGraphic.cpp src/GameOptions.cpp src/GameBoard.cpp src/Tile.cpp src/Element.cpp src/IntroScreenGraphic.cpp src/EventHandler.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf

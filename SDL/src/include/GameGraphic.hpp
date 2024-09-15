@@ -5,9 +5,22 @@
 #include <SDL2/SDL_image.h>
 #include "Element.hpp"
 #include "GameBoard.hpp"
+#include "GameOptions.hpp"
 #include "Tile.hpp"
-using namespace std;
+#include <map>
 
+using namespace std;
+struct TileAnimation
+{
+    int currentX;
+    int currentY;
+    int targetX;
+    int targetY;
+    bool hasReachedTarget() const
+    {
+        return currentX == targetX && currentY == targetY;
+    }
+};
 class GameGraphic
 {
 public:
@@ -18,30 +31,87 @@ public:
     void displayGameTexture();
     void updateGameBoard(const GameBoard &newGameBoard);
 
-    // Font
-    void displayTitle();
-    void displayGrid();
+    void displayRect();
+    void displayImg();
+    void displayText();
+    void displayValue();
+    void displayDesign();
 
-    bool gameOver = false;
+    void displayGrid();
+    void getUsername(std::string username);
+
     void displayGameOver();
+    bool gameOver = false;
+
+    GameBoard resetGame();
+    GameBoard undoGame();
+
+    // User best score
+    bool scoreFetched;
+    int scoreUserInt;
+    string scoreUserstr;
+    void getUserBestScore();
+
+    // Top 5 players
+    string topPlayerName;
+    string topScore;
+    SDL_Texture *textTitleTop;
+    SDL_Texture *playerNameTexture;
+    SDL_Texture *playerScoreTexture;
+    vector<SDL_Texture *> playerNameTextures;
+    vector<SDL_Texture *> playerScoreTextures;
+
+    void unloadTexturesTopPlayers();
+
+    void loadTopFivePlayers();
+    void displayTopFivePlayers();
+
+    GameBoard gameBoard;
+    GameBoard oldGameBoard;
 
 private:
     Element *element;
+    GameOptions *gameOptions;
+    std::map<int, TileAnimation> animations;
+
     SDL_Renderer *renderer;
     int screenWidth;
     int screenHeight;
+
+    //*** BEST PLAYER INFO ***/
+    void infoBestPlayer();
+    string bestPlayerName;
+    string bestScore;
+    string bestTime;
+    string bestMatchCount;
+    SDL_Texture *textTime;
+    SDL_Texture *textMatch;
+    SDL_Texture *textValueBestPlayerName;
+    SDL_Texture *textValueBestScore;
+    SDL_Texture *textValueBestTime;
+    SDL_Texture *textValueBestMatchCount;
 
     //*** SCORE ***//
     void updateScore();
     int displayScoreValue;
 
     //*** CHRONO ***/
-    Uint32 currentTime = 0;
+    Uint32 startTime = 0;
     Uint32 gameTimer = 0;
+    Uint32 elapsedTime = 0;
     void displayChrono();
+    void resetChrono();
+
+    //*** BACK GRID ***//
+    void displayBackGrid();
 
     //*** GameOver ***/
-    SDL_Texture *gameOverTexture; // Text gameOver
+    bool textureGameOver = false;
+    SDL_Texture *gameOverTexture;    // Text gameOver
+    SDL_Texture *endTimerTexture;    // Text Timer gameOver
+    SDL_Texture *endScoreTexture;    // Text Score gameOver
+    SDL_Texture *gameOverIMGTexture; // IMG Score gameOver
+    SDL_Texture *chronoTexture;
 
     //*** TEXTURE ***//
 
@@ -60,9 +130,7 @@ private:
     SDL_Texture *textCreatorTexture1;
     SDL_Texture *textCreatorTexture2;
 
-    // Text Top 5 players
-    SDL_Texture *textTitleTop;
-    SDL_Texture *textValuePlayersTop;
+    ;
 
     // Text user info
     SDL_Texture *textUserInfo1;
@@ -70,7 +138,7 @@ private:
     SDL_Texture *textScore;
     SDL_Texture *textBest;
     SDL_Texture *textTimer;
-    SDL_Texture *textValueScoreUser;
+    SDL_Texture *textValueScoreUser = nullptr;
     SDL_Texture *textValueBestUser;
 
     // Text btn reset and undo
@@ -78,11 +146,7 @@ private:
     SDL_Texture *textUndo;
 
     // Text best player info
-    SDL_Texture *textBestPlayer1;
     SDL_Texture *textBestPlayer2;
-    SDL_Texture *textValueScorePlayer;
-    SDL_Texture *textValueTimePlayer;
-    SDL_Texture *textValueMatchPlayer;
 
     // Text footer
     SDL_Texture *textViewMore;
@@ -99,7 +163,10 @@ private:
     TTF_Font *fontBestPlayer;
     TTF_Font *fontGameInfo;
 
-    GameBoard gameBoard;
+    //*** USERNAME ***//
+    void displayUsername();
+    bool usernameLoaded = false;
+    std::string user = "";
 };
 
 #endif // GAMEGRAPHIC_HPP

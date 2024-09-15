@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/build/_deps/sfml-src/include",
+                "${workspaceFolder}/build/_deps/sfml-src/src",
+                "${workspaceFolder}/build/_deps/sfml-src/extlibs/headers/stb_image",
+                "${workspaceFolder}/src/include",
+                "${workspaceFolder}/src"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

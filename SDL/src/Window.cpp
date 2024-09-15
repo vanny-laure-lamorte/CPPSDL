@@ -25,8 +25,6 @@ Window::Window(int screenWidth, int screenHeight) : window(nullptr), renderer(nu
         SDL_Quit();
         return;
     }
-
-
     initialized = true;
 }
 
@@ -58,5 +56,3 @@ void Window::update() const {
 SDL_Renderer* Window::getRenderer() const {
     return renderer;
 }
-
-
