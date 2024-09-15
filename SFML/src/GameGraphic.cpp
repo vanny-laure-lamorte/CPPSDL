@@ -172,22 +172,29 @@ void GameGraphic::displayUserProfile()
 sf::Color GameGraphic::determineColor(int value) {
     // Définition des couleurs pour les différentes plages de valeurs
     sf::Color lightPink = sf::Color(255, 182, 193); // Rose clair
-    sf::Color normalPink = sf::Color(249, 99, 209);  // Rose foncé
-    sf::Color darkpink = sf::Color(252, 58, 200);          // Bleu
+    sf::Color normalPink = sf::Color(249, 99, 209); 
+    sf::Color darkpink = sf::Color(252, 58, 200);
+    sf::Color verydarkpink = sf::Color(188, 0, 135); 
+    sf::Color cyan = sf::Color(49, 194, 224);         
+        
 
     // Détermination de la couleur en fonction de la valeur
-    if (value < 8) {
+    if (value < 16) {
         return lightPink;
-    } else if (value >= 8 && value <= 18) {
+    } else if (value >= 16 && value <= 64) {
         return normalPink;
-    } else {
-        return darkpink;
+    } 
+    else if (value >=64 && value <= 256){
+                return darkpink;
+    }
+    else if (value <2048){
+        return verydarkpink;
+    }
+    else {
+
+        return cyan;
     }
 }
-
-
-
-
 
 // Display grid
 void GameGraphic::displayGrid() 

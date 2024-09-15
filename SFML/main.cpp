@@ -108,8 +108,8 @@ int main()
                 if (moved)
                 {
                     gameBoard.display();
-                    gameBoard.addRandomTile();
                     gameGraphic.updateGame(gameBoard);
+                    gameBoard.addRandomTile();
                 }
         }
     }
