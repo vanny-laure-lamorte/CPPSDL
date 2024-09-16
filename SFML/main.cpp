@@ -13,6 +13,8 @@ int SCREENWIDTH = 900;
 int SCREENHEIGHT = 600;
 bool running = true;
 bool introDisplay = true; // Initially set to true to show the intro screen
+int buttonX = 900 / 2 - (260 / 2);
+int buttonY = 600 / 2 - (350 / 2) + 340;
 
 int main()
 {
@@ -29,7 +31,7 @@ int main()
     sf::RenderWindow *renderWindow = window.getWindow();
 
     //*** Create instances ***//
-    GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Game Graphic
+    GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT);               // Game Graphic
     IntroScreenGraphic introScreenGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Intro Screen Graphic
 
     // Main game loop
@@ -53,6 +55,12 @@ int main()
             {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(*renderWindow);
                 introScreenGraphic.handleMouseInput(mousePos); // Handle input for intro screen
+
+                if (event.mouseButton.x >= buttonX && event.mouseButton.x <= buttonX + 260 &&
+                    event.mouseButton.y >= buttonY && event.mouseButton.y <= buttonY + 40)
+                {
+                    introDisplay = false;
+                }
             }
 
             if (event.type == sf::Event::TextEntered)
@@ -63,7 +71,7 @@ int main()
         }
 
         // Rendering
-        renderWindow->clear(sf::Color(50, 50, 50)); // Clear the screen
+        renderWindow->clear(sf::Color(50, 50, 50));
 
         if (introDisplay)
         {
@@ -72,10 +80,7 @@ int main()
         else
         {
             gameGraphic.displayTexture(); // Display game screen if intro is done
-                    // Display what was drawn on the window
-            renderWindow->display();
-
-            
+                                          // Display what was drawn on the window
 
             if (moved)
             {
@@ -84,6 +89,7 @@ int main()
                 gameBoard.addRandomTile();
             }
         }
+        renderWindow->display();
     }
 
     // Unload textures for cleanup
