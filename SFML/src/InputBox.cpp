@@ -1,49 +1,3 @@
-
-//* arg: size, position, Font/
-//* implementation of the InputBox class/
-//* Create input boxes:
-//*     InputBox inputBox1(sf::Vector2f(300, 50), sf::Vector2f(100, 150), font);
-
-
-
-//* Method to draw the input box
-//* args: window
-//* implementation of the InputBox class/
-//* to put into render loop
-
-
-//* Method to check if the input box is in focus
-//* args: mousePos
-//* implementation of the InputBox class/
-//* to put into event loop
-//* Handle mouse clicks for focus
-//             *handle input
-        //     if (event.type == sf::Event::MouseButtonPressed)
-        //     {
-        //         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-        //         inputBox1.checkFocus(mousePos);
-        //         inputBox2.checkFocus(mousePos);
-        //     }
-        //      *handle input
-        //     inputBox1.handleInput(event);
-        //     inputBox2.handleInput(event);
-        // }
-
-
-//* Method to handle input
-//* args: event
-//* implementation of the InputBox class/
-//* to put into event loop
-//* Handle text input
-//             *handle input
-        //     if (event.type == sf::Event::TextEntered)
-        //     {
-        //         inputBox1.handleInput(event);
-        //         inputBox2.handleInput(event);
-        //     }
-        // }
-
-
 #include "include/InputBox.hpp"
 
 // Constructor
@@ -90,11 +44,11 @@ void InputBox::handleInput(sf::Event event)
 
     if (event.type == sf::Event::TextEntered)
     {
-        if (event.text.unicode == '\b' && !inputString.empty()) // Backspace
+        if (event.text.unicode == '\b' && !inputString.empty())
         {
             inputString.pop_back();
         }
-        else if (event.text.unicode < 128 && event.text.unicode != '\b') // Add character
+        else if (event.text.unicode < 128 && event.text.unicode != '\b')
         {
             inputString += static_cast<char>(event.text.unicode);
         }

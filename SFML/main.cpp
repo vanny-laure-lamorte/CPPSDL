@@ -96,7 +96,6 @@ int main()
 
             if (event.type == sf::Event::TextEntered)
             {
-                std::cout << "Text entered: " << event.text.unicode << std::endl;
                 introScreenGraphic.handleTextInput(event); // Handle text input for intro screen
             }
         }
@@ -115,7 +114,6 @@ int main()
 
             if (moved)
             {
-                gameBoard.display();
                 gameBoard.addRandomTile();
                 gameGraphic.updateGame(gameBoard);
             }

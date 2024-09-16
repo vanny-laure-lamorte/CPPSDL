@@ -62,8 +62,6 @@ void GameGraphic::loadTexture()
 void GameGraphic::displayTexture()
 {
     element->renderTexture(testTexture, screenWidth / 2 - animTransition / 2, screenHeight / 2 - animTransition / 2, animTransition, animTransition);
-    // animation();
-
     displayBackgroud(); // Background
     displayGrid();      // Grid
     displayTitle();     // Title
@@ -77,12 +75,11 @@ void GameGraphic::displayTexture()
 
     if (!gameBoard.canMove())
     {
-        std::cout << "Game over!" << std::endl;
         displayLoose(); // Display loose message
-        std::cout << "Press any key to exit." << std::endl;
-
-        // Save score at the end of the game
-        gameOptions.saveScore(pseudo, mail, to_string(gameBoard.getScore()), timeString, "0");
+        if(!saveScore){
+        gameOptions.saveScore(pseudo, mail, to_string(gameBoard.getScore()), timeString, "1");
+        saveScore = true;
+        }
     }
 }
 
@@ -170,15 +167,12 @@ void GameGraphic::displayUserProfile()
 //*** GRID ***//
 
 sf::Color GameGraphic::determineColor(int value) {
-    // Définition des couleurs pour les différentes plages de valeurs
-    sf::Color lightPink = sf::Color(255, 182, 193); // Rose clair
+    sf::Color lightPink = sf::Color(255, 182, 193); 
     sf::Color normalPink = sf::Color(249, 99, 209); 
     sf::Color darkpink = sf::Color(252, 58, 200);
     sf::Color verydarkpink = sf::Color(188, 0, 135); 
     sf::Color cyan = sf::Color(49, 194, 224);         
         
-
-    // Détermination de la couleur en fonction de la valeur
     if (value < 16) {
         return lightPink;
     } else if (value >= 16 && value <= 64) {
@@ -199,10 +193,8 @@ sf::Color GameGraphic::determineColor(int value) {
 // Display grid
 void GameGraphic::displayGrid() 
 {
-    // Fond de l'écran transparent
     element->drawRoundedRectOpacity(screenWidth / 2 - (550 / 2), screenHeight / 2 - (550 / 2), 550, 550, 5, element->COLOR_LIGHTGREY1);
 
-    // Grille du jeu
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < 4; ++j)
@@ -213,13 +205,10 @@ void GameGraphic::displayGrid()
 
             if (tile.getValue() != 0)
             {
-                // Obtenir la couleur du carreau en fonction de sa valeur
                 sf::Color tileColor = determineColor(tile.getValue());
                 
-                // Dessiner le carreau avec la couleur déterminée
                 element->drawRoundedRect(x, y, 90, 90, 10, tileColor);
 
-                // Afficher la valeur du carreau en texte
                 std::string valueStr = std::to_string(tile.getValue());
                 sf::Text text;
                 int textX = x + (90) / 2;
@@ -227,7 +216,7 @@ void GameGraphic::displayGrid()
                 element->displayText(std::make_shared<sf::Font>(fontOswald), valueStr, 20, element->COLOR_BLACK, textX, textY, false, 0, 0);
             }
             else
-                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_LIGHTGREY1);  // Carreau vide
+                element->drawRoundedRect(x, y, 90, 90, 10, element->COLOR_LIGHTGREY1);
         }
     }
 }
@@ -242,7 +231,6 @@ void GameGraphic::updateGame(const GameBoard &newGameBoard)
 // Display game over message
 void GameGraphic::displayLoose()
 {
-
     // Rect light grey background
     element->drawRoundedRect(screenWidth / 2 - (400 / 2), screenHeight / 2 - (320 / 2), 390, 390, 5, element->COLOR_LIGHTGREY1);
 
@@ -296,7 +284,6 @@ void GameGraphic::displayBestPlayer(){
     element->displayText(std::make_shared<sf::Font>(fontOswald), "Match - ", policeValueUser, element->COLOR_DARKGREY2, rectPlayerFrameX +30 , 290, false, 0, 0); 
     element->displayText(std::make_shared<sf::Font>(fontOswald), matchCount, policeValueUser, element->COLOR_LIGHTGREY2, valuePositionText, 290, false, 0, 0); 
 }
-
 
 // List of the top 5 players
 void GameGraphic::displayTopPlayer()

@@ -22,7 +22,6 @@ public:
     void handleInput(sf::Event event);
     // Getter for input string
     std::string getInputString() { return inputString; }
-
 };
 
 #endif
