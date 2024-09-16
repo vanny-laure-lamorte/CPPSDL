@@ -261,6 +261,8 @@ CMakeFiles/main.dir/src/GameGraphic.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
  C:/msys64/mingw64/include/c++/14.2.0/backward/auto_ptr.h \
  C:/msys64/mingw64/include/c++/14.2.0/pstl/glue_memory_defs.h \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\include/IntroScreenGraphic.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\include/InputBox.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\include/GameBoard.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\include/Tile.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\include/GameOptions.hpp \

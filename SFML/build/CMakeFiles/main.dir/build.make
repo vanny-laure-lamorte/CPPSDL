@@ -188,6 +188,21 @@ CMakeFiles/main.dir/src/GameOptions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/GameOptions.cpp.s"
 	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\GameOptions.cpp -o CMakeFiles\main.dir\src\GameOptions.cpp.s
 
+CMakeFiles/main.dir/src/InputBox.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/InputBox.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
+CMakeFiles/main.dir/src/InputBox.cpp.obj: C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/src/InputBox.cpp
+CMakeFiles/main.dir/src/InputBox.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/src/InputBox.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/InputBox.cpp.obj -MF CMakeFiles\main.dir\src\InputBox.cpp.obj.d -o CMakeFiles\main.dir\src\InputBox.cpp.obj -c C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\InputBox.cpp
+
+CMakeFiles/main.dir/src/InputBox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/InputBox.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\InputBox.cpp > CMakeFiles\main.dir\src\InputBox.cpp.i
+
+CMakeFiles/main.dir/src/InputBox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/InputBox.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src\InputBox.cpp -o CMakeFiles\main.dir\src\InputBox.cpp.s
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.obj" \
@@ -197,7 +212,8 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/src/Tile.cpp.obj" \
 "CMakeFiles/main.dir/src/GameBoard.cpp.obj" \
 "CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.obj" \
-"CMakeFiles/main.dir/src/GameOptions.cpp.obj"
+"CMakeFiles/main.dir/src/GameOptions.cpp.obj" \
+"CMakeFiles/main.dir/src/InputBox.cpp.obj"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
@@ -210,6 +226,7 @@ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/s
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/src/GameBoard.cpp.obj
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.obj
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/src/GameOptions.cpp.obj
+C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/src/InputBox.cpp.obj
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/build.make
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: _deps/sfml-build/lib/libsfml-graphics-s-d.a
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: _deps/sfml-build/lib/libsfml-window-s-d.a
@@ -218,7 +235,7 @@ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: _deps/sfml-src/extlib
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/linkLibs.rsp
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/objects1.rsp
 C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\main.exe"
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copy OpenAL DLL"
 	"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/extlibs/bin/x64/openal32.dll C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\main.dir\link.txt --verbose=$(VERBOSE)

@@ -48,6 +48,12 @@
   "output": "CMakeFiles/main.dir/src/GameOptions.cpp.obj"
 },
 {
+  "directory": "C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSFML_STATIC @CMakeFiles/main.dir/includes_CXX.rsp -g -o CMakeFiles\\main.dir\\src\\InputBox.cpp.obj -c C:\\Users\\lucas\\Desktop\\B2Project2024\\CPPSDL\\SFML\\src\\InputBox.cpp",
+  "file": "C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/src/InputBox.cpp",
+  "output": "CMakeFiles/main.dir/src/InputBox.cpp.obj"
+},
+{
   "directory": "C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-build/src/SFML/System",
   "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSFML_STATIC @CMakeFiles/sfml-system.dir/includes_CXX.rsp -g  -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wdouble-promotion -Wformat=2 -Wnull-dereference -Wold-style-cast -Wpedantic -Wmisleading-indentation -Wduplicated-cond -Wlogical-op -Wduplicated-branches -o CMakeFiles\\sfml-system.dir\\Clock.cpp.obj -c C:\\Users\\lucas\\Desktop\\B2Project2024\\CPPSDL\\SFML\\build\\_deps\\sfml-src\\src\\SFML\\System\\Clock.cpp",
   "file": "C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/System/Clock.cpp",

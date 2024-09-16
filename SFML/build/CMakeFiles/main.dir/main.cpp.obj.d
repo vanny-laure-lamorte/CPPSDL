@@ -478,6 +478,8 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/pstl/glue_memory_defs.h \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameGraphic.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/Element.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/IntroScreenGraphic.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/InputBox.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameBoard.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/Tile.hpp \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameOptions.hpp \
@@ -549,5 +551,4 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/pstl/glue_numeric_defs.h \
  C:/msys64/mingw64/include/c++/14.2.0/any \
  C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameBoard.hpp \
- C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/IntroScreenGraphic.hpp \
- C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/InputBox.hpp
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/IntroScreenGraphic.hpp

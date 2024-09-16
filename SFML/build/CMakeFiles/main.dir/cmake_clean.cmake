@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/GameGraphic.cpp.obj.d"
   "CMakeFiles/main.dir/src/GameOptions.cpp.obj"
   "CMakeFiles/main.dir/src/GameOptions.cpp.obj.d"
+  "CMakeFiles/main.dir/src/InputBox.cpp.obj"
+  "CMakeFiles/main.dir/src/InputBox.cpp.obj.d"
   "CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.obj"
   "CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.obj.d"
   "CMakeFiles/main.dir/src/Tile.cpp.obj"

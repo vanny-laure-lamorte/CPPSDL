@@ -73,10 +73,6 @@ int main()
                     case (sf::Keyboard::S):
                         moved = gameBoard.moveDown();
                         break;
-
-                    // Error input
-                    default:
-                        std::cout << "Invalid move! Use w/a/s/d." << std::endl;
                     }
             }
 
@@ -96,7 +92,6 @@ int main()
 
             if (event.type == sf::Event::TextEntered)
             {
-                std::cout << "Text entered: " << event.text.unicode << std::endl;
                 introScreenGraphic.handleTextInput(event); // Handle text input for intro screen
             }
         }
@@ -115,7 +110,6 @@ int main()
 
             if (moved)
             {
-                gameBoard.display();
                 gameBoard.addRandomTile();
                 gameGraphic.updateGame(gameBoard);
             }

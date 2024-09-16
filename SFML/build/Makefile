@@ -391,6 +391,30 @@ src/GameOptions.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/GameOptions.cpp.s
 .PHONY : src/GameOptions.cpp.s
 
+src/InputBox.obj: src/InputBox.cpp.obj
+.PHONY : src/InputBox.obj
+
+# target to build an object file
+src/InputBox.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/InputBox.cpp.obj
+.PHONY : src/InputBox.cpp.obj
+
+src/InputBox.i: src/InputBox.cpp.i
+.PHONY : src/InputBox.i
+
+# target to preprocess a source file
+src/InputBox.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/InputBox.cpp.i
+.PHONY : src/InputBox.cpp.i
+
+src/InputBox.s: src/InputBox.cpp.s
+.PHONY : src/InputBox.s
+
+# target to generate assembly for a file
+src/InputBox.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/InputBox.cpp.s
+.PHONY : src/InputBox.cpp.s
+
 src/IntroScreenGraphic.obj: src/IntroScreenGraphic.cpp.obj
 .PHONY : src/IntroScreenGraphic.obj
 
@@ -499,6 +523,9 @@ help:
 	@echo ... src/GameOptions.obj
 	@echo ... src/GameOptions.i
 	@echo ... src/GameOptions.s
+	@echo ... src/InputBox.obj
+	@echo ... src/InputBox.i
+	@echo ... src/InputBox.s
 	@echo ... src/IntroScreenGraphic.obj
 	@echo ... src/IntroScreenGraphic.i
 	@echo ... src/IntroScreenGraphic.s
