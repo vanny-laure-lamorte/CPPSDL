@@ -1,15 +1,15 @@
 _deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.obj: \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\build\_deps\sfml-src\src\SFML\Graphics\Sprite.cpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Sprite.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Drawable.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderStates.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/BlendMode.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transform.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.inl \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\_deps\sfml-src\src\SFML\Graphics\Sprite.cpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Sprite.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Drawable.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderStates.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/BlendMode.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transform.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.inl \
  C:/msys64/mingw64/include/c++/14.2.0/algorithm \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_algobase.h \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -64,12 +64,12 @@ _deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.obj: 
  C:/msys64/mingw64/include/c++/14.2.0/bits/std_abs.h \
  C:/msys64/mingw64/include/c++/14.2.0/pstl/glue_algorithm_defs.h \
  C:/msys64/mingw64/include/c++/14.2.0/pstl/execution_defs.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transformable.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Vertex.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Color.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Texture.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Image.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transformable.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Vertex.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Color.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Texture.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Image.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/string \
  C:/msys64/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stringfwd.h \
@@ -125,10 +125,10 @@ _deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.obj: 
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/vector.tcc \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/GlResource.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/NonCopyable.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderTarget.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/View.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/PrimitiveType.hpp
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/GlResource.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/NonCopyable.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderTarget.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/View.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/PrimitiveType.hpp

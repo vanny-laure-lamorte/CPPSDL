@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/Audio
+# Install script for directory: C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/Audio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "devel" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SFML/build/_deps/sfml-build/lib/libsfml-audio-s-d.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-build/lib/libsfml-audio-s-d.a")
 endif()
 

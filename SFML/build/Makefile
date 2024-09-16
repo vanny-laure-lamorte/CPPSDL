@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Vanny Laure Lamorte\Plateforme\CPPSDL\SFML"
+CMAKE_SOURCE_DIR = C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Vanny Laure Lamorte\Plateforme\CPPSDL\SFML\build"
+CMAKE_BINARY_DIR = C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -77,7 +77,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake "C:/Users/Vanny Laure Lamorte/Plateforme/CPPSDL/SFML/build/CPackSourceConfig.cmake"
+	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -151,9 +151,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Vanny Laure Lamorte\Plateforme\CPPSDL\SFML\build\CMakeFiles" "C:\Users\Vanny Laure Lamorte\Plateforme\CPPSDL\SFML\build\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\CMakeFiles C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Vanny Laure Lamorte\Plateforme\CPPSDL\SFML\build\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -367,6 +367,54 @@ src/GameGraphic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/GameGraphic.cpp.s
 .PHONY : src/GameGraphic.cpp.s
 
+src/GameOptions.obj: src/GameOptions.cpp.obj
+.PHONY : src/GameOptions.obj
+
+# target to build an object file
+src/GameOptions.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/GameOptions.cpp.obj
+.PHONY : src/GameOptions.cpp.obj
+
+src/GameOptions.i: src/GameOptions.cpp.i
+.PHONY : src/GameOptions.i
+
+# target to preprocess a source file
+src/GameOptions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/GameOptions.cpp.i
+.PHONY : src/GameOptions.cpp.i
+
+src/GameOptions.s: src/GameOptions.cpp.s
+.PHONY : src/GameOptions.s
+
+# target to generate assembly for a file
+src/GameOptions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/GameOptions.cpp.s
+.PHONY : src/GameOptions.cpp.s
+
+src/IntroScreenGraphic.obj: src/IntroScreenGraphic.cpp.obj
+.PHONY : src/IntroScreenGraphic.obj
+
+# target to build an object file
+src/IntroScreenGraphic.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.obj
+.PHONY : src/IntroScreenGraphic.cpp.obj
+
+src/IntroScreenGraphic.i: src/IntroScreenGraphic.cpp.i
+.PHONY : src/IntroScreenGraphic.i
+
+# target to preprocess a source file
+src/IntroScreenGraphic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.i
+.PHONY : src/IntroScreenGraphic.cpp.i
+
+src/IntroScreenGraphic.s: src/IntroScreenGraphic.cpp.s
+.PHONY : src/IntroScreenGraphic.s
+
+# target to generate assembly for a file
+src/IntroScreenGraphic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/src/IntroScreenGraphic.cpp.s
+.PHONY : src/IntroScreenGraphic.cpp.s
+
 src/Tile.obj: src/Tile.cpp.obj
 .PHONY : src/Tile.obj
 
@@ -448,6 +496,12 @@ help:
 	@echo ... src/GameGraphic.obj
 	@echo ... src/GameGraphic.i
 	@echo ... src/GameGraphic.s
+	@echo ... src/GameOptions.obj
+	@echo ... src/GameOptions.i
+	@echo ... src/GameOptions.s
+	@echo ... src/IntroScreenGraphic.obj
+	@echo ... src/IntroScreenGraphic.i
+	@echo ... src/IntroScreenGraphic.s
 	@echo ... src/Tile.obj
 	@echo ... src/Tile.i
 	@echo ... src/Tile.s

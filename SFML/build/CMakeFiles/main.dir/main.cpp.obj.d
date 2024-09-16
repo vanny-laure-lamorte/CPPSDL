@@ -1,13 +1,13 @@
 CMakeFiles/main.dir/main.cpp.obj: \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\main.cpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Clock.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Time.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Err.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\main.cpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Clock.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Time.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Err.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/ostream \
  C:/msys64/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -143,15 +143,15 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/locale_facets.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/bits/basic_ios.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/bits/ostream.tcc \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/FileInputStream.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/InputStream.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/NonCopyable.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Lock.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/MemoryInputStream.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Mutex.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Sleep.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/FileInputStream.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/InputStream.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/NonCopyable.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Lock.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/MemoryInputStream.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Mutex.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Sleep.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/algorithm \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_algo.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/algorithmfwd.h \
@@ -168,63 +168,63 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/codecvt.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/locale_facets_nonio.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/bits/locale_conv.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.inl \
  C:/msys64/mingw64/include/c++/14.2.0/iterator \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stream_iterator.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Thread.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Thread.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/ThreadLocal.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/ThreadLocalPtr.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/ThreadLocalPtr.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector3.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector3.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Clipboard.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Context.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/GlResource.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/ContextSettings.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Cursor.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Event.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Joystick.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Keyboard.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Mouse.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Sensor.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Touch.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/VideoMode.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Thread.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Thread.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/ThreadLocal.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/ThreadLocalPtr.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/ThreadLocalPtr.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector2.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector3.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Vector3.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Clipboard.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Context.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/GlResource.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/ContextSettings.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Cursor.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Event.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Joystick.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Keyboard.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Mouse.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Sensor.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Touch.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/VideoMode.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/vector \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_uninitialized.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/vector.tcc \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Window.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/WindowBase.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Vulkan.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/WindowHandle.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Window.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/WindowBase.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Vulkan.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/WindowHandle.hpp \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h \
  C:/msys64/mingw64/include/stdint.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/WindowStyle.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/BlendMode.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/CircleShape.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Shape.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Drawable.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderStates.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transform.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transformable.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/VertexArray.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Vertex.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Color.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/PrimitiveType.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/ConvexShape.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Font.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Glyph.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Texture.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Image.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/WindowStyle.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/BlendMode.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/CircleShape.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Shape.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Drawable.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderStates.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transform.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Rect.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Transformable.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/VertexArray.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Vertex.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Color.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/PrimitiveType.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/ConvexShape.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Font.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Glyph.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Texture.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Image.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/map \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_tree.h \
  C:/msys64/mingw64/include/c++/14.2.0/ext/aligned_buffer.h \
@@ -232,17 +232,17 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_map.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_multimap.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/erase_if.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RectangleShape.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderTarget.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/View.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderTexture.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderWindow.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Shader.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Glsl.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Glsl.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Sprite.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Text.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/VertexBuffer.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RectangleShape.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderTarget.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/View.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderTexture.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/RenderWindow.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Shader.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Glsl.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Glsl.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Sprite.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/Text.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Graphics/VertexBuffer.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/iostream \
  C:/msys64/mingw64/include/c++/14.2.0/istream \
  C:/msys64/mingw64/include/c++/14.2.0/bits/istream.tcc \
@@ -462,7 +462,7 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/winsvc.h C:/msys64/mingw64/include/mcx.h \
  C:/msys64/mingw64/include/imm.h C:/msys64/mingw64/include/direct.h \
  C:/msys64/mingw64/include/io.h \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\src/include/Window.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/Window.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/memory \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/align.h \
@@ -476,8 +476,78 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
  C:/msys64/mingw64/include/c++/14.2.0/backward/auto_ptr.h \
  C:/msys64/mingw64/include/c++/14.2.0/pstl/glue_memory_defs.h \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\src/include/GameGraphic.hpp \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\src/include/Element.hpp \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\src/include/GameBoard.hpp \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\src/include/Tile.hpp \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\src/include/GameBoard.hpp
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameGraphic.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/Element.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameBoard.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/Tile.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameOptions.hpp \
+ C:/msys64/mingw64/include/c++/14.2.0/fstream \
+ C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/fstream.tcc \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/nlohmann/json.hpp \
+ C:/msys64/mingw64/include/c++/14.2.0/functional \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/std_function.h \
+ C:/msys64/mingw64/include/c++/14.2.0/unordered_map \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/unordered_map.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/hashtable.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/hashtable_policy.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/enable_special_members.h \
+ C:/msys64/mingw64/include/c++/14.2.0/array \
+ C:/msys64/mingw64/include/c++/14.2.0/compare \
+ C:/msys64/mingw64/include/c++/14.2.0/utility \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/stl_relops.h \
+ C:/msys64/mingw64/include/c++/14.2.0/forward_list \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/forward_list.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/forward_list.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/valarray \
+ C:/msys64/mingw64/include/c++/14.2.0/cmath \
+ C:/msys64/mingw64/include/math.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/specfun.h \
+ C:/msys64/mingw64/include/c++/14.2.0/limits \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/gamma.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/special_function_util.h \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/bessel_function.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/beta_function.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/ell_integral.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/exp_integral.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/hypergeometric.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/legendre_function.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/modified_bessel_func.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/poly_hermite.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/poly_laguerre.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/tr1/riemann_zeta.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/valarray_array.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/valarray_array.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/valarray_before.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/slice_array.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/valarray_after.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/gslice.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/gslice_array.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/mask_array.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/indirect_array.h \
+ C:/msys64/mingw64/include/c++/14.2.0/cstdint \
+ C:/msys64/mingw64/include/c++/14.2.0/version \
+ C:/msys64/mingw64/include/c++/14.2.0/cassert \
+ C:/msys64/mingw64/include/assert.h \
+ C:/msys64/mingw64/include/c++/14.2.0/cstring \
+ C:/msys64/mingw64/include/c++/14.2.0/filesystem \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/fs_fwd.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/chrono.h \
+ C:/msys64/mingw64/include/c++/14.2.0/ratio \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/parse_numbers.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/fs_path.h \
+ C:/msys64/mingw64/include/c++/14.2.0/iomanip \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/quoted_string.h \
+ C:/msys64/mingw64/include/c++/14.2.0/sstream \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/sstream.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/codecvt \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/fs_dir.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/fs_ops.h \
+ C:/msys64/mingw64/include/c++/14.2.0/numeric \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/stl_numeric.h \
+ C:/msys64/mingw64/include/c++/14.2.0/pstl/glue_numeric_defs.h \
+ C:/msys64/mingw64/include/c++/14.2.0/any \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/GameBoard.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/IntroScreenGraphic.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\src/include/InputBox.hpp

@@ -1,8 +1,8 @@
 _deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.obj: \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\build\_deps\sfml-src\src\SFML\Window\VideoMode.cpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/VideoMode.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\_deps\sfml-src\src\SFML\Window\VideoMode.cpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/VideoMode.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Window/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/vector \
  C:/msys64/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -63,7 +63,7 @@ _deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/uses_allocator.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/uses_allocator_args.h \
  C:/msys64/mingw64/include/c++/14.2.0/tuple \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/Window/VideoModeImpl.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/Window/VideoModeImpl.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/algorithm \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_algo.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/algorithmfwd.h \

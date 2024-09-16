@@ -1,10 +1,10 @@
 _deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/Win32/ClipboardImpl.cpp.obj: \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SFML\build\_deps\sfml-src\src\SFML\Window\Win32\ClipboardImpl.cpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/Window/Win32/ClipboardImpl.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Export.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.hpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SFML\build\_deps\sfml-src\src\SFML\Window\Win32\ClipboardImpl.cpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/src/SFML/Window/Win32/ClipboardImpl.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Export.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/Config.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/algorithm \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_algobase.h \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -153,11 +153,11 @@ _deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/Win32/ClipboardImpl.
  C:/msys64/mingw64/include/c++/14.2.0/bits/codecvt.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/locale_facets_nonio.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/bits/locale_conv.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Utf.inl \
  C:/msys64/mingw64/include/c++/14.2.0/iterator \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stream_iterator.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.inl \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Err.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/String.inl \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SFML/build/_deps/sfml-src/include/SFML/System/Err.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/ostream \
  C:/msys64/mingw64/include/c++/14.2.0/ios \
  C:/msys64/mingw64/include/c++/14.2.0/bits/basic_ios.h \
