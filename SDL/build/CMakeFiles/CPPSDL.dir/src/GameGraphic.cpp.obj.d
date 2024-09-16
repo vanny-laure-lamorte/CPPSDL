@@ -1,5 +1,5 @@
 CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj: \
- C:\Users\Vanny\ Laure\ Lamorte\Plateforme\CPPSDL\SDL\src\GameGraphic.cpp \
+ C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SDL\src\GameGraphic.cpp \
  C:/msys64/mingw64/include/c++/14.2.0/iostream \
  C:/msys64/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -138,14 +138,14 @@ CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/bits/ostream.tcc \
  C:/msys64/mingw64/include/c++/14.2.0/istream \
  C:/msys64/mingw64/include/c++/14.2.0/bits/istream.tcc \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/GameGraphic.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_main.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_stdinc.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_config.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_platform.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/begin_code.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/close_code.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/GameGraphic.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_main.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_stdinc.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_config.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_platform.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/begin_code.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/close_code.h \
  C:/msys64/mingw64/include/winsdkver.h \
  C:/msys64/mingw64/include/winapifamily.h \
  C:/msys64/mingw64/include/sdkddkver.h \
@@ -154,16 +154,16 @@ CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj: \
  C:/msys64/mingw64/include/_mingw_stdarg.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h \
  C:/msys64/mingw64/include/stdint.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_assert.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_atomic.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_audio.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_error.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_endian.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_mutex.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_thread.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_rwops.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_clipboard.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_cpuinfo.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_assert.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_atomic.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_audio.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_error.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_endian.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_mutex.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_thread.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_rwops.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_clipboard.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_cpuinfo.h \
  C:/msys64/mingw64/include/intrin.h C:/msys64/mingw64/include/setjmp.h \
  C:/msys64/mingw64/include/psdk_inc/intrin-impl.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/x86intrin.h \
@@ -271,44 +271,44 @@ CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj: \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/ammintrin.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/xopintrin.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/cpuid.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_events.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_video.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_pixels.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_rect.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_surface.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_blendmode.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_keyboard.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_keycode.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_scancode.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_mouse.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_joystick.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_guid.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_gamecontroller.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_sensor.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_quit.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_gesture.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_touch.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_filesystem.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_haptic.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_hidapi.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_hints.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_loadso.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_log.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_messagebox.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_metal.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_power.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_render.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_shape.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_system.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_timer.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_version.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_locale.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_misc.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_image.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/Element.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/SDL2/SDL_ttf.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/GameBoard.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_events.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_video.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_pixels.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_rect.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_surface.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_blendmode.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_keyboard.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_keycode.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_scancode.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_mouse.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_joystick.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_guid.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_gamecontroller.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_sensor.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_quit.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_gesture.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_touch.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_filesystem.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_haptic.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_hidapi.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_hints.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_loadso.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_log.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_messagebox.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_metal.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_power.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_render.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_shape.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_system.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_timer.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_version.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_locale.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_misc.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_image.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/Element.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/SDL2/SDL_ttf.h \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/GameBoard.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/vector \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_uninitialized.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_vector.h \
@@ -324,8 +324,8 @@ CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/set \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_set.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_multiset.h \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/Tile.hpp \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/GameOptions.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/Tile.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/GameOptions.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/algorithm \
  C:/msys64/mingw64/include/c++/14.2.0/bits/stl_algo.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/algorithmfwd.h \
@@ -339,7 +339,7 @@ CMakeFiles/CPPSDL.dir/src/GameGraphic.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/basic_file.h \
  C:/msys64/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++io.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/fstream.tcc \
- C:/Users/VANNYL~1/PLATEF~1/CPPSDL/SDL/src/include/nlohmann/json.hpp \
+ C:/Users/lucas/Desktop/B2Project2024/CPPSDL/SDL/src/include/nlohmann/json.hpp \
  C:/msys64/mingw64/include/c++/14.2.0/functional \
  C:/msys64/mingw64/include/c++/14.2.0/bits/std_function.h \
  C:/msys64/mingw64/include/c++/14.2.0/unordered_map \

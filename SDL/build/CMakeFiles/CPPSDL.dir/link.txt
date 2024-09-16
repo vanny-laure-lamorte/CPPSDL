@@ -1,3 +1,3 @@
 "C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\CPPSDL.dir/objects.a
 C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\CPPSDL.dir/objects.a @CMakeFiles\CPPSDL.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\CPPSDL.dir/objects.a -Wl,--no-whole-archive -o "C:\Users\Vanny Laure Lamorte\Plateforme\CPPSDL\SDL\CPPSDL.exe" -Wl,--out-implib,libCPPSDL.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\CPPSDL.dir\linkLibs.rsp
+C:\msys64\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\CPPSDL.dir/objects.a -Wl,--no-whole-archive -o C:\Users\lucas\Desktop\B2Project2024\CPPSDL\SDL\CPPSDL.exe -Wl,--out-implib,libCPPSDL.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\CPPSDL.dir\linkLibs.rsp

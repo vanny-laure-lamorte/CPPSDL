@@ -99,7 +99,6 @@ void GameOptions::saveScore(const string &playerName, const string &score, const
     {
         outputFile << scoresJson.dump(4);
         outputFile.close();
-        cout << "Score saved successfully!" << endl;
     }
     else
     {
