@@ -1,44 +1,38 @@
+
 #ifndef INTROSCREENGRAPHIC_HPP
 #define INTROSCREENGRAPHIC_HPP
 
+#include <SFML/Graphics.hpp>
 #include "Element.hpp"
-#include "GameOptions.hpp"
 #include "InputBox.hpp"
-#include <iostream>
-#include <cstring>
+#include <memory>
 
-class IntroScreenGraphic
-{
-public:
-    IntroScreenGraphic(sf::RenderWindow *window, int screenWidth, int screenHeight);
-
-    ~IntroScreenGraphic() = default;
-
-    std::unique_ptr<Element> element;
-    sf::RenderWindow *window;    
+class IntroScreenGraphic {
+private:
+    sf::RenderWindow* window;
     int screenWidth;
     int screenHeight;
-
-    //*** FONT ***//
+    std::unique_ptr<Element> element;
     sf::Font fontOswald;
-    
-    //*** LOAD & UNLOAD TEXTURES */
+
+    // Declare input boxes
+    InputBox inputBox1;
+    InputBox inputBox2;
+
+    // Textures
+    std::shared_ptr<sf::Texture> backgroundTexture;
+    std::shared_ptr<sf::Texture> profileTexture;
+
+public:
+    // Constructor
+    IntroScreenGraphic(sf::RenderWindow* window, int screenWidth, int screenHeight);
+
+    // Methods
     void loadIntroTexture();
     void unloadAllIntroTextures();
-    std::shared_ptr<sf::Texture> backgroundTexture; // Img Background
-    std::shared_ptr<sf::Texture> profileTexture; // Img Profile 
-
-    // *** DISPLAY ***//
     void displayIntro();
-
-    //*** PSEUDO ***/
-
-private:
-
-
-
-    
-    
+    void handleMouseInput(sf::Vector2i mousePos);
+    void handleTextInput(sf::Event event);
 };
 
 #endif

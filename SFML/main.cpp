@@ -4,16 +4,15 @@
 #include <string>
 #include <direct.h>
 
-#include <SFML/Graphics.hpp>
 #include "src/include/Window.hpp"
 #include "src/include/GameGraphic.hpp"
 #include "src/include/GameBoard.hpp"
 #include "src/include/IntroScreenGraphic.hpp"
 
-
 int SCREENWIDTH = 900;
 int SCREENHEIGHT = 600;
 bool running = true;
+bool introDisplay = true; // Initially set to true to show the intro screen
 
 int main()
 {
@@ -29,92 +28,55 @@ int main()
     // Get the SFML window object
     sf::RenderWindow *renderWindow = window.getWindow();
 
-    //*** Create instance ***//
+    //*** Create instances ***//
     GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Game Graphic
-    IntroScreenGraphic introScreenGraphic (renderWindow, SCREENWIDTH, SCREENHEIGHT); // Intro Screen Graphic
+    IntroScreenGraphic introScreenGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Intro Screen Graphic
 
     // Main game loop
     while (renderWindow->isOpen())
     {
         sf::Event event;
-        while (running)
+        while (renderWindow->pollEvent(event))
         {
-                bool moved = false;
-            while (renderWindow->pollEvent(event))
+            if (event.type == sf::Event::Closed)
             {
-
-
-                if (event.type == sf::Event::Closed)
-                {
-                    running = false;
-                    renderWindow->close();
-
-                }
-
-                if (event.type == sf::Event::KeyPressed)
-
-                    switch (event.key.code)
-                    {
-                    // Move to left
-                    case (sf::Keyboard::Left):
-                    case (sf::Keyboard::Q):
-                        moved = gameBoard.moveLeft();
-                        break;
-
-                    // Move to right
-                    case (sf::Keyboard::Right):
-                    case (sf::Keyboard::D):
-                        moved = gameBoard.moveRight();
-                        break;
-
-                    // Move Up
-                    case (sf::Keyboard::Up):
-                    case (sf::Keyboard::Z):
-                        moved = gameBoard.moveUp();
-                        break;
-
-                    // Move Down
-                    case (sf::Keyboard::Down):
-                    case (sf::Keyboard::S):
-                        moved = gameBoard.moveDown();
-                        break;
-
-                    // Error input
-                    default:
-                        std::cout << "Invalid move! Use w/a/s/d." << std::endl;
-                    }
+                renderWindow->close();
             }
-                // Clear the screen
-                renderWindow->clear(sf::Color(50, 50, 50)); // Dark gray
 
-                // Display background and other textures
+            if (event.type == sf::Event::KeyPressed)
+            {
+                // Handle game key events (you can add specific controls here)
+            }
 
-                // bool introDisplay = true; 
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                sf::Vector2i mousePos = sf::Mouse::getPosition(*renderWindow);
+                introScreenGraphic.handleMouseInput(mousePos); // Handle input for intro screen
+            }
 
-                // if (introDisplay){
-                // introScreenGraphic.displayIntro();                 
-                // }
-                // else{
-                // gameGraphic.displayTexture();
-                // introDisplay = false;
-                // }
-
-               
-                gameGraphic.displayTexture();
-               
-                // Display what was drawn on the window
-                renderWindow->display();
-
-                if (moved)
-                {
-                    gameBoard.display();
-                    gameBoard.addRandomTile();
-                    gameGraphic.updateGame(gameBoard);
-                }
+            if (event.type == sf::Event::TextEntered)
+            {
+                std::cout << "Text entered: " << event.text.unicode << std::endl;
+                introScreenGraphic.handleTextInput(event); // Handle text input for intro screen
+            }
         }
+
+        // Rendering
+        renderWindow->clear(sf::Color(50, 50, 50)); // Clear the screen
+
+        if (introDisplay)
+        {
+            introScreenGraphic.displayIntro(); // Display intro screen if flag is true
+        }
+        else
+        {
+            gameGraphic.displayTexture(); // Display game screen if intro is done
+        }
+
+        renderWindow->display(); // Display what was rendered
     }
 
-    // Unload texture from all page graphic
+    // Unload textures for cleanup
     gameGraphic.unloadAllTextures();
     introScreenGraphic.unloadAllIntroTextures();
 
