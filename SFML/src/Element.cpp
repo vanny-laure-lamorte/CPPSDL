@@ -8,18 +8,9 @@ Element::Element(sf::RenderWindow *window) : window(window)
     {
         std::cout << "Error loading image" << std::endl;
     }
-
-    // font = LoadFont("assets\\fonts\\Oswald.ttf");
-    // if (!font)
-    // {
-    //     std::cout << "Error loading font" << std::endl;
-    // }
-
-
 }
 
 Element::~Element() {
-    // No need for explicit deletion since shared_ptr handles it.
 }
 
 //* IMAGES *//
@@ -45,7 +36,6 @@ void Element::renderTexture(const std::shared_ptr<sf::Texture> &texture, int x, 
 }
 
 //* FONTS *//
-
 std::shared_ptr<sf::Font> Element::LoadFont(const std::string &fontPath)
 {
     auto font = std::make_shared<sf::Font>();
@@ -74,20 +64,17 @@ void Element::displayText(const std::shared_ptr<sf::Font> &font, const std::stri
     {
         text.setPosition(x, y);
     }
-
     window->draw(text);
 }
 
 
 // Method to draw plain rect
-//* args: x, y, width, height, radius, color /
 void Element::drawRoundedRect(float x, float y, float width, float height, float radius, sf::Color color) 
 {
    
     sf::CircleShape corner(radius);
     corner.setFillColor(color);
     corner.setPointCount(30); 
-
  
     corner.setPosition(x, y); 
     window->draw(corner);
@@ -100,7 +87,6 @@ void Element::drawRoundedRect(float x, float y, float width, float height, float
 
     corner.setPosition(x + width - radius * 2, y + height - radius * 2); 
     window->draw(corner);
-
  
     sf::RectangleShape horizontal(sf::Vector2f(width - radius * 2, radius));
     horizontal.setFillColor(color);
@@ -120,7 +106,6 @@ void Element::drawRoundedRect(float x, float y, float width, float height, float
     vertical.setPosition(x + width - radius, y + radius); 
     window->draw(vertical);
 
-
     sf::RectangleShape center(sf::Vector2f(width - radius * 2, height - radius * 2));
     center.setFillColor(color);
     center.setPosition(x + radius, y + radius);
@@ -128,28 +113,27 @@ void Element::drawRoundedRect(float x, float y, float width, float height, float
 }
 
 // Method to draw transparent rect
-//* args: x, y, width, height, radius, color /
 void Element::drawRoundedRectOpacity(float x, float y, float width, float height, float radius, sf::Color color) 
 {
     // Set transparency by adjusting the alpha channel of the color
-    color.a = 128; // Adjust this value (0-255) to change transparency level, 128 is 50% transparency
+    color.a = 128; 
 
     // Create the four rounded corners
     sf::CircleShape corner(radius);
     corner.setFillColor(color);
-    corner.setPointCount(30); // More points make the circle smoother
+    corner.setPointCount(30); 
 
     // Position the corners
-    corner.setPosition(x, y); // Top-left corner
+    corner.setPosition(x, y);
     window->draw(corner);
 
-    corner.setPosition(x + width - radius * 2, y); // Top-right corner
+    corner.setPosition(x + width - radius * 2, y);
     window->draw(corner);
 
-    corner.setPosition(x, y + height - radius * 2); // Bottom-left corner
+    corner.setPosition(x, y + height - radius * 2);
     window->draw(corner);
 
-    corner.setPosition(x + width - radius * 2, y + height - radius * 2); // Bottom-right corner
+    corner.setPosition(x + width - radius * 2, y + height - radius * 2);
     window->draw(corner);
 
     // Create the four rectangles for the sides
@@ -186,7 +170,7 @@ void Element::TransparentRect(float x, float y, float width, float height, float
     // Create the rounded rectangle shape
     sf::CircleShape corner(radius);
     corner.setFillColor(color);
-    corner.setPointCount(30); // More points make the circle smoother
+    corner.setPointCount(30); 
 
     // Top-left corner
     corner.setPosition(x, y);

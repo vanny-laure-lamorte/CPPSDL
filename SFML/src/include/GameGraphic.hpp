@@ -74,6 +74,7 @@ public:
     //***Score ***//
     int updateScore(int newScore);
     int updatedScoreValue = 0;
+    bool saveScore = false;
     
     float animTransition = 0;
 
@@ -87,9 +88,7 @@ public:
     void setUserMail(string userMail)
     {
         mail = userMail;
-    }
-    
-
+    }  
 
 private:
 
@@ -97,15 +96,12 @@ private:
     string pseudo;
     string mail;
 
-
     sf::RenderWindow *window;
     int screenWidth;
     int screenHeight;
 
     std::shared_ptr<sf::Texture> backgroundTexture;
     std::shared_ptr<sf::Texture> testTexture;
-
-
 
     void animation();
 
