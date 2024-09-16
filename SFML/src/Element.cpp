@@ -83,44 +83,44 @@ void Element::displayText(const std::shared_ptr<sf::Font> &font, const std::stri
 //* args: x, y, width, height, radius, color /
 void Element::drawRoundedRect(float x, float y, float width, float height, float radius, sf::Color color) 
 {
-    // Créer les quatre coins arrondis
+   
     sf::CircleShape corner(radius);
     corner.setFillColor(color);
-    corner.setPointCount(30); // Plus il y a de points, plus le cercle est lisse
+    corner.setPointCount(30); 
 
-    // Positionner les coins
-    corner.setPosition(x, y); // Coin supérieur gauche
+ 
+    corner.setPosition(x, y); 
     window->draw(corner);
 
-    corner.setPosition(x + width - radius * 2, y); // Coin supérieur droit
+    corner.setPosition(x + width - radius * 2, y); 
     window->draw(corner);
 
-    corner.setPosition(x, y + height - radius * 2); // Coin inférieur gauche
+    corner.setPosition(x, y + height - radius * 2); 
     window->draw(corner);
 
-    corner.setPosition(x + width - radius * 2, y + height - radius * 2); // Coin inférieur droit
+    corner.setPosition(x + width - radius * 2, y + height - radius * 2); 
     window->draw(corner);
 
-    // Créer les quatre rectangles pour les côtés
-    sf::RectangleShape horizontal(sf::Vector2f(width - radius * 2, radius)); // Côtés horizontaux
+ 
+    sf::RectangleShape horizontal(sf::Vector2f(width - radius * 2, radius));
     horizontal.setFillColor(color);
 
-    horizontal.setPosition(x + radius, y); // Haut
+    horizontal.setPosition(x + radius, y);
     window->draw(horizontal);
 
-    horizontal.setPosition(x + radius, y + height - radius); // Bas
+    horizontal.setPosition(x + radius, y + height - radius); 
     window->draw(horizontal);
 
-    sf::RectangleShape vertical(sf::Vector2f(radius, height - radius * 2)); // Côtés verticaux
+    sf::RectangleShape vertical(sf::Vector2f(radius, height - radius * 2)); 
     vertical.setFillColor(color);
 
-    vertical.setPosition(x, y + radius); // Gauche
+    vertical.setPosition(x, y + radius); 
     window->draw(vertical);
 
-    vertical.setPosition(x + width - radius, y + radius); // Droite
+    vertical.setPosition(x + width - radius, y + radius); 
     window->draw(vertical);
 
-    // Créer le rectangle central
+
     sf::RectangleShape center(sf::Vector2f(width - radius * 2, height - radius * 2));
     center.setFillColor(color);
     center.setPosition(x + radius, y + radius);

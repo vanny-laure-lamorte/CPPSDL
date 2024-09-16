@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "Element.hpp"
+#include "IntroScreenGraphic.hpp"
+
 #include <memory>
 
 #include "GameBoard.hpp"
@@ -77,10 +79,23 @@ public:
 
     //*** FONT ***//
     sf::Font fontOswald;
+    void setUserName(string userName)
+    {
+        pseudo = userName;
+    }
+
+    void setUserMail(string userMail)
+    {
+        mail = userMail;
+    }
+    
+
 
 private:
 
     sf::Clock clock;
+    string pseudo;
+    string mail;
 
 
     sf::RenderWindow *window;
