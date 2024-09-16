@@ -757,10 +757,8 @@ void GameGraphic::getUserBestScore()
     {
 
         scoreUserInt = gameOptions->getUserScore(user);
-        cout << "Score of the player: " << scoreUserInt << endl;
         scoreFetched = true;
         scoreUserstr = to_string(scoreUserInt);
-        cout << "STR score: " << scoreUserstr << endl;
 
         textValueBestUser = element->createTextureText(fontBestPlayer, scoreUserstr, {255, 255, 255, 255});
         if (!textValueBestUser)
