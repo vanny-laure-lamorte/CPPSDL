@@ -48,7 +48,36 @@ int main()
 
             if (event.type == sf::Event::KeyPressed)
             {
-                // Handle game key events (you can add specific controls here)
+         switch (event.key.code)
+                    {
+                    // Move to left
+                    case (sf::Keyboard::Left):
+                    case (sf::Keyboard::Q):
+                        moved = gameBoard.moveLeft();
+                        break;
+
+                    // Move to right
+                    case (sf::Keyboard::Right):
+                    case (sf::Keyboard::D):
+                        moved = gameBoard.moveRight();
+                        break;
+
+                    // Move Up
+                    case (sf::Keyboard::Up):
+                    case (sf::Keyboard::Z):
+                        moved = gameBoard.moveUp();
+                        break;
+
+                    // Move Down
+                    case (sf::Keyboard::Down):
+                    case (sf::Keyboard::S):
+                        moved = gameBoard.moveDown();
+                        break;
+
+                    // Error input
+                    default:
+                        std::cout << "Invalid move! Use w/a/s/d." << std::endl;
+                    }
             }
 
             if (event.type == sf::Event::MouseButtonPressed)
@@ -60,6 +89,8 @@ int main()
                     event.mouseButton.y >= buttonY && event.mouseButton.y <= buttonY + 40)
                 {
                     introDisplay = false;
+                    gameGraphic.setUserName(introScreenGraphic.getInputString1());
+                    gameGraphic.setUserMail(introScreenGraphic.getInputString2());
                 }
             }
 
@@ -85,8 +116,8 @@ int main()
             if (moved)
             {
                 gameBoard.display();
-                gameGraphic.updateGame(gameBoard);
                 gameBoard.addRandomTile();
+                gameGraphic.updateGame(gameBoard);
             }
         }
         renderWindow->display();

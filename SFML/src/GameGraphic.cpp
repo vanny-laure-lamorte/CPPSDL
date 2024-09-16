@@ -82,7 +82,7 @@ void GameGraphic::displayTexture()
         std::cout << "Press any key to exit." << std::endl;
 
         // Save score at the end of the game
-        gameOptions.saveScore("Tagada", "poop@gmail.com", "00000", timeString, "12");
+        gameOptions.saveScore(pseudo, mail, to_string(gameBoard.getScore()), timeString, "0");
     }
 }
 
@@ -115,7 +115,7 @@ void GameGraphic::displayUserGame()
    
    // Get the user best score from json file
     if (!scoreFetched){
-    scoreUserInt = gameOptions.getUserScore("Poop");
+    scoreUserInt = gameOptions.getUserScore(pseudo);
     scoreFetched = true;
     }; 
 
@@ -161,8 +161,8 @@ void GameGraphic::displayResetUndo()
 void GameGraphic::displayUserProfile()
 {
     element->drawRoundedRect(rectPlayerFrameX, rectPlayerFrameY - 85, 180, 60, 10, element->COLOR_LIGHTGREY1);                                                                          // White Rect best players
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "LuThanVa", 18, element->COLOR_DARKGREY1, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);           // Display name of the user
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "luThanVa@gmail.com", 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
+    element->displayText(std::make_shared<sf::Font>(fontOswald),pseudo , 18, element->COLOR_DARKGREY1, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 75, false, 0, 0);           // Display name of the user
+    element->displayText(std::make_shared<sf::Font>(fontOswald),mail , 11, element->COLOR_LIGHTGREY2, rectPlayerFrameXOffset + 40, rectPlayerFrameY - 50, false, 0, 0); // Display name of the user
 
     element->renderTexture(profileUserTexture, rectPlayerFrameX, rectPlayerFrameY - 80, 50, 50); // Img profile picture
 }
@@ -251,12 +251,12 @@ void GameGraphic::displayLoose()
 
     // Display score
     element->displayText(std::make_shared<sf::Font>(fontOswald), "SCORE : ", 20, element->COLOR_DARKGREY2, 390, 400, false, 0, 0);
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "52435", 20, element->COLOR_DARKGREY1, 470, 400, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), to_string(gameBoard.getScore()), 20, element->COLOR_DARKGREY1, 470, 400, false, 0, 0);
     element->renderTexture(gameOverTexture, 300, 130, 300, 300);
 
     // Display time
     element->displayText(std::make_shared<sf::Font>(fontOswald), "TIME : ", 20, element->COLOR_DARKGREY2, 390, 430, false, 0, 0);
-    element->displayText(std::make_shared<sf::Font>(fontOswald), "02:46", 20, element->COLOR_DARKGREY1, 470, 430, false, 0, 0);
+    element->displayText(std::make_shared<sf::Font>(fontOswald), timeString, 20, element->COLOR_DARKGREY1, 470, 430, false, 0, 0);
     element->renderTexture(gameOverTexture, 300, 130, 300, 300);
 }
 
