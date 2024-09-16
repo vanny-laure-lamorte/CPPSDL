@@ -71,9 +71,16 @@ int main()
         else
         {
             gameGraphic.displayTexture(); // Display game screen if intro is done
-        }
+                    // Display what was drawn on the window
+            renderWindow->display();
 
-        renderWindow->display(); // Display what was rendered
+            if (moved)
+            {
+                gameBoard.display();
+                gameGraphic.updateGame(gameBoard);
+                gameBoard.addRandomTile();
+            }
+        }
     }
 
     // Unload textures for cleanup
