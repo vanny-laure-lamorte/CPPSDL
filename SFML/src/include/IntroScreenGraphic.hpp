@@ -33,6 +33,9 @@ public:
     void displayIntro();
     void handleMouseInput(sf::Vector2i mousePos);
     void handleTextInput(sf::Event event);
+    // Getter for input strings
+    std::string getInputString1() { return inputBox1.getInputString(); }
+    std::string getInputString2() { return inputBox2.getInputString(); }
 };
 
 #endif
