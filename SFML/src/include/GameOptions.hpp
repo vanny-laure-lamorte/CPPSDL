@@ -36,10 +36,6 @@ private:
 
     string playerName;
     string email;
-    
-
-
-
 }; 
 
 #endif // GAMEOPTION_HPP

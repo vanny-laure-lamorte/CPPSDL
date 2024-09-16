@@ -4,16 +4,17 @@
 #include <string>
 #include <direct.h>
 
-#include <SFML/Graphics.hpp>
 #include "src/include/Window.hpp"
 #include "src/include/GameGraphic.hpp"
 #include "src/include/GameBoard.hpp"
 #include "src/include/IntroScreenGraphic.hpp"
 
-
 int SCREENWIDTH = 900;
 int SCREENHEIGHT = 600;
 bool running = true;
+bool introDisplay = true; // Initially set to true to show the intro screen
+int buttonX = 900 / 2 - (260 / 2);
+int buttonY = 600 / 2 - (350 / 2) + 340;
 
 int main()
 {
@@ -29,31 +30,25 @@ int main()
     // Get the SFML window object
     sf::RenderWindow *renderWindow = window.getWindow();
 
-    //*** Create instance ***//
-    GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Game Graphic
-    IntroScreenGraphic introScreenGraphic (renderWindow, SCREENWIDTH, SCREENHEIGHT); // Intro Screen Graphic
+    //*** Create instances ***//
+    GameGraphic gameGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT);               // Game Graphic
+    IntroScreenGraphic introScreenGraphic(renderWindow, SCREENWIDTH, SCREENHEIGHT); // Intro Screen Graphic
 
     // Main game loop
     while (renderWindow->isOpen())
     {
         sf::Event event;
-        while (running)
+        bool moved = false;
+        while (renderWindow->pollEvent(event))
         {
-                bool moved = false;
-            while (renderWindow->pollEvent(event))
+            if (event.type == sf::Event::Closed)
             {
+                renderWindow->close();
+            }
 
-
-                if (event.type == sf::Event::Closed)
-                {
-                    running = false;
-                    renderWindow->close();
-
-                }
-
-                if (event.type == sf::Event::KeyPressed)
-
-                    switch (event.key.code)
+            if (event.type == sf::Event::KeyPressed)
+            {
+         switch (event.key.code)
                     {
                     // Move to left
                     case (sf::Keyboard::Left):
@@ -84,37 +79,49 @@ int main()
                         std::cout << "Invalid move! Use w/a/s/d." << std::endl;
                     }
             }
-                // Clear the screen
-                renderWindow->clear(sf::Color(50, 50, 50)); // Dark gray
 
-                // Display background and other textures
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                sf::Vector2i mousePos = sf::Mouse::getPosition(*renderWindow);
+                introScreenGraphic.handleMouseInput(mousePos); // Handle input for intro screen
 
-                // bool introDisplay = true; 
-
-                // if (introDisplay){
-                // introScreenGraphic.displayIntro();                 
-                // }
-                // else{
-                // gameGraphic.displayTexture();
-                // introDisplay = false;
-                // }
-
-               
-                gameGraphic.displayTexture();
-               
-                // Display what was drawn on the window
-                renderWindow->display();
-
-                if (moved)
+                if (event.mouseButton.x >= buttonX && event.mouseButton.x <= buttonX + 260 &&
+                    event.mouseButton.y >= buttonY && event.mouseButton.y <= buttonY + 40)
                 {
-                    gameBoard.display();
-                    gameBoard.addRandomTile();
-                    gameGraphic.updateGame(gameBoard);
+                    introDisplay = false;
+                    gameGraphic.setUserName(introScreenGraphic.getInputString1());
+                    gameGraphic.setUserMail(introScreenGraphic.getInputString2());
                 }
+            }
+
+            if (event.type == sf::Event::TextEntered)
+            {
+                introScreenGraphic.handleTextInput(event); // Handle text input for intro screen
+            }
         }
+
+        // Rendering
+        renderWindow->clear(sf::Color(50, 50, 50));
+
+        if (introDisplay)
+        {
+            introScreenGraphic.displayIntro(); // Display intro screen if flag is true
+        }
+        else
+        {
+            gameGraphic.displayTexture(); // Display game screen if intro is done
+                                          // Display what was drawn on the window
+
+            if (moved)
+            {
+                gameBoard.addRandomTile();
+                gameGraphic.updateGame(gameBoard);
+            }
+        }
+        renderWindow->display();
     }
 
-    // Unload texture from all page graphic
+    // Unload textures for cleanup
     gameGraphic.unloadAllTextures();
     introScreenGraphic.unloadAllIntroTextures();
 

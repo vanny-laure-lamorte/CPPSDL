@@ -55,24 +55,22 @@ void GameOptions::saveScore(const string &playerName, const string &email, const
     // Iterate through the scores to check if the player already exists
     for (auto &entry : scoresJson)
     {
-        // Check if the player name matches
+
          if (entry["PlayerName"].get<string>() == playerName && entry["Email"].get<string>() == email)
         {
-            // Convertir les champs Score et MatchCount de string à int
+
             int currentScoreValue = std::stoi(entry["Score"].get<string>());
             int currentMatchCount = std::stoi(entry["MatchCount"].get<string>());
 
-            // Incrémenter MatchCount
             entry["MatchCount"] = std::to_string(currentMatchCount + 1);
 
-            // Mettre à jour le score seulement si le nouveau est meilleur
             if (newScoreValue > currentScoreValue)
             {
-                entry["Score"] = score; // Met à jour le score avec la nouvelle valeur
-                entry["Time"] = timer;  // Met à jour l'heure si le score est mis à jour
+                entry["Score"] = score;
+                entry["Time"] = timer; 
             }
 
-            playerExists = true; // Marquer que le joueur existe
+            playerExists = true;
             break;
         }
     }
@@ -154,7 +152,6 @@ tuple<string, string, string, string> GameOptions::getBestScore() const
             continue; 
         }
     }
-
     return make_tuple(bestPlayerName, to_string(bestScore), bestTime, bestMatchCount);
 }
 
@@ -218,7 +215,6 @@ vector<pair<string, int>> GameOptions::getTopFiveScores() const
     {
         playerScores.resize(5);
     }
-
     return playerScores; // Return the vector of player-score pairs
 }
 
@@ -270,8 +266,7 @@ int GameOptions::getUserScore(const string &playerName) const
     return 0;
 }
 
-// methods to get & set the user input from the intro screen
-
+// Methods to get & set the user input from the intro screen
 string GameOptions::getPlayerName() const
 {
     return playerName;

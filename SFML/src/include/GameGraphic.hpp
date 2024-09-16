@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "Element.hpp"
+#include "IntroScreenGraphic.hpp"
+
 #include <memory>
 
 #include "GameBoard.hpp"
@@ -72,16 +74,27 @@ public:
     //***Score ***//
     int updateScore(int newScore);
     int updatedScoreValue = 0;
+    bool saveScore = false;
     
     float animTransition = 0;
 
     //*** FONT ***//
     sf::Font fontOswald;
+    void setUserName(string userName)
+    {
+        pseudo = userName;
+    }
+
+    void setUserMail(string userMail)
+    {
+        mail = userMail;
+    }  
 
 private:
 
     sf::Clock clock;
-
+    string pseudo;
+    string mail;
 
     sf::RenderWindow *window;
     int screenWidth;
@@ -89,8 +102,6 @@ private:
 
     std::shared_ptr<sf::Texture> backgroundTexture;
     std::shared_ptr<sf::Texture> testTexture;
-
-
 
     void animation();
 
