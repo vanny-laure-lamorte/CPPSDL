@@ -36,6 +36,7 @@ int main()
     while (renderWindow->isOpen())
     {
         sf::Event event;
+        bool moved = false;
         while (renderWindow->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -73,6 +74,8 @@ int main()
             gameGraphic.displayTexture(); // Display game screen if intro is done
                     // Display what was drawn on the window
             renderWindow->display();
+
+            
 
             if (moved)
             {
